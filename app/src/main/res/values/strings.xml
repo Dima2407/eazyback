@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Eazy Back</string>
+    <string name="callback_number">Номер для перезвона</string>
+    <string name="reject_time">Пауза перед сбросом, сек</string>
+    <string name="callback_time">Пауза перез перезвоном, сек:</string>
+    <string name="action_settings">Запись</string>
+
+</resources>
