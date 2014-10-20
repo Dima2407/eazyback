@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.easyback.andriy.eazyback.Reflector;
 
@@ -19,12 +20,12 @@ public final class Core {
     }
 
     public void makeParse(String pIncomePhone) {
-
-        if (!TextUtils.isEmpty(pIncomePhone)) {
+        if (TextUtils.isEmpty(pIncomePhone)) {
             return;
         }
 
         String targetPhone = mSharedHelper.getTargetPhone();
+
         if (!pIncomePhone.equals(targetPhone)) {
             return;
         }

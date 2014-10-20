@@ -35,11 +35,21 @@ public class SharedHelper {
     }
 
     public long getRejectDelay() {
-        return mSharedPreferences.getInt(REJECT_DELAY, 0);
+        long delay = mSharedPreferences.getLong(REJECT_DELAY, 0);
+
+        if (delay != 0) {
+            return delay / 1000;
+        }
+        return delay;
     }
 
     public long getCallbackDelay() {
-        return mSharedPreferences.getInt(CALL_BACK_DELAY, 0);
+        long delay = mSharedPreferences.getLong(CALL_BACK_DELAY, 0);
+
+        if (delay != 0) {
+            return delay / 1000;
+        }
+        return delay;
     }
 
     public void setRejectDelay(String pRejectDelay) {

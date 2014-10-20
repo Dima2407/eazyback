@@ -14,7 +14,6 @@ public final class CallListener extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
         if (!intent.getAction().equals(TARGET_ACTION)) {
             return;
         }
@@ -25,7 +24,5 @@ public final class CallListener extends BroadcastReceiver {
             incomingPhoneNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
             ((EzApplication) context.getApplicationContext()).getCore().makeParse(incomingPhoneNumber);
         }
-
-
     }
 }
