@@ -29,19 +29,20 @@ public final class Core {
             return;
         }
 
-        int rejectDelay = mSharedHelper.getRejectDelay();
+        long rejectDelay = mSharedHelper.getRejectDelay();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Reflector.disconnectCall();
-                makeCallback(mSharedHelper.getTargetPhone());
+                makeCallback();
             }
         }, rejectDelay);
     }
 
-    private void makeCallback(String number) {
-        int callbackDelay = mSharedHelper.getCallbackDelay();
+    private void makeCallback() {
+        long callbackDelay = mSharedHelper.getCallbackDelay();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

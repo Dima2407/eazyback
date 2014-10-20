@@ -58,6 +58,9 @@ public class SettingsActivity extends Activity {
     public void makeSaveProcedure() {
         SharedHelper sharedHelper = mEzApplication.getSharedHelper();
 
+        sharedHelper.setTargetPhone(mTelephone.getText().toString());
+        sharedHelper.setRejectDelay(mRejectDelay.getText().toString());
+        sharedHelper.setCallbackDelay(mCallBackDelay.getText().toString());
 
         finish();
     }

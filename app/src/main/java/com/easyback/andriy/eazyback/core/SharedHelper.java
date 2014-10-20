@@ -26,7 +26,7 @@ public class SharedHelper {
         return mSharedPreferences.getBoolean(ACTIVATE_FLAG, false);
     }
 
-    public void setTargetSet(String pTargetTelephone) {
+    public void setTargetPhone(String pTargetTelephone) {
         mSharedPreferences.edit().putString(TARGET_PHONE, pTargetTelephone).commit();
     }
 
@@ -34,19 +34,21 @@ public class SharedHelper {
         return mSharedPreferences.getString(TARGET_PHONE, "");
     }
 
-    public int getRejectDelay() {
+    public long getRejectDelay() {
         return mSharedPreferences.getInt(REJECT_DELAY, 0);
     }
 
-    public int getCallbackDelay() {
+    public long getCallbackDelay() {
         return mSharedPreferences.getInt(CALL_BACK_DELAY, 0);
     }
 
-    public void setRejectDelay(int pRejectDelay) {
-        mSharedPreferences.edit().putInt(REJECT_DELAY, pRejectDelay).commit();
+    public void setRejectDelay(String pRejectDelay) {
+        long reject = Long.parseLong(pRejectDelay) * 1000;
+        mSharedPreferences.edit().putLong(REJECT_DELAY, reject).commit();
     }
 
-    public void setCallbackDelay(int pCallbackDelay) {
-        mSharedPreferences.edit().putInt(CALL_BACK_DELAY, pCallbackDelay).commit();
+    public void setCallbackDelay(String pCallbackDelay) {
+        long callback = Long.parseLong(pCallbackDelay) * 1000;
+        mSharedPreferences.edit().putLong(CALL_BACK_DELAY, callback).commit();
     }
 }
