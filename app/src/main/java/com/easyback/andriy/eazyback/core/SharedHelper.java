@@ -35,18 +35,18 @@ public class SharedHelper {
     }
 
     public long getRejectDelay() {
-        long delay = mSharedPreferences.getLong(REJECT_DELAY, 0);
+        long delay = mSharedPreferences.getLong(REJECT_DELAY, -1);
 
-        if (delay != 0) {
+        if (delay != -1) {
             return delay / 1000;
         }
         return delay;
     }
 
     public long getCallbackDelay() {
-        long delay = mSharedPreferences.getLong(CALL_BACK_DELAY, 0);
+        long delay = mSharedPreferences.getLong(CALL_BACK_DELAY, -1);
 
-        if (delay != 0) {
+        if (delay != -1) {
             return delay / 1000;
         }
         return delay;

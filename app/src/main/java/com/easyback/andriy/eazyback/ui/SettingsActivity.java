@@ -10,7 +10,6 @@ import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.EzApplication;
 import com.easyback.andriy.eazyback.core.SharedHelper;
 
-
 public class SettingsActivity extends Activity {
 
     private EditText mTelephone, mRejectDelay, mCallBackDelay;
@@ -29,10 +28,16 @@ public class SettingsActivity extends Activity {
         mTelephone.setText(sharedHelper.getTargetPhone());
 
         mRejectDelay = (EditText) findViewById(R.id.reject_delay);
-        mRejectDelay.setText(String.valueOf(sharedHelper.getRejectDelay()));
+        if (sharedHelper.getRejectDelay() != -1) {
+            mRejectDelay.setText(String.valueOf(sharedHelper.getRejectDelay()));
+        }
 
         mCallBackDelay = (EditText) findViewById(R.id.call_back_delay);
-        mCallBackDelay.setText(String.valueOf(sharedHelper.getCallbackDelay()));
+
+        if (sharedHelper.getCallbackDelay() != -1) {
+            mCallBackDelay.setText(String.valueOf(sharedHelper.getCallbackDelay()));
+        }
+
     }
 
 
