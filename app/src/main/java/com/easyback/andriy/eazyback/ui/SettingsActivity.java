@@ -11,6 +11,7 @@ import android.widget.Switch;
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.EzApplication;
 import com.easyback.andriy.eazyback.core.SharedHelper;
+import com.easyback.andriy.eazyback.utils.ViewInitUtils;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -34,8 +35,7 @@ public class SettingsActivity extends Activity {
 
         SharedHelper sharedHelper = mEzApplication.getSharedHelper();
 
-        mTelephoneOne = (EditText) findViewById(R.id.number_one);
-        mTelephone.setText(sharedHelper.getTargetPhone());
+       mTelephoneCells = ViewInitUtils.initPhoneSells(this, sharedHelper.getTargetNumbers());
 
         mRejectDelay = (EditText) findViewById(R.id.reject_delay);
         if (sharedHelper.getRejectDelay() != -1) {
@@ -84,9 +84,10 @@ public class SettingsActivity extends Activity {
     public void makeSaveProcedure() {
         SharedHelper sharedHelper = mEzApplication.getSharedHelper();
 
-        sharedHelper.setTargetPhone(mTelephone.getText().toString());
         sharedHelper.setRejectDelay(mRejectDelay.getText().toString());
         sharedHelper.setCallbackDelay(mCallBackDelay.getText().toString());
+
+        ViewInitUtils.savePhoneCells(mTelephoneCells, sharedHelper);
 
         finish();
     }
