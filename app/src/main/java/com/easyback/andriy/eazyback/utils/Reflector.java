@@ -1,4 +1,4 @@
-package com.easyback.andriy.eazyback;
+package com.easyback.andriy.eazyback.utils;
 
 import android.os.Binder;
 import android.os.IBinder;

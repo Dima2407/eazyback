@@ -3,11 +3,15 @@ package com.easyback.andriy.eazyback.core;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class SharedHelper {
 
     private static final String NAME = "EazyBack";
     private static final String ACTIVATE_FLAG = "activate_flag";
     private static final String TARGET_PHONE = "target_phone";
+    private static final String TARGET_PHONE_SET = "target_phone_set";
     private static final String REJECT_DELAY = "reject_delay";
     private static final String CALL_BACK_DELAY = "callback_delay";
 
@@ -25,12 +29,12 @@ public class SharedHelper {
         return mSharedPreferences.getBoolean(ACTIVATE_FLAG, false);
     }
 
-    public void setTargetPhone(String pTargetTelephone) {
-        mSharedPreferences.edit().putString(TARGET_PHONE, pTargetTelephone).commit();
+    public Set<String> getTargetNumbers() {
+        return mSharedPreferences.getStringSet(TARGET_PHONE_SET, new HashSet<String>());
     }
 
-    public String getTargetPhone() {
-        return mSharedPreferences.getString(TARGET_PHONE, "");
+    public void setTargetPhoneSet(Set<String> pTargetPhoneSet) {
+        mSharedPreferences.edit().putStringSet(TARGET_PHONE_SET, pTargetPhoneSet).commit();
     }
 
     public long getRejectDelay() {

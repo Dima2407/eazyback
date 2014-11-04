@@ -15,9 +15,13 @@ import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 
+import java.util.List;
+import java.util.Set;
+
 public class SettingsActivity extends Activity {
 
-    private EditText mTelephone, mRejectDelay, mCallBackDelay;
+    private List<EditText> mTelephoneCells;
+    private EditText mRejectDelay, mCallBackDelay;
     private Switch mActivatedSwitch;
     private EzApplication mEzApplication;
 
@@ -30,7 +34,7 @@ public class SettingsActivity extends Activity {
 
         SharedHelper sharedHelper = mEzApplication.getSharedHelper();
 
-        mTelephone = (EditText) findViewById(R.id.number);
+        mTelephoneOne = (EditText) findViewById(R.id.number_one);
         mTelephone.setText(sharedHelper.getTargetPhone());
 
         mRejectDelay = (EditText) findViewById(R.id.reject_delay);

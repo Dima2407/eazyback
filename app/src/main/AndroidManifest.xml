@@ -27,7 +27,7 @@
         </activity>
 
         <receiver
-            android:name=".CallListener"
+            android:name=".core.listeners.CallListener"
             android:exported="true"
             android:enabled="true">
             <intent-filter>

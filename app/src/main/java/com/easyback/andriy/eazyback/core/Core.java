@@ -5,14 +5,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.easyback.andriy.eazyback.Reflector;
+import com.easyback.andriy.eazyback.utils.Reflector;
+
+import java.util.Set;
 
 public final class Core {
 
     private final Context mContext;
     private final SharedHelper mSharedHelper;
+    private String mTargetPhone;
 
     public Core(Context pContext, SharedHelper pSharedHelper) {
         mContext = pContext;
@@ -29,9 +31,9 @@ public final class Core {
             return;
         }
 
-        String targetPhone = mSharedHelper.getTargetPhone();
+        mTargetPhone = searchTargetPhone(pIncomePhone);
 
-        if (!pIncomePhone.equals(targetPhone)) {
+        if (TextUtils.isEmpty(mTargetPhone)) {
             return;
         }
 
@@ -53,10 +55,24 @@ public final class Core {
             @Override
             public void run() {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:" + mSharedHelper.getTargetPhone()));
+                callIntent.setData(Uri.parse("tel:" + mTargetPhone));
                 callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(callIntent);
             }
         }, callbackDelay);
+    }
+
+    private String searchTargetPhone(String pIncomePhone){
+        Set<String> targetPhones = mSharedHelper.getTargetNumbers();
+        String targetPhone = null;
+
+        for(String phone: targetPhones){
+            if(pIncomePhone.equals(phone)){
+                targetPhone = phone;
+                break;
+            }
+        }
+
+        return targetPhone;
     }
 }

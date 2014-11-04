@@ -1,4 +1,4 @@
-package com.easyback.andriy.eazyback;
+package com.easyback.andriy.eazyback.core.listeners;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
