@@ -2,7 +2,6 @@ package com.easyback.andriy.eazyback.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
@@ -12,6 +11,7 @@ import android.widget.Switch;
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.EzApplication;
 import com.easyback.andriy.eazyback.core.SharedHelper;
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class SettingsActivity extends Activity {
 
@@ -47,6 +47,11 @@ public class SettingsActivity extends Activity {
         mActivatedSwitch.setOnCheckedChangeListener(new Checker());
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,11 +82,16 @@ public class SettingsActivity extends Activity {
         finish();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);
+    }
+
     private final class Checker implements CompoundButton.OnCheckedChangeListener {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            Log.e("SA", "is checked = "+isChecked);
             mEzApplication.getSharedHelper().setActivate(isChecked);
         }
     }
