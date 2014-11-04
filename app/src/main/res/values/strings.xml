@@ -2,10 +2,10 @@
 <resources>
 
     <string name="app_name">EazyBack</string>
-    <string name="callback_number">Номер для перезвона</string>
-    <string name="reject_time">Пауза перед сбросом, сек</string>
-    <string name="callback_time">Пауза перез перезвоном, сек:</string>
-    <string name="action_settings">Запись</string>
-    <string name="is_activated">Включить службу</string>
+    <string name="callback_number">Callback number</string>
+    <string name="reject_time">Pause before discharge, sec</string>
+    <string name="callback_time">>Pause before re-call, seс</string>
+    <string name="action_settings">Save</string>
+    <string name="is_activated">Is service activated</string>
 
 </resources>

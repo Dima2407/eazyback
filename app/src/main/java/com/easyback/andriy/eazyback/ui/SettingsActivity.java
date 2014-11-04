@@ -12,6 +12,8 @@ import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.EzApplication;
 import com.easyback.andriy.eazyback.core.SharedHelper;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
 
 public class SettingsActivity extends Activity {
 
@@ -50,6 +52,9 @@ public class SettingsActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+        EasyTracker.getInstance(this).set(Fields.SCREEN_NAME, getClass().getSimpleName());
+        EasyTracker.getInstance(this).send(MapBuilder.createAppView().build());
+
         EasyTracker.getInstance(this).activityStart(this);
     }
 
