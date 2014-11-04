@@ -2,6 +2,7 @@ package com.easyback.andriy.eazyback.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
@@ -80,6 +81,7 @@ public class SettingsActivity extends Activity {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            Log.e("SA", "is checked = "+isChecked);
             mEzApplication.getSharedHelper().setActivate(isChecked);
         }
     }
