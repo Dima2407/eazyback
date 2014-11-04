@@ -6,5 +6,6 @@
     <string name="reject_time">Пауза перед сбросом, сек</string>
     <string name="callback_time">Пауза перез перезвоном, сек:</string>
     <string name="action_settings">Запись</string>
+    <string name="is_activated">Включить службу</string>
 
 </resources>

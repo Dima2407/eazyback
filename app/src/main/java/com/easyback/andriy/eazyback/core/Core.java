@@ -20,6 +20,11 @@ public final class Core {
     }
 
     public void makeParse(String pIncomePhone) {
+
+        if(!mSharedHelper.getIsActivate()){
+            return;
+        }
+
         if (TextUtils.isEmpty(pIncomePhone)) {
             return;
         }

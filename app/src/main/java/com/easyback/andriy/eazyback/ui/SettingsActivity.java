@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.EzApplication;
@@ -13,6 +15,7 @@ import com.easyback.andriy.eazyback.core.SharedHelper;
 public class SettingsActivity extends Activity {
 
     private EditText mTelephone, mRejectDelay, mCallBackDelay;
+    private Switch mActivatedSwitch;
     private EzApplication mEzApplication;
 
     @Override
@@ -38,6 +41,9 @@ public class SettingsActivity extends Activity {
             mCallBackDelay.setText(String.valueOf(sharedHelper.getCallbackDelay()));
         }
 
+        mActivatedSwitch = (Switch) findViewById(R.id.activator);
+        mActivatedSwitch.setChecked(sharedHelper.getIsActivate());
+        mActivatedSwitch.setOnCheckedChangeListener(new Checker());
     }
 
 
@@ -68,5 +74,13 @@ public class SettingsActivity extends Activity {
         sharedHelper.setCallbackDelay(mCallBackDelay.getText().toString());
 
         finish();
+    }
+
+    private final class Checker implements CompoundButton.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            mEzApplication.getSharedHelper().setActivate(isChecked);
+        }
     }
 }

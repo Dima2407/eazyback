@@ -13,7 +13,6 @@ public class SharedHelper {
 
     private final SharedPreferences mSharedPreferences;
 
-
     public SharedHelper(Context pContext) {
         mSharedPreferences = pContext.getSharedPreferences(NAME, Context.MODE_PRIVATE);
     }
