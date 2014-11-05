@@ -7,5 +7,6 @@
     <string name="callback_time">>Pause before re-call, seс</string>
     <string name="action_settings">Save</string>
     <string name="is_activated">Is service activated</string>
+    <string name="invalid_data">Invalid data</string>
 
 </resources>

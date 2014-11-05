@@ -10,7 +10,6 @@ public class SharedHelper {
 
     private static final String NAME = "EazyBack";
     private static final String ACTIVATE_FLAG = "activate_flag";
-    private static final String TARGET_PHONE = "target_phone";
     private static final String TARGET_PHONE_SET = "target_phone_set";
     private static final String REJECT_DELAY = "reject_delay";
     private static final String CALL_BACK_DELAY = "callback_delay";

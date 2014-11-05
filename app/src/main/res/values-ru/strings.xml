@@ -7,5 +7,6 @@
     <string name="callback_time">Пауза перед перезвоном, сек:</string>
     <string name="action_settings">Сохранить</string>
     <string name="is_activated">Включить службу</string>
+    <string name="invalid_data">Ошибка ввода</string>
 
 </resources>

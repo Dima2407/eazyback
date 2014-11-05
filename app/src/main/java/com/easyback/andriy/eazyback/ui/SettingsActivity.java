@@ -7,17 +7,18 @@ import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.EzApplication;
 import com.easyback.andriy.eazyback.core.SharedHelper;
+import com.easyback.andriy.eazyback.utils.Validator;
 import com.easyback.andriy.eazyback.utils.ViewInitUtils;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 
 import java.util.List;
-import java.util.Set;
 
 public class SettingsActivity extends Activity {
 
@@ -35,7 +36,7 @@ public class SettingsActivity extends Activity {
 
         SharedHelper sharedHelper = mEzApplication.getSharedHelper();
 
-       mTelephoneCells = ViewInitUtils.initPhoneSells(this, sharedHelper.getTargetNumbers());
+        mTelephoneCells = ViewInitUtils.initPhoneSells(this, sharedHelper.getTargetNumbers());
 
         mRejectDelay = (EditText) findViewById(R.id.reject_delay);
         if (sharedHelper.getRejectDelay() != -1) {
@@ -84,12 +85,17 @@ public class SettingsActivity extends Activity {
     public void makeSaveProcedure() {
         SharedHelper sharedHelper = mEzApplication.getSharedHelper();
 
-        sharedHelper.setRejectDelay(mRejectDelay.getText().toString());
-        sharedHelper.setCallbackDelay(mCallBackDelay.getText().toString());
+        String rejectTime = mRejectDelay.getText().toString();
+        String callbackTime = mCallBackDelay.getText().toString();
 
-        ViewInitUtils.savePhoneCells(mTelephoneCells, sharedHelper);
-
-        finish();
+        if (Validator.validate(rejectTime) && Validator.validate(callbackTime)) {
+            sharedHelper.setRejectDelay(rejectTime);
+            sharedHelper.setCallbackDelay(callbackTime);
+            ViewInitUtils.savePhoneCells(mTelephoneCells, sharedHelper);
+            finish();
+        } else {
+            Toast.makeText(this, R.string.invalid_data, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
