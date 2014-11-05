@@ -39,14 +39,14 @@ public class SettingsActivity extends Activity {
         mTelephoneCells = ViewInitUtils.initPhoneSells(this, sharedHelper.getTargetNumbers());
 
         mRejectDelay = (EditText) findViewById(R.id.reject_delay);
-        if (sharedHelper.getRejectDelay() != -1) {
-            mRejectDelay.setText(String.valueOf(sharedHelper.getRejectDelay()));
+        if (sharedHelper.getRejectDelayInSec() != -1) {
+            mRejectDelay.setText(String.valueOf(sharedHelper.getRejectDelayInSec()));
         }
 
         mCallBackDelay = (EditText) findViewById(R.id.call_back_delay);
 
-        if (sharedHelper.getCallbackDelay() != -1) {
-            mCallBackDelay.setText(String.valueOf(sharedHelper.getCallbackDelay()));
+        if (sharedHelper.getCallbackDelayInSec() != -1) {
+            mCallBackDelay.setText(String.valueOf(sharedHelper.getCallbackDelayInSec()));
         }
 
         mActivatedSwitch = (Switch) findViewById(R.id.activator);

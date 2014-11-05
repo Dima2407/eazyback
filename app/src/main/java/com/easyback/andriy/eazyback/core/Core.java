@@ -23,7 +23,7 @@ public final class Core {
 
     public void makeParse(String pIncomePhone) {
 
-        if(!mSharedHelper.getIsActivate()){
+        if (!mSharedHelper.getIsActivate()) {
             return;
         }
 
@@ -37,19 +37,21 @@ public final class Core {
             return;
         }
 
-        long rejectDelay = mSharedHelper.getRejectDelay();
+        long rejectDelay = mSharedHelper.getRejectDelayInMiliSec();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Reflector.disconnectCall();
-                makeCallback();
-            }
-        }, rejectDelay);
+        if (rejectDelay > 0) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Reflector.disconnectCall();
+                    makeCallback();
+                }
+            }, rejectDelay);
+        }
     }
 
     private void makeCallback() {
-        long callbackDelay = mSharedHelper.getCallbackDelay();
+        long callbackDelay = mSharedHelper.getCallbackDelayInMiliSec();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -62,12 +64,12 @@ public final class Core {
         }, callbackDelay);
     }
 
-    private String searchTargetPhone(String pIncomePhone){
+    private String searchTargetPhone(String pIncomePhone) {
         Set<String> targetPhones = mSharedHelper.getTargetNumbers();
         String targetPhone = null;
 
-        for(String phone: targetPhones){
-            if(pIncomePhone.equals(phone)){
+        for (String phone : targetPhones) {
+            if (pIncomePhone.equals(phone)) {
                 targetPhone = phone;
                 break;
             }

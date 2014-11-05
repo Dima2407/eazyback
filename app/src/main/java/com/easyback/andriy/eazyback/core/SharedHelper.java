@@ -36,7 +36,7 @@ public class SharedHelper {
         mSharedPreferences.edit().putStringSet(TARGET_PHONE_SET, pTargetPhoneSet).commit();
     }
 
-    public long getRejectDelay() {
+    public long getRejectDelayInSec() {
         long delay = mSharedPreferences.getLong(REJECT_DELAY, -1);
 
         if (delay != -1) {
@@ -45,7 +45,7 @@ public class SharedHelper {
         return delay;
     }
 
-    public long getCallbackDelay() {
+    public long getCallbackDelayInSec() {
         long delay = mSharedPreferences.getLong(CALL_BACK_DELAY, -1);
 
         if (delay != -1) {
@@ -53,6 +53,16 @@ public class SharedHelper {
         }
         return delay;
     }
+
+    public long getRejectDelayInMiliSec() {
+        return mSharedPreferences.getLong(REJECT_DELAY, -1);
+
+    }
+
+    public long getCallbackDelayInMiliSec() {
+        return mSharedPreferences.getLong(CALL_BACK_DELAY, -1);
+    }
+
 
     public void setRejectDelay(String pRejectDelay) {
         long reject = Long.parseLong(pRejectDelay) * 1000;
