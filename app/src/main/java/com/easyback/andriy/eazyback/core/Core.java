@@ -5,8 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
 
+import com.easyback.andriy.eazyback.R;
+import com.easyback.andriy.eazyback.ui.CallPanel;
 import com.easyback.andriy.eazyback.utils.Reflector;
+import com.easyback.andriy.eazyback.utils.ViewUtils;
 
 import java.util.Set;
 
@@ -15,6 +20,7 @@ public final class Core {
     private final Context mContext;
     private final SharedHelper mSharedHelper;
     private String mTargetPhone;
+    private CallPanel mCallPanel;
 
     public Core(Context pContext, SharedHelper pSharedHelper) {
         mContext = pContext;
@@ -32,6 +38,11 @@ public final class Core {
         }
 
         mTargetPhone = searchTargetPhone(pIncomePhone);
+
+        if (mSharedHelper.getIsActivateManualMode()) {
+            mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
+            return;
+        }
 
         if (TextUtils.isEmpty(mTargetPhone)) {
             return;
@@ -76,5 +87,30 @@ public final class Core {
         }
 
         return targetPhone;
+    }
+
+    private final class Clicker implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.accept_button:
+                    Intent i = new Intent(Intent.ACTION_MEDIA_BUTTON);
+                    i.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK));
+                    mContext.sendOrderedBroadcast(i, null);
+                    break;
+
+                case R.id.reject_button:
+                    Reflector.disconnectCall();
+                    break;
+
+                case R.id.callback_button:
+                    Reflector.disconnectCall();
+                    makeCallback();
+                    break;
+            }
+
+            ViewUtils.hideInterceptWindow(mContext, mCallPanel);
+        }
     }
 }

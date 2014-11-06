@@ -13,7 +13,7 @@ import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.EzApplication;
 import com.easyback.andriy.eazyback.core.SharedHelper;
 import com.easyback.andriy.eazyback.utils.Validator;
-import com.easyback.andriy.eazyback.utils.ViewInitUtils;
+import com.easyback.andriy.eazyback.utils.ViewUtils;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -24,7 +24,6 @@ public class SettingsActivity extends Activity {
 
     private List<EditText> mTelephoneCells;
     private EditText mRejectDelay, mCallBackDelay;
-    private Switch mActivatedSwitch;
     private EzApplication mEzApplication;
 
     @Override
@@ -36,7 +35,7 @@ public class SettingsActivity extends Activity {
 
         SharedHelper sharedHelper = mEzApplication.getSharedHelper();
 
-        mTelephoneCells = ViewInitUtils.initPhoneSells(this, sharedHelper.getTargetNumbers());
+        mTelephoneCells = ViewUtils.initPhoneSells(this, sharedHelper.getTargetNumbers());
 
         mRejectDelay = (EditText) findViewById(R.id.reject_delay);
         if (sharedHelper.getRejectDelayInSec() != -1) {
@@ -49,9 +48,16 @@ public class SettingsActivity extends Activity {
             mCallBackDelay.setText(String.valueOf(sharedHelper.getCallbackDelayInSec()));
         }
 
-        mActivatedSwitch = (Switch) findViewById(R.id.activator);
-        mActivatedSwitch.setChecked(sharedHelper.getIsActivate());
-        mActivatedSwitch.setOnCheckedChangeListener(new Checker());
+        CompoundButton.OnCheckedChangeListener checkListener = new Checker();
+
+        Switch ActivatedSwitch = (Switch) findViewById(R.id.activator);
+        ActivatedSwitch.setChecked(sharedHelper.getIsActivate());
+        ActivatedSwitch.setOnCheckedChangeListener(checkListener);
+
+        Switch manualModeSwitch = (Switch) findViewById(R.id.activator_manual_control);
+        manualModeSwitch.setChecked(sharedHelper.getIsActivate());
+        manualModeSwitch.setOnCheckedChangeListener(checkListener);
+
     }
 
     @Override
@@ -77,6 +83,7 @@ public class SettingsActivity extends Activity {
             case R.id.action_save:
                 makeSaveProcedure();
                 break;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -91,7 +98,7 @@ public class SettingsActivity extends Activity {
         if (Validator.validate(rejectTime) && Validator.validate(callbackTime)) {
             sharedHelper.setRejectDelay(rejectTime);
             sharedHelper.setCallbackDelay(callbackTime);
-            ViewInitUtils.savePhoneCells(mTelephoneCells, sharedHelper);
+            ViewUtils.savePhoneCells(mTelephoneCells, sharedHelper);
             finish();
         } else {
             Toast.makeText(this, R.string.invalid_data, Toast.LENGTH_SHORT).show();
@@ -108,7 +115,18 @@ public class SettingsActivity extends Activity {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            mEzApplication.getSharedHelper().setActivate(isChecked);
+            switch (buttonView.getId()) {
+                case R.id.activator:
+                    mEzApplication.getSharedHelper().setActivate(isChecked);
+                    break;
+
+                case R.id.activator_manual_control:
+                    mEzApplication.getSharedHelper().setActivateManualMode(isChecked);
+                    break;
+            }
+
         }
     }
+
+
 }

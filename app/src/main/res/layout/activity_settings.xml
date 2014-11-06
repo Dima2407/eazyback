@@ -37,6 +37,34 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_marginTop="@dimen/secondary_margin"
+            android:layout_marginBottom="@dimen/secondary_margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/is_activated_manual_mod"
+                android:paddingLeft="@dimen/main_margin"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"/>
+
+
+            <Switch
+                android:id="@+id/activator_manual_control"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/main_margin"/>
+
+        </RelativeLayout>
+
         <EditText
             android:id="@+id/number_one"
             android:layout_width="match_parent"

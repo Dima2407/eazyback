@@ -10,6 +10,7 @@ public class SharedHelper {
 
     private static final String NAME = "EazyBack";
     private static final String ACTIVATE_FLAG = "activate_flag";
+    private static final String ACTIVATE_MANUAL_FLAG = "activate_manual_flag";
     private static final String TARGET_PHONE_SET = "target_phone_set";
     private static final String REJECT_DELAY = "reject_delay";
     private static final String CALL_BACK_DELAY = "callback_delay";
@@ -26,6 +27,14 @@ public class SharedHelper {
 
     public boolean getIsActivate() {
         return mSharedPreferences.getBoolean(ACTIVATE_FLAG, false);
+    }
+
+    public void setActivateManualMode(boolean pIsActivateManualMode) {
+        mSharedPreferences.edit().putBoolean(ACTIVATE_MANUAL_FLAG, pIsActivateManualMode).commit();
+    }
+
+    public boolean getIsActivateManualMode() {
+        return mSharedPreferences.getBoolean(ACTIVATE_MANUAL_FLAG, false);
     }
 
     public Set<String> getTargetNumbers() {
@@ -62,7 +71,6 @@ public class SharedHelper {
     public long getCallbackDelayInMiliSec() {
         return mSharedPreferences.getLong(CALL_BACK_DELAY, -1);
     }
-
 
     public void setRejectDelay(String pRejectDelay) {
         long reject = Long.parseLong(pRejectDelay) * 1000;

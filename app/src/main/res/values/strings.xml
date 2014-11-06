@@ -7,6 +7,10 @@
     <string name="callback_time">>Pause before re-call, seс</string>
     <string name="action_settings">Save</string>
     <string name="is_activated">Is service activated</string>
+    <string name="is_activated_manual_mod">Manual control</string>
     <string name="invalid_data">Invalid data</string>
+    <string name="accept_call">Accept</string>
+    <string name="reject_call">Reject</string>
+    <string name="callback">Callback</string>
 
 </resources>
