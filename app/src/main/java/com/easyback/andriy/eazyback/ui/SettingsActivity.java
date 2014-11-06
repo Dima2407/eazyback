@@ -55,7 +55,7 @@ public class SettingsActivity extends Activity {
         ActivatedSwitch.setOnCheckedChangeListener(checkListener);
 
         Switch manualModeSwitch = (Switch) findViewById(R.id.activator_manual_control);
-        manualModeSwitch.setChecked(sharedHelper.getIsActivate());
+        manualModeSwitch.setChecked(sharedHelper.getIsActivateManualMode());
         manualModeSwitch.setOnCheckedChangeListener(checkListener);
 
     }
