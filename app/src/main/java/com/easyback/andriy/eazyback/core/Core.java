@@ -37,10 +37,14 @@ public final class Core {
             return;
         }
 
-        mTargetPhone = searchTargetPhone(pIncomePhone);
-
         if (mSharedHelper.getIsActivateManualMode()) {
+            mTargetPhone = pIncomePhone;
             mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
+            return;
+        }
+
+        if(searchTargetPhone(pIncomePhone)){
+            mTargetPhone = pIncomePhone;
             return;
         }
 
@@ -75,18 +79,26 @@ public final class Core {
         }, callbackDelay);
     }
 
-    private String searchTargetPhone(String pIncomePhone) {
+    private void makeCallbackImmidetly() {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:" + mTargetPhone));
+        callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.startActivity(callIntent);
+
+    }
+
+    private boolean searchTargetPhone(String pIncomePhone) {
         Set<String> targetPhones = mSharedHelper.getTargetNumbers();
-        String targetPhone = null;
+        boolean result = false;
 
         for (String phone : targetPhones) {
             if (pIncomePhone.equals(phone)) {
-                targetPhone = phone;
+                result = true;
                 break;
             }
         }
 
-        return targetPhone;
+        return result;
     }
 
     private final class Clicker implements View.OnClickListener {
@@ -106,7 +118,7 @@ public final class Core {
 
                 case R.id.callback_button:
                     Reflector.disconnectCall();
-                    makeCallback();
+                    makeCallbackImmidetly();
                     break;
             }
 
