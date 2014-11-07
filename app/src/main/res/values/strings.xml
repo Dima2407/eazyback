@@ -4,9 +4,9 @@
     <string name="app_name">EazyBack</string>
     <string name="callback_number">Callback number</string>
     <string name="reject_time">Pause before discharge, sec</string>
-    <string name="callback_time">>Pause before re-call, seс</string>
+    <string name="callback_time">Pause before re-call, seс</string>
     <string name="action_settings">Save</string>
-    <string name="is_activated">Is service activated</string>
+    <string name="is_activated">Service enabled</string>
     <string name="is_activated_manual_mod">Manual control</string>
     <string name="invalid_data">Invalid data</string>
     <string name="accept_call">Accept</string>

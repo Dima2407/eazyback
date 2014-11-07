@@ -4,6 +4,36 @@
         <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
     </style>
 
+    <style name="EazyEditText" parent="AppTheme">
+        <item name="android:layout_marginRight">@dimen/secondary_margin</item>
+        <item name="android:layout_marginLeft">@dimen/secondary_margin</item>
+        <item name="android:layout_marginTop">@dimen/secondary_margin</item>
+    </style>
+
+    <style name="EazyEditTextPhone" parent="EazyEditText">
+        <item name="android:hint">@string/callback_number</item>
+        <item name="android:inputType">phone</item>
+        <item name="android:layout_marginRight">@dimen/secondary_margin</item>
+        <item name="android:layout_marginLeft">@dimen/secondary_margin</item>
+        <item name="android:layout_marginTop">@dimen/secondary_margin</item>
+    </style>
+
+    <style name="Cell" parent="AppTheme">
+        <item name="android:layout_marginLeft">@dimen/main_margin</item>
+        <item name="android:layout_marginRight">@dimen/main_margin</item>
+        <item name="android:layout_marginTop">@dimen/main_margin</item>
+        <item name="android:background">@drawable/card_sell</item>
+    </style>
+
+    <style name="CallPanelButton" parent="AppTheme">
+        <item name="android:layout_margin">@dimen/secondary_margin</item>
+        <item name="android:background">@drawable/call_panel_button_selector</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">@dimen/secondary_margin</item>
+        <item name="android:paddingRight">@dimen/secondary_margin</item>
+
+    </style>
+
     <style name="Widget.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@drawable/action_bar_gradient</item>
         <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
@@ -12,5 +42,6 @@
     <style name="MyActionBarTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@android:color/black</item>
     </style>
+
 
 </resources>

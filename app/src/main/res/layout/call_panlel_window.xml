@@ -2,29 +2,30 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    style="@style/Cell">
 
     <Button
         android:id="@+id/accept_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/accept_call"/>
+        android:text="@string/accept_call"
+        style="@style/CallPanelButton"/>
 
     <Button
         android:id="@+id/reject_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/reject_call"/>
+        android:text="@string/reject_call"
+        style="@style/CallPanelButton"/>
 
     <Button
         android:id="@+id/callback_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/callback"/>
+        android:text="@string/callback"
+        style="@style/CallPanelButton"/>
 
 </LinearLayout>

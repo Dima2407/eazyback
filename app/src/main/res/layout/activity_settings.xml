@@ -1,124 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/stock_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_marginTop="@dimen/secondary_margin"
-            android:layout_marginBottom="@dimen/secondary_margin"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            style="@style/Cell">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_marginTop="@dimen/secondary_margin"
+                android:layout_marginBottom="@dimen/secondary_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/is_activated"
+                    android:paddingLeft="@dimen/main_margin"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/main_text_size"/>
+
+                <Switch
+                    android:id="@+id/activator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="@dimen/main_margin"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/secondary_margin"
+                android:layout_marginBottom="@dimen/secondary_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/is_activated_manual_mod"
+                    android:paddingLeft="@dimen/main_margin"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/main_text_size"/>
+
+
+                <Switch
+                    android:id="@+id/activator_manual_control"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="@dimen/main_margin"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            style="@style/Cell">
+
+            <EditText
+                android:id="@+id/number_one"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/is_activated"
-                android:paddingLeft="@dimen/main_margin"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:textSize="18sp"/>
+                style="@style/EazyEditTextPhone"/>
 
-
-            <Switch
-                android:id="@+id/activator"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/number_two"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="@dimen/main_margin"/>
+                style="@style/EazyEditTextPhone"/>
 
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginTop="@dimen/secondary_margin"
-            android:layout_marginBottom="@dimen/secondary_margin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/number_there"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/is_activated_manual_mod"
-                android:paddingLeft="@dimen/main_margin"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:textSize="18sp"/>
+                style="@style/EazyEditTextPhone"/>
 
-
-            <Switch
-                android:id="@+id/activator_manual_control"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/number_four"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="@dimen/main_margin"/>
+                style="@style/EazyEditTextPhone"/>
 
-        </RelativeLayout>
+            <EditText
+                android:id="@+id/number_five"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EazyEditTextPhone"
+                android:layout_marginBottom="@dimen/secondary_margin"/>
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/number_one"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2.7"
-            android:inputType="phone"
-            android:hint="@string/callback_number"/>
+            android:orientation="vertical"
+            style="@style/Cell">
 
-        <EditText
-            android:id="@+id/number_two"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.7"
-            android:inputType="phone"
-            android:hint="@string/callback_number"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/number_there"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.7"
-            android:inputType="phone"
-            android:hint="@string/callback_number"/>
+                <TextView
+                    android:text="@string/reject_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/main_text_size"
+                    android:layout_marginLeft="@dimen/secondary_margin"
+                    android:gravity="center"/>
 
-        <EditText
-            android:id="@+id/number_four"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.7"
-            android:inputType="phone"
-            android:hint="@string/callback_number"/>
+                <EditText
+                    android:id="@+id/reject_delay"
+                    android:layout_width="@dimen/sec_edit_text"
+                    android:layout_height="wrap_content"
+                    style="@style/EazyEditText"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:inputType="number"
+                    />
 
-        <EditText
-            android:id="@+id/number_five"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.7"
-            android:inputType="phone"
-            android:hint="@string/callback_number"/>
+            </RelativeLayout>
 
-        <EditText
-            android:id="@+id/reject_delay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:inputType="number"
-            android:hint="@string/reject_time"/>
 
-        <EditText
-            android:id="@+id/call_back_delay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:inputType="number"
-            android:hint="@string/callback_time"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="@string/callback_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/main_text_size"
+                    android:layout_marginLeft="@dimen/secondary_margin"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"/>
+
+                <EditText
+                    android:id="@+id/call_back_delay"
+                    android:layout_width="@dimen/sec_edit_text"
+                    android:layout_height="wrap_content"
+                    style="@style/EazyEditText"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:inputType="number"
+                    android:layout_marginBottom="@dimen/secondary_margin"/>
+
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

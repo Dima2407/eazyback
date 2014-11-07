@@ -122,11 +122,10 @@ public class SettingsActivity extends Activity {
 
                 case R.id.activator_manual_control:
                     mEzApplication.getSharedHelper().setActivateManualMode(isChecked);
+                    //ViewUtils.showInterceptWindow(mEzApplication, null);
                     break;
             }
 
         }
     }
-
-
 }

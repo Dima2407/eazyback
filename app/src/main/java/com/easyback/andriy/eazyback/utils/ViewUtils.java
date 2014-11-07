@@ -53,16 +53,16 @@ public final class ViewUtils {
         WindowManager.LayoutParams p = new WindowManager.LayoutParams(
                 // Shrink the window to wrap the content rather than filling the screen
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
                 // Display it on top of other application windows, but only for the current user
                 WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
                 // Don't let it grab the input focus
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                 // Make the underlying application window visible through any transparent parts
                 PixelFormat.TRANSLUCENT);
 
 // Define the position of the window within the screen
-        p.gravity = Gravity.BOTTOM;
+        p.gravity = Gravity.RIGHT;
 
         CallPanel controlPanel = new CallPanel(pContext, pOnClickListener);
         WindowManager windowManager = (WindowManager) pContext.getSystemService(Activity.WINDOW_SERVICE);
@@ -70,8 +70,9 @@ public final class ViewUtils {
         return controlPanel;
     }
 
-    public static void hideInterceptWindow(Context pContext, CallPanel pCallPanel){
+    public static void hideInterceptWindow(Context pContext, CallPanel pCallPanel) {
         WindowManager windowManager = (WindowManager) pContext.getSystemService(Activity.WINDOW_SERVICE);
         windowManager.removeViewImmediate(pCallPanel);
+
     }
 }

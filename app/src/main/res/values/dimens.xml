@@ -1,4 +1,7 @@
 <resources>
     <dimen name="main_margin">16dp</dimen>
     <dimen name="secondary_margin">8dp</dimen>
+    <dimen name="main_text_size">18sp</dimen>
+    <dimen name="sec_edit_text">50dp</dimen>
+
 </resources>

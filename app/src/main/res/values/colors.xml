@@ -3,5 +3,8 @@
 
     <color name="start_grad">#fefefe</color>
     <color name="end_grad">#d4d4d4</color>
+    <color name="pressed_button">#1abc9c</color>
+    <color name="pressed_un_pressed">#3ac5aa</color>
+    <color name="stock_background">#cde2ef</color>
 
 </resources>
