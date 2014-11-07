@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -40,9 +41,11 @@ public final class ViewUtils {
 
     public static void savePhoneCells(List<EditText> pEditTexts, SharedHelper pSharedHelper) {
         Set<String> stringSet = new HashSet<String>();
+        String phone;
         for (EditText editText : pEditTexts) {
-            if (!TextUtils.isEmpty(editText.getText().toString())) {
-                stringSet.add(editText.getText().toString());
+            phone = editText.getText().toString();
+            if (!TextUtils.isEmpty(phone)) {
+                stringSet.add(phone);
             }
         }
 
@@ -59,7 +62,7 @@ public final class ViewUtils {
                 // Don't let it grab the input focus
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                 // Make the underlying application window visible through any transparent parts
-                PixelFormat.TRANSLUCENT);
+                PixelFormat.TRANSPARENT);
 
 // Define the position of the window within the screen
         p.gravity = Gravity.RIGHT;

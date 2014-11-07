@@ -18,11 +18,14 @@ public final class CallListener extends BroadcastReceiver {
             return;
         }
 
-        String incomingPhoneNumber = null;
+        String incomingPhoneNumber;
         String phone_state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
         if (phone_state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
             incomingPhoneNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
             ((EzApplication) context.getApplicationContext()).getCore().makeParse(incomingPhoneNumber);
+            return;
         }
+
+
     }
 }

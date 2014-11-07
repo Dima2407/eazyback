@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
@@ -19,36 +20,36 @@ public final class Core {
 
     private final Context mContext;
     private final SharedHelper mSharedHelper;
-    private String mTargetPhone;
     private CallPanel mCallPanel;
+    private String mPhoneHolder;
 
     public Core(Context pContext, SharedHelper pSharedHelper) {
         mContext = pContext;
         mSharedHelper = pSharedHelper;
     }
 
-    public void makeParse(String pIncomePhone) {
+    public void makeParse(final String pIncomePhone) {
+        Log.d("C", "income = "+pIncomePhone);
 
         if (!mSharedHelper.getIsActivate()) {
+            Log.d("C", "non-active");
             return;
         }
 
         if (TextUtils.isEmpty(pIncomePhone)) {
+            Log.d("C", "empty-income");
             return;
         }
 
         if (mSharedHelper.getIsActivateManualMode()) {
-            mTargetPhone = pIncomePhone;
+            Log.d("C", "activate manual");
+            mPhoneHolder = pIncomePhone;
             mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
             return;
         }
 
-        if(searchTargetPhone(pIncomePhone)){
-            mTargetPhone = pIncomePhone;
-            return;
-        }
-
-        if (TextUtils.isEmpty(mTargetPhone)) {
+        if (!searchTargetPhone(pIncomePhone)) {
+            Log.d("C", "non-find");
             return;
         }
 
@@ -59,29 +60,29 @@ public final class Core {
                 @Override
                 public void run() {
                     Reflector.disconnectCall();
-                    makeCallback();
+                    makeCallback(pIncomePhone);
                 }
             }, rejectDelay);
         }
     }
 
-    private void makeCallback() {
+    private void makeCallback(final String pNumber) {
         long callbackDelay = mSharedHelper.getCallbackDelayInMiliSec();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:" + mTargetPhone));
+                callIntent.setData(Uri.parse("tel:" + pNumber));
                 callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(callIntent);
             }
         }, callbackDelay);
     }
 
-    private void makeCallbackImmidetly() {
+    private void makeCallbackImmidetly(final String pNumber) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:" + mTargetPhone));
+        callIntent.setData(Uri.parse("tel:" + pNumber));
         callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(callIntent);
 
@@ -118,7 +119,8 @@ public final class Core {
 
                 case R.id.callback_button:
                     Reflector.disconnectCall();
-                    makeCallbackImmidetly();
+                    makeCallbackImmidetly(mPhoneHolder);
+                    mPhoneHolder = null;
                     break;
             }
 

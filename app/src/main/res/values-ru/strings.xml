@@ -7,7 +7,7 @@
     <string name="callback_time">Пауза перед перезвоном, сек:</string>
     <string name="action_settings">Сохранить</string>
     <string name="is_activated">Состояние службы</string>
-    <string name="is_activated_manual_mod">Ручное управление</string>
+    <string name="is_activated_manual_mod">Управление кнопками</string>
     <string name="invalid_data">Ошибка ввода</string>
     <string name="accept_call">Принять</string>
     <string name="reject_call">Сбросить</string>

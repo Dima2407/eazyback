@@ -2,11 +2,12 @@ package com.easyback.andriy.eazyback.core;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class SharedHelper {
+public final class SharedHelper {
 
     private static final String NAME = "EazyBack";
     private static final String ACTIVATE_FLAG = "activate_flag";
@@ -42,6 +43,7 @@ public class SharedHelper {
     }
 
     public void setTargetPhoneSet(Set<String> pTargetPhoneSet) {
+        mSharedPreferences.edit().remove(TARGET_PHONE_SET).commit();
         mSharedPreferences.edit().putStringSet(TARGET_PHONE_SET, pTargetPhoneSet).commit();
     }
 
