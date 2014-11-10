@@ -2,9 +2,10 @@ package com.easyback.andriy.eazyback.core;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public final class SharedHelper {
@@ -15,6 +16,11 @@ public final class SharedHelper {
     private static final String TARGET_PHONE_SET = "target_phone_set";
     private static final String REJECT_DELAY = "reject_delay";
     private static final String CALL_BACK_DELAY = "callback_delay";
+
+    private static final String ACTIVATED_ACCEPT_BUTTON = "activated_accept_button";
+    private static final String ACTIVATED_REJECT_BUTTON = "activated_reject_button";
+    private static final String ACTIVATED_CALLBACK_BUTTON = "activated_callback_button";
+    private static final String ACTIVATED_CLOSE_BUTTON = "activated_close_button";
 
     private final SharedPreferences mSharedPreferences;
 
@@ -82,5 +88,22 @@ public final class SharedHelper {
     public void setCallbackDelay(String pCallbackDelay) {
         long callback = Long.parseLong(pCallbackDelay) * 1000;
         mSharedPreferences.edit().putLong(CALL_BACK_DELAY, callback).commit();
+    }
+
+    public void setActivatedButtons(List<Boolean> pActivatedButtons) {
+        mSharedPreferences.edit().putBoolean(ACTIVATED_ACCEPT_BUTTON, pActivatedButtons.get(0)).commit();
+        mSharedPreferences.edit().putBoolean(ACTIVATED_REJECT_BUTTON, pActivatedButtons.get(1)).commit();
+        mSharedPreferences.edit().putBoolean(ACTIVATED_CALLBACK_BUTTON, pActivatedButtons.get(2)).commit();
+        mSharedPreferences.edit().putBoolean(ACTIVATED_CLOSE_BUTTON, pActivatedButtons.get(3)).commit();
+    }
+
+    public List<Boolean> getActivatedButtons() {
+        List<Boolean> activatedButtons = new ArrayList<Boolean>(4);
+        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_ACCEPT_BUTTON, false));
+        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_REJECT_BUTTON, false));
+        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_CALLBACK_BUTTON, false));
+        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_CLOSE_BUTTON, false));
+
+        return activatedButtons;
     }
 }

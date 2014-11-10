@@ -9,8 +9,20 @@
     <string name="is_activated">Служба</string>
     <string name="is_activated_manual_mod">Кнопки</string>
     <string name="invalid_data">Ошибка ввода</string>
+
     <string name="accept_call">Принять</string>
     <string name="reject_call">Сбросить</string>
     <string name="callback">Перезвонить</string>
+    <string name="close">Закрыть</string>
+
+    <string name="accept_call_button">Кнопка приёма</string>
+    <string name="reject_call_button">Кнопка сброса</string>
+    <string name="callback_button">Кнопка перезвона</string>
+    <string name="close_button">Кнопка закрытия</string>
+
+    <string name="phone_settings">Номера</string>
+    <string name="schedule_settings">Планировщик</string>
+
+    <string name="manual_warning">Внимание, если активирован кнопочный режим, автоперезвон отключается.</string>
 
 </resources>

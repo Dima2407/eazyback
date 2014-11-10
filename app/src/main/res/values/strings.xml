@@ -3,14 +3,26 @@
 
     <string name="app_name">EazyBack</string>
     <string name="callback_number">Callback number</string>
-    <string name="reject_time">Pause before discharge, sec</string>
-    <string name="callback_time">Pause before re-call, seс</string>
+    <string name="reject_time">Discharge, sec</string>
+    <string name="callback_time">Re-call, seс</string>
     <string name="action_settings">Save</string>
     <string name="is_activated">Service enabled</string>
-    <string name="is_activated_manual_mod">Buttons control</string>
+    <string name="is_activated_manual_mod">Buttons</string>
     <string name="invalid_data">Invalid data</string>
+
     <string name="accept_call">Accept</string>
     <string name="reject_call">Reject</string>
     <string name="callback">Callback</string>
+    <string name="close">Close</string>
+
+    <string name="accept_call_button">Accept button</string>
+    <string name="reject_call_button">Reject button</string>
+    <string name="callback_button">Callback button</string>
+    <string name="close_button">Close button</string>
+
+    <string name="phone_settings">Phones</string>
+    <string name="schedule_settings">Scheduler</string>
+
+    <string name="manual_warning">Warning! If manual mode activated, automatic callback will be deactivate!</string>
 
 </resources>

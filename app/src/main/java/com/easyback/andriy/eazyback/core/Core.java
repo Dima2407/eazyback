@@ -29,7 +29,7 @@ public final class Core {
     }
 
     public void makeParse(final String pIncomePhone) {
-        Log.d("C", "income = "+pIncomePhone);
+        Log.d("C", "income = " + pIncomePhone);
 
         if (!mSharedHelper.getIsActivate()) {
             Log.d("C", "non-active");
@@ -121,6 +121,9 @@ public final class Core {
                     Reflector.disconnectCall();
                     makeCallbackImmidetly(mPhoneHolder);
                     mPhoneHolder = null;
+                    break;
+
+                case R.id.close_button_check:
                     break;
             }
 

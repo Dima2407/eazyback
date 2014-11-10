@@ -31,7 +31,14 @@
         <item name="android:layout_weight">1</item>
         <item name="android:paddingLeft">@dimen/secondary_margin</item>
         <item name="android:paddingRight">@dimen/secondary_margin</item>
+    </style>
 
+    <style name="MenuElementWithArrow" parent="AppTheme">
+        <item name="android:layout_marginTop">@dimen/secondary_margin</item>
+        <item name="android:drawableRight">@drawable/arrow</item>
+        <item name="android:paddingLeft">@dimen/main_margin</item>
+        <item name="android:paddingRight">@dimen/main_margin</item>
+        <item name="android:textSize">@dimen/main_text_size</item>
     </style>
 
     <style name="Widget.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
