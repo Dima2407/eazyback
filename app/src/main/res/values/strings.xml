@@ -6,7 +6,7 @@
     <string name="reject_time">Discharge, sec</string>
     <string name="callback_time">Re-call, seс</string>
     <string name="action_settings">Save</string>
-    <string name="is_activated">Service enabled</string>
+    <string name="is_activated">Enabled</string>
     <string name="is_activated_manual_mod">Buttons</string>
     <string name="invalid_data">Invalid data</string>
 
@@ -24,5 +24,8 @@
     <string name="schedule_settings">Scheduler</string>
 
     <string name="manual_warning">Warning! If manual mode activated, automatic callback will be deactivate!</string>
+
+    <string name="start_time">Start time</string>
+    <string name="stop_time">Stop time</string>
 
 </resources>

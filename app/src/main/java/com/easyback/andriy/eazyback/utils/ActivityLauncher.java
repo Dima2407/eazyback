@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.easyback.andriy.eazyback.ui.activitys.CallPanelSettingsActivity;
 import com.easyback.andriy.eazyback.ui.activitys.NumbersManagerActivity;
+import com.easyback.andriy.eazyback.ui.activitys.ScheduleManagerActivity;
 
 public final class ActivityLauncher {
 
@@ -15,6 +16,11 @@ public final class ActivityLauncher {
 
     public static void launchCallPanelActivity(Activity pActivity){
         Intent intent = new Intent(pActivity, CallPanelSettingsActivity.class);
+        pActivity.startActivity(intent);
+    }
+
+    public static void launchSchedulerActivity(Activity pActivity){
+        Intent intent = new Intent(pActivity, ScheduleManagerActivity.class);
         pActivity.startActivity(intent);
     }
 
