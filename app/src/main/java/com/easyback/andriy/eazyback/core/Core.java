@@ -80,13 +80,15 @@ public final class Core {
         }, callbackDelay);
     }
 
-    private void makeCallbackImmidetly(final String pNumber) {
+    private void makeCallbackImmediately(final String pNumber) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:" + pNumber));
         callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(callIntent);
 
     }
+
+
 
     private boolean searchTargetPhone(String pIncomePhone) {
         Set<String> targetPhones = mSharedHelper.getTargetNumbers();
@@ -119,7 +121,7 @@ public final class Core {
 
                 case R.id.callback_button:
                     Reflector.disconnectCall();
-                    makeCallbackImmidetly(mPhoneHolder);
+                    makeCallbackImmediately(mPhoneHolder);
                     mPhoneHolder = null;
                     break;
 

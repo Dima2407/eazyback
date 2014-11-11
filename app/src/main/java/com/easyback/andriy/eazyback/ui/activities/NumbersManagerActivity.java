@@ -1,4 +1,4 @@
-package com.easyback.andriy.eazyback.ui.activitys;
+package com.easyback.andriy.eazyback.ui.activities;
 
 import android.os.Bundle;
 import android.widget.EditText;

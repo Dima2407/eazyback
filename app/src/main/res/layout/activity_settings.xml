@@ -66,11 +66,11 @@
                 android:text="@string/is_activated_manual_mod"/>
 
             <TextView
-                android:id="@+id/main_to_sheduler_control"
+                android:id="@+id/main_to_devices_control"
                 style="@style/MenuElementWithArrow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/schedule_settings"
+                android:text="@string/devices_settings"
                 android:layout_marginBottom="@dimen/secondary_margin"/>
 
         </LinearLayout>

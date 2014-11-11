@@ -1,4 +1,4 @@
-package com.easyback.andriy.eazyback.ui.activitys;
+package com.easyback.andriy.eazyback.ui.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;

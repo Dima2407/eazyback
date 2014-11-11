@@ -128,12 +128,10 @@
         </LinearLayout>
 
         <TextView
-            android:layout_marginLeft="@dimen/main_margin"
-            android:layout_marginRight="@dimen/main_margin"
-            android:textSize="@dimen/main_text_size"
+            style="@style/StockAnnotation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/manual_warning"
             android:layout_marginBottom="@dimen/secondary_margin"/>
     </LinearLayout>

@@ -21,8 +21,17 @@
     <string name="close_button">Кнопка закрытия</string>
 
     <string name="phone_settings">Номера</string>
-    <string name="schedule_settings">Планировщик</string>
+    <string name="devices_settings">Устройства</string>
 
     <string name="manual_warning">Внимание, если активирован кнопочный режим, автоперезвон отключается.</string>
+
+    <string name="headset_plug">Подключение гарнитуры</string>
+    <string name="headset_unplug">Отключение гарнитуры</string>
+
+    <string name="headset_automat">Автоперезвон</string>
+    <string name="headset_manual">Ручной режим</string>
+    <string name="headset_ignore">Игнорировать событие</string>
+
+    <string name="system_service">Системная служба</string>
 
 </resources>

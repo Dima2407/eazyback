@@ -1,4 +1,4 @@
-package com.easyback.andriy.eazyback.ui.activitys;
+package com.easyback.andriy.eazyback.ui.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,12 +10,13 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.easyback.andriy.eazyback.R;
-import com.easyback.andriy.eazyback.utils.ActivityLauncher;
+import com.easyback.andriy.eazyback.utils.ComponentLaunchControl;
 import com.easyback.andriy.eazyback.utils.Validator;
 
 public final class MainSettingsActivity extends GenericActivity {
 
     private EditText mRejectDelay, mCallBackDelay;
+    private Switch mActivatedSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +36,31 @@ public final class MainSettingsActivity extends GenericActivity {
 
         CompoundButton.OnCheckedChangeListener checkListener = new Checker();
 
-        Switch ActivatedSwitch = (Switch) findViewById(R.id.activator);
-        ActivatedSwitch.setChecked(getSharedHelper().getIsActivate());
-        ActivatedSwitch.setOnCheckedChangeListener(checkListener);
+        mActivatedSwitch = (Switch) findViewById(R.id.activator);
+        mActivatedSwitch.setOnCheckedChangeListener(checkListener);
 
 
         View.OnClickListener clickListener = new Clicker();
         findViewById(R.id.main_to_button_controls).setOnClickListener(clickListener);
         findViewById(R.id.main_to_phone_settings).setOnClickListener(clickListener);
+        findViewById(R.id.main_to_devices_control).setOnClickListener(clickListener);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         sendStat(getClass().getSimpleName());
+        mActivatedSwitch.setChecked(getSharedHelper().getIsActivate());
+
+        if (getSharedHelper().getHeadsetControl()) {
+            ComponentLaunchControl.startDeviceService(getApplicationContext());
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     @Override
@@ -109,11 +121,15 @@ public final class MainSettingsActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.main_to_button_controls:
-                    ActivityLauncher.launchCallPanelActivity(MainSettingsActivity.this);
+                    ComponentLaunchControl.launchCallPanelActivity(MainSettingsActivity.this);
                     break;
 
                 case R.id.main_to_phone_settings:
-                    ActivityLauncher.launchNumbersActivity(MainSettingsActivity.this);
+                    ComponentLaunchControl.launchNumbersActivity(MainSettingsActivity.this);
+                    break;
+
+                case R.id.main_to_devices_control:
+                    ComponentLaunchControl.launchDevicesActivity(MainSettingsActivity.this);
                     break;
             }
         }

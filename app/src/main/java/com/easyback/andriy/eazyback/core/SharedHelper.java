@@ -22,6 +22,16 @@ public final class SharedHelper {
     private static final String ACTIVATED_CALLBACK_BUTTON = "activated_callback_button";
     private static final String ACTIVATED_CLOSE_BUTTON = "activated_close_button";
 
+    private static final String HEADSET_PLUG_MAIN_CONTROL = "headset_plug_main_control";
+
+    private static final String HEADSET_PLUG_AUTOMAT = "headset_plug_automat";
+    private static final String HEADSET_PLUG_MANUAL = "headset_plug_manual";
+    private static final String HEADSET_PLUG_IGNORE = "headset_un_plug_ignore";
+
+    private static final String HEADSET_UN_PLUG_AUTOMAT = "headset_un_plug_automat";
+    private static final String HEADSET_UN_PLUG_MANUAL = "headset_un_plug_manual";
+    private static final String HEADSET_UN_PLUG_IGNORE = "headset_un_plug_ignore";
+
     private final SharedPreferences mSharedPreferences;
 
     public SharedHelper(Context pContext) {
@@ -106,4 +116,61 @@ public final class SharedHelper {
 
         return activatedButtons;
     }
+
+    public void setHeadsetControl(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_MAIN_CONTROL, pActivated).commit();
+    }
+
+    public boolean getHeadsetControl() {
+        return mSharedPreferences.getBoolean(HEADSET_PLUG_MAIN_CONTROL, false);
+    }
+
+    public void setPlugHeadsetAutomatControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_AUTOMAT, pActive).commit();
+    }
+
+    public boolean getPlugHeadsetAutomatControl() {
+        return mSharedPreferences.getBoolean(HEADSET_PLUG_AUTOMAT, false);
+    }
+
+    public void setPlugHeadsetManualControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_MANUAL, pActive).commit();
+    }
+
+    public boolean getPlugHeadsetManualControl() {
+        return mSharedPreferences.getBoolean(HEADSET_PLUG_MANUAL, false);
+    }
+
+    public void setPlugHeadsetIgnoreControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_IGNORE, pActive).commit();
+    }
+
+    public boolean getPlugHeadsetIgnoreControl() {
+        return mSharedPreferences.getBoolean(HEADSET_PLUG_IGNORE, false);
+    }
+
+    public void setUnPlugHeadsetAutomatControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_AUTOMAT, pActive).commit();
+    }
+
+    public boolean getUnPlugHeadsetAutomatControl() {
+        return mSharedPreferences.getBoolean(HEADSET_UN_PLUG_AUTOMAT, false);
+    }
+
+    public void setUnPlugHeadsetManualControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_MANUAL, pActive).commit();
+    }
+
+    public boolean getUnPlugHeadsetManualControl() {
+        return mSharedPreferences.getBoolean(HEADSET_UN_PLUG_MANUAL, false);
+    }
+
+    public void setUnPlugHeadsetIgnoreControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_IGNORE, pActive).commit();
+    }
+
+    public boolean getUnPlugHeadsetIgnoreControl() {
+        return mSharedPreferences.getBoolean(HEADSET_UN_PLUG_IGNORE, false);
+    }
+
 }
