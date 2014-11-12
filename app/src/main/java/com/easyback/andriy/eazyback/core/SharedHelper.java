@@ -38,11 +38,11 @@ public final class SharedHelper {
         mSharedPreferences = pContext.getSharedPreferences(NAME, Context.MODE_PRIVATE);
     }
 
-    public void setActivate(boolean pIsActivate) {
+    public void setCallbackActivate(boolean pIsActivate) {
         mSharedPreferences.edit().putBoolean(ACTIVATE_FLAG, pIsActivate).commit();
     }
 
-    public boolean getIsActivate() {
+    public boolean getIsCallbacksActivate() {
         return mSharedPreferences.getBoolean(ACTIVATE_FLAG, false);
     }
 
@@ -117,11 +117,11 @@ public final class SharedHelper {
         return activatedButtons;
     }
 
-    public void setHeadsetControl(boolean pActivated) {
+    public void setDeviceActive(boolean pActivated) {
         mSharedPreferences.edit().putBoolean(HEADSET_PLUG_MAIN_CONTROL, pActivated).commit();
     }
 
-    public boolean getHeadsetControl() {
+    public boolean getIsActivatedDeviceControl() {
         return mSharedPreferences.getBoolean(HEADSET_PLUG_MAIN_CONTROL, false);
     }
 

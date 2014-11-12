@@ -12,32 +12,6 @@
         android:orientation="vertical"
         style="@style/Cell">
 
-        <RelativeLayout
-            android:layout_marginTop="@dimen/secondary_margin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/is_activated_manual_mod"
-                android:paddingLeft="@dimen/main_margin"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/main_text_size"/>
-
-
-            <Switch
-                android:id="@+id/activator_manual_control"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="@dimen/main_margin"/>
-
-        </RelativeLayout>
-
         <LinearLayout
             android:layout_marginTop="@dimen/secondary_margin"
             android:layout_width="match_parent"
@@ -126,14 +100,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"/>
         </LinearLayout>
-
-        <TextView
-            style="@style/StockAnnotation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/manual_warning"
-            android:layout_marginBottom="@dimen/secondary_margin"/>
     </LinearLayout>
 
 </ScrollView>

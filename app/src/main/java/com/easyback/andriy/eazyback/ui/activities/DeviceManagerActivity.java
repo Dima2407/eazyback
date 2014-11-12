@@ -10,8 +10,6 @@ import com.easyback.andriy.eazyback.utils.ComponentLaunchControl;
 
 public final class DeviceManagerActivity extends GenericActivity {
 
-    //TODO need to delete ?
-    private Switch mMainActivator, mPlugAuto, mPlugManual, mPlugIgnore, mUnplugAuto, mUnplugManual, mUnplugIgnore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,35 +20,33 @@ public final class DeviceManagerActivity extends GenericActivity {
 
         CompoundButton.OnCheckedChangeListener listener = new Checker();
 
-        mMainActivator = (Switch) findViewById(R.id.plug_connection_activator);
-        mMainActivator.setChecked(getSharedHelper().getHeadsetControl());
-        mMainActivator.setOnCheckedChangeListener(listener);
+        Switch aSwitch;
 
 
-        mPlugAuto = (Switch) findViewById(R.id.plug_event_automatic);
-        mPlugAuto.setChecked(getSharedHelper().getPlugHeadsetAutomatControl());
-        mPlugAuto.setOnCheckedChangeListener(listener);
+        aSwitch = (Switch) findViewById(R.id.plug_event_automatic);
+        aSwitch.setChecked(getSharedHelper().getPlugHeadsetAutomatControl());
+        aSwitch.setOnCheckedChangeListener(listener);
 
-        mPlugManual = (Switch) findViewById(R.id.plug_event_manual);
-        mPlugManual.setChecked(getSharedHelper().getPlugHeadsetManualControl());
-        mPlugManual.setOnCheckedChangeListener(listener);
+        aSwitch = (Switch) findViewById(R.id.plug_event_manual);
+        aSwitch.setChecked(getSharedHelper().getPlugHeadsetManualControl());
+        aSwitch.setOnCheckedChangeListener(listener);
 
-        mPlugIgnore = (Switch) findViewById(R.id.plug_event_ignore);
-        mPlugIgnore.setChecked(getSharedHelper().getPlugHeadsetIgnoreControl());
-        mPlugIgnore.setOnCheckedChangeListener(listener);
+        aSwitch = (Switch) findViewById(R.id.plug_event_ignore);
+        aSwitch.setChecked(getSharedHelper().getPlugHeadsetIgnoreControl());
+        aSwitch.setOnCheckedChangeListener(listener);
 
 
-        mUnplugAuto = (Switch) findViewById(R.id.un_plug_event_automatic);
-        mUnplugAuto.setChecked(getSharedHelper().getUnPlugHeadsetAutomatControl());
-        mUnplugAuto.setOnCheckedChangeListener(listener);
+        aSwitch = (Switch) findViewById(R.id.un_plug_event_automatic);
+        aSwitch.setChecked(getSharedHelper().getUnPlugHeadsetAutomatControl());
+        aSwitch.setOnCheckedChangeListener(listener);
 
-        mUnplugManual = (Switch) findViewById(R.id.un_plug_event_manual);
-        mUnplugManual.setChecked(getSharedHelper().getUnPlugHeadsetManualControl());
-        mUnplugManual.setOnCheckedChangeListener(listener);
+        aSwitch = (Switch) findViewById(R.id.un_plug_event_manual);
+        aSwitch.setChecked(getSharedHelper().getUnPlugHeadsetManualControl());
+        aSwitch.setOnCheckedChangeListener(listener);
 
-        mUnplugIgnore = (Switch) findViewById(R.id.un_plug_event_ignore);
-        mUnplugIgnore.setChecked(getSharedHelper().getUnPlugHeadsetIgnoreControl());
-        mUnplugIgnore.setOnCheckedChangeListener(listener);
+        aSwitch = (Switch) findViewById(R.id.un_plug_event_ignore);
+        aSwitch.setChecked(getSharedHelper().getUnPlugHeadsetIgnoreControl());
+        aSwitch.setOnCheckedChangeListener(listener);
 
     }
 
@@ -66,18 +62,8 @@ public final class DeviceManagerActivity extends GenericActivity {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
             switch (buttonView.getId()) {
-                case R.id.plug_connection_activator:
-                    getSharedHelper().setHeadsetControl(isChecked);
-                    if (isChecked) {
-                        ComponentLaunchControl.startDeviceService(getApplicationContext());
-                    } else {
-                        ComponentLaunchControl.stopDeviceService(getApplicationContext());
-                    }
-
-                    break;
 
                 case R.id.plug_event_automatic:
-                    Log.e("HsL", "automat activated");
                     getSharedHelper().setPlugHeadsetAutomatControl(isChecked);
                     break;
 

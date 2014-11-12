@@ -31,7 +31,7 @@ public final class Core {
     public void makeParse(final String pIncomePhone) {
         Log.d("C", "income = " + pIncomePhone);
 
-        if (!mSharedHelper.getIsActivate()) {
+        if (!mSharedHelper.getIsCallbacksActivate()) {
             Log.d("C", "non-active");
             return;
         }

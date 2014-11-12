@@ -3,7 +3,6 @@ package com.easyback.andriy.eazyback.ui.activities;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 
 import com.easyback.andriy.eazyback.R;
 
@@ -23,10 +22,6 @@ public final class CallPanelSettingsActivity extends GenericActivity {
         setContentView(R.layout.activity_call_panel);
 
         CompoundButton.OnCheckedChangeListener listener = new Checker();
-
-        Switch manualModeSwitch = (Switch) findViewById(R.id.activator_manual_control);
-        manualModeSwitch.setChecked(getSharedHelper().getIsActivateManualMode());
-        manualModeSwitch.setOnCheckedChangeListener(listener);
 
         mAcceptBox = (CheckBox) findViewById(R.id.accept_button_check);
         mAcceptBox.setOnCheckedChangeListener(listener);
@@ -89,10 +84,6 @@ public final class CallPanelSettingsActivity extends GenericActivity {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             switch (buttonView.getId()) {
-
-                case R.id.activator_manual_control:
-                    getSharedHelper().setActivateManualMode(isChecked);
-                    break;
 
                 case R.id.accept_button_check:
                     mButtonsStatus.put(0, isChecked);

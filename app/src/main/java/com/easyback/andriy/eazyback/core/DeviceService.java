@@ -79,7 +79,7 @@ public final class DeviceService extends Service {
 
         Log.e("HsL", "begin translation, automat = "+sharedHelper.getPlugHeadsetAutomatControl());
 
-        sharedHelper.setActivate(sharedHelper.getPlugHeadsetAutomatControl());
+        sharedHelper.setCallbackActivate(sharedHelper.getPlugHeadsetAutomatControl());
         sharedHelper.setActivateManualMode(sharedHelper.getPlugHeadsetManualControl());
     }
 
@@ -90,7 +90,7 @@ public final class DeviceService extends Service {
             return;
         }
 
-        sharedHelper.setActivate(sharedHelper.getUnPlugHeadsetAutomatControl());
+        sharedHelper.setCallbackActivate(sharedHelper.getUnPlugHeadsetAutomatControl());
         sharedHelper.setActivateManualMode(sharedHelper.getUnPlugHeadsetManualControl());
     }
 

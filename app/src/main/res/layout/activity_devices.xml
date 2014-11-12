@@ -11,39 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            style="@style/Cell"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_marginTop="@dimen/secondary_margin"
-                android:layout_marginBottom="@dimen/secondary_margin"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/system_service"
-                    android:paddingLeft="@dimen/main_margin"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:textSize="@dimen/main_text_size"/>
-
-
-                <Switch
-                    android:id="@+id/plug_connection_activator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:paddingRight="@dimen/main_margin"/>
-
-            </RelativeLayout>
-        </FrameLayout>
-
         <LinearLayout
             style="@style/Cell"
             android:layout_width="match_parent"
@@ -77,7 +44,6 @@
                     android:id="@+id/plug_event_automatic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:paddingRight="@dimen/main_margin"/>
@@ -103,7 +69,6 @@
                     android:id="@+id/plug_event_manual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:paddingRight="@dimen/main_margin"/>
@@ -131,7 +96,7 @@
                     android:id="@+id/plug_event_ignore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:paddingRight="@dimen/main_margin"/>
@@ -172,7 +137,7 @@
                     android:id="@+id/un_plug_event_automatic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:paddingRight="@dimen/main_margin"/>
@@ -198,7 +163,7 @@
                     android:id="@+id/un_plug_event_manual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:paddingRight="@dimen/main_margin"/>
@@ -226,7 +191,7 @@
                     android:id="@+id/un_plug_event_ignore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
+
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:paddingRight="@dimen/main_margin"/>

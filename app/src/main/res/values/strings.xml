@@ -6,8 +6,8 @@
     <string name="reject_time">Discharge, sec</string>
     <string name="callback_time">Re-call, seс</string>
     <string name="action_settings">Save</string>
-    <string name="is_activated">Enabled</string>
-    <string name="is_activated_manual_mod">Buttons</string>
+    <string name="is_activated">Callbacks control</string>
+    <string name="is_activated_manual_mod">Buttons control</string>
     <string name="invalid_data">Invalid data</string>
 
     <string name="accept_call">Accept</string>
@@ -32,6 +32,6 @@
     <string name="headset_manual">Manual mode</string>
     <string name="headset_ignore">Ignore event</string>
 
-    <string name="system_service">System service</string>
+    <string name="system_service">Device control</string>
 
 </resources>

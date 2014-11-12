@@ -1,5 +1,8 @@
 package com.easyback.andriy.eazyback.ui.activities;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,8 +18,11 @@ import com.easyback.andriy.eazyback.utils.Validator;
 
 public final class MainSettingsActivity extends GenericActivity {
 
+    public static final String FILTER =  "need_refresh";
+
     private EditText mRejectDelay, mCallBackDelay;
-    private Switch mActivatedSwitch;
+    private Switch mCallbackActivatedSwitch, mManualActivatedSwitch, mDevicesActivatedSwitch;
+    private BroadcastReceiver mBroadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +42,14 @@ public final class MainSettingsActivity extends GenericActivity {
 
         CompoundButton.OnCheckedChangeListener checkListener = new Checker();
 
-        mActivatedSwitch = (Switch) findViewById(R.id.activator);
-        mActivatedSwitch.setOnCheckedChangeListener(checkListener);
+        mCallbackActivatedSwitch = (Switch) findViewById(R.id.callback_activator);
+        mCallbackActivatedSwitch.setOnCheckedChangeListener(checkListener);
 
+        mDevicesActivatedSwitch = (Switch) findViewById(R.id.device_activator);
+        mDevicesActivatedSwitch.setOnCheckedChangeListener(checkListener);
+
+        mManualActivatedSwitch = (Switch) findViewById(R.id.manual_activator);
+        mManualActivatedSwitch.setOnCheckedChangeListener(checkListener);
 
         View.OnClickListener clickListener = new Clicker();
         findViewById(R.id.main_to_button_controls).setOnClickListener(clickListener);
@@ -50,11 +61,10 @@ public final class MainSettingsActivity extends GenericActivity {
     protected void onStart() {
         super.onStart();
         sendStat(getClass().getSimpleName());
-        mActivatedSwitch.setChecked(getSharedHelper().getIsActivate());
 
-        if (getSharedHelper().getHeadsetControl()) {
-            ComponentLaunchControl.startDeviceService(getApplicationContext());
-        }
+        setCheckedState();
+
+
     }
 
     @Override
@@ -89,7 +99,7 @@ public final class MainSettingsActivity extends GenericActivity {
         hideKeyboard(mRejectDelay);
     }
 
-    public void makeSaveProcedure() {
+    private void makeSaveProcedure() {
         String rejectTime = mRejectDelay.getText().toString();
         String callbackTime = mCallBackDelay.getText().toString();
 
@@ -102,13 +112,35 @@ public final class MainSettingsActivity extends GenericActivity {
         }
     }
 
+    private void setCheckedState() {
+        mCallbackActivatedSwitch.setChecked(getSharedHelper().getIsCallbacksActivate());
+        mManualActivatedSwitch.setChecked(getSharedHelper().getIsActivateManualMode());
+        mDevicesActivatedSwitch.setChecked(getSharedHelper().getIsActivatedDeviceControl());
+    }
+
+    private void deviceCaseSwitcher(boolean pIsActivate){
+        if (pIsActivate) {
+            ComponentLaunchControl.startDeviceService(getApplicationContext());
+
+            registerReceiver(new RefreshReceiver())
+        }
+    }
+
     private final class Checker implements CompoundButton.OnCheckedChangeListener {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             switch (buttonView.getId()) {
-                case R.id.activator:
-                    getSharedHelper().setActivate(isChecked);
+                case R.id.callback_activator:
+                    getSharedHelper().setCallbackActivate(isChecked);
+                    break;
+
+                case R.id.device_activator:
+                    getSharedHelper().setDeviceActive(isChecked);
+                    break;
+
+                case R.id.manual_activator:
+                    getSharedHelper().setActivateManualMode(isChecked);
                     break;
             }
 
@@ -132,6 +164,14 @@ public final class MainSettingsActivity extends GenericActivity {
                     ComponentLaunchControl.launchDevicesActivity(MainSettingsActivity.this);
                     break;
             }
+        }
+    }
+
+    private final class RefreshReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setCheckedState();
         }
     }
 }
