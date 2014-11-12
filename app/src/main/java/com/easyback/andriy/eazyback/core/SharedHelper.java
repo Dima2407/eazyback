@@ -146,7 +146,7 @@ public final class SharedHelper {
     }
 
     public boolean getPlugHeadsetIgnoreControl() {
-        return mSharedPreferences.getBoolean(HEADSET_PLUG_IGNORE, false);
+        return mSharedPreferences.getBoolean(HEADSET_PLUG_IGNORE, true);
     }
 
     public void setUnPlugHeadsetAutomatControl(boolean pActive) {
@@ -170,7 +170,7 @@ public final class SharedHelper {
     }
 
     public boolean getUnPlugHeadsetIgnoreControl() {
-        return mSharedPreferences.getBoolean(HEADSET_UN_PLUG_IGNORE, false);
+        return mSharedPreferences.getBoolean(HEADSET_UN_PLUG_IGNORE, true);
     }
 
 }

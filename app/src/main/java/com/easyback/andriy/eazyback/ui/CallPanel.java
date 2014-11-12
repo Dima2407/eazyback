@@ -11,7 +11,7 @@ import com.easyback.andriy.eazyback.core.EzApplication;
 
 import java.util.List;
 
-public class CallPanel extends LinearLayout {
+public final class CallPanel extends LinearLayout {
 
     private final OnClickListener mOnClickListener;
     private final LayoutInflater mLayoutInflater;

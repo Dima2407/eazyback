@@ -3,6 +3,7 @@ package com.easyback.andriy.eazyback.ui.activities;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +19,7 @@ import com.easyback.andriy.eazyback.utils.Validator;
 
 public final class MainSettingsActivity extends GenericActivity {
 
-    public static final String FILTER =  "need_refresh";
+    public static final String FILTER = "need_refresh";
 
     private EditText mRejectDelay, mCallBackDelay;
     private Switch mCallbackActivatedSwitch, mManualActivatedSwitch, mDevicesActivatedSwitch;
@@ -63,8 +64,7 @@ public final class MainSettingsActivity extends GenericActivity {
         sendStat(getClass().getSimpleName());
 
         setCheckedState();
-
-
+        deviceCaseSwitcher();
     }
 
     @Override
@@ -97,6 +97,9 @@ public final class MainSettingsActivity extends GenericActivity {
     protected void onStop() {
         super.onStop();
         hideKeyboard(mRejectDelay);
+        if (mBroadcastReceiver != null) {
+            unregisterReceiver(mBroadcastReceiver);
+        }
     }
 
     private void makeSaveProcedure() {
@@ -118,11 +121,13 @@ public final class MainSettingsActivity extends GenericActivity {
         mDevicesActivatedSwitch.setChecked(getSharedHelper().getIsActivatedDeviceControl());
     }
 
-    private void deviceCaseSwitcher(boolean pIsActivate){
-        if (pIsActivate) {
+    private void deviceCaseSwitcher() {
+        if (getSharedHelper().getIsActivatedDeviceControl()) {
             ComponentLaunchControl.startDeviceService(getApplicationContext());
 
-            registerReceiver(new RefreshReceiver())
+            mBroadcastReceiver = new RefreshReceiver();
+            IntentFilter intentFilter = new IntentFilter(FILTER);
+            registerReceiver(mBroadcastReceiver, intentFilter);
         }
     }
 

@@ -6,7 +6,7 @@
     <string name="reject_time">Пауза перед сбросом</string>
     <string name="callback_time">Пауза перед перезв.</string>
     <string name="action_settings">Сохранить</string>
-    <string name="is_activated">Служба</string>
+    <string name="is_activated">Автоперезвон</string>
     <string name="is_activated_manual_mod">Кнопки</string>
     <string name="invalid_data">Ошибка ввода</string>
 
@@ -32,6 +32,6 @@
     <string name="headset_manual">Ручной режим</string>
     <string name="headset_ignore">Игнорировать событие</string>
 
-    <string name="system_service">Системная служба</string>
+    <string name="system_service">Монитор устройств</string>
 
 </resources>
