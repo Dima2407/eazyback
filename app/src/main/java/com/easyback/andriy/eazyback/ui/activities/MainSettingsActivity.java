@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.utils.ComponentLaunchControl;
 import com.easyback.andriy.eazyback.utils.Validator;
-import com.easyback.andriy.eazyback.utils.ViewUtils;
 
 public final class MainSettingsActivity extends GenericActivity {
 
@@ -141,6 +140,13 @@ public final class MainSettingsActivity extends GenericActivity {
 
                 case R.id.device_activator:
                     getSharedHelper().setDeviceActive(isChecked);
+
+                    if (isChecked) {
+                        ComponentLaunchControl.startDeviceService(getApplication());
+                    } else {
+                        ComponentLaunchControl.stopDeviceService(getApplication());
+                    }
+
                     break;
 
                 case R.id.manual_activator:

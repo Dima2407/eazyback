@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -58,7 +57,7 @@ public final class ViewUtils {
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 // Display it on top of other application windows, but only for the current user
-               WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+                WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
 
                 //WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
                 //WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
