@@ -58,11 +58,15 @@ public final class ViewUtils {
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 // Display it on top of other application windows, but only for the current user
-                WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+                //WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+
+                WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
+                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
+
                 // Don't let it grab the input focus
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                //WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                 // Make the underlying application window visible through any transparent parts
-                PixelFormat.TRANSPARENT);
+                PixelFormat.TRANSLUCENT);
 
 // Define the position of the window within the screen
         p.gravity = Gravity.RIGHT;

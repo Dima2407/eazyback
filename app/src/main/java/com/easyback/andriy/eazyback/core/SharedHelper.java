@@ -109,10 +109,10 @@ public final class SharedHelper {
 
     public List<Boolean> getActivatedButtons() {
         List<Boolean> activatedButtons = new ArrayList<Boolean>(4);
-        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_ACCEPT_BUTTON, false));
-        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_REJECT_BUTTON, false));
-        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_CALLBACK_BUTTON, false));
-        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_CLOSE_BUTTON, false));
+        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_ACCEPT_BUTTON, true));
+        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_REJECT_BUTTON, true));
+        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_CALLBACK_BUTTON, true));
+        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_CLOSE_BUTTON, true));
 
         return activatedButtons;
     }

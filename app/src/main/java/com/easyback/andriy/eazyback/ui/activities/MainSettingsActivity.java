@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.utils.ComponentLaunchControl;
 import com.easyback.andriy.eazyback.utils.Validator;
+import com.easyback.andriy.eazyback.utils.ViewUtils;
 
 public final class MainSettingsActivity extends GenericActivity {
 
@@ -97,8 +98,10 @@ public final class MainSettingsActivity extends GenericActivity {
     protected void onStop() {
         super.onStop();
         hideKeyboard(mRejectDelay);
+
         if (mBroadcastReceiver != null) {
             unregisterReceiver(mBroadcastReceiver);
+            mBroadcastReceiver = null;
         }
     }
 
