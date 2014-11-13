@@ -69,12 +69,6 @@ public final class MainSettingsActivity extends GenericActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.settings, menu);
         return true;
@@ -131,6 +125,8 @@ public final class MainSettingsActivity extends GenericActivity {
             mBroadcastReceiver = new RefreshReceiver();
             IntentFilter intentFilter = new IntentFilter(FILTER);
             registerReceiver(mBroadcastReceiver, intentFilter);
+        } else {
+            mBroadcastReceiver = null;
         }
     }
 

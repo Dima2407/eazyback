@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:paddingRight="@dimen/main_margin"/>
+                    android:layout_marginRight="@dimen/main_margin"/>
 
             </RelativeLayout>
 
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:paddingRight="@dimen/main_margin"/>
+                    android:layout_marginRight="@dimen/main_margin"/>
 
             </RelativeLayout>
 
@@ -96,10 +96,10 @@
                     android:id="@+id/plug_event_ignore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:paddingRight="@dimen/main_margin"/>
+                    android:layout_marginRight="@dimen/main_margin"
+                    />
 
             </RelativeLayout>
         </LinearLayout>

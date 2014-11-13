@@ -3,5 +3,6 @@
     <dimen name="secondary_margin">8dp</dimen>
     <dimen name="main_text_size">18sp</dimen>
     <dimen name="sec_edit_text">50dp</dimen>
+    <dimen name="stock_switch">75dp</dimen>
 
 </resources>

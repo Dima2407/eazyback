@@ -30,8 +30,8 @@
 
     <string name="headset_automat">Автоперезвон</string>
     <string name="headset_manual">Ручной режим</string>
-    <string name="headset_ignore">Игнорировать событие</string>
+    <string name="headset_ignore">Игнорировать</string>
 
-    <string name="system_service">Монитор устройств</string>
+    <string name="system_service">Устройства</string>
 
 </resources>
