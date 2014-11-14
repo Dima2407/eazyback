@@ -35,6 +35,7 @@ public final class SharedHelper {
 
     private static final String DELAY_CALLBACK_NUMBERS = "delay_callback_numbers";
     private static final String DELAY_BUTTONS_WINDOW = "delay_buttons_window";
+    private static final String MANUAL_INTERCEPT_MODE = "manual_intercept_mode";
 
     private final SharedPreferences mSharedPreferences;
 
@@ -211,5 +212,13 @@ public final class SharedHelper {
             long reject = Long.parseLong(pButtonsDelay) * 1000;
             mSharedPreferences.edit().putLong(DELAY_BUTTONS_WINDOW, reject).commit();
         }
+    }
+
+    public void setManualInterceptMode(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(MANUAL_INTERCEPT_MODE, pActivated).commit();
+    }
+
+    public boolean getManualInterceptMode() {
+        return mSharedPreferences.getBoolean(MANUAL_INTERCEPT_MODE, false);
     }
 }

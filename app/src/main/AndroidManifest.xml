@@ -32,7 +32,10 @@
         <activity android:name=".ui.activities.CallPanelSettingsActivity"/>
         <activity android:name=".ui.activities.DeviceManagerActivity"/>
         <activity android:name=".ui.activities.DelayCallbackNumbersActivity"/>
-        <activity android:name=".ui.activities.ExtraSettingsActivity"/>
+
+        <activity
+            android:name=".ui.activities.ExtraSettingsActivity"
+            android:windowSoftInputMode="stateHidden"/>
 
         <receiver
             android:name=".core.listeners.CallListener"

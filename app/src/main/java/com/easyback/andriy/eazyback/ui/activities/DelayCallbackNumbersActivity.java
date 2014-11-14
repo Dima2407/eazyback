@@ -9,7 +9,7 @@ import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.ui.adapters.DelayBackAdapter;
 import com.easyback.andriy.eazyback.utils.ComponentLaunchControl;
 
-public class DelayCallbackNumbersActivity extends GenericActivity {
+public final class DelayCallbackNumbersActivity extends GenericActivity {
 
     private ListView mListView;
 
@@ -23,6 +23,7 @@ public class DelayCallbackNumbersActivity extends GenericActivity {
         mListView.setEmptyView(findViewById(R.id.empty_delay_callback));
         mListView.setOnItemClickListener(new ItemClicker());
 
+        initBackButton();
     }
 
     @Override

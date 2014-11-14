@@ -9,97 +9,136 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        style="@style/Cell">
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_marginTop="@dimen/secondary_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/main_margin"
-            android:layout_marginRight="@dimen/main_margin"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            style="@style/Cell">
 
-            <TextView
-                android:textSize="@dimen/main_text_size"
-                android:text="@string/accept_call_button"
+            <LinearLayout
+                android:layout_marginTop="@dimen/secondary_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/accept_button_check"
+                <TextView
+                    android:textSize="@dimen/main_text_size"
+                    android:text="@string/accept_call_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <CheckBox
+                    android:id="@+id/accept_button_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:layout_marginTop="@dimen/secondary_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="@dimen/main_text_size"
+                    android:text="@string/reject_call_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <CheckBox
+                    android:id="@+id/reject_button_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:layout_marginTop="@dimen/secondary_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="@dimen/main_text_size"
+                    android:text="@string/callback_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <CheckBox
+                    android:id="@+id/callback_button_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/main_margin"
+                android:layout_marginRight="@dimen/main_margin"
+                android:layout_marginTop="@dimen/secondary_margin"
+                android:layout_marginBottom="@dimen/secondary_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="@dimen/main_text_size"
+                    android:text="@string/callback_delay_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <CheckBox
+                    android:id="@+id/close_button_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"/>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="@dimen/main_margin"
-            android:layout_marginRight="@dimen/main_margin"
-            android:layout_marginTop="@dimen/secondary_margin"
+            style="@style/Cell"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:textSize="@dimen/main_text_size"
-                android:text="@string/reject_call_button"
+                android:layout_marginTop="@dimen/secondary_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                style="@style/StockAnnotation"
+                android:text="@string/buttons_intercept_annotation"/>
 
-            <CheckBox
-                android:id="@+id/reject_button_check"
+            <RadioGroup
+                android:id="@+id/button_mode_group"
+                android:layout_margin="@dimen/secondary_margin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"/>
-        </LinearLayout>
+                android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_marginLeft="@dimen/main_margin"
-            android:layout_marginRight="@dimen/main_margin"
-            android:layout_marginTop="@dimen/secondary_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/mod_only_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/buttons_intercept_mode_list"/>
 
-            <TextView
-                android:textSize="@dimen/main_text_size"
-                android:text="@string/callback_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                <RadioButton
+                    android:id="@+id/mod_total_intercept"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/buttons_intercept_mode_all"/>
+                </RadioGroup>
 
-            <CheckBox
-                android:id="@+id/callback_button_check"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginLeft="@dimen/main_margin"
-            android:layout_marginRight="@dimen/main_margin"
-            android:layout_marginTop="@dimen/secondary_margin"
-            android:layout_marginBottom="@dimen/secondary_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:textSize="@dimen/main_text_size"
-                android:text="@string/close_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <CheckBox
-                android:id="@+id/close_button_check"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"/>
-        </LinearLayout>
+            </LinearLayout>
     </LinearLayout>
-
 </ScrollView>

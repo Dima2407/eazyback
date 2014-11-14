@@ -5,7 +5,7 @@ import android.widget.EditText;
 
 import com.easyback.andriy.eazyback.R;
 
-public class ExtraSettingsActivity extends GenericActivity {
+public final class ExtraSettingsActivity extends GenericActivity {
 
     private EditText mEditText;
 
@@ -26,8 +26,8 @@ public class ExtraSettingsActivity extends GenericActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         getSharedHelper().setButtonDelay(mEditText.getText().toString());
         hideKeyboard(mEditText);
     }

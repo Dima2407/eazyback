@@ -24,6 +24,8 @@
 
     <string name="phone_settings">Номера</string>
     <string name="devices_settings">Устройства</string>
+    <string name="delay_callback_settings">Отложенные</string>
+    <string name="extra_settings">Дополнительно</string>
 
     <string name="manual_warning">Внимание, если активирован кнопочный режим, автоперезвон отключается.</string>
 

@@ -19,6 +19,7 @@
     <string name="accept_call_button">Accept button</string>
     <string name="reject_call_button">Reject button</string>
     <string name="callback_button">Callback button</string>
+    <string name="callback_delay_button">Delayback button</string>
     <string name="close_button">Close button</string>
 
     <string name="phone_settings">Phones</string>
@@ -39,5 +40,9 @@
     <string name="empty_list">List empty now</string>
 
     <string name="buttons_delay">Buttons delay, sec</string>
+
+    <string name="buttons_intercept_annotation">Show buttons mode</string>
+    <string name="buttons_intercept_mode_list">Only for list numbers</string>
+    <string name="buttons_intercept_mode_all">All numbers</string>
 
 </resources>

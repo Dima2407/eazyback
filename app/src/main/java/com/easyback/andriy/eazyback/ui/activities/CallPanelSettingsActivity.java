@@ -1,8 +1,10 @@
 package com.easyback.andriy.eazyback.ui.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 
 import com.easyback.andriy.eazyback.R;
 
@@ -15,6 +17,7 @@ public final class CallPanelSettingsActivity extends GenericActivity {
 
     private CheckBox mAcceptBox, mRejectBox, mCallbackBox, mCloseBox;
     private Map<Integer, Boolean> mButtonsStatus;
+    private RadioGroup mRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +45,11 @@ public final class CallPanelSettingsActivity extends GenericActivity {
             mButtonsStatus.put(i, activatedButtons.get(i));
         }
 
+        mRadioGroup = (RadioGroup) findViewById(R.id.button_mode_group);
+        mRadioGroup.setOnCheckedChangeListener(new RadioListener());
+
         initBackButton();
     }
-
 
     private void setActivateStatus(int pIndex, boolean pStatus) {
         switch (pIndex) {
@@ -70,6 +75,11 @@ public final class CallPanelSettingsActivity extends GenericActivity {
     protected void onStart() {
         super.onStart();
         setStatTag(getClass().getSimpleName());
+        if(getSharedHelper().getManualInterceptMode()){
+            mRadioGroup.check(R.id.mod_only_list);
+        } else {
+            mRadioGroup.check(R.id.mod_total_intercept);
+        }
     }
 
     @Override
@@ -99,6 +109,23 @@ public final class CallPanelSettingsActivity extends GenericActivity {
 
                 case R.id.close_button_check:
                     mButtonsStatus.put(3, isChecked);
+                    break;
+            }
+        }
+    }
+
+    private final class RadioListener implements RadioGroup.OnCheckedChangeListener {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            switch (checkedId) {
+
+                case R.id.mod_only_list:
+                    getSharedHelper().setManualInterceptMode(true);
+                    break;
+
+                case R.id.mod_total_intercept:
+                    getSharedHelper().setManualInterceptMode(false);
                     break;
             }
         }

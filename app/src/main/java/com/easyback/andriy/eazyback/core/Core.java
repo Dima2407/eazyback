@@ -29,7 +29,7 @@ public final class Core {
     }
 
     public void makeParse(final String pIncomePhone) {
-        Log.d("C", "income = " + pIncomePhone);
+
 
         if (TextUtils.isEmpty(pIncomePhone)) {
             Log.d("C", "empty-income");
@@ -37,6 +37,14 @@ public final class Core {
         }
 
         if (mSharedHelper.getIsActivateManualMode()) {
+
+            if(mSharedHelper.getManualInterceptMode()){
+                if (!searchTargetPhone(pIncomePhone)) {
+                    Log.d("C", "non-find in manual");
+                    return;
+                }
+            }
+
             Log.d("C", "activate manual");
             mPhoneHolder = pIncomePhone;
 
