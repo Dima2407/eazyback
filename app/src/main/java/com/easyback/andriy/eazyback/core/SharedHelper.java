@@ -2,6 +2,7 @@ package com.easyback.andriy.eazyback.core;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,7 +21,7 @@ public final class SharedHelper {
     private static final String ACTIVATED_ACCEPT_BUTTON = "activated_accept_button";
     private static final String ACTIVATED_REJECT_BUTTON = "activated_reject_button";
     private static final String ACTIVATED_CALLBACK_BUTTON = "activated_callback_button";
-    private static final String ACTIVATED_CLOSE_BUTTON = "activated_close_button";
+    private static final String ACTIVATED_DELAY_CALLBACK_BUTTON = "activated_delay_callback_button";
 
     private static final String HEADSET_PLUG_MAIN_CONTROL = "headset_plug_main_control";
 
@@ -31,6 +32,9 @@ public final class SharedHelper {
     private static final String HEADSET_UN_PLUG_AUTOMAT = "headset_un_plug_automat";
     private static final String HEADSET_UN_PLUG_MANUAL = "headset_un_plug_manual";
     private static final String HEADSET_UN_PLUG_IGNORE = "headset_un_plug_ignore";
+
+    private static final String DELAY_CALLBACK_NUMBERS = "delay_callback_numbers";
+    private static final String DELAY_BUTTONS_WINDOW = "delay_buttons_window";
 
     private final SharedPreferences mSharedPreferences;
 
@@ -104,7 +108,7 @@ public final class SharedHelper {
         mSharedPreferences.edit().putBoolean(ACTIVATED_ACCEPT_BUTTON, pActivatedButtons.get(0)).commit();
         mSharedPreferences.edit().putBoolean(ACTIVATED_REJECT_BUTTON, pActivatedButtons.get(1)).commit();
         mSharedPreferences.edit().putBoolean(ACTIVATED_CALLBACK_BUTTON, pActivatedButtons.get(2)).commit();
-        mSharedPreferences.edit().putBoolean(ACTIVATED_CLOSE_BUTTON, pActivatedButtons.get(3)).commit();
+        mSharedPreferences.edit().putBoolean(ACTIVATED_DELAY_CALLBACK_BUTTON, pActivatedButtons.get(3)).commit();
     }
 
     public List<Boolean> getActivatedButtons() {
@@ -112,7 +116,7 @@ public final class SharedHelper {
         activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_ACCEPT_BUTTON, true));
         activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_REJECT_BUTTON, true));
         activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_CALLBACK_BUTTON, true));
-        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_CLOSE_BUTTON, true));
+        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_DELAY_CALLBACK_BUTTON, true));
 
         return activatedButtons;
     }
@@ -173,4 +177,39 @@ public final class SharedHelper {
         return mSharedPreferences.getBoolean(HEADSET_UN_PLUG_IGNORE, true);
     }
 
+    public Set<String> getDelayCallbackNumbers() {
+        return mSharedPreferences.getStringSet(DELAY_CALLBACK_NUMBERS, new HashSet<String>());
+    }
+
+    public void addDelayCallbackNumber(String pDelayCallbackNumber) {
+        Set<String> phoneSet = getDelayCallbackNumbers();
+        phoneSet.add(pDelayCallbackNumber);
+        mSharedPreferences.edit().putStringSet(DELAY_CALLBACK_NUMBERS, phoneSet).commit();
+    }
+
+    public void removeDelayCallbackNumber(String pDelayCallbackNumber) {
+        Set<String> phoneSet = getDelayCallbackNumbers();
+        phoneSet.remove(pDelayCallbackNumber);
+        mSharedPreferences.edit().putStringSet(DELAY_CALLBACK_NUMBERS, phoneSet).commit();
+    }
+
+    public long getButtonsDelayInSec() {
+        long delay = mSharedPreferences.getLong(DELAY_BUTTONS_WINDOW, 0);
+
+        if (delay != 0) {
+            return delay / 1000;
+        }
+        return delay;
+    }
+
+    public long getButtonsDelayInMiliSec() {
+        return mSharedPreferences.getLong(DELAY_BUTTONS_WINDOW, 0);
+    }
+
+    public void setButtonDelay(String pButtonsDelay) {
+        if (!TextUtils.isEmpty(pButtonsDelay)) {
+            long reject = Long.parseLong(pButtonsDelay) * 1000;
+            mSharedPreferences.edit().putLong(DELAY_BUTTONS_WINDOW, reject).commit();
+        }
+    }
 }

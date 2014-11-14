@@ -32,7 +32,7 @@ public abstract class GenericActivity extends Activity {
         EasyTracker.getInstance(this).activityStop(this);
     }
 
-    protected void sendStat(String pScreenName) {
+    protected void setStatTag(String pScreenName) {
         EasyTracker.getInstance(this).set(Fields.SCREEN_NAME, pScreenName);
         EasyTracker.getInstance(this).send(MapBuilder.createAppView().build());
         EasyTracker.getInstance(this).activityStart(this);

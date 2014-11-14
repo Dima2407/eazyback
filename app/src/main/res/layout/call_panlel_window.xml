@@ -29,6 +29,13 @@
         style="@style/CallPanelButton"/>
 
     <Button
+        android:id="@+id/delay_callback_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delay_callback"
+        style="@style/CallPanelButton"/>
+
+    <Button
         android:id="@+id/close_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

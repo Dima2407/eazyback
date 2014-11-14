@@ -122,7 +122,21 @@
                 style="@style/MenuElementWithArrow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/devices_settings"
+                android:text="@string/devices_settings"/>
+
+            <TextView
+                android:id="@+id/main_to_delay_callback_control"
+                style="@style/MenuElementWithArrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/delay_callback_settings"/>
+
+            <TextView
+                android:id="@+id/main_to_extras_control"
+                style="@style/MenuElementWithArrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/extra_settings"
                 android:layout_marginBottom="@dimen/secondary_margin"/>
 
         </LinearLayout>

@@ -13,11 +13,13 @@
     <string name="accept_call">Принять</string>
     <string name="reject_call">Сбросить</string>
     <string name="callback">Перезвонить</string>
+    <string name="delay_callback">Перезв. позже</string>
     <string name="close">Закрыть</string>
 
     <string name="accept_call_button">Кнопка приёма</string>
     <string name="reject_call_button">Кнопка сброса</string>
     <string name="callback_button">Кнопка перезвона</string>
+    <string name="callback_delay_button">Кн. отлож. перезв.</string>
     <string name="close_button">Кнопка закрытия</string>
 
     <string name="phone_settings">Номера</string>
@@ -33,5 +35,8 @@
     <string name="headset_ignore">Игнорировать</string>
 
     <string name="system_service">Устройства</string>
+    <string name="empty_list">Данный список пуст</string>
+
+    <string name="buttons_delay">Задержка кнопок, сек</string>
 
 </resources>

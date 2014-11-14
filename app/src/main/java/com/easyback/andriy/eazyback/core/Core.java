@@ -2,7 +2,6 @@ package com.easyback.andriy.eazyback.core;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,6 +10,7 @@ import android.view.View;
 
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.ui.CallPanel;
+import com.easyback.andriy.eazyback.utils.ComponentLaunchControl;
 import com.easyback.andriy.eazyback.utils.Reflector;
 import com.easyback.andriy.eazyback.utils.ViewUtils;
 
@@ -31,11 +31,6 @@ public final class Core {
     public void makeParse(final String pIncomePhone) {
         Log.d("C", "income = " + pIncomePhone);
 
-        if (!mSharedHelper.getIsCallbacksActivate()) {
-            Log.d("C", "non-active");
-            return;
-        }
-
         if (TextUtils.isEmpty(pIncomePhone)) {
             Log.d("C", "empty-income");
             return;
@@ -44,6 +39,13 @@ public final class Core {
         if (mSharedHelper.getIsActivateManualMode()) {
             Log.d("C", "activate manual");
             mPhoneHolder = pIncomePhone;
+
+            long delay = mSharedHelper.getButtonsDelayInMiliSec();
+            if (delay > 0) {
+                launchButtonTask(delay);
+                return;
+            }
+
             mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
             return;
         }
@@ -72,23 +74,10 @@ public final class Core {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:" + pNumber));
-                callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(callIntent);
+                ComponentLaunchControl.launchCallIntent(mContext, pNumber);
             }
         }, callbackDelay);
     }
-
-    private void makeCallbackImmediately(final String pNumber) {
-        Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:" + pNumber));
-        callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mContext.startActivity(callIntent);
-
-    }
-
-
 
     private boolean searchTargetPhone(String pIncomePhone) {
         Set<String> targetPhones = mSharedHelper.getTargetNumbers();
@@ -102,6 +91,15 @@ public final class Core {
         }
 
         return result;
+    }
+
+    private void launchButtonTask(long pDelaySec) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
+            }
+        }, pDelaySec);
     }
 
     private final class Clicker implements View.OnClickListener {
@@ -121,7 +119,13 @@ public final class Core {
 
                 case R.id.callback_button:
                     Reflector.disconnectCall();
-                    makeCallbackImmediately(mPhoneHolder);
+                    ComponentLaunchControl.launchCallIntent(mContext, mPhoneHolder);
+                    mPhoneHolder = null;
+                    break;
+
+                case R.id.delay_callback_button:
+                    Reflector.disconnectCall();
+                    mSharedHelper.addDelayCallbackNumber(mPhoneHolder);
                     mPhoneHolder = null;
                     break;
 

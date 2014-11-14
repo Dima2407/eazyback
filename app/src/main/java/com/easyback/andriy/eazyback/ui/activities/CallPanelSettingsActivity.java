@@ -69,7 +69,7 @@ public final class CallPanelSettingsActivity extends GenericActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        sendStat(getClass().getSimpleName());
+        setStatTag(getClass().getSimpleName());
     }
 
     @Override

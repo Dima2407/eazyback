@@ -49,7 +49,7 @@ public final class DeviceManagerActivity extends GenericActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        sendStat(getClass().getSimpleName());
+        setStatTag(getClass().getSimpleName());
     }
 
     private final class Checker implements CompoundButton.OnCheckedChangeListener {

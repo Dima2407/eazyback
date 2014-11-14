@@ -56,12 +56,15 @@ public final class MainSettingsActivity extends GenericActivity {
         findViewById(R.id.main_to_button_controls).setOnClickListener(clickListener);
         findViewById(R.id.main_to_phone_settings).setOnClickListener(clickListener);
         findViewById(R.id.main_to_devices_control).setOnClickListener(clickListener);
+        findViewById(R.id.main_to_delay_callback_control).setOnClickListener(clickListener);
+        findViewById(R.id.main_to_extras_control).setOnClickListener(clickListener);
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        sendStat(getClass().getSimpleName());
+        setStatTag(getClass().getSimpleName());
 
         setCheckedState();
         deviceCaseSwitcher();
@@ -135,7 +138,8 @@ public final class MainSettingsActivity extends GenericActivity {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             switch (buttonView.getId()) {
                 case R.id.callback_activator:
-                    getSharedHelper().setCallbackActivate(isChecked);
+                    //getSharedHelper().setCallbackActivate(isChecked);
+                    getCore().makeParse("111");
                     break;
 
                 case R.id.device_activator:
@@ -146,7 +150,6 @@ public final class MainSettingsActivity extends GenericActivity {
                     } else {
                         ComponentLaunchControl.stopDeviceService(getApplication());
                     }
-
                     break;
 
                 case R.id.manual_activator:
@@ -172,6 +175,14 @@ public final class MainSettingsActivity extends GenericActivity {
 
                 case R.id.main_to_devices_control:
                     ComponentLaunchControl.launchDevicesActivity(MainSettingsActivity.this);
+                    break;
+
+                case R.id.main_to_delay_callback_control:
+                    ComponentLaunchControl.launchDelayBackActivity(MainSettingsActivity.this);
+                    break;
+
+                case R.id.main_to_extras_control:
+                    ComponentLaunchControl.launchExtrasActivity(MainSettingsActivity.this);
                     break;
             }
         }

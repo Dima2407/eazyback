@@ -52,9 +52,11 @@ public final class CallPanel extends LinearLayout {
         }
 
         if (pActivatedStatus.get(3)) {
-            view.findViewById(R.id.close_button).setOnClickListener(mOnClickListener);
+            view.findViewById(R.id.delay_callback_button).setOnClickListener(mOnClickListener);
         } else {
-            view.findViewById(R.id.close_button).setVisibility(GONE);
+            view.findViewById(R.id.delay_callback_button).setVisibility(GONE);
         }
+
+        view.findViewById(R.id.close_button).setOnClickListener(mOnClickListener);
     }
 }
