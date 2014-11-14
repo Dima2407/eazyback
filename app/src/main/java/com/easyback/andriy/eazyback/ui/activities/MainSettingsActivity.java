@@ -138,7 +138,7 @@ public final class MainSettingsActivity extends GenericActivity {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             switch (buttonView.getId()) {
                 case R.id.callback_activator:
-                    //getSharedHelper().setCallbackActivate(isChecked);
+                    getSharedHelper().setCallbackActivate(isChecked);
                     getCore().makeParse("111");
                     break;
 
