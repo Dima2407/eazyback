@@ -27,7 +27,7 @@ public final class SharedHelper {
 
     private static final String HEADSET_PLUG_AUTOMAT = "headset_plug_automat";
     private static final String HEADSET_PLUG_MANUAL = "headset_plug_manual";
-    private static final String HEADSET_PLUG_IGNORE = "headset_un_plug_ignore";
+    private static final String HEADSET_PLUG_IGNORE = "headset_plug_ignore";
 
     private static final String HEADSET_UN_PLUG_AUTOMAT = "headset_un_plug_automat";
     private static final String HEADSET_UN_PLUG_MANUAL = "headset_un_plug_manual";

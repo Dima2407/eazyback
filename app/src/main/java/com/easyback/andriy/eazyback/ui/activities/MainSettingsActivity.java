@@ -128,6 +128,7 @@ public final class MainSettingsActivity extends GenericActivity {
             IntentFilter intentFilter = new IntentFilter(FILTER);
             registerReceiver(mBroadcastReceiver, intentFilter);
         } else {
+            ComponentLaunchControl.stopDeviceService(getApplicationContext());
             mBroadcastReceiver = null;
         }
     }
@@ -139,17 +140,11 @@ public final class MainSettingsActivity extends GenericActivity {
             switch (buttonView.getId()) {
                 case R.id.callback_activator:
                     getSharedHelper().setCallbackActivate(isChecked);
-                    getCore().makeParse("111");
                     break;
 
                 case R.id.device_activator:
                     getSharedHelper().setDeviceActive(isChecked);
-
-                    if (isChecked) {
-                        ComponentLaunchControl.startDeviceService(getApplication());
-                    } else {
-                        ComponentLaunchControl.stopDeviceService(getApplication());
-                    }
+                    deviceCaseSwitcher();
                     break;
 
                 case R.id.manual_activator:
