@@ -10,10 +10,11 @@ import com.easyback.andriy.eazyback.ui.activities.CallPanelSettingsActivity;
 import com.easyback.andriy.eazyback.ui.activities.DelayCallbackNumbersActivity;
 import com.easyback.andriy.eazyback.ui.activities.DeviceManagerActivity;
 import com.easyback.andriy.eazyback.ui.activities.ExtraSettingsActivity;
+import com.easyback.andriy.eazyback.ui.activities.FloatWindowSettings;
 import com.easyback.andriy.eazyback.ui.activities.NumbersManagerActivity;
 import com.easyback.andriy.eazyback.ui.adapters.DelayBackAdapter;
 
-public final class ComponentLaunchControl {
+public final class ComponentLauncher {
 
     public static void launchNumbersActivity(Activity pActivity){
         Intent intent = new Intent(pActivity, NumbersManagerActivity.class);
@@ -37,6 +38,11 @@ public final class ComponentLaunchControl {
 
     public static void launchExtrasActivity(Activity pActivity){
         Intent intent = new Intent(pActivity, ExtraSettingsActivity.class);
+        pActivity.startActivity(intent);
+    }
+
+    public static void launchFloatSettingsActivity(Activity pActivity){
+        Intent intent = new Intent(pActivity, FloatWindowSettings.class);
         pActivity.startActivity(intent);
     }
 

@@ -14,7 +14,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.easyback.andriy.eazyback.R;
-import com.easyback.andriy.eazyback.utils.ComponentLaunchControl;
+import com.easyback.andriy.eazyback.utils.ComponentLauncher;
 import com.easyback.andriy.eazyback.utils.Validator;
 
 public final class MainSettingsActivity extends GenericActivity {
@@ -122,13 +122,13 @@ public final class MainSettingsActivity extends GenericActivity {
 
     private void deviceCaseSwitcher() {
         if (getSharedHelper().getIsActivatedDeviceControl()) {
-            ComponentLaunchControl.startDeviceService(getApplicationContext());
+            ComponentLauncher.startDeviceService(getApplicationContext());
 
             mBroadcastReceiver = new RefreshReceiver();
             IntentFilter intentFilter = new IntentFilter(FILTER);
             registerReceiver(mBroadcastReceiver, intentFilter);
         } else {
-            ComponentLaunchControl.stopDeviceService(getApplicationContext());
+            ComponentLauncher.stopDeviceService(getApplicationContext());
             mBroadcastReceiver = null;
         }
     }
@@ -139,7 +139,8 @@ public final class MainSettingsActivity extends GenericActivity {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             switch (buttonView.getId()) {
                 case R.id.callback_activator:
-                    getSharedHelper().setCallbackActivate(isChecked);
+                    //getSharedHelper().setCallbackActivate(isChecked);
+                    getCore().makeParse("111");
                     break;
 
                 case R.id.device_activator:
@@ -161,23 +162,23 @@ public final class MainSettingsActivity extends GenericActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.main_to_button_controls:
-                    ComponentLaunchControl.launchCallPanelActivity(MainSettingsActivity.this);
+                    ComponentLauncher.launchCallPanelActivity(MainSettingsActivity.this);
                     break;
 
                 case R.id.main_to_phone_settings:
-                    ComponentLaunchControl.launchNumbersActivity(MainSettingsActivity.this);
+                    ComponentLauncher.launchNumbersActivity(MainSettingsActivity.this);
                     break;
 
                 case R.id.main_to_devices_control:
-                    ComponentLaunchControl.launchDevicesActivity(MainSettingsActivity.this);
+                    ComponentLauncher.launchDevicesActivity(MainSettingsActivity.this);
                     break;
 
                 case R.id.main_to_delay_callback_control:
-                    ComponentLaunchControl.launchDelayBackActivity(MainSettingsActivity.this);
+                    ComponentLauncher.launchDelayBackActivity(MainSettingsActivity.this);
                     break;
 
                 case R.id.main_to_extras_control:
-                    ComponentLaunchControl.launchExtrasActivity(MainSettingsActivity.this);
+                    ComponentLauncher.launchExtrasActivity(MainSettingsActivity.this);
                     break;
             }
         }

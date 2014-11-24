@@ -37,6 +37,9 @@ public final class SharedHelper {
     private static final String DELAY_BUTTONS_WINDOW = "delay_buttons_window";
     private static final String MANUAL_INTERCEPT_MODE = "manual_intercept_mode";
 
+    private static final String FLOAT_WINDOW_X = "float_window_x";
+    private static final String FLOAT_WINDOW_Y = "float_window_y";
+
     private final SharedPreferences mSharedPreferences;
 
     public SharedHelper(Context pContext) {
@@ -220,5 +223,21 @@ public final class SharedHelper {
 
     public boolean getManualInterceptMode() {
         return mSharedPreferences.getBoolean(MANUAL_INTERCEPT_MODE, false);
+    }
+
+    public void setFloatWindowX(int pFloatWindowX) {
+        mSharedPreferences.edit().putInt(FLOAT_WINDOW_X, pFloatWindowX).commit();
+    }
+
+    public void setFloatWindowY(int pFloatWindowY) {
+        mSharedPreferences.edit().putInt(FLOAT_WINDOW_Y, pFloatWindowY).commit();
+    }
+
+    public int getFloatWindowX() {
+        return mSharedPreferences.getInt(FLOAT_WINDOW_X, 0);
+    }
+
+    public int getFloatWindowY() {
+        return mSharedPreferences.getInt(FLOAT_WINDOW_Y, 0);
     }
 }

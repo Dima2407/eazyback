@@ -137,8 +137,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/buttons_intercept_mode_all"/>
-                </RadioGroup>
+            </RadioGroup>
 
-            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Cell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/float_window_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="float"/>
+
+
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

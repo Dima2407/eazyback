@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.easyback.andriy.eazyback.R;
+import com.easyback.andriy.eazyback.core.EzApplication;
 import com.easyback.andriy.eazyback.core.SharedHelper;
 import com.easyback.andriy.eazyback.ui.CallPanel;
 
@@ -52,27 +54,31 @@ public final class ViewUtils {
     }
 
     public static CallPanel showInterceptWindow(Context pContext, View.OnClickListener pOnClickListener) {
-        WindowManager.LayoutParams p = new WindowManager.LayoutParams(
-                // Shrink the window to wrap the content rather than filling the screen
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                // Display it on top of other application windows, but only for the current user
-                WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
 
-                //WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
-                //WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
+        SharedHelper sharedHelper = ((EzApplication) pContext.getApplicationContext()).getSharedHelper();
 
-                // Don't let it grab the input focus
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                // Make the underlying application window visible through any transparent parts
-                PixelFormat.TRANSLUCENT);
+        final WindowManager manager = (WindowManager) pContext.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        layoutParams.format = PixelFormat.TRANSLUCENT;
 
-// Define the position of the window within the screen
-        p.gravity = Gravity.RIGHT;
+        Log.e("VU", "x = "+sharedHelper.getFloatWindowX());
+        Log.e("VU", "y = "+sharedHelper.getFloatWindowY());
+
+        layoutParams.x = 0;
+        layoutParams.y = 0;
+
+        layoutParams.packageName = pContext.getPackageName();
+        layoutParams.windowAnimations = android.R.style.Animation_Dialog;
 
         CallPanel controlPanel = new CallPanel(pContext, pOnClickListener);
-        WindowManager windowManager = (WindowManager) pContext.getSystemService(Activity.WINDOW_SERVICE);
-        windowManager.addView(controlPanel, p);
+
+//        controlPanel.setX(sharedHelper.getFloatWindowX());
+//        controlPanel.setY(sharedHelper.getFloatWindowY());
+
+        manager.addView(controlPanel, layoutParams);
         return controlPanel;
     }
 

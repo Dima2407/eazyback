@@ -32,6 +32,7 @@
         <activity android:name=".ui.activities.CallPanelSettingsActivity"/>
         <activity android:name=".ui.activities.DeviceManagerActivity"/>
         <activity android:name=".ui.activities.DelayCallbackNumbersActivity"/>
+        <activity android:name=".ui.activities.FloatWindowSettings"/>
 
         <activity
             android:name=".ui.activities.ExtraSettingsActivity"

@@ -7,7 +7,7 @@ import android.widget.ListView;
 
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.ui.adapters.DelayBackAdapter;
-import com.easyback.andriy.eazyback.utils.ComponentLaunchControl;
+import com.easyback.andriy.eazyback.utils.ComponentLauncher;
 
 public final class DelayCallbackNumbersActivity extends GenericActivity {
 
@@ -39,7 +39,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
             String number = (String) parent.getItemAtPosition(position);
             getSharedHelper().removeDelayCallbackNumber(number);
             mListView.setAdapter(new DelayBackAdapter(DelayCallbackNumbersActivity.this, getSharedHelper().getDelayCallbackNumbers()));
-            ComponentLaunchControl.launchCallIntent(getApplicationContext(), number);
+            ComponentLauncher.launchCallIntent(getApplicationContext(), number);
 
         }
     }

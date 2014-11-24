@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.ui.CallPanel;
-import com.easyback.andriy.eazyback.utils.ComponentLaunchControl;
+import com.easyback.andriy.eazyback.utils.ComponentLauncher;
 import com.easyback.andriy.eazyback.utils.Reflector;
 import com.easyback.andriy.eazyback.utils.ViewUtils;
 
@@ -82,7 +82,7 @@ public final class Core {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ComponentLaunchControl.launchCallIntent(mContext, pNumber);
+                ComponentLauncher.launchCallIntent(mContext, pNumber);
             }
         }, callbackDelay);
     }
@@ -127,7 +127,7 @@ public final class Core {
 
                 case R.id.callback_button:
                     Reflector.disconnectCall();
-                    ComponentLaunchControl.launchCallIntent(mContext, mPhoneHolder);
+                    ComponentLauncher.launchCallIntent(mContext, mPhoneHolder);
                     mPhoneHolder = null;
                     break;
 

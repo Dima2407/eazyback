@@ -1,12 +1,13 @@
 package com.easyback.andriy.eazyback.ui.activities;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 
 import com.easyback.andriy.eazyback.R;
+import com.easyback.andriy.eazyback.utils.ComponentLauncher;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +49,8 @@ public final class CallPanelSettingsActivity extends GenericActivity {
         mRadioGroup = (RadioGroup) findViewById(R.id.button_mode_group);
         mRadioGroup.setOnCheckedChangeListener(new RadioListener());
 
+        findViewById(R.id.float_window_settings).setOnClickListener(new Clicker());
+
         initBackButton();
     }
 
@@ -75,7 +78,7 @@ public final class CallPanelSettingsActivity extends GenericActivity {
     protected void onStart() {
         super.onStart();
         setStatTag(getClass().getSimpleName());
-        if(getSharedHelper().getManualInterceptMode()){
+        if (getSharedHelper().getManualInterceptMode()) {
             mRadioGroup.check(R.id.mod_only_list);
         } else {
             mRadioGroup.check(R.id.mod_total_intercept);
@@ -126,6 +129,18 @@ public final class CallPanelSettingsActivity extends GenericActivity {
 
                 case R.id.mod_total_intercept:
                     getSharedHelper().setManualInterceptMode(false);
+                    break;
+            }
+        }
+    }
+
+    private final class Clicker implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.float_window_settings:
+                    ComponentLauncher.launchFloatSettingsActivity(CallPanelSettingsActivity.this);
                     break;
             }
         }
