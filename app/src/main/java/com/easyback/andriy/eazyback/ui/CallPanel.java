@@ -56,7 +56,5 @@ public final class CallPanel extends LinearLayout {
         } else {
             view.findViewById(R.id.delay_callback_button).setVisibility(GONE);
         }
-
-        view.findViewById(R.id.close_button).setOnClickListener(mOnClickListener);
     }
 }

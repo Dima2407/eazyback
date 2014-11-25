@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.Gravity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -64,20 +63,12 @@ public final class ViewUtils {
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.format = PixelFormat.TRANSLUCENT;
 
-        Log.e("VU", "x = "+sharedHelper.getFloatWindowX());
-        Log.e("VU", "y = "+sharedHelper.getFloatWindowY());
-
-        layoutParams.x = 0;
-        layoutParams.y = 0;
+        calculatePositionFloatWindow(sharedHelper, pContext, layoutParams);
 
         layoutParams.packageName = pContext.getPackageName();
         layoutParams.windowAnimations = android.R.style.Animation_Dialog;
 
         CallPanel controlPanel = new CallPanel(pContext, pOnClickListener);
-
-//        controlPanel.setX(sharedHelper.getFloatWindowX());
-//        controlPanel.setY(sharedHelper.getFloatWindowY());
-
         manager.addView(controlPanel, layoutParams);
         return controlPanel;
     }
@@ -86,6 +77,30 @@ public final class ViewUtils {
         WindowManager windowManager = (WindowManager) pContext.getSystemService(Activity.WINDOW_SERVICE);
         windowManager.removeViewImmediate(pCallPanel);
 
+    }
+
+    private static void calculatePositionFloatWindow(SharedHelper pSharedHelper, Context pContext, WindowManager.LayoutParams pLayoutParams) {
+        int stockX = pSharedHelper.getFloatWindowX();
+        int stockY = pSharedHelper.getFloatWindowY();
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        WindowManager wm = (WindowManager) pContext.getSystemService(Context.WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(displayMetrics);
+
+        int halfScreenWidth = displayMetrics.widthPixels / 2;
+        int halfScreenHeight = displayMetrics.heightPixels / 2;
+
+        if ((stockX - halfScreenWidth) > 0) {
+            pLayoutParams.x = stockX / 2;
+        } else {
+            pLayoutParams.x = stockX - halfScreenWidth;
+        }
+
+        if ((stockY - halfScreenHeight) > 0) {
+            pLayoutParams.y = stockY / 2;
+        } else {
+            pLayoutParams.y = stockY - halfScreenHeight;
+        }
     }
 
 }

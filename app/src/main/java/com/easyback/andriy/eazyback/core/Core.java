@@ -38,7 +38,7 @@ public final class Core {
 
         if (mSharedHelper.getIsActivateManualMode()) {
 
-            if(mSharedHelper.getManualInterceptMode()){
+            if (mSharedHelper.getManualInterceptMode()) {
                 if (!searchTargetPhone(pIncomePhone)) {
                     Log.d("C", "non-find in manual");
                     return;
@@ -135,9 +135,6 @@ public final class Core {
                     Reflector.disconnectCall();
                     mSharedHelper.addDelayCallbackNumber(mPhoneHolder);
                     mPhoneHolder = null;
-                    break;
-
-                case R.id.close_button_check:
                     break;
             }
 

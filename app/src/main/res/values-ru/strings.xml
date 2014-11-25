@@ -45,4 +45,6 @@
     <string name="buttons_intercept_mode_list">Из списка</string>
     <string name="buttons_intercept_mode_all">Все</string>
 
+    <string name="buttons_float_window">Настройка окна</string>
+
 </resources>

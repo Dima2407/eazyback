@@ -22,6 +22,8 @@ public final class FloatWindowSettings extends GenericActivity {
 
         mRootLayout = (ViewGroup) findViewById(R.id.float_window_root);
         findViewById(R.id.call_panel_window_root).setOnTouchListener(new TouchListener());
+
+        initBackButton();
     }
 
 
@@ -40,11 +42,9 @@ public final class FloatWindowSettings extends GenericActivity {
                     break;
 
                 case MotionEvent.ACTION_UP:
-                    Log.e("VU", "x = " + (X - xDelta));
-                    Log.e("VU", "y = "+ (Y -yDelta));
 
-                    getSharedHelper().setFloatWindowX((int)view.getTranslationX());
-                    getSharedHelper().setFloatWindowY((int)view.getTranslationY());
+                    getSharedHelper().setFloatWindowX(X);
+                    getSharedHelper().setFloatWindowY(Y);
                     break;
 
                 case MotionEvent.ACTION_POINTER_DOWN:

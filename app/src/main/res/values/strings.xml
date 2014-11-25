@@ -45,4 +45,6 @@
     <string name="buttons_intercept_mode_list">Only for list numbers</string>
     <string name="buttons_intercept_mode_all">All numbers</string>
 
+    <string name="buttons_float_window">Window position settings</string>
+
 </resources>
