@@ -12,6 +12,8 @@ import java.util.Set;
 public final class SharedHelper {
 
     private static final String NAME = "EazyBack";
+    private static final String DONATE = "donate";
+
     private static final String ACTIVATE_FLAG = "activate_flag";
     private static final String ACTIVATE_MANUAL_FLAG = "activate_manual_flag";
     private static final String TARGET_PHONE_SET = "target_phone_set";
@@ -239,5 +241,13 @@ public final class SharedHelper {
 
     public int getFloatWindowY() {
         return mSharedPreferences.getInt(FLOAT_WINDOW_Y, 0);
+    }
+
+    public void setDonate(boolean pIsDonateComplete){
+        mSharedPreferences.edit().putBoolean(DONATE, pIsDonateComplete).commit();
+    }
+
+    public boolean getDonate(){
+        return mSharedPreferences.getBoolean(DONATE, false);
     }
 }

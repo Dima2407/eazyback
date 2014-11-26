@@ -12,11 +12,13 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.android.vending.billing.IInAppBillingService;
+import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.Core;
 import com.easyback.andriy.eazyback.core.EzApplication;
 import com.easyback.andriy.eazyback.core.SharedHelper;
@@ -35,6 +37,7 @@ public abstract class GenericActivity extends Activity {
 
     private EzApplication mEzApplication;
     private SharedHelper mSharedHelper;
+    private PendingIntent mPendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +84,31 @@ public abstract class GenericActivity extends Activity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (!mSharedHelper.getDonate()) {
+            getMenuInflater().inflate(R.menu.stock, menu);
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 GenericActivity.this.finish();
+                break;
+
+            case R.id.action_donate:
+                Log.e("GA", "donate");
+
+                try {
+                    startIntentSenderForResult(mPendingIntent.getIntentSender(),
+                            1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+                            Integer.valueOf(0));
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+
                 break;
         }
 
@@ -123,21 +147,17 @@ public abstract class GenericActivity extends Activity {
                         String sku = object.getString("productId");
                         String price = object.getString("price");
 
-                        Log.e("rest", " "+price + " "+sku + " "+object.toString());
-                        Bundle b = serviceBilling.getBuyIntent(3, getPackageName(),sku,"inapp",null);
-                        PendingIntent pendingIntent = b.getParcelable("BUY_INTENT");
-                        startIntentSenderForResult(pendingIntent.getIntentSender(),
-                                1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
-                                Integer.valueOf(0));
+                        Log.e("rest", " " + price + " " + sku + " " + object.toString());
+                        Bundle b = serviceBilling.getBuyIntent(3, getPackageName(), sku, "inapp", null);
+                        mPendingIntent = b.getParcelable("BUY_INTENT");
+
                     }
                 }
 
-                Log.e("rest", " "+response);
+                Log.e("rest", " " + response);
             } catch (RemoteException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IntentSender.SendIntentException e) {
                 e.printStackTrace();
             }
 
@@ -160,12 +180,13 @@ public abstract class GenericActivity extends Activity {
                 try {
                     JSONObject jo = new JSONObject(purchaseData);
                     String sku = jo.getString("productId");
+                    mSharedHelper.setDonate(true);
 
-                }
-                catch (JSONException e) {
-
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            } else {
+                mSharedHelper.setDonate(false);
             }
         }
     }

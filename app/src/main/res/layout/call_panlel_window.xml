@@ -10,30 +10,29 @@
 
     <Button
         android:id="@+id/accept_button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/accept_call"
-        style="@style/CallPanelButton"/>
+        android:background="@drawable/accept_call"/>
 
     <Button
         android:id="@+id/reject_button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/reject_call"
-        style="@style/CallPanelButton"/>
+        android:background="@drawable/reject_call"
+        android:layout_marginTop="@dimen/secondary_margin"/>
 
     <Button
         android:id="@+id/callback_button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/callback"
-        style="@style/CallPanelButton"/>
+        android:background="@drawable/callback"
+        android:layout_marginTop="@dimen/secondary_margin"/>
 
     <Button
         android:id="@+id/delay_callback_button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delay_callback"
-        style="@style/CallPanelButton"/>
+        android:background="@drawable/delay_callback"
+        android:layout_marginTop="@dimen/secondary_margin"/>
 
 </LinearLayout>
