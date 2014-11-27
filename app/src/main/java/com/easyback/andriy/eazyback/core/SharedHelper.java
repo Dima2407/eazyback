@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public final class SharedHelper {
@@ -41,6 +39,8 @@ public final class SharedHelper {
 
     private static final String FLOAT_WINDOW_X = "float_window_x";
     private static final String FLOAT_WINDOW_Y = "float_window_y";
+
+    private static final String AUTO_HIDE_CALL_PANEL = "auto_hide_call_panel";
 
     private final SharedPreferences mSharedPreferences;
 
@@ -110,21 +110,36 @@ public final class SharedHelper {
         mSharedPreferences.edit().putLong(CALL_BACK_DELAY, callback).commit();
     }
 
-    public void setActivatedButtons(List<Boolean> pActivatedButtons) {
-        mSharedPreferences.edit().putBoolean(ACTIVATED_ACCEPT_BUTTON, pActivatedButtons.get(0)).commit();
-        mSharedPreferences.edit().putBoolean(ACTIVATED_REJECT_BUTTON, pActivatedButtons.get(1)).commit();
-        mSharedPreferences.edit().putBoolean(ACTIVATED_CALLBACK_BUTTON, pActivatedButtons.get(2)).commit();
-        mSharedPreferences.edit().putBoolean(ACTIVATED_DELAY_CALLBACK_BUTTON, pActivatedButtons.get(3)).commit();
+    public void setActivateAcceptButton(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(ACTIVATED_ACCEPT_BUTTON, pActivated).commit();
     }
 
-    public List<Boolean> getActivatedButtons() {
-        List<Boolean> activatedButtons = new ArrayList<Boolean>(4);
-        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_ACCEPT_BUTTON, true));
-        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_REJECT_BUTTON, true));
-        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_CALLBACK_BUTTON, true));
-        activatedButtons.add(mSharedPreferences.getBoolean(ACTIVATED_DELAY_CALLBACK_BUTTON, true));
+    public void setActivateRejectButton(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(ACTIVATED_REJECT_BUTTON, pActivated).commit();
+    }
 
-        return activatedButtons;
+    public void setActivateCallbackButton(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(ACTIVATED_CALLBACK_BUTTON, pActivated).commit();
+    }
+
+    public void setActivateDelayCallbackButton(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(ACTIVATED_DELAY_CALLBACK_BUTTON, pActivated).commit();
+    }
+
+    public boolean getActivateAcceptButton() {
+        return mSharedPreferences.getBoolean(ACTIVATED_ACCEPT_BUTTON, true);
+    }
+
+    public boolean getActivateRejectButton() {
+        return mSharedPreferences.getBoolean(ACTIVATED_REJECT_BUTTON, true);
+    }
+
+    public boolean getActivateCallbackButton() {
+        return mSharedPreferences.getBoolean(ACTIVATED_CALLBACK_BUTTON, true);
+    }
+
+    public boolean getActivateDelayCallbackButton() {
+        return mSharedPreferences.getBoolean(ACTIVATED_DELAY_CALLBACK_BUTTON, true);
     }
 
     public void setDeviceActive(boolean pActivated) {
@@ -243,11 +258,19 @@ public final class SharedHelper {
         return mSharedPreferences.getInt(FLOAT_WINDOW_Y, 0);
     }
 
-    public void setDonate(boolean pIsDonateComplete){
+    public void setDonate(boolean pIsDonateComplete) {
         mSharedPreferences.edit().putBoolean(DONATE, pIsDonateComplete).commit();
     }
 
-    public boolean getDonate(){
+    public boolean getDonate() {
         return mSharedPreferences.getBoolean(DONATE, false);
+    }
+
+    public void setAutoHideCallPanel(boolean pHideCallPanel) {
+        mSharedPreferences.edit().putBoolean(AUTO_HIDE_CALL_PANEL, pHideCallPanel).commit();
+    }
+
+    public boolean getAutoHideCallPanel() {
+        return mSharedPreferences.getBoolean(AUTO_HIDE_CALL_PANEL, true);
     }
 }

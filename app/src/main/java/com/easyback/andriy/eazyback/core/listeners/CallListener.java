@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 
+import com.easyback.andriy.eazyback.core.Core;
 import com.easyback.andriy.eazyback.core.EzApplication;
 
 public final class CallListener extends BroadcastReceiver {
@@ -20,12 +20,17 @@ public final class CallListener extends BroadcastReceiver {
 
         String incomingPhoneNumber;
         String phone_state = intent.getStringExtra(TelephonyManager.EXTRA_STATE);
+
+        Core core = ((EzApplication) context.getApplicationContext()).getCore();
         if (phone_state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
             incomingPhoneNumber = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER);
-            ((EzApplication) context.getApplicationContext()).getCore().makeParse(incomingPhoneNumber);
+            core.makeParse(incomingPhoneNumber);
             return;
         }
 
-
+        if (phone_state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
+            core.hideCallPanelWindow();
+            return;
+        }
     }
 }

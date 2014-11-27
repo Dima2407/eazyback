@@ -9,15 +9,9 @@ import android.widget.RadioGroup;
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.utils.ComponentLauncher;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public final class CallPanelSettingsActivity extends GenericActivity {
 
-    private CheckBox mAcceptBox, mRejectBox, mCallbackBox, mCloseBox;
-    private Map<Integer, Boolean> mButtonsStatus;
+    private CheckBox mAcceptBox, mRejectBox, mCallbackBox, mDelayCallbackBox;
     private RadioGroup mRadioGroup;
 
     @Override
@@ -28,23 +22,21 @@ public final class CallPanelSettingsActivity extends GenericActivity {
         CompoundButton.OnCheckedChangeListener listener = new Checker();
 
         mAcceptBox = (CheckBox) findViewById(R.id.accept_button_check);
+        mAcceptBox.setChecked(getSharedHelper().getActivateAcceptButton());
         mAcceptBox.setOnCheckedChangeListener(listener);
 
+
         mRejectBox = (CheckBox) findViewById(R.id.reject_button_check);
+        mRejectBox.setChecked(getSharedHelper().getActivateRejectButton());
         mRejectBox.setOnCheckedChangeListener(listener);
 
         mCallbackBox = (CheckBox) findViewById(R.id.callback_button_check);
+        mCallbackBox.setChecked(getSharedHelper().getActivateCallbackButton());
         mCallbackBox.setOnCheckedChangeListener(listener);
 
-        mCloseBox = (CheckBox) findViewById(R.id.close_button_check);
-        mCloseBox.setOnCheckedChangeListener(listener);
-
-        List<Boolean> activatedButtons = getSharedHelper().getActivatedButtons();
-        mButtonsStatus = new HashMap<Integer, Boolean>(activatedButtons.size());
-        for (int i = 0; i < activatedButtons.size(); i++) {
-            setActivateStatus(i, activatedButtons.get(i));
-            mButtonsStatus.put(i, activatedButtons.get(i));
-        }
+        mDelayCallbackBox = (CheckBox) findViewById(R.id.delay_callback_button_check);
+        mDelayCallbackBox.setChecked(getSharedHelper().getActivateDelayCallbackButton());
+        mDelayCallbackBox.setOnCheckedChangeListener(listener);
 
         mRadioGroup = (RadioGroup) findViewById(R.id.button_mode_group);
         mRadioGroup.setOnCheckedChangeListener(new RadioListener());
@@ -52,26 +44,6 @@ public final class CallPanelSettingsActivity extends GenericActivity {
         findViewById(R.id.float_window_settings).setOnClickListener(new Clicker());
 
         initBackButton();
-    }
-
-    private void setActivateStatus(int pIndex, boolean pStatus) {
-        switch (pIndex) {
-            case 0:
-                mAcceptBox.setChecked(pStatus);
-                break;
-
-            case 1:
-                mRejectBox.setChecked(pStatus);
-                break;
-
-            case 2:
-                mCallbackBox.setChecked(pStatus);
-                break;
-
-            case 3:
-                mCloseBox.setChecked(pStatus);
-                break;
-        }
     }
 
     @Override
@@ -88,8 +60,6 @@ public final class CallPanelSettingsActivity extends GenericActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        getSharedHelper().setActivatedButtons(new ArrayList<Boolean>(mButtonsStatus.values()));
-
     }
 
     private final class Checker implements CompoundButton.OnCheckedChangeListener {
@@ -99,19 +69,19 @@ public final class CallPanelSettingsActivity extends GenericActivity {
             switch (buttonView.getId()) {
 
                 case R.id.accept_button_check:
-                    mButtonsStatus.put(0, isChecked);
+                    getSharedHelper().setActivateAcceptButton(isChecked);
                     break;
 
                 case R.id.reject_button_check:
-                    mButtonsStatus.put(1, isChecked);
+                    getSharedHelper().setActivateRejectButton(isChecked);
                     break;
 
                 case R.id.callback_button_check:
-                    mButtonsStatus.put(2, isChecked);
+                    getSharedHelper().setActivateCallbackButton(isChecked);
                     break;
 
-                case R.id.close_button_check:
-                    mButtonsStatus.put(3, isChecked);
+                case R.id.delay_callback_button_check:
+                    getSharedHelper().setActivateDelayCallbackButton(isChecked);
                     break;
             }
         }

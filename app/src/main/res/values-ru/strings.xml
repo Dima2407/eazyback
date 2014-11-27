@@ -47,4 +47,6 @@
 
     <string name="buttons_float_window">Настройка окна</string>
 
+    <string name="call_panel_auto_hide">Автоудаление панели кнопок</string>
+
 </resources>

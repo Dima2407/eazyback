@@ -28,6 +28,19 @@ public final class Core {
         mSharedHelper = pSharedHelper;
     }
 
+    public void hideCallPanelWindow() {
+
+        if (!mSharedHelper.getAutoHideCallPanel()) {
+            return;
+        }
+
+        if (mCallPanel == null || mContext == null) {
+            return;
+        }
+        ViewUtils.hideInterceptWindow(mContext, mCallPanel);
+        mPhoneHolder = null;
+    }
+
     public void makeParse(final String pIncomePhone) {
 
 

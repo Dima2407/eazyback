@@ -100,11 +100,14 @@
                     android:layout_weight="1"/>
 
                 <CheckBox
-                    android:id="@+id/close_button_check"
+                    android:id="@+id/delay_callback_button_check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"/>
+
             </LinearLayout>
+
+
         </LinearLayout>
 
         <LinearLayout

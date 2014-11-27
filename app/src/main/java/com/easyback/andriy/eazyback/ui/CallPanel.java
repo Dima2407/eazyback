@@ -8,8 +8,7 @@ import android.widget.LinearLayout;
 
 import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.EzApplication;
-
-import java.util.List;
+import com.easyback.andriy.eazyback.core.SharedHelper;
 
 public final class CallPanel extends LinearLayout {
 
@@ -20,38 +19,38 @@ public final class CallPanel extends LinearLayout {
         super(context);
         mOnClickListener = pOnClickListener;
         mLayoutInflater = LayoutInflater.from(context);
-        initView(((EzApplication) context.getApplicationContext()).getSharedHelper().getActivatedButtons());
+        initView(((EzApplication) context.getApplicationContext()).getSharedHelper());
     }
 
     public CallPanel(Context context, AttributeSet attrs, OnClickListener pOnClickListener) {
         super(context, attrs);
         mOnClickListener = pOnClickListener;
         mLayoutInflater = LayoutInflater.from(context);
-        initView(((EzApplication) context.getApplicationContext()).getSharedHelper().getActivatedButtons());
+        initView(((EzApplication) context.getApplicationContext()).getSharedHelper());
     }
 
-    private void initView(List<Boolean> pActivatedStatus) {
+    private void initView(SharedHelper pSharedHelper) {
         View view = mLayoutInflater.inflate(R.layout.call_panlel_window, this);
 
-        if (pActivatedStatus.get(0)) {
+        if (pSharedHelper.getActivateAcceptButton()) {
             view.findViewById(R.id.accept_button).setOnClickListener(mOnClickListener);
         } else {
             view.findViewById(R.id.accept_button).setVisibility(GONE);
         }
 
-        if (pActivatedStatus.get(1)) {
+        if (pSharedHelper.getActivateRejectButton()) {
             view.findViewById(R.id.reject_button).setOnClickListener(mOnClickListener);
         } else {
             view.findViewById(R.id.reject_button).setVisibility(GONE);
         }
 
-        if (pActivatedStatus.get(2)) {
+        if (pSharedHelper.getActivateCallbackButton()) {
             view.findViewById(R.id.callback_button).setOnClickListener(mOnClickListener);
         } else {
             view.findViewById(R.id.callback_button).setVisibility(GONE);
         }
 
-        if (pActivatedStatus.get(3)) {
+        if (pSharedHelper.getActivateDelayCallbackButton()) {
             view.findViewById(R.id.delay_callback_button).setOnClickListener(mOnClickListener);
         } else {
             view.findViewById(R.id.delay_callback_button).setVisibility(GONE);
