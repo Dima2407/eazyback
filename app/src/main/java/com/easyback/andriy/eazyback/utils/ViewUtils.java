@@ -75,8 +75,7 @@ public final class ViewUtils {
 
     public static void hideInterceptWindow(Context pContext, CallPanel pCallPanel) {
         WindowManager windowManager = (WindowManager) pContext.getSystemService(Activity.WINDOW_SERVICE);
-        windowManager.removeViewImmediate(pCallPanel);
-
+        windowManager.removeView(pCallPanel);
     }
 
     private static void calculatePositionFloatWindow(SharedHelper pSharedHelper, Context pContext, WindowManager.LayoutParams pLayoutParams) {

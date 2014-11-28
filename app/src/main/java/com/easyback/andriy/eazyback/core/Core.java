@@ -37,17 +37,19 @@ public final class Core {
         if (mCallPanel == null || mContext == null) {
             return;
         }
+
         ViewUtils.hideInterceptWindow(mContext, mCallPanel);
-        mPhoneHolder = null;
+        mCallPanel = null;
     }
 
     public void makeParse(final String pIncomePhone) {
-
 
         if (TextUtils.isEmpty(pIncomePhone)) {
             Log.d("C", "empty-income");
             return;
         }
+
+        mPhoneHolder = pIncomePhone;
 
         if (mSharedHelper.getIsActivateManualMode()) {
 
@@ -57,9 +59,6 @@ public final class Core {
                     return;
                 }
             }
-
-            Log.d("C", "activate manual");
-            mPhoneHolder = pIncomePhone;
 
             long delay = mSharedHelper.getButtonsDelayInMiliSec();
             if (delay > 0) {
@@ -140,18 +139,23 @@ public final class Core {
 
                 case R.id.callback_button:
                     Reflector.disconnectCall();
-                    ComponentLauncher.launchCallIntent(mContext, mPhoneHolder);
-                    mPhoneHolder = null;
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            ComponentLauncher.launchCallIntent(mContext, mPhoneHolder);
+                        }
+                    }, 1000);
+
                     break;
 
                 case R.id.delay_callback_button:
                     Reflector.disconnectCall();
                     mSharedHelper.addDelayCallbackNumber(mPhoneHolder);
-                    mPhoneHolder = null;
                     break;
             }
 
             ViewUtils.hideInterceptWindow(mContext, mCallPanel);
+            mCallPanel = null;
         }
     }
 }

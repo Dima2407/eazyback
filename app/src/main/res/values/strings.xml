@@ -47,6 +47,6 @@
 
     <string name="buttons_float_window">Window position settings</string>
 
-    <string name="call_panel_auto_hide">Auto hide call panel</string>
+    <string name="call_panel_auto_hide">Auto hide buttons</string>
 
 </resources>
