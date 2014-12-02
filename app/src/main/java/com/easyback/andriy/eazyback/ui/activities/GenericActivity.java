@@ -85,9 +85,9 @@ public abstract class GenericActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (!getSharedHelper().getDonate()) {
-            getMenuInflater().inflate(R.menu.stock, menu);
-        }
+//        if (!getSharedHelper().getDonate()) {
+//            getMenuInflater().inflate(R.menu.stock, menu);
+//        }
         return super.onCreateOptionsMenu(menu);
     }
 

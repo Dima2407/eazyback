@@ -66,9 +66,17 @@ public final class Core {
                 return;
             }
 
-            mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
+            if (mCallPanel == null) {
+                mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
+            }
             return;
         }
+
+
+        if (!mSharedHelper.getIsCallbacksActivate()) {
+            return;
+        }
+
 
         if (!searchTargetPhone(pIncomePhone)) {
             Log.d("C", "non-find");
@@ -117,7 +125,9 @@ public final class Core {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
+                if (mCallPanel == null) {
+                    mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
+                }
             }
         }, pDelaySec);
     }
