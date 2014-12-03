@@ -15,9 +15,25 @@ public final class NumbersManagerActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
 
-        mTelephoneCells = ViewUtils.initPhoneSells(this, getSharedHelper().getTargetNumbers());
+
+        switch (getSharedHelper().getDonate()) {
+            case -1:
+                setContentView(R.layout.activity_numbers);
+                mTelephoneCells = ViewUtils.initPhoneSells(this, getSharedHelper().getTargetNumbers());
+                break;
+
+            case 1:
+                setContentView(R.layout.activity_numbers_extended);
+                mTelephoneCells = ViewUtils.initPhoneSellsExtended(this, getSharedHelper().getTargetNumbers());
+                break;
+
+            case 2:
+                setContentView(R.layout.activity_numbers_ultra);
+                mTelephoneCells = ViewUtils.initPhoneSellsUltra(this, getSharedHelper().getTargetNumbers());
+                break;
+        }
+
         initBackButton();
     }
 

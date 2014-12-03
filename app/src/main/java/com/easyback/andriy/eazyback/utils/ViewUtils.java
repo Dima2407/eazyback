@@ -29,13 +29,62 @@ public final class ViewUtils {
         editTexts.add((EditText) pView.findViewById(R.id.number_four));
         editTexts.add((EditText) pView.findViewById(R.id.number_five));
 
-        int i = 0;
-        for (String phone : pPhones) {
-            if (!TextUtils.isEmpty(phone)) {
-                editTexts.get(i).setText(phone);
-            }
-            i++;
+        List<String> phoneList = new ArrayList<String>(pPhones);
+        for (int i = 0; i < 5; i++) {
+            editTexts.get(i).setText(phoneList.get(i));
         }
+        return editTexts;
+    }
+
+    public static List<EditText> initPhoneSellsExtended(Activity pView, Set<String> pPhones) {
+        List<EditText> editTexts = new ArrayList<EditText>(10);
+        editTexts.add((EditText) pView.findViewById(R.id.number_one));
+        editTexts.add((EditText) pView.findViewById(R.id.number_two));
+        editTexts.add((EditText) pView.findViewById(R.id.number_there));
+        editTexts.add((EditText) pView.findViewById(R.id.number_four));
+        editTexts.add((EditText) pView.findViewById(R.id.number_five));
+        editTexts.add((EditText) pView.findViewById(R.id.number_six));
+        editTexts.add((EditText) pView.findViewById(R.id.number_seven));
+        editTexts.add((EditText) pView.findViewById(R.id.number_eight));
+        editTexts.add((EditText) pView.findViewById(R.id.number_nine));
+        editTexts.add((EditText) pView.findViewById(R.id.number_ten));
+
+        List<String> phoneList = new ArrayList<String>(pPhones);
+        for (int i = 0; i < 10; i++) {
+            editTexts.get(i).setText(phoneList.get(i));
+        }
+
+        return editTexts;
+    }
+
+    public static List<EditText> initPhoneSellsUltra(Activity pView, Set<String> pPhones) {
+        List<EditText> editTexts = new ArrayList<EditText>(20);
+        editTexts.add((EditText) pView.findViewById(R.id.number_one));
+        editTexts.add((EditText) pView.findViewById(R.id.number_two));
+        editTexts.add((EditText) pView.findViewById(R.id.number_there));
+        editTexts.add((EditText) pView.findViewById(R.id.number_four));
+        editTexts.add((EditText) pView.findViewById(R.id.number_five));
+        editTexts.add((EditText) pView.findViewById(R.id.number_six));
+        editTexts.add((EditText) pView.findViewById(R.id.number_seven));
+        editTexts.add((EditText) pView.findViewById(R.id.number_eight));
+        editTexts.add((EditText) pView.findViewById(R.id.number_nine));
+        editTexts.add((EditText) pView.findViewById(R.id.number_ten));
+        editTexts.add((EditText) pView.findViewById(R.id.number_eleven));
+        editTexts.add((EditText) pView.findViewById(R.id.number_twelve));
+        editTexts.add((EditText) pView.findViewById(R.id.number_thirteen));
+        editTexts.add((EditText) pView.findViewById(R.id.number_fourteen));
+        editTexts.add((EditText) pView.findViewById(R.id.number_fifteen));
+        editTexts.add((EditText) pView.findViewById(R.id.number_sixteen));
+        editTexts.add((EditText) pView.findViewById(R.id.number_seventeen));
+        editTexts.add((EditText) pView.findViewById(R.id.number_eighteen));
+        editTexts.add((EditText) pView.findViewById(R.id.number_nineteen));
+        editTexts.add((EditText) pView.findViewById(R.id.number_twenty));
+
+        List<String> phoneList = new ArrayList<String>(pPhones);
+        for (int i = 0; i < 20; i++) {
+            editTexts.get(i).setText(phoneList.get(i));
+        }
+
         return editTexts;
     }
 

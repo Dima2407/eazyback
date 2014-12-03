@@ -258,12 +258,12 @@ public final class SharedHelper {
         return mSharedPreferences.getInt(FLOAT_WINDOW_Y, 0);
     }
 
-    public void setDonate(boolean pIsDonateComplete) {
-        mSharedPreferences.edit().putBoolean(DONATE, pIsDonateComplete).commit();
+    public void setDonate(int pDonateCompleteCode) {
+        mSharedPreferences.edit().putInt(DONATE, pDonateCompleteCode).commit();
     }
 
-    public boolean getDonate() {
-        return mSharedPreferences.getBoolean(DONATE, false);
+    public int getDonate() {
+        return mSharedPreferences.getInt(DONATE, -1);
     }
 
     public void setAutoHideCallPanel(boolean pHideCallPanel) {

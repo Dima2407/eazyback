@@ -180,13 +180,14 @@ public abstract class GenericActivity extends Activity {
                 try {
                     JSONObject jo = new JSONObject(purchaseData);
                     String sku = jo.getString("productId");
-                    mSharedHelper.setDonate(true);
+
+//                    mSharedHelper.setDonate(true);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             } else {
-                mSharedHelper.setDonate(false);
+//                mSharedHelper.setDonate(false);
             }
         }
     }
