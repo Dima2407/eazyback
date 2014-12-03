@@ -13,6 +13,8 @@ import com.easyback.andriy.eazyback.ui.CallPanel;
 import com.easyback.andriy.eazyback.utils.ComponentLauncher;
 import com.easyback.andriy.eazyback.utils.Reflector;
 import com.easyback.andriy.eazyback.utils.ViewUtils;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
 
 import java.util.Set;
 
@@ -68,6 +70,7 @@ public final class Core {
 
             if (mCallPanel == null) {
                 mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
+                EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Show call panel");
             }
             return;
         }
@@ -97,6 +100,7 @@ public final class Core {
     }
 
     private void makeCallback(final String pNumber) {
+        EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Make callback");
         long callbackDelay = mSharedHelper.getCallbackDelayInMiliSec();
 
         new Handler().postDelayed(new Runnable() {
@@ -122,6 +126,8 @@ public final class Core {
     }
 
     private void launchButtonTask(long pDelaySec) {
+        EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Launch delay show call panel");
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -141,10 +147,12 @@ public final class Core {
                     Intent i = new Intent(Intent.ACTION_MEDIA_BUTTON);
                     i.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK));
                     mContext.sendOrderedBroadcast(i, null);
+                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Accept button pressed in a Call panel");
                     break;
 
                 case R.id.reject_button:
                     Reflector.disconnectCall();
+                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Reject button pressed in a Call panel");
                     break;
 
                 case R.id.callback_button:
@@ -155,12 +163,13 @@ public final class Core {
                             ComponentLauncher.launchCallIntent(mContext, mPhoneHolder);
                         }
                     }, 1000);
-
+                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Callback button pressed in a Call panel");
                     break;
 
                 case R.id.delay_callback_button:
                     Reflector.disconnectCall();
                     mSharedHelper.addDelayCallbackNumber(mPhoneHolder);
+                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Delay callback button pressed in a Call panel");
                     break;
             }
 

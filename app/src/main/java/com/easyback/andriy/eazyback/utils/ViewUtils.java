@@ -13,6 +13,8 @@ import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.core.EzApplication;
 import com.easyback.andriy.eazyback.core.SharedHelper;
 import com.easyback.andriy.eazyback.ui.CallPanel;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -103,6 +105,8 @@ public final class ViewUtils {
 
     public static CallPanel showInterceptWindow(Context pContext, View.OnClickListener pOnClickListener) {
 
+        EasyTracker.getInstance(pContext).set(Fields.EVENT_ACTION, "Show call panel");
+
         SharedHelper sharedHelper = ((EzApplication) pContext.getApplicationContext()).getSharedHelper();
 
         final WindowManager manager = (WindowManager) pContext.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
@@ -128,6 +132,7 @@ public final class ViewUtils {
     }
 
     private static void calculatePositionFloatWindow(SharedHelper pSharedHelper, Context pContext, WindowManager.LayoutParams pLayoutParams) {
+
         int stockX = pSharedHelper.getFloatWindowX();
         int stockY = pSharedHelper.getFloatWindowY();
 
