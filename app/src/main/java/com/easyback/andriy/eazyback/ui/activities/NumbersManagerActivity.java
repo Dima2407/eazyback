@@ -15,8 +15,6 @@ public final class NumbersManagerActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         switch (getSharedHelper().getDonate()) {
             case -1:
                 setContentView(R.layout.activity_numbers);

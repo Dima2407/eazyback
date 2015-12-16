@@ -32,7 +32,7 @@ public final class ViewUtils {
         editTexts.add((EditText) pView.findViewById(R.id.number_five));
 
         List<String> phoneList = new ArrayList<String>(pPhones);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < pPhones.size(); i++) {
             editTexts.get(i).setText(phoneList.get(i));
         }
         return editTexts;
@@ -52,7 +52,7 @@ public final class ViewUtils {
         editTexts.add((EditText) pView.findViewById(R.id.number_ten));
 
         List<String> phoneList = new ArrayList<String>(pPhones);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < pPhones.size(); i++) {
             editTexts.get(i).setText(phoneList.get(i));
         }
 
@@ -83,7 +83,7 @@ public final class ViewUtils {
         editTexts.add((EditText) pView.findViewById(R.id.number_twenty));
 
         List<String> phoneList = new ArrayList<String>(pPhones);
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < pPhones.size(); i++) {
             editTexts.get(i).setText(phoneList.get(i));
         }
 
