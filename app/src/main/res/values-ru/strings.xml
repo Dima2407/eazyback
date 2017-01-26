@@ -3,8 +3,8 @@
 
     <string name="app_name">EazyBack</string>
     <string name="callback_number">Номер для перезвона</string>
-    <string name="reject_time">Пауза перед сбросом</string>
-    <string name="callback_time">Пауза перед перезв.</string>
+    <string name="reject_time">Пауза перед сбросом, сек</string>
+    <string name="callback_time">Пауза перед перезв., сек</string>
     <string name="action_settings">Сохранить</string>
     <string name="is_activated">Автоперезвон</string>
     <string name="is_activated_manual_mod">Кнопки</string>
