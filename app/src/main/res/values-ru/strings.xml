@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ELEMENT resources (string)*><!ELEMENT string (#PCDATA)><!ATTLIST stringname CDATA #REQUIRED>]>
 <resources>
 
     <string name="app_name">EazyBack</string>
@@ -45,7 +45,7 @@
     <string name="buttons_intercept_mode_list">Из списка</string>
     <string name="buttons_intercept_mode_all">Все</string>
 
-    <string name="buttons_float_window">Настройка окна</string>
+    <string name="buttons_float_window">Расположение кнопок</string>
 
     <string name="call_panel_auto_hide">Автоскрытие кнопок</string>
 
