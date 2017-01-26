@@ -45,7 +45,7 @@
     <string name="buttons_intercept_mode_list">Из списка</string>
     <string name="buttons_intercept_mode_all">Все</string>
 
-    <string name="buttons_float_window">Настройка окна</string>
+    <string name="buttons_float_window">Расположение кнопок</string>
 
     <string name="call_panel_auto_hide">Автоскрытие кнопок</string>
 
