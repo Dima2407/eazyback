@@ -74,7 +74,8 @@ public final class SharedHelper {
     }
 
     public long getRejectDelayInSec() {
-        long delay = mSharedPreferences.getLong(REJECT_DELAY, -1);
+        //TODO: I can change a time for waiting here
+        long delay = mSharedPreferences.getLong(REJECT_DELAY, 1000);
 
         if (delay != -1) {
             return delay / 1000;
@@ -110,36 +111,36 @@ public final class SharedHelper {
         mSharedPreferences.edit().putLong(CALL_BACK_DELAY, callback).commit();
     }
 
-    public void setActivateAcceptButton(boolean pActivated) {
-        mSharedPreferences.edit().putBoolean(ACTIVATED_ACCEPT_BUTTON, pActivated).commit();
-    }
-
-    public void setActivateRejectButton(boolean pActivated) {
-        mSharedPreferences.edit().putBoolean(ACTIVATED_REJECT_BUTTON, pActivated).commit();
-    }
-
-    public void setActivateCallbackButton(boolean pActivated) {
-        mSharedPreferences.edit().putBoolean(ACTIVATED_CALLBACK_BUTTON, pActivated).commit();
-    }
-
-    public void setActivateDelayCallbackButton(boolean pActivated) {
-        mSharedPreferences.edit().putBoolean(ACTIVATED_DELAY_CALLBACK_BUTTON, pActivated).commit();
-    }
-
     public boolean getActivateAcceptButton() {
         return mSharedPreferences.getBoolean(ACTIVATED_ACCEPT_BUTTON, true);
+    }
+
+    public void setActivateAcceptButton(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(ACTIVATED_ACCEPT_BUTTON, pActivated).commit();
     }
 
     public boolean getActivateRejectButton() {
         return mSharedPreferences.getBoolean(ACTIVATED_REJECT_BUTTON, true);
     }
 
+    public void setActivateRejectButton(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(ACTIVATED_REJECT_BUTTON, pActivated).commit();
+    }
+
     public boolean getActivateCallbackButton() {
         return mSharedPreferences.getBoolean(ACTIVATED_CALLBACK_BUTTON, true);
     }
 
+    public void setActivateCallbackButton(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(ACTIVATED_CALLBACK_BUTTON, pActivated).commit();
+    }
+
     public boolean getActivateDelayCallbackButton() {
         return mSharedPreferences.getBoolean(ACTIVATED_DELAY_CALLBACK_BUTTON, true);
+    }
+
+    public void setActivateDelayCallbackButton(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(ACTIVATED_DELAY_CALLBACK_BUTTON, pActivated).commit();
     }
 
     public void setDeviceActive(boolean pActivated) {
@@ -150,52 +151,52 @@ public final class SharedHelper {
         return mSharedPreferences.getBoolean(HEADSET_PLUG_MAIN_CONTROL, false);
     }
 
-    public void setPlugHeadsetAutomatControl(boolean pActive) {
-        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_AUTOMAT, pActive).commit();
-    }
-
     public boolean getPlugHeadsetAutomatControl() {
         return mSharedPreferences.getBoolean(HEADSET_PLUG_AUTOMAT, false);
     }
 
-    public void setPlugHeadsetManualControl(boolean pActive) {
-        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_MANUAL, pActive).commit();
+    public void setPlugHeadsetAutomatControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_AUTOMAT, pActive).commit();
     }
 
     public boolean getPlugHeadsetManualControl() {
         return mSharedPreferences.getBoolean(HEADSET_PLUG_MANUAL, false);
     }
 
-    public void setPlugHeadsetIgnoreControl(boolean pActive) {
-        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_IGNORE, pActive).commit();
+    public void setPlugHeadsetManualControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_MANUAL, pActive).commit();
     }
 
     public boolean getPlugHeadsetIgnoreControl() {
         return mSharedPreferences.getBoolean(HEADSET_PLUG_IGNORE, true);
     }
 
-    public void setUnPlugHeadsetAutomatControl(boolean pActive) {
-        mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_AUTOMAT, pActive).commit();
+    public void setPlugHeadsetIgnoreControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_PLUG_IGNORE, pActive).commit();
     }
 
     public boolean getUnPlugHeadsetAutomatControl() {
         return mSharedPreferences.getBoolean(HEADSET_UN_PLUG_AUTOMAT, false);
     }
 
-    public void setUnPlugHeadsetManualControl(boolean pActive) {
-        mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_MANUAL, pActive).commit();
+    public void setUnPlugHeadsetAutomatControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_AUTOMAT, pActive).commit();
     }
 
     public boolean getUnPlugHeadsetManualControl() {
         return mSharedPreferences.getBoolean(HEADSET_UN_PLUG_MANUAL, false);
     }
 
-    public void setUnPlugHeadsetIgnoreControl(boolean pActive) {
-        mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_IGNORE, pActive).commit();
+    public void setUnPlugHeadsetManualControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_MANUAL, pActive).commit();
     }
 
     public boolean getUnPlugHeadsetIgnoreControl() {
         return mSharedPreferences.getBoolean(HEADSET_UN_PLUG_IGNORE, true);
+    }
+
+    public void setUnPlugHeadsetIgnoreControl(boolean pActive) {
+        mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_IGNORE, pActive).commit();
     }
 
     public Set<String> getDelayCallbackNumbers() {
@@ -234,43 +235,43 @@ public final class SharedHelper {
         }
     }
 
-    public void setManualInterceptMode(boolean pActivated) {
-        mSharedPreferences.edit().putBoolean(MANUAL_INTERCEPT_MODE, pActivated).commit();
-    }
-
     public boolean getManualInterceptMode() {
         return mSharedPreferences.getBoolean(MANUAL_INTERCEPT_MODE, false);
     }
 
-    public void setFloatWindowX(int pFloatWindowX) {
-        mSharedPreferences.edit().putInt(FLOAT_WINDOW_X, pFloatWindowX).commit();
-    }
-
-    public void setFloatWindowY(int pFloatWindowY) {
-        mSharedPreferences.edit().putInt(FLOAT_WINDOW_Y, pFloatWindowY).commit();
+    public void setManualInterceptMode(boolean pActivated) {
+        mSharedPreferences.edit().putBoolean(MANUAL_INTERCEPT_MODE, pActivated).commit();
     }
 
     public int getFloatWindowX() {
         return mSharedPreferences.getInt(FLOAT_WINDOW_X, 0);
     }
 
+    public void setFloatWindowX(int pFloatWindowX) {
+        mSharedPreferences.edit().putInt(FLOAT_WINDOW_X, pFloatWindowX).commit();
+    }
+
     public int getFloatWindowY() {
         return mSharedPreferences.getInt(FLOAT_WINDOW_Y, 0);
     }
 
-    public void setDonate(int pDonateCompleteCode) {
-        mSharedPreferences.edit().putInt(DONATE, pDonateCompleteCode).commit();
+    public void setFloatWindowY(int pFloatWindowY) {
+        mSharedPreferences.edit().putInt(FLOAT_WINDOW_Y, pFloatWindowY).commit();
     }
 
     public int getDonate() {
         return mSharedPreferences.getInt(DONATE, -1);
     }
 
-    public void setAutoHideCallPanel(boolean pHideCallPanel) {
-        mSharedPreferences.edit().putBoolean(AUTO_HIDE_CALL_PANEL, pHideCallPanel).commit();
+    public void setDonate(int pDonateCompleteCode) {
+        mSharedPreferences.edit().putInt(DONATE, pDonateCompleteCode).commit();
     }
 
     public boolean getAutoHideCallPanel() {
         return mSharedPreferences.getBoolean(AUTO_HIDE_CALL_PANEL, true);
+    }
+
+    public void setAutoHideCallPanel(boolean pHideCallPanel) {
+        mSharedPreferences.edit().putBoolean(AUTO_HIDE_CALL_PANEL, pHideCallPanel).commit();
     }
 }
