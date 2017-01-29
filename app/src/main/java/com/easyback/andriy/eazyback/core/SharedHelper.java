@@ -75,20 +75,23 @@ public final class SharedHelper {
 
     public long getRejectDelayInSec() {
         //TODO: I can change a time for waiting here
-        long delay = mSharedPreferences.getLong(REJECT_DELAY, 1000);
+        long delay = mSharedPreferences.getLong(REJECT_DELAY, 3000);
 
         if (delay != -1) {
             return delay / 1000;
         }
+
+
         return delay;
     }
 
     public long getCallbackDelayInSec() {
-        long delay = mSharedPreferences.getLong(CALL_BACK_DELAY, -1);
+        long delay = mSharedPreferences.getLong(CALL_BACK_DELAY, 3000);
 
         if (delay != -1) {
             return delay / 1000;
         }
+
         return delay;
     }
 
