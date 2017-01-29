@@ -16,6 +16,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setTitle(R.string.title_activity_delay_back);
         setContentView(R.layout.activity_delay_back);
 
         mListView = (ListView) findViewById(R.id.list_delay_callback);

@@ -1,8 +1,6 @@
 package com.easyback.andriy.eazyback.ui.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +16,7 @@ public final class FloatWindowSettings extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setTitle(R.string.title_activity_float_settings);
         setContentView(R.layout.activity_float_settings);
 
         mRootLayout = (ViewGroup) findViewById(R.id.float_window_root);
