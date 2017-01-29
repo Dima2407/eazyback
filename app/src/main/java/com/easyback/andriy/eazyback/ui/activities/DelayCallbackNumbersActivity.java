@@ -25,6 +25,14 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         mListView.setOnItemClickListener(new ItemClicker());
 
         initBackButton();
+
+        findViewById(R.id.clearList).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSharedHelper().getDelayCallbackNumbers().clear();
+                mListView.setAdapter(null);
+            }
+        });
     }
 
     @Override
