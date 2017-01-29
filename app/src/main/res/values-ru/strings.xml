@@ -56,4 +56,6 @@
     <string name="title_activity_extras">Дополнительно</string>
     <string name="title_activity_float_settings">Расположение кнопок</string>
 
+    <string name="clear">Очистить список</string>
+
 </resources>
