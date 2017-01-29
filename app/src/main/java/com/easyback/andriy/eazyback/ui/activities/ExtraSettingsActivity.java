@@ -14,6 +14,7 @@ public final class ExtraSettingsActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setTitle(R.string.title_activity_extras);
         setContentView(R.layout.activity_extras);
         initBackButton();
 

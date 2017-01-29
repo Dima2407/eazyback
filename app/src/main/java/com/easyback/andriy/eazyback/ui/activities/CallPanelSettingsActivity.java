@@ -17,6 +17,7 @@ public final class CallPanelSettingsActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setTitle(R.string.title_activity_call_panel);
         setContentView(R.layout.activity_call_panel);
 
         CompoundButton.OnCheckedChangeListener listener = new Checker();

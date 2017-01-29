@@ -49,4 +49,11 @@
 
     <string name="call_panel_auto_hide">Автоскрытие кнопок</string>
 
+    <string name="title_activity_numbers">Номера</string>
+    <string name="title_activity_call_panel">Кнопки</string>
+    <string name="title_activity_devices">Устройства</string>
+    <string name="title_activity_delay_back">Отложенные</string>
+    <string name="title_activity_extras">Дополнительно</string>
+    <string name="title_activity_float_settings">Расположение кнопок</string>
+
 </resources>

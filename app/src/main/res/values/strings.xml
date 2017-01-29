@@ -49,4 +49,11 @@
 
     <string name="call_panel_auto_hide">Auto hide buttons</string>
 
+    <string name="title_activity_numbers">Phones</string>
+    <string name="title_activity_call_panel">Buttons</string>
+    <string name="title_activity_devices">Devices</string>
+    <string name="title_activity_delay_back">DelayBack</string>
+    <string name="title_activity_extras">Extras</string>
+    <string name="title_activity_float_settings">Window position settings</string>
+
 </resources>
