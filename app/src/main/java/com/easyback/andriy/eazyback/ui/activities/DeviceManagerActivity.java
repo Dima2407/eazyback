@@ -13,6 +13,7 @@ public final class DeviceManagerActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setTitle(R.string.title_activity_devices);
         setContentView(R.layout.activity_devices);
 
         initBackButton();
