@@ -42,8 +42,8 @@
     <string name="buttons_delay">Задержка кнопок, сек</string>
 
     <string name="buttons_intercept_annotation">Режим показа кнопок</string>
-    <string name="buttons_intercept_mode_list">Из списка</string>
-    <string name="buttons_intercept_mode_all">Все</string>
+    <string name="buttons_intercept_mode_list">Для номеров из списка</string>
+    <string name="buttons_intercept_mode_all">Для всех входящих звонков</string>
 
     <string name="buttons_float_window">Расположение кнопок</string>
 
