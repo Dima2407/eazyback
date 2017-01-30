@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/call_panel_window_root"
-    android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/padding_buttons_left"
+    android:paddingTop="@dimen/padding_buttons_top">
+
 
     <Button
         android:id="@+id/accept_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/accept_call"/>
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/accept_call" />
 
     <Button
         android:id="@+id/reject_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/reject_call"
-        android:layout_marginTop="@dimen/secondary_margin"/>
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/secondary_margin"
+        android:background="@drawable/reject_call" />
 
     <Button
         android:id="@+id/callback_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/callback"
-        android:layout_marginTop="@dimen/secondary_margin"/>
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/secondary_margin"
+        android:background="@drawable/callback" />
 
     <Button
         android:id="@+id/delay_callback_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/delay_callback"
-        android:layout_marginTop="@dimen/secondary_margin"/>
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/secondary_margin"
+        android:background="@drawable/delay_callback" />
 
 </LinearLayout>

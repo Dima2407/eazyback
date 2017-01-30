@@ -4,5 +4,9 @@
     <dimen name="main_text_size">18sp</dimen>
     <dimen name="sec_edit_text">50dp</dimen>
     <dimen name="stock_switch">75dp</dimen>
+    <dimen name="button_width">65dp</dimen>
+    <dimen name="button_height">65dp</dimen>
+    <dimen name="padding_buttons_left">10dp</dimen>
+    <dimen name="padding_buttons_top">10dp</dimen>
 
 </resources>
