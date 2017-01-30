@@ -55,5 +55,6 @@
     <string name="title_activity_delay_back">DelayBack</string>
     <string name="title_activity_extras">Extras</string>
     <string name="title_activity_float_settings">Window position settings</string>
+    <string name="clear">Clear the list</string>
 
 </resources>
