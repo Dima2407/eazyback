@@ -1,6 +1,9 @@
 package com.easyback.andriy.eazyback.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.easyback.andriy.eazyback.R;
@@ -11,6 +14,7 @@ import java.util.List;
 public final class NumbersManagerActivity extends GenericActivity {
 
     private List<EditText> mTelephoneCells;
+    private Button openAddressBook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +36,19 @@ public final class NumbersManagerActivity extends GenericActivity {
                 mTelephoneCells = ViewUtils.initPhoneSellsUltra(this, getSharedHelper().getTargetNumbers());
                 break;
         }
-
         initBackButton();
+
+        openAddressBook = (Button) findViewById(R.id.open_address_Book);
+        openAddressBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent Intent = new Intent(view.getContext(), PhoneBookActivity.class);
+                view.getContext().startActivity(Intent);
+
+            }
+        });
+
     }
 
     @Override

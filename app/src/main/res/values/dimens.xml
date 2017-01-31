@@ -8,5 +8,6 @@
     <dimen name="button_height">65dp</dimen>
     <dimen name="padding_buttons_left">10dp</dimen>
     <dimen name="padding_buttons_top">10dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

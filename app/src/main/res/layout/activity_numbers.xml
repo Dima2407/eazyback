@@ -7,41 +7,62 @@
     android:background="@color/stock_background">
 
     <LinearLayout
+        style="@style/Cell"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        style="@style/Cell">
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/number_one"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/number_one"
+                style="@style/EazyEditTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+
+            <Button
+                android:id="@+id/open_address_Book"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginRight="5dp"
+                android:gravity="center_vertical"
+                android:text="O"
+                android:textAlignment="center"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
 
         <EditText
             android:id="@+id/number_two"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_there"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_four"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_five"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"
-            android:layout_marginBottom="@dimen/secondary_margin"/>
+            android:layout_marginBottom="@dimen/secondary_margin" />
     </LinearLayout>
+
 
 </ScrollView>
