@@ -12,13 +12,17 @@ import android.widget.ListView;
 
 import com.easyback.andriy.eazyback.R;
 
+import java.util.ArrayList;
+
 public class PhoneBookActivity extends Activity {
 
+    private static ArrayList<String> listViewArray = new ArrayList<String>();
     ListView myList;
-    private String listViewArray[] = {"ONE", "TWO", "THREE", "FOUR", "FIVE",
-            "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN"};
 
     public static void getListViewSize(ListView myListView) {
+        listViewArray.add("One");
+        listViewArray.add("Two");
+        listViewArray.add("Three");
         ListAdapter myListAdapter = myListView.getAdapter();
         if (myListAdapter == null) {
             //do nothing return null
@@ -44,6 +48,8 @@ public class PhoneBookActivity extends Activity {
 
 
         myList = (ListView) findViewById(R.id.listView);
+
+        getAddressBook();
         myList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listViewArray));
         getListViewSize(myList);
 
@@ -53,9 +59,12 @@ public class PhoneBookActivity extends Activity {
     void getAddressBook() {
         final Cursor query = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
         if (query.moveToFirst()) {
+            listViewArray.clear();
+            System.out.println(query.getColumnNames());
             final int contact = query.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
             do {
                 final String string = query.getString(contact);
+                listViewArray.add(string);
 
             } while (query.moveToNext());
         }
