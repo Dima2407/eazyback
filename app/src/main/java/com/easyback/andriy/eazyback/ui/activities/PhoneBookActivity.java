@@ -1,6 +1,5 @@
 package com.easyback.andriy.eazyback.ui.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -17,7 +16,7 @@ import com.easyback.andriy.eazyback.R;
 
 import java.util.ArrayList;
 
-public class PhoneBookActivity extends Activity {
+public class PhoneBookActivity extends GenericActivity {
 
     private static final String TAG = "PhoneBookActivity";
 
@@ -65,7 +64,7 @@ public class PhoneBookActivity extends Activity {
                 view.getContext().startActivity(Intent);
             }
         });
-
+        initBackButton();
 
     }
 
@@ -82,4 +81,57 @@ public class PhoneBookActivity extends Activity {
             } while (query.moveToNext());
         }
     }
+
+     /* public void fpGetAndroidContacts() {
+        ArrayList<AddressBookActivity.AndroidContacts> arrayListAndroidContacts = new ArrayList<AddressBookActivity.AndroidContacts>();
+
+
+        Cursor query = null;
+        ContentResolver contentResolver = getContentResolver();
+        try {
+            query = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+        } catch (Exception e) {
+            Log.e(TAG, "Contact error!");
+        }
+
+        if (query.getCount()>0){
+            while (query.moveToNext()){
+                Contact androidContact = new AddressBookActivity.AndroidContacts();
+                String contactId = query.getString(query.getColumnIndex(ContactsContract.Contacts._ID));
+                String contactName =  query.getString(query.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+
+                androidContact.name = contactName;
+
+                int hasPhoneNumber = Integer.parseInt(query.getString(query.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)));
+                if (hasPhoneNumber>0){
+                    Cursor phoneCursor = contentResolver.query(
+                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI
+                            , null
+                            , ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?"
+                            , new String[]{contactId}
+                            ,null
+
+                    );
+
+                    while (phoneCursor.moveToNext()){
+                        String phoneNumber = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                        androidContact.phone=phoneNumber;
+                    }
+                    phoneCursor.close();
+                }
+                arrayListAndroidContacts.add(androidContact);
+
+            }
+
+        }
+
+
+
+    class Contact {
+        public String name = "";
+        public String phone = "";
+        public int id = 0;
+
+    }
+*/
 }

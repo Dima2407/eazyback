@@ -12,30 +12,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/number_one"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/number_one"
-                style="@style/EazyEditTextPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
-
-            <Button
-                android:id="@+id/open_address_Book"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginRight="5dp"
-                android:gravity="center_vertical"
-                android:text="O"
-                android:textAlignment="center"
-                android:textSize="14dp" />
-
-        </LinearLayout>
+            android:layout_weight="2" />
 
 
         <EditText
@@ -60,8 +42,19 @@
             android:id="@+id/number_five"
             style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/open_address_Book"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/secondary_margin" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/addContact"
+            android:textSize="14dp"
+
+            />
     </LinearLayout>
 
 

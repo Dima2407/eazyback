@@ -57,5 +57,6 @@
     <string name="title_activity_float_settings">Расположение кнопок</string>
 
     <string name="clear">Очистить список</string>
+    <string name="addContact">Добавить контакт из телефонной книги</string>
 
 </resources>
