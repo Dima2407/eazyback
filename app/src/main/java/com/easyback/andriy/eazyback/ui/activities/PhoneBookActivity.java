@@ -1,20 +1,25 @@
 package com.easyback.andriy.eazyback.ui.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.easyback.andriy.eazyback.R;
 
 import java.util.ArrayList;
 
 public class PhoneBookActivity extends Activity {
+
+    private static final String TAG = "PhoneBookActivity";
 
     private static ArrayList<String> listViewArray = new ArrayList<String>();
     ListView myList;
@@ -46,12 +51,20 @@ public class PhoneBookActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_book);
 
-
         myList = (ListView) findViewById(R.id.listView);
 
         getAddressBook();
         myList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listViewArray));
         getListViewSize(myList);
+        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getBaseContext(), "test", Toast.LENGTH_SHORT);
+                Intent Intent = new Intent(view.getContext(), NumbersManagerActivity.class);
+                view.getContext().startActivity(Intent);
+            }
+        });
 
 
     }
@@ -69,5 +82,4 @@ public class PhoneBookActivity extends Activity {
             } while (query.moveToNext());
         }
     }
-
 }
