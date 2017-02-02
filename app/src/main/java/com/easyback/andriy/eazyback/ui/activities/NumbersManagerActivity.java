@@ -36,7 +36,7 @@ public final class NumbersManagerActivity extends GenericActivity {
                 mTelephoneCells = ViewUtils.initPhoneSellsUltra(this, getSharedHelper().getTargetNumbers());
                 break;
         }
-        initBackButton();
+
 
         openAddressBook = (Button) findViewById(R.id.open_address_Book);
         openAddressBook.setOnClickListener(new View.OnClickListener() {
@@ -49,12 +49,25 @@ public final class NumbersManagerActivity extends GenericActivity {
             }
         });
 
+        initBackButton();
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         setStatTag(getClass().getSimpleName());
+        hideKeyboard(mTelephoneCells.get(0));
+
+
+        Button save = (Button) findViewById(R.id.save_address_Book);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Intent = new Intent(view.getContext(), MainSettingsActivity.class);
+                view.getContext().startActivity(Intent);
+            }
+        });
     }
 
     @Override

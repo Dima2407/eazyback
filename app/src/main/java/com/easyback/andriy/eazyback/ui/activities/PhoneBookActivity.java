@@ -2,8 +2,10 @@ package com.easyback.andriy.eazyback.ui.activities;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,20 +15,19 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.easyback.andriy.eazyback.R;
+import com.easyback.andriy.eazyback.models.Contact;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class PhoneBookActivity extends GenericActivity {
 
     private static final String TAG = "PhoneBookActivity";
 
-    private static ArrayList<String> listViewArray = new ArrayList<String>();
+    private static ArrayList<Contact> listViewArray = new ArrayList<Contact>();
     ListView myList;
 
     public static void getListViewSize(ListView myListView) {
-        listViewArray.add("One");
-        listViewArray.add("Two");
-        listViewArray.add("Three");
         ListAdapter myListAdapter = myListView.getAdapter();
         if (myListAdapter == null) {
             //do nothing return null
@@ -43,6 +44,7 @@ public class PhoneBookActivity extends GenericActivity {
         ViewGroup.LayoutParams params = myListView.getLayoutParams();
         params.height = totalHeight + (myListView.getDividerHeight() * (myListAdapter.getCount() - 1));
         myListView.setLayoutParams(params);
+
     }
 
     @Override
@@ -52,86 +54,62 @@ public class PhoneBookActivity extends GenericActivity {
 
         myList = (ListView) findViewById(R.id.listView);
 
+
         getAddressBook();
-        myList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listViewArray));
+        myList.setAdapter(new ArrayAdapter<Contact>(this, android.R.layout.simple_list_item_1, listViewArray));
         getListViewSize(myList);
+
+
+        for (Contact contact : listViewArray) {
+            Log.e(TAG, contact.toString());
+        }
+
+
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(), "test", Toast.LENGTH_SHORT);
-                Intent Intent = new Intent(view.getContext(), NumbersManagerActivity.class);
-                view.getContext().startActivity(Intent);
+            public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+
+                Contact contact = (Contact) parent.getAdapter().getItem(position);
+
+                Set<String> setPhones = getSharedHelper().getTargetNumbers();
+                setPhones.add(contact.getPhone());
+                getSharedHelper().setTargetPhoneSet(setPhones);
+
+                Intent Intent = new Intent(itemClicked.getContext(), NumbersManagerActivity.class);
+                itemClicked.getContext().startActivity(Intent);
+
+                Toast.makeText(getApplicationContext(), "The phone has been added",
+                        Toast.LENGTH_LONG).show();
+
             }
         });
-        initBackButton();
 
+
+        initBackButton();
     }
 
     void getAddressBook() {
-        final Cursor query = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-        if (query.moveToFirst()) {
-            listViewArray.clear();
-            System.out.println(query.getColumnNames());
-            final int contact = query.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
+        Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
+        String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Phone.NUMBER};
+
+        Cursor people = getContentResolver().query(uri, projection, null, null, null);
+
+        int indexId = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID);
+        int indexName = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+        int indexPhone = people.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+        if (people.moveToFirst()) {
             do {
-                final String string = query.getString(contact);
-                listViewArray.add(string);
+                Contact contact = new Contact();
+                contact.setId(indexId);
+                contact.setName(people.getString(indexName));
+                contact.setPhone(people.getString(indexPhone));
 
-            } while (query.moveToNext());
+                listViewArray.add(contact);
+
+            } while (people.moveToNext());
         }
-    }
-
-     /* public void fpGetAndroidContacts() {
-        ArrayList<AddressBookActivity.AndroidContacts> arrayListAndroidContacts = new ArrayList<AddressBookActivity.AndroidContacts>();
-
-
-        Cursor query = null;
-        ContentResolver contentResolver = getContentResolver();
-        try {
-            query = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
-        } catch (Exception e) {
-            Log.e(TAG, "Contact error!");
-        }
-
-        if (query.getCount()>0){
-            while (query.moveToNext()){
-                Contact androidContact = new AddressBookActivity.AndroidContacts();
-                String contactId = query.getString(query.getColumnIndex(ContactsContract.Contacts._ID));
-                String contactName =  query.getString(query.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-
-                androidContact.name = contactName;
-
-                int hasPhoneNumber = Integer.parseInt(query.getString(query.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)));
-                if (hasPhoneNumber>0){
-                    Cursor phoneCursor = contentResolver.query(
-                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI
-                            , null
-                            , ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?"
-                            , new String[]{contactId}
-                            ,null
-
-                    );
-
-                    while (phoneCursor.moveToNext()){
-                        String phoneNumber = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                        androidContact.phone=phoneNumber;
-                    }
-                    phoneCursor.close();
-                }
-                arrayListAndroidContacts.add(androidContact);
-
-            }
-
-        }
-
-
-
-    class Contact {
-        public String name = "";
-        public String phone = "";
-        public int id = 0;
 
     }
-*/
 }

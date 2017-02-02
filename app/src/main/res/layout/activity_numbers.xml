@@ -52,6 +52,17 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:text="@string/addContact"
+            android:textSize="14dp" />
+
+
+        <Button
+            android:id="@+id/save_address_Book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Save"
             android:textSize="14dp"
 
             />
