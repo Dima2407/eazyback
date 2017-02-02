@@ -75,10 +75,10 @@ public class PhoneBookActivity extends GenericActivity {
 
                     getSharedHelper().getTargetNumbers().add(contact.getPhone());
 
-                    Toast.makeText(getApplicationContext(), "The phone number has been added",
+                    Toast.makeText(getApplicationContext(), R.string.added_contact,
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "You can add only 5 phone numbers!",
+                    Toast.makeText(getApplicationContext(), R.string.not_added_contact,
                             Toast.LENGTH_LONG).show();
                 }
 
@@ -87,7 +87,6 @@ public class PhoneBookActivity extends GenericActivity {
 
             }
         });
-
 
         initBackButton();
     }

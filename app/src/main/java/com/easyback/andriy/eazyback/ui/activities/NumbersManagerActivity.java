@@ -52,9 +52,14 @@ public final class NumbersManagerActivity extends GenericActivity {
             }
         });
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        initBackButton();
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -71,12 +76,6 @@ public final class NumbersManagerActivity extends GenericActivity {
         hideKeyboard(mTelephoneCells.get(0));
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.settings, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -96,4 +95,6 @@ public final class NumbersManagerActivity extends GenericActivity {
     public void onBackPressed() {
         startActivity(new Intent(getBaseContext(), MainSettingsActivity.class));
     }
+
+
 }

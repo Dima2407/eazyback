@@ -51,7 +51,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/addContact"
+            android:text="@string/add_contact"
             android:textSize="14dp" />
 
 

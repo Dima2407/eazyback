@@ -58,6 +58,8 @@
     <string name="clear">Clear the list</string>
     <string name="title_activity_phone_book">PhoneBookActivity</string>
 
-    <string name="addContact">Add a contact from PhoneBook</string>
+    <string name="add_contact">Add a contact from phonebook</string>
+    <string name="added_contact">The phone number has been added</string>
+    <string name="not_added_contact">You can add only 5 phone numbers!</string>
 
 </resources>
