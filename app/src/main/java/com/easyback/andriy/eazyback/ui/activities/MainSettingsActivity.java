@@ -133,6 +133,11 @@ public final class MainSettingsActivity extends GenericActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        this.finish();
+    }
+
     private final class Checker implements CompoundButton.OnCheckedChangeListener {
 
         @Override
