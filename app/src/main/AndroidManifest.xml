@@ -54,11 +54,12 @@
         <service
             android:name=".core.DeviceService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
 
         <activity
             android:name=".ui.activities.PhoneBookActivity"
-            android:label="@string/title_activity_phone_book"></activity>
+            android:label="@string/title_activity_phone_book"
+            android:noHistory="true" />
     </application>
 
 </manifest>
