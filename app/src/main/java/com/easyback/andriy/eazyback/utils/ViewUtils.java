@@ -27,7 +27,7 @@ public final class ViewUtils {
         List<EditText> editTexts = new ArrayList<EditText>(5);
         editTexts.add((EditText) pView.findViewById(R.id.number_one));
         editTexts.add((EditText) pView.findViewById(R.id.number_two));
-        editTexts.add((EditText) pView.findViewById(R.id.number_there));
+        editTexts.add((EditText) pView.findViewById(R.id.number_three));
         editTexts.add((EditText) pView.findViewById(R.id.number_four));
         editTexts.add((EditText) pView.findViewById(R.id.number_five));
 
@@ -42,7 +42,7 @@ public final class ViewUtils {
         List<EditText> editTexts = new ArrayList<EditText>(10);
         editTexts.add((EditText) pView.findViewById(R.id.number_one));
         editTexts.add((EditText) pView.findViewById(R.id.number_two));
-        editTexts.add((EditText) pView.findViewById(R.id.number_there));
+        editTexts.add((EditText) pView.findViewById(R.id.number_three));
         editTexts.add((EditText) pView.findViewById(R.id.number_four));
         editTexts.add((EditText) pView.findViewById(R.id.number_five));
         editTexts.add((EditText) pView.findViewById(R.id.number_six));
@@ -63,7 +63,7 @@ public final class ViewUtils {
         List<EditText> editTexts = new ArrayList<EditText>(20);
         editTexts.add((EditText) pView.findViewById(R.id.number_one));
         editTexts.add((EditText) pView.findViewById(R.id.number_two));
-        editTexts.add((EditText) pView.findViewById(R.id.number_there));
+        editTexts.add((EditText) pView.findViewById(R.id.number_three));
         editTexts.add((EditText) pView.findViewById(R.id.number_four));
         editTexts.add((EditText) pView.findViewById(R.id.number_five));
         editTexts.add((EditText) pView.findViewById(R.id.number_six));

@@ -7,70 +7,70 @@
     android:background="@color/stock_background">
 
     <LinearLayout
+        style="@style/Cell"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        style="@style/Cell">
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/number_one"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_two"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/number_there"
+            android:id="@+id/number_three"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_four"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_five"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_six"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_seven"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_eighteen"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_nine"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"/>
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/number_ten"
+            style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/EazyEditTextPhone"
             android:layout_marginBottom="@dimen/secondary_margin"/>
     </LinearLayout>
 

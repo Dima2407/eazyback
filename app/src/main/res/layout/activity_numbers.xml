@@ -27,7 +27,7 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/number_there"
+            android:id="@+id/number_three"
             style="@style/EazyEditTextPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -52,10 +52,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:text="@string/add_contact"
-            android:textSize="14dp" />
-
-
-        />
+            android:textSize="14sp" />
     </LinearLayout>
 
 
