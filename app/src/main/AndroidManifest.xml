@@ -1,62 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.easyback.andriy.eazyback">
+    package="com.easyback.andriy.eazyback">
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
 
     <application
+        android:name=".core.EzApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name=".core.EzApplication">
-
+        android:theme="@style/AppTheme">
         <activity
-            android:theme="@style/AppTheme"
             android:name=".ui.activities.MainSettingsActivity"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden">
-
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.activities.NumbersManagerActivity"/>
-        <activity android:name=".ui.activities.CallPanelSettingsActivity"/>
-        <activity android:name=".ui.activities.DeviceManagerActivity"/>
-        <activity android:name=".ui.activities.DelayCallbackNumbersActivity"/>
-        <activity android:name=".ui.activities.FloatWindowSettings"/>
-
+        <activity
+            android:name=".ui.activities.NumbersManagerActivity"
+            android:noHistory="true" />
+        <activity android:name=".ui.activities.CallPanelSettingsActivity" />
+        <activity android:name=".ui.activities.DeviceManagerActivity" />
+        <activity android:name=".ui.activities.DelayCallbackNumbersActivity" />
+        <activity android:name=".ui.activities.FloatWindowSettings" />
         <activity
             android:name=".ui.activities.ExtraSettingsActivity"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
 
         <receiver
             android:name=".core.listeners.CallListener"
-            android:exported="true"
-            android:enabled="true">
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.PHONE_STATE"/>
-                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
 
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
         <service
             android:name=".core.DeviceService"
             android:enabled="true"
-            android:exported="false">
-        </service>
+            android:exported="false" />
 
+        <activity
+            android:name=".ui.activities.PhoneBookActivity"
+            android:label="@string/title_activity_phone_book"
+            android:noHistory="true" />
     </application>
+
 </manifest>

@@ -9,39 +9,31 @@ import java.util.Set;
 
 public final class SharedHelper {
 
+    public static final int AMOUNT_PHONES_NUMBER = 5;
     private static final String NAME = "EazyBack";
     private static final String DONATE = "donate";
-
     private static final String ACTIVATE_FLAG = "activate_flag";
     private static final String ACTIVATE_MANUAL_FLAG = "activate_manual_flag";
     private static final String TARGET_PHONE_SET = "target_phone_set";
     private static final String REJECT_DELAY = "reject_delay";
     private static final String CALL_BACK_DELAY = "callback_delay";
-
     private static final String ACTIVATED_ACCEPT_BUTTON = "activated_accept_button";
     private static final String ACTIVATED_REJECT_BUTTON = "activated_reject_button";
     private static final String ACTIVATED_CALLBACK_BUTTON = "activated_callback_button";
     private static final String ACTIVATED_DELAY_CALLBACK_BUTTON = "activated_delay_callback_button";
-
     private static final String HEADSET_PLUG_MAIN_CONTROL = "headset_plug_main_control";
-
     private static final String HEADSET_PLUG_AUTOMAT = "headset_plug_automat";
     private static final String HEADSET_PLUG_MANUAL = "headset_plug_manual";
     private static final String HEADSET_PLUG_IGNORE = "headset_plug_ignore";
-
     private static final String HEADSET_UN_PLUG_AUTOMAT = "headset_un_plug_automat";
     private static final String HEADSET_UN_PLUG_MANUAL = "headset_un_plug_manual";
     private static final String HEADSET_UN_PLUG_IGNORE = "headset_un_plug_ignore";
-
     private static final String DELAY_CALLBACK_NUMBERS = "delay_callback_numbers";
     private static final String DELAY_BUTTONS_WINDOW = "delay_buttons_window";
     private static final String MANUAL_INTERCEPT_MODE = "manual_intercept_mode";
-
     private static final String FLOAT_WINDOW_X = "float_window_x";
     private static final String FLOAT_WINDOW_Y = "float_window_y";
-
     private static final String AUTO_HIDE_CALL_PANEL = "auto_hide_call_panel";
-
     private final SharedPreferences mSharedPreferences;
 
     public SharedHelper(Context pContext) {
