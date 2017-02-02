@@ -114,4 +114,9 @@ public class PhoneBookActivity extends GenericActivity {
         }
 
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, NumbersManagerActivity.class));
+    }
 }
