@@ -18,7 +18,8 @@ import com.easyback.andriy.eazyback.R;
 import com.easyback.andriy.eazyback.models.Contact;
 
 import java.util.ArrayList;
-import java.util.Set;
+
+import static com.easyback.andriy.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
 public class PhoneBookActivity extends GenericActivity {
 
@@ -69,18 +70,20 @@ public class PhoneBookActivity extends GenericActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+                if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
+                    Contact contact = (Contact) parent.getAdapter().getItem(position);
 
-                Contact contact = (Contact) parent.getAdapter().getItem(position);
+                    getSharedHelper().getTargetNumbers().add(contact.getPhone());
 
-                Set<String> setPhones = getSharedHelper().getTargetNumbers();
-                setPhones.add(contact.getPhone());
-                getSharedHelper().setTargetPhoneSet(setPhones);
+                    Toast.makeText(getApplicationContext(), "The phone number has been added",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "You can add only 5 phone numbers!",
+                            Toast.LENGTH_LONG).show();
+                }
 
                 Intent Intent = new Intent(itemClicked.getContext(), NumbersManagerActivity.class);
                 itemClicked.getContext().startActivity(Intent);
-
-                Toast.makeText(getApplicationContext(), "The phone has been added",
-                        Toast.LENGTH_LONG).show();
 
             }
         });
