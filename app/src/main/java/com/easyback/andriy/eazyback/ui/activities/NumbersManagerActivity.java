@@ -2,6 +2,8 @@ package com.easyback.andriy.eazyback.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +17,7 @@ public final class NumbersManagerActivity extends GenericActivity {
 
     private List<EditText> mTelephoneCells;
     private Button openAddressBook;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,8 @@ public final class NumbersManagerActivity extends GenericActivity {
             }
         });
 
-        initBackButton();
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
 
     }
 
@@ -58,16 +62,6 @@ public final class NumbersManagerActivity extends GenericActivity {
         super.onStart();
         setStatTag(getClass().getSimpleName());
         hideKeyboard(mTelephoneCells.get(0));
-
-
-        Button save = (Button) findViewById(R.id.save_address_Book);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent Intent = new Intent(view.getContext(), MainSettingsActivity.class);
-                view.getContext().startActivity(Intent);
-            }
-        });
     }
 
     @Override
@@ -75,5 +69,31 @@ public final class NumbersManagerActivity extends GenericActivity {
         super.onPause();
         ViewUtils.savePhoneCells(mTelephoneCells, getSharedHelper());
         hideKeyboard(mTelephoneCells.get(0));
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.action_save:
+                startActivity(new Intent(getBaseContext(), MainSettingsActivity.class));
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getBaseContext(), MainSettingsActivity.class));
     }
 }
