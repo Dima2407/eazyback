@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.easyback.andriy.eazyback.db.DBHelper;
+import com.easyback.andriy.eazyback.models.Contact;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -194,18 +197,35 @@ public final class SharedHelper {
         mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_IGNORE, pActive).commit();
     }
 
-    public Set<String> getDelayCallbackNumbers() {
-        return mSharedPreferences.getStringSet(DELAY_CALLBACK_NUMBERS, new HashSet<String>());
+    public Set<String> getDelayCallbackNumbers(Context context) {
+        Set<Contact> strings = new DBHelper(context).readAllContacts();
+        Set<String> stringSet = new HashSet<String>();
+        for (Contact contact : strings) {
+            if (contact.getName() == null) {
+                stringSet.add(contact.getPhone());
+            } else {
+                stringSet.add(contact.getName());
+            }
+        }
+        return stringSet;
+//        return mSharedPreferences.getStringSet(DELAY_CALLBACK_NUMBERS, new HashSet<String>());
     }
 
-    public void addDelayCallbackNumber(String pDelayCallbackNumber) {
-        Set<String> phoneSet = getDelayCallbackNumbers();
+    public void addDelayCallbackNumber(String pDelayCallbackNumber, Context context) {
+        Set<String> phoneSet = getDelayCallbackNumbers(context);
         phoneSet.add(pDelayCallbackNumber);
-        mSharedPreferences.edit().putStringSet(DELAY_CALLBACK_NUMBERS, phoneSet).commit();
+        DBHelper dbHelper = new DBHelper(context);
+        Contact contact = new Contact();
+        contact.setName(dbHelper.getContactName(context, pDelayCallbackNumber));
+        contact.setPhone(pDelayCallbackNumber);
+        dbHelper.createContact(contact);
     }
 
-    public void removeDelayCallbackNumber(String pDelayCallbackNumber) {
-        Set<String> phoneSet = getDelayCallbackNumbers();
+    public void removeDelayCallbackNumber(String pDelayCallbackNumber, Context context) {
+        DBHelper dbHelper = new DBHelper(context);
+
+        dbHelper.deleteContact(dbHelper.readByPhone(pDelayCallbackNumber));
+        Set<String> phoneSet = getDelayCallbackNumbers(context);
         phoneSet.remove(pDelayCallbackNumber);
         mSharedPreferences.edit().putStringSet(DELAY_CALLBACK_NUMBERS, phoneSet).commit();
     }
