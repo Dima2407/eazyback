@@ -39,7 +39,6 @@ public class DelayBackAdapter extends ArrayAdapter<String> {
         holder.phone.setText(getItem(position));
 
         return convertView;
-
     }
 
     private static final class Holder {

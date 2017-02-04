@@ -168,7 +168,7 @@ public final class Core {
 
                 case R.id.delay_callback_button:
                     Reflector.disconnectCall();
-                    mSharedHelper.addDelayCallbackNumber(mPhoneHolder);
+                    mSharedHelper.addDelayCallbackNumber(mPhoneHolder, mContext);
                     EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Delay callback button pressed in a Call panel");
                     break;
             }
