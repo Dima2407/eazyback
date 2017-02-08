@@ -39,21 +39,16 @@ public final class NumbersManagerActivity extends GenericActivity {
                 break;
         }
 
-
         openAddressBook = (Button) findViewById(R.id.open_address_Book);
         openAddressBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent Intent = new Intent(view.getContext(), PhoneBookActivity.class);
+                Intent Intent = new Intent(NumbersManagerActivity.this, PhoneBookActivity.class);
                 startActivity(Intent);
-
             }
         });
 
         initBackButton();
-
-
     }
 
     @Override
