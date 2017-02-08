@@ -20,5 +20,4 @@ android {
 
 dependencies {
     compile files('libs/libGoogleAnalyticsServices.jar')
-    compile files('libs/google-play-services.jar')
 }
