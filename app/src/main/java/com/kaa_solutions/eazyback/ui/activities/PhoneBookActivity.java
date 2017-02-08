@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,26 +26,6 @@ public class PhoneBookActivity extends GenericActivity {
     private static ArrayList<Contact> listViewArray = new ArrayList<Contact>();
     private ListView myList;
 
-    public static void getListViewSize(ListView myListView) {
-        ListAdapter myListAdapter = myListView.getAdapter();
-        if (myListAdapter == null) {
-            //do nothing return null
-            return;
-        }
-        //set listAdapter in loop for getting final size
-        int totalHeight = 0;
-        for (int size = 0; size < myListAdapter.getCount(); size++) {
-            View listItem = myListAdapter.getView(size, null, myListView);
-            listItem.measure(0, 0);
-            totalHeight += listItem.getMeasuredHeight();
-        }
-        //setting listview item in adapter
-        ViewGroup.LayoutParams params = myListView.getLayoutParams();
-        params.height = totalHeight + (myListView.getDividerHeight() * (myListAdapter.getCount() - 1));
-        myListView.setLayoutParams(params);
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +33,8 @@ public class PhoneBookActivity extends GenericActivity {
 
         myList = (ListView) findViewById(R.id.listView);
 
-
         getAddressBook();
         myList.setAdapter(new ArrayAdapter<Contact>(this, android.R.layout.simple_list_item_1, listViewArray));
-        getListViewSize(myList);
-
 
         for (Contact contact : listViewArray) {
             Log.e(TAG, contact.toString());
