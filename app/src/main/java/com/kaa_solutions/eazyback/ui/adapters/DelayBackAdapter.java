@@ -8,41 +8,23 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.kaa_solutions.eazyback.R;
+import com.kaa_solutions.eazyback.models.Contact;
 
 import java.util.ArrayList;
-import java.util.Set;
 
-public class DelayBackAdapter extends ArrayAdapter<String> {
-
-    private final LayoutInflater mLayoutInflater;
-
-    public DelayBackAdapter(Context context, Set<String> objects) {
-        super(context, 0, new ArrayList<String>(objects));
-        mLayoutInflater = LayoutInflater.from(context);
+public class DelayBackAdapter extends ArrayAdapter<Contact> {
+    public DelayBackAdapter(Context context, ArrayList<Contact> contacts) {
+        super(context, 0, contacts);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Holder holder;
-
+        Contact contact = getItem(position);
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.adapter_delay_back, parent, false);
-            holder = new Holder();
-
-            holder.phone = (TextView) convertView.findViewById(R.id.adapter_delay_back_phone_number);
-
-            convertView.setTag(holder);
-        } else {
-            holder = (Holder) convertView.getTag();
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_delay_back, parent, false);
         }
-
-        holder.phone.setText(getItem(position));
-
+        TextView tvName = (TextView) convertView.findViewById(R.id.adapter_delay_back_phone_number);
+        tvName.setText(contact.getPhone());
         return convertView;
     }
-
-    private static final class Holder {
-        TextView phone;
-    }
-
 }
