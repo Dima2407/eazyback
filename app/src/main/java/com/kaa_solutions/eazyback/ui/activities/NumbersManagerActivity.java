@@ -2,7 +2,6 @@ package com.kaa_solutions.eazyback.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -55,11 +54,6 @@ public final class NumbersManagerActivity extends GenericActivity {
         initBackButton();
 
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
