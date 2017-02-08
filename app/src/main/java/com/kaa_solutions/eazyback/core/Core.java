@@ -11,6 +11,7 @@ import android.view.View;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
 import com.kaa_solutions.eazyback.R;
+import com.kaa_solutions.eazyback.db.DelayContactDAO;
 import com.kaa_solutions.eazyback.ui.CallPanel;
 import com.kaa_solutions.eazyback.utils.ComponentLauncher;
 import com.kaa_solutions.eazyback.utils.Reflector;
@@ -22,12 +23,14 @@ public final class Core {
 
     private final Context mContext;
     private final SharedHelper mSharedHelper;
+    private final DelayContactDAO mContactDAO;
     private CallPanel mCallPanel;
     private String mPhoneHolder;
 
-    public Core(Context pContext, SharedHelper pSharedHelper) {
+    public Core(Context pContext, SharedHelper pSharedHelper, DelayContactDAO contactDAO) {
         mContext = pContext;
         mSharedHelper = pSharedHelper;
+        mContactDAO = contactDAO;
     }
 
     public void hideCallPanelWindow() {
@@ -168,7 +171,7 @@ public final class Core {
 
                 case R.id.delay_callback_button:
                     Reflector.disconnectCall();
-                    mSharedHelper.addDelayCallbackNumber(mPhoneHolder, mContext);
+                    mContactDAO.addDelayCallbackNumber(mPhoneHolder);
                     EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Delay callback button pressed in a Call panel");
                     break;
             }

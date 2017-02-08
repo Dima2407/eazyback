@@ -25,6 +25,7 @@ import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.core.Core;
 import com.kaa_solutions.eazyback.core.EzApplication;
 import com.kaa_solutions.eazyback.core.SharedHelper;
+import com.kaa_solutions.eazyback.db.DelayContactDAO;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +38,7 @@ public abstract class GenericActivity extends Activity {
 
     private EzApplication mEzApplication;
     private SharedHelper mSharedHelper;
+    private DelayContactDAO contactDAO;
     private PendingIntent mPendingIntent;
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -104,6 +106,13 @@ public abstract class GenericActivity extends Activity {
         EasyTracker.getInstance(this).set(Fields.SCREEN_NAME, pScreenName);
         EasyTracker.getInstance(this).send(MapBuilder.createAppView().build());
         EasyTracker.getInstance(this).activityStart(this);
+    }
+
+    protected DelayContactDAO getContactDAO() {
+        if (contactDAO == null) {
+            contactDAO = mEzApplication.getContactDAO();
+        }
+        return contactDAO;
     }
 
     protected SharedHelper getSharedHelper() {

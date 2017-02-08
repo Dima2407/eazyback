@@ -1,17 +1,14 @@
 package com.kaa_solutions.eazyback.models;
 
+
 public class Contact {
 
     private int id;
     private String name;
     private String phone;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
+    public Contact() {
     }
 
     public String getName() {
@@ -30,8 +27,18 @@ public class Contact {
         this.phone = phone;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return name + " " + phone;
     }
+
+
 }

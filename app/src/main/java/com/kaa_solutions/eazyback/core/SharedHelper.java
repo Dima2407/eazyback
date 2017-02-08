@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.kaa_solutions.eazyback.db.DBHelper;
-import com.kaa_solutions.eazyback.models.Contact;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -69,7 +66,6 @@ public final class SharedHelper {
     }
 
     public long getRejectDelayInSec() {
-        //TODO: I can change a time for waiting here
         long delay = mSharedPreferences.getLong(REJECT_DELAY, 3000);
 
         if (delay != -1) {
@@ -195,39 +191,6 @@ public final class SharedHelper {
 
     public void setUnPlugHeadsetIgnoreControl(boolean pActive) {
         mSharedPreferences.edit().putBoolean(HEADSET_UN_PLUG_IGNORE, pActive).commit();
-    }
-
-    public Set<String> getDelayCallbackNumbers(Context context) {
-        Set<Contact> strings = new DBHelper(context).readAllContacts();
-        Set<String> stringSet = new HashSet<String>();
-        for (Contact contact : strings) {
-            if (contact.getName() == null) {
-                stringSet.add(contact.getPhone());
-            } else {
-                stringSet.add(contact.getName());
-            }
-        }
-        return stringSet;
-//        return mSharedPreferences.getStringSet(DELAY_CALLBACK_NUMBERS, new HashSet<String>());
-    }
-
-    public void addDelayCallbackNumber(String pDelayCallbackNumber, Context context) {
-        Set<String> phoneSet = getDelayCallbackNumbers(context);
-        phoneSet.add(pDelayCallbackNumber);
-        DBHelper dbHelper = new DBHelper(context);
-        Contact contact = new Contact();
-        contact.setName(dbHelper.getContactName(context, pDelayCallbackNumber));
-        contact.setPhone(pDelayCallbackNumber);
-        dbHelper.createContact(contact);
-    }
-
-    public void removeDelayCallbackNumber(String pDelayCallbackNumber, Context context) {
-        DBHelper dbHelper = new DBHelper(context);
-
-        dbHelper.deleteContact(dbHelper.readByPhone(pDelayCallbackNumber));
-        Set<String> phoneSet = getDelayCallbackNumbers(context);
-        phoneSet.remove(pDelayCallbackNumber);
-        mSharedPreferences.edit().putStringSet(DELAY_CALLBACK_NUMBERS, phoneSet).commit();
     }
 
     public long getButtonsDelayInSec() {

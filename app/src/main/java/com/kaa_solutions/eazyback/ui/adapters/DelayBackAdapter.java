@@ -23,8 +23,12 @@ public class DelayBackAdapter extends ArrayAdapter<Contact> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_delay_back, parent, false);
         }
-        TextView tvName = (TextView) convertView.findViewById(R.id.adapter_delay_back_phone_number);
-        tvName.setText(contact.getPhone());
+        TextView textView = (TextView) convertView.findViewById(R.id.adapter_delay_back_phone_number);
+        if (contact.getName() != null) {
+            textView.setText(contact.getName());
+        } else {
+            textView.setText(contact.getPhone());
+        }
         return convertView;
     }
 }
