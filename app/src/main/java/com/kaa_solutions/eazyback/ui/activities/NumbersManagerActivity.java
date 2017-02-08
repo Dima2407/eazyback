@@ -46,7 +46,7 @@ public final class NumbersManagerActivity extends GenericActivity {
             public void onClick(View view) {
 
                 Intent Intent = new Intent(view.getContext(), PhoneBookActivity.class);
-                view.getContext().startActivity(Intent);
+                startActivity(Intent);
 
             }
         });
