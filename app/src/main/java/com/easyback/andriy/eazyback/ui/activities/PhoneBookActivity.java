@@ -26,7 +26,7 @@ public class PhoneBookActivity extends GenericActivity {
     private static final String TAG = "PhoneBookActivity";
 
     private static ArrayList<Contact> listViewArray = new ArrayList<Contact>();
-    ListView myList;
+    private ListView myList;
 
     public static void getListViewSize(ListView myListView) {
         ListAdapter myListAdapter = myListView.getAdapter();
