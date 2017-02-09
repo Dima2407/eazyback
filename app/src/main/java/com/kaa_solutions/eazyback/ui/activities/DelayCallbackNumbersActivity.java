@@ -85,31 +85,4 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         }
     }
 
-    /*private final class ItemClicker implements AdapterView.OnItemClickListener {
-
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Log.e(getClass().getSimpleName(), "onItemClick(): "+ parent.getItemAtPosition(position).toString());
-            String nameOrPhone = String.valueOf(parent.getItemAtPosition(position));
-            Contact contact = getContactDAO().findContactByPhoneOrName(nameOrPhone);
-            Log.e(getClass().getSimpleName(), contact.toString());
-          *//*  String item = String.valueOf(parent.getItemAtPosition(position));
-
-            Contact contact = getContactDAO().findContactByPhoneOrName(item);
-
-            getContactDAO().deleteDelayContact(contact);
-            Log.e(getClass().getSimpleName(), contact.toString());
-
-            ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
-            if (arrayOfUsers != null) {
-                DelayBackAdapter adapter = new DelayBackAdapter(DelayCallbackNumbersActivity.this, arrayOfUsers);
-                mListView.setAdapter(adapter);
-            } else {
-                mListView.setAdapter(null);
-            }*//*
-//            ComponentLauncher.launchCallIntent(getApplicationContext(), contact.getPhone());
-
-        }
-    }*/
-
 }
