@@ -4,9 +4,11 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.util.Log;
 
 import com.kaa_solutions.eazyback.models.Contact;
 
@@ -55,6 +57,7 @@ public class DelayContactDAO {
             cursor.close();
         }
 
+
         return contacts;
     }
 
@@ -65,12 +68,17 @@ public class DelayContactDAO {
         contact.setName(s);
         contact.setPhone(pDelayCallbackNumber);
 
-
         ContentValues contentValues = new ContentValues();
         contentValues.put(DBHelper.COLUMN_NAME, contact.getName());
         contentValues.put(DBHelper.COLUMN_PHONE, contact.getPhone());
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-        database.insert(TABLE_DELAY_CONTACTS, null, contentValues);
+        try {
+            database.insert(TABLE_DELAY_CONTACTS, null, contentValues);
+        } catch (SQLiteConstraintException e) {
+            Log.d(getClass().getSimpleName(), "Number is exists in the table \"delayContacts\"");
+        }
+
+        Log.e(getClass().getSimpleName(), "Delay incoming call: " + contact.toString());
     }
 
 

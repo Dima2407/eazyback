@@ -22,8 +22,14 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         setContentView(R.layout.activity_delay_back);
         mListView = (ListView) findViewById(R.id.list_delay_callback);
         ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
-        DelayBackAdapter adapter = new DelayBackAdapter(this, arrayOfUsers);
-        mListView.setAdapter(adapter);
+        DelayBackAdapter adapter;
+        if (arrayOfUsers != null) {
+            adapter = new DelayBackAdapter(this, arrayOfUsers);
+            mListView.setAdapter(adapter);
+        } else {
+            mListView.setAdapter(null);
+        }
+
         mListView.setEmptyView(findViewById(R.id.empty_delay_callback));
         mListView.setOnItemClickListener(new ItemClicker());
 

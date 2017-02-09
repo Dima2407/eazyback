@@ -10,7 +10,7 @@ public class DBHelper extends SQLiteOpenHelper {
     static final String COLUMN_ID = "_id";
     static final String COLUMN_NAME = "name";
     static final String COLUMN_PHONE = "phone";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "eazyback_db";
 
 
@@ -21,13 +21,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.e(getClass().getSimpleName(), "_onCreate();");
-        db.execSQL("create table " + TABLE_DELAY_CONTACTS + "(" + COLUMN_ID + " integer primary key," + COLUMN_NAME + " text," + COLUMN_PHONE + " text" + ")");
+        Log.d(getClass().getSimpleName(), "_onCreate();");
+        db.execSQL("create table " + TABLE_DELAY_CONTACTS + "(" + COLUMN_ID + " integer primary key," + COLUMN_NAME + " text," + COLUMN_PHONE + " text unique" + ")");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.e(getClass().getSimpleName(), "_onUpdate();");
+        Log.d(getClass().getSimpleName(), "_onUpdate();");
         db.execSQL("drop table if exists " + TABLE_DELAY_CONTACTS);
         onCreate(db);
 
