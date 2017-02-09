@@ -37,7 +37,7 @@ public class Contact {
 
     @Override
     public String toString() {
-        return name + " " + phone;
+        return "Contact: id: " + id + ", name: " + name + ", phone: " + phone;
     }
 
 
