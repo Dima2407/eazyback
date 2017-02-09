@@ -8,12 +8,12 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.models.Contact;
+import com.kaa_solutions.eazyback.ui.adapters.PhonebookAdapter;
 
 import java.util.ArrayList;
 
@@ -34,10 +34,21 @@ public class PhoneBookActivity extends GenericActivity {
         myList = (ListView) findViewById(R.id.listView);
 
         getAddressBook();
-        myList.setAdapter(new ArrayAdapter<Contact>(this, android.R.layout.simple_list_item_1, listViewArray));
+//        myList.setAdapter(new ArrayAdapter<Contact>(this, R.layout.adapter_phonebook, listViewArray));
+//        myList.setAdapter(new ArrayAdapter<Contact>(this, android.R.layout.simple_list_item_1, listViewArray));
+
+        ArrayList<Contact> arrayOfUsers = listViewArray;
+        PhonebookAdapter adapter;
+        if (arrayOfUsers != null) {
+            adapter = new PhonebookAdapter(this, arrayOfUsers);
+            myList.setAdapter(adapter);
+        } else {
+            myList.setAdapter(null);
+        }
+
 
         for (Contact contact : listViewArray) {
-            Log.e(TAG, contact.toString());
+            Log.d("Phonebook", contact.toString());
         }
 
 
