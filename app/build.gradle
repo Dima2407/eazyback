@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.easyback.andriy.eazyback"
+        applicationId "com.kaa_solutions.eazyback"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 19
