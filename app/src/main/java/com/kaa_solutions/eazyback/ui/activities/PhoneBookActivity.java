@@ -25,6 +25,7 @@ public class PhoneBookActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().setTitle(R.string.title_activity_phone_book);
         setContentView(R.layout.activity_phone_book);
 
         myList = (ListView) findViewById(R.id.listView);

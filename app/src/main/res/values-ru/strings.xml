@@ -58,7 +58,7 @@
     <string name="clear">Очистить список</string>
 
 
-    <string name="title_activity_phone_book">Телефонная книга</string>
+    <string name="title_activity_phone_book">Контакты</string>
     <string name="add_contact">Добавить номер из телефонной книги</string>
     <string name="added_contact">Номер добавлен</string>
     <string name="not_added_contact">Можно добавить не больше 5 номеров!</string>
