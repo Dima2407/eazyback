@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.easyback.andriy.eazyback">
+    package="com.kaa_solutions.eazyback">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
@@ -14,13 +14,13 @@
 
 
     <application
-        android:name=".core.EzApplication"
+        android:name="com.kaa_solutions.eazyback.core.EzApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activities.MainSettingsActivity"
+            android:name="com.kaa_solutions.eazyback.ui.activities.MainSettingsActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden">
@@ -31,18 +31,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.NumbersManagerActivity"
+            android:name="com.kaa_solutions.eazyback.ui.activities.NumbersManagerActivity"
             android:noHistory="true" />
-        <activity android:name=".ui.activities.CallPanelSettingsActivity" />
-        <activity android:name=".ui.activities.DeviceManagerActivity" />
-        <activity android:name=".ui.activities.DelayCallbackNumbersActivity" />
-        <activity android:name=".ui.activities.FloatWindowSettings" />
+        <activity android:name="com.kaa_solutions.eazyback.ui.activities.CallPanelSettingsActivity" />
+        <activity android:name="com.kaa_solutions.eazyback.ui.activities.DeviceManagerActivity" />
+        <activity android:name="com.kaa_solutions.eazyback.ui.activities.DelayCallbackNumbersActivity" />
+        <activity android:name="com.kaa_solutions.eazyback.ui.activities.FloatWindowSettings" />
         <activity
-            android:name=".ui.activities.ExtraSettingsActivity"
+            android:name="com.kaa_solutions.eazyback.ui.activities.ExtraSettingsActivity"
             android:windowSoftInputMode="stateHidden" />
 
         <receiver
-            android:name=".core.listeners.CallListener"
+            android:name="com.kaa_solutions.eazyback.core.listeners.CallListener"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -54,12 +54,12 @@
         </receiver>
 
         <service
-            android:name=".core.DeviceService"
+            android:name="com.kaa_solutions.eazyback.core.DeviceService"
             android:enabled="true"
             android:exported="false" />
 
         <activity
-            android:name=".ui.activities.PhoneBookActivity"
+            android:name="com.kaa_solutions.eazyback.ui.activities.PhoneBookActivity"
             android:label="@string/title_activity_phone_book"
             android:noHistory="true" />
     </application>

@@ -5,11 +5,12 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.easyback.andriy.eazyback"
+        applicationId "com.kaa_solutions.eazyback"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 19
         versionName "2.5"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
@@ -20,6 +21,8 @@ android {
 
 dependencies {
     compile files('libs/libGoogleAnalyticsServices.jar')
-    compile files('libs/google-play-services.jar')
-    compile 'com.android.support:support-v4:19.1.0'
+    androidTestCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
 }
