@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -21,9 +20,6 @@ import static com.kaa_solutions.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
 public class PhoneBookActivity extends GenericActivity {
 
-    private static final String TAG = "PhoneBookActivity";
-
-    private static ArrayList<Contact> listViewArray = new ArrayList<Contact>();
     private ListView myList;
 
     @Override
@@ -34,21 +30,14 @@ public class PhoneBookActivity extends GenericActivity {
         myList = (ListView) findViewById(R.id.listView);
 
         getAddressBook();
-//        myList.setAdapter(new ArrayAdapter<Contact>(this, R.layout.adapter_phonebook, listViewArray));
-//        myList.setAdapter(new ArrayAdapter<Contact>(this, android.R.layout.simple_list_item_1, listViewArray));
 
-        ArrayList<Contact> arrayOfUsers = listViewArray;
+        ArrayList<Contact> arrayOfUsers = getAddressBook();
         PhonebookAdapter adapter;
         if (arrayOfUsers != null) {
             adapter = new PhonebookAdapter(this, arrayOfUsers);
             myList.setAdapter(adapter);
         } else {
             myList.setAdapter(null);
-        }
-
-
-        for (Contact contact : listViewArray) {
-            Log.d("Phonebook", contact.toString());
         }
 
 
@@ -69,7 +58,7 @@ public class PhoneBookActivity extends GenericActivity {
                 }
 
                 Intent Intent = new Intent(itemClicked.getContext(), NumbersManagerActivity.class);
-                itemClicked.getContext().startActivity(Intent);
+                startActivity(Intent);
 
             }
         });
@@ -77,7 +66,8 @@ public class PhoneBookActivity extends GenericActivity {
         initBackButton();
     }
 
-    void getAddressBook() {
+    ArrayList<Contact> getAddressBook() {
+        ArrayList<Contact> contacts = new ArrayList<Contact>();
         Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
         String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Phone.NUMBER};
@@ -94,11 +84,11 @@ public class PhoneBookActivity extends GenericActivity {
                 contact.setName(people.getString(indexName));
                 contact.setPhone(people.getString(indexPhone));
 
-                listViewArray.add(contact);
+                contacts.add(contact);
 
             } while (people.moveToNext());
         }
-
+        return contacts;
     }
 
     @Override
