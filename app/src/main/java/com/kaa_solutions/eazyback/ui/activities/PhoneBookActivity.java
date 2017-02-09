@@ -21,9 +21,8 @@ import static com.kaa_solutions.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
 public class PhoneBookActivity extends GenericActivity {
 
-    private static final String TAG = "PhoneBookActivity";
-
     private static ArrayList<Contact> listViewArray = new ArrayList<Contact>();
+
     private ListView myList;
 
     @Override
@@ -34,8 +33,6 @@ public class PhoneBookActivity extends GenericActivity {
         myList = (ListView) findViewById(R.id.listView);
 
         getAddressBook();
-//        myList.setAdapter(new ArrayAdapter<Contact>(this, R.layout.adapter_phonebook, listViewArray));
-//        myList.setAdapter(new ArrayAdapter<Contact>(this, android.R.layout.simple_list_item_1, listViewArray));
 
         ArrayList<Contact> arrayOfUsers = listViewArray;
         PhonebookAdapter adapter;
@@ -48,9 +45,8 @@ public class PhoneBookActivity extends GenericActivity {
 
 
         for (Contact contact : listViewArray) {
-            Log.d("Phonebook", contact.toString());
+            Log.d("Phonebook: ", contact.toString());
         }
-
 
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -98,7 +94,6 @@ public class PhoneBookActivity extends GenericActivity {
 
             } while (people.moveToNext());
         }
-
     }
 
     @Override
