@@ -51,11 +51,31 @@ public class DatabaseTests {
         Assert.assertNotNull(contact1);
         Log.e(getClass().getSimpleName(), "findByNameOrPhone(contact) = " + contact1.toString() + ", id = " + contact1.getId());
 
+        Contact contact11 = delayContactDAO.findContactByPhoneOrName("+380631441234");
+        Assert.assertNotNull(contact11);
+        Log.e(getClass().getSimpleName(), "findContactByPhoneOrName() " + contact11.toString());
+        Assert.assertEquals("+380631441234", contact11.getPhone());
 
         delayContactDAO.deleteDelayContact(contact);
 
         ArrayList<Contact> arrayList2 = delayContactDAO.getDelayCallbackNumbers();
         Assert.assertNull(arrayList2);
+
+    }
+
+    @Test
+    public void testFindContactByNameOrPhone() {
+        Context context = InstrumentationRegistry.getTargetContext();
+        DelayContactDAO delayContactDAO = new DelayContactDAO(context);
+
+
+        Contact contact1 = new Contact();
+        contact1.setPhone("+380631441234");
+        delayContactDAO.addDelayCallbackNumber(contact1.getPhone());
+
+        Contact foundContact = delayContactDAO.findContactByPhoneOrName("+380631441234");
+        Assert.assertNotNull(foundContact);
+        Assert.assertEquals(foundContact.getPhone(), "+380631441234");
 
     }
 }

@@ -4,7 +4,6 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -72,15 +71,29 @@ public class DelayContactDAO {
         contentValues.put(DBHelper.COLUMN_NAME, contact.getName());
         contentValues.put(DBHelper.COLUMN_PHONE, contact.getPhone());
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-        try {
+
+        ArrayList<Contact> contacts = getDelayCallbackNumbers();
+        if (contacts != null) {
+            boolean exists = false;
+            m:
+            for (Contact contact1 : contacts) {
+                if (contact1.getPhone().equals(pDelayCallbackNumber)) {
+                    exists = true;
+                    break m;
+                }
+            }
+
+            if (!exists) {
+                database.insert(TABLE_DELAY_CONTACTS, null, contentValues);
+            } else {
+                Log.e(getClass().getSimpleName(), "The number is exists in the table \"delayContacts\"");
+            }
+        } else {
             database.insert(TABLE_DELAY_CONTACTS, null, contentValues);
-        } catch (SQLiteConstraintException e) {
-            Log.d(getClass().getSimpleName(), "Number is exists in the table \"delayContacts\"");
         }
 
         Log.e(getClass().getSimpleName(), "Delay incoming call: " + contact.toString());
     }
-
 
     public void deleteDelayContact(Contact contact) {
         Contact contact1 = null;
@@ -118,7 +131,6 @@ public class DelayContactDAO {
             String clauseName = DBHelper.COLUMN_NAME + " = ?";
             String[] argName = {contact.getName()};
 
-
             cursor = database.query(TABLE_DELAY_CONTACTS, null, clauseName, argName,
                     null, null, null);
             if (cursor.moveToNext()) {
@@ -134,13 +146,39 @@ public class DelayContactDAO {
                 contact1.setName(name);
                 contact1.setPhone(phone);
             }
-
-
         }
         cursor.close();
         database.close();
 
         return contact1;
+    }
+
+    public Contact findContactByPhoneOrName(String nameOrPhone) {
+        Contact contact = null;
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+
+        String clause = DBHelper.COLUMN_PHONE + " = ? OR " + DBHelper.COLUMN_NAME + " = ?";
+        String[] selectionArgs = {nameOrPhone};
+
+        Cursor cursor = database.query(TABLE_DELAY_CONTACTS, null, clause, selectionArgs,
+                null, null, null);
+        if (cursor.moveToNext()) {
+            int idIndex = cursor.getColumnIndex(DBHelper.COLUMN_ID);
+            int nameIndex = cursor.getColumnIndex(DBHelper.COLUMN_NAME);
+            int phoneIndex = cursor.getColumnIndex(DBHelper.COLUMN_PHONE);
+
+            int id = cursor.getInt(idIndex);
+            String name = cursor.getString(nameIndex);
+            String phone = cursor.getString(phoneIndex);
+            contact = new Contact();
+            contact.setId(id);
+            contact.setName(name);
+            contact.setPhone(phone);
+        }
+        cursor.close();
+        database.close();
+
+        return contact;
     }
 
     public void deleteDelayContactAll() {

@@ -31,7 +31,6 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         }
 
         mListView.setEmptyView(findViewById(R.id.empty_delay_callback));
-        mListView.setOnItemClickListener(new ItemClicker());
 
         initBackButton();
 
@@ -42,6 +41,29 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
                 mListView.setAdapter(null);
             }
         });
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                                             @Override
+                                             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
+                                                 Contact contact = (Contact) parent.getAdapter().getItem(position);
+                                                 getContactDAO().deleteDelayContact(contact);
+
+                                                 ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
+                                                 DelayBackAdapter adapter;
+                                                 if (arrayOfUsers != null) {
+                                                     adapter = new DelayBackAdapter(DelayCallbackNumbersActivity.this, arrayOfUsers);
+                                                     mListView.setAdapter(adapter);
+                                                 } else {
+                                                     mListView.setAdapter(null);
+                                                 }
+                                                 ComponentLauncher.launchCallIntent(getApplicationContext(), contact.getPhone());
+                                             }
+                                         }
+
+        );
+
+
     }
 
     @Override
@@ -50,24 +72,44 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         setStatTag(getClass().getSimpleName());
     }
 
-    private final class ItemClicker implements AdapterView.OnItemClickListener {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
+        DelayBackAdapter adapter;
+        if (arrayOfUsers != null) {
+            adapter = new DelayBackAdapter(DelayCallbackNumbersActivity.this, arrayOfUsers);
+            mListView.setAdapter(adapter);
+        } else {
+            mListView.setAdapter(null);
+        }
+    }
+
+    /*private final class ItemClicker implements AdapterView.OnItemClickListener {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            String item = String.valueOf(parent.getItemAtPosition(position));
-            Contact contact;
-            if (getContactDAO().readByPhone(item) != null) {
-                contact = getContactDAO().readByPhone(item);
-            } else {
-                contact = getContactDAO().readByName(item);
-            }
+            Log.e(getClass().getSimpleName(), "onItemClick(): "+ parent.getItemAtPosition(position).toString());
+            String nameOrPhone = String.valueOf(parent.getItemAtPosition(position));
+            Contact contact = getContactDAO().findContactByPhoneOrName(nameOrPhone);
+            Log.e(getClass().getSimpleName(), contact.toString());
+          *//*  String item = String.valueOf(parent.getItemAtPosition(position));
+
+            Contact contact = getContactDAO().findContactByPhoneOrName(item);
+
             getContactDAO().deleteDelayContact(contact);
+            Log.e(getClass().getSimpleName(), contact.toString());
+
             ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
-            DelayBackAdapter adapter = new DelayBackAdapter(DelayCallbackNumbersActivity.this, arrayOfUsers);
-            mListView.setAdapter(adapter);
-            ComponentLauncher.launchCallIntent(getApplicationContext(), contact.getPhone());
+            if (arrayOfUsers != null) {
+                DelayBackAdapter adapter = new DelayBackAdapter(DelayCallbackNumbersActivity.this, arrayOfUsers);
+                mListView.setAdapter(adapter);
+            } else {
+                mListView.setAdapter(null);
+            }*//*
+//            ComponentLauncher.launchCallIntent(getApplicationContext(), contact.getPhone());
 
         }
-    }
+    }*/
 
 }
