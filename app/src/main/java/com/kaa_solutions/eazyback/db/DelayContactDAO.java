@@ -9,11 +9,13 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.util.Log;
 
+import com.kaa_solutions.eazyback.db.constants.DatabaseColumns;
 import com.kaa_solutions.eazyback.models.Contact;
 
 import java.util.ArrayList;
 
-import static com.kaa_solutions.eazyback.db.DBHelper.TABLE_DELAY_CONTACTS;
+import static com.kaa_solutions.eazyback.db.constants.DatabaseColumns.DelayContacts.TABLE_NAME;
+
 
 public class DelayContactDAO {
     Context context;
@@ -36,12 +38,12 @@ public class DelayContactDAO {
         ArrayList<Contact> contacts = null;
         SQLiteDatabase database = dbHelper.getReadableDatabase();
 
-        Cursor cursor = database.query(TABLE_DELAY_CONTACTS, null, null, null, null, null, null);
+        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, null);
         if (cursor.moveToNext()) {
             contacts = new ArrayList<Contact>();
-            int idIndexColumn = cursor.getColumnIndex(DBHelper.COLUMN_ID);
-            int nameIndexColumn = cursor.getColumnIndex(DBHelper.COLUMN_NAME);
-            int phoneIndexColumn = cursor.getColumnIndex(DBHelper.COLUMN_PHONE);
+            int idIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
+            int nameIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
+            int phoneIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
             do {
                 int id = cursor.getInt(idIndexColumn);
                 String name = cursor.getString(nameIndexColumn);
@@ -68,8 +70,8 @@ public class DelayContactDAO {
         contact.setPhone(pDelayCallbackNumber);
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DBHelper.COLUMN_NAME, contact.getName());
-        contentValues.put(DBHelper.COLUMN_PHONE, contact.getPhone());
+        contentValues.put(DatabaseColumns.DelayContacts.COLUMN_NAME, contact.getName());
+        contentValues.put(DatabaseColumns.DelayContacts.COLUMN_PHONE, contact.getPhone());
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
         ArrayList<Contact> contacts = getDelayCallbackNumbers();
@@ -83,12 +85,12 @@ public class DelayContactDAO {
             }
 
             if (!exists) {
-                database.insert(TABLE_DELAY_CONTACTS, null, contentValues);
+                database.insert(TABLE_NAME, null, contentValues);
             } else {
                 Log.e(getClass().getSimpleName(), "The number is exists in the table \"delayContacts\"");
             }
         } else {
-            database.insert(TABLE_DELAY_CONTACTS, null, contentValues);
+            database.insert(TABLE_NAME, null, contentValues);
         }
 
         Log.e(getClass().getSimpleName(), "Delay incoming call: " + contact.toString());
@@ -100,7 +102,7 @@ public class DelayContactDAO {
 
 
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-        database.delete(TABLE_DELAY_CONTACTS, "_id = " + contact1.getId(), null);
+        database.delete(TABLE_NAME, "_id = " + contact1.getId(), null);
         database.close();
     }
 
