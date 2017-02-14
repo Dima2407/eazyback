@@ -75,11 +75,10 @@ public class DelayContactDAO {
         ArrayList<Contact> contacts = getDelayCallbackNumbers();
         if (contacts != null) {
             boolean exists = false;
-            m:
             for (Contact contact1 : contacts) {
                 if (contact1.getPhone().equals(pDelayCallbackNumber)) {
                     exists = true;
-                    break m;
+                    break;
                 }
             }
 
