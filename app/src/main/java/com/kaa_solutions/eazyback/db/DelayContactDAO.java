@@ -14,11 +14,12 @@ import com.kaa_solutions.eazyback.models.Contact;
 
 import java.util.ArrayList;
 
+import static com.kaa_solutions.eazyback.db.constants.DatabaseColumns.DelayContacts.COLUMN_PHONE;
 import static com.kaa_solutions.eazyback.db.constants.DatabaseColumns.DelayContacts.TABLE_NAME;
 
 
 public class DelayContactDAO {
-    Context context;
+    private Context context;
     private DBHelper dbHelper;
 
     public DelayContactDAO(Context context) {
@@ -87,13 +88,13 @@ public class DelayContactDAO {
             if (!exists) {
                 database.insert(TABLE_NAME, null, contentValues);
             } else {
-                Log.e(getClass().getSimpleName(), "The number is exists in the table \"delayContacts\"");
+                Log.d(getClass().getSimpleName(), "The number is exists in the table \"delayContacts\"");
             }
         } else {
             database.insert(TABLE_NAME, null, contentValues);
         }
 
-        Log.e(getClass().getSimpleName(), "Delay incoming call: " + contact.toString());
+        Log.d(getClass().getSimpleName(), "Delay incoming call: " + contact.toString());
     }
 
     public void deleteDelayContact(Contact contact) {
@@ -109,16 +110,16 @@ public class DelayContactDAO {
     public Contact findByNameOrPhone(Contact contact) {
         Contact contact1 = null;
 
-        String clausePhone = DBHelper.COLUMN_PHONE + " = ?";
+        String clausePhone = COLUMN_PHONE + " = ?";
         String[] argPhone = {contact.getPhone()};
 
         SQLiteDatabase database = dbHelper.getReadableDatabase();
-        Cursor cursor = database.query(TABLE_DELAY_CONTACTS, null, clausePhone, argPhone,
+        Cursor cursor = database.query(TABLE_NAME, null, clausePhone, argPhone,
                 null, null, null);
         if (cursor.moveToNext()) {
-            int idIndex = cursor.getColumnIndex(DBHelper.COLUMN_ID);
-            int nameIndex = cursor.getColumnIndex(DBHelper.COLUMN_NAME);
-            int phoneIndex = cursor.getColumnIndex(DBHelper.COLUMN_PHONE);
+            int idIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
+            int nameIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
+            int phoneIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
 
             int id = cursor.getInt(idIndex);
             String name = cursor.getString(nameIndex);
@@ -129,15 +130,15 @@ public class DelayContactDAO {
             contact1.setPhone(phone);
         }
         if (contact1 == null) {
-            String clauseName = DBHelper.COLUMN_NAME + " = ?";
+            String clauseName = DatabaseColumns.DelayContacts.COLUMN_NAME + " = ?";
             String[] argName = {contact.getName()};
 
-            cursor = database.query(TABLE_DELAY_CONTACTS, null, clauseName, argName,
+            cursor = database.query(TABLE_NAME, null, clauseName, argName,
                     null, null, null);
             if (cursor.moveToNext()) {
-                int idIndex = cursor.getColumnIndex(DBHelper.COLUMN_ID);
-                int nameIndex = cursor.getColumnIndex(DBHelper.COLUMN_NAME);
-                int phoneIndex = cursor.getColumnIndex(DBHelper.COLUMN_PHONE);
+                int idIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
+                int nameIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
+                int phoneIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
 
                 int id = cursor.getInt(idIndex);
                 String name = cursor.getString(nameIndex);
@@ -158,15 +159,15 @@ public class DelayContactDAO {
         Contact contact = null;
         SQLiteDatabase database = dbHelper.getReadableDatabase();
 
-        String clause = DBHelper.COLUMN_PHONE + " = ? OR " + DBHelper.COLUMN_NAME + " = ?";
+        String clause = DatabaseColumns.DelayContacts.COLUMN_PHONE + " = ? OR " + DatabaseColumns.DelayContacts.COLUMN_NAME + " = ?";
         String[] selectionArgs = {nameOrPhone};
 
-        Cursor cursor = database.query(TABLE_DELAY_CONTACTS, null, clause, selectionArgs,
+        Cursor cursor = database.query(TABLE_NAME, null, clause, selectionArgs,
                 null, null, null);
         if (cursor.moveToNext()) {
-            int idIndex = cursor.getColumnIndex(DBHelper.COLUMN_ID);
-            int nameIndex = cursor.getColumnIndex(DBHelper.COLUMN_NAME);
-            int phoneIndex = cursor.getColumnIndex(DBHelper.COLUMN_PHONE);
+            int idIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
+            int nameIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
+            int phoneIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
 
             int id = cursor.getInt(idIndex);
             String name = cursor.getString(nameIndex);
@@ -184,7 +185,7 @@ public class DelayContactDAO {
 
     public void deleteDelayContactAll() {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-        database.delete(TABLE_DELAY_CONTACTS, null, null);
+        database.delete(TABLE_NAME, null, null);
         database.close();
     }
 

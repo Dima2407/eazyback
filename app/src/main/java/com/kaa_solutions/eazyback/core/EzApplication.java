@@ -5,7 +5,7 @@ import android.app.Application;
 import com.kaa_solutions.eazyback.db.DelayContactDAO;
 
 public final class EzApplication extends Application {
-
+    public static String TAG;
     private SharedHelper mSharedHelper;
     private DelayContactDAO contactDAO;
     private Core mCore;

@@ -60,10 +60,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
                                                  ComponentLauncher.launchCallIntent(getApplicationContext(), contact.getPhone());
                                              }
                                          }
-
         );
-
-
     }
 
     @Override
@@ -84,5 +81,4 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
             mListView.setAdapter(null);
         }
     }
-
 }
