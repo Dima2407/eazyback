@@ -1,6 +1,7 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,16 +14,18 @@ import com.kaa_solutions.eazyback.utils.ComponentLauncher;
 import java.util.ArrayList;
 
 public final class DelayCallbackNumbersActivity extends GenericActivity {
+    private final String TAG = this.getClass().getSimpleName();
     private ListView mListView;
+    private DelayBackAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: ");
         getActionBar().setTitle(R.string.title_activity_delay_back);
         setContentView(R.layout.activity_delay_back);
         mListView = (ListView) findViewById(R.id.list_delay_callback);
         ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
-        DelayBackAdapter adapter;
         if (arrayOfUsers != null) {
             adapter = new DelayBackAdapter(this, arrayOfUsers);
             mListView.setAdapter(adapter);
@@ -50,9 +53,9 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
                                                  getContactDAO().deleteDelayContact(contact);
 
                                                  ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
-                                                 DelayBackAdapter adapter;
+
                                                  if (arrayOfUsers != null) {
-                                                     adapter = new DelayBackAdapter(DelayCallbackNumbersActivity.this, arrayOfUsers);
+                                                     adapter.notifyDataSetChanged();
                                                      mListView.setAdapter(adapter);
                                                  } else {
                                                      mListView.setAdapter(null);

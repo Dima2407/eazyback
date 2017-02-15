@@ -58,8 +58,6 @@ public class DelayContactDAO {
             } while (cursor.moveToNext());
             cursor.close();
         }
-
-
         return contacts;
     }
 
