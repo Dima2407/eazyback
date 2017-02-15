@@ -96,20 +96,20 @@ public class DelayContactDAO {
     }
 
     public void deleteDelayContact(Contact contact) {
-        Contact contact1 = null;
-        contact1 = findByNameOrPhone(contact);
+        Contact foundContact = null;
+        foundContact = findByNameOrPhone(contact);
 
 
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-        database.delete(TABLE_NAME, "_id = " + contact1.getId(), null);
+        database.delete(TABLE_NAME, "_id = " + foundContact.getId(), null);
         database.close();
     }
 
-    public Contact findByNameOrPhone(Contact contact) {
-        Contact contact1 = null;
+    public Contact findByNameOrPhone(Contact incomingContact) {
+        Contact contact = null;
 
         String clausePhone = COLUMN_PHONE + " = ?";
-        String[] argPhone = {contact.getPhone()};
+        String[] argPhone = {incomingContact.getPhone()};
 
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         Cursor cursor = database.query(TABLE_NAME, null, clausePhone, argPhone,
@@ -122,14 +122,14 @@ public class DelayContactDAO {
             int id = cursor.getInt(idIndex);
             String name = cursor.getString(nameIndex);
             String phone = cursor.getString(phoneIndex);
-            contact1 = new Contact();
-            contact1.setId(id);
-            contact1.setName(name);
-            contact1.setPhone(phone);
+            contact = new Contact();
+            contact.setId(id);
+            contact.setName(name);
+            contact.setPhone(phone);
         }
-        if (contact1 == null) {
+        if (contact == null) {
             String clauseName = DatabaseColumns.DelayContacts.COLUMN_NAME + " = ?";
-            String[] argName = {contact.getName()};
+            String[] argName = {incomingContact.getName()};
 
             cursor = database.query(TABLE_NAME, null, clauseName, argName,
                     null, null, null);
@@ -141,16 +141,16 @@ public class DelayContactDAO {
                 int id = cursor.getInt(idIndex);
                 String name = cursor.getString(nameIndex);
                 String phone = cursor.getString(phoneIndex);
-                contact1 = new Contact();
-                contact1.setId(id);
-                contact1.setName(name);
-                contact1.setPhone(phone);
+                contact = new Contact();
+                contact.setId(id);
+                contact.setName(name);
+                contact.setPhone(phone);
             }
         }
         cursor.close();
         database.close();
 
-        return contact1;
+        return contact;
     }
 
     public Contact findContactByPhoneOrName(String nameOrPhone) {
