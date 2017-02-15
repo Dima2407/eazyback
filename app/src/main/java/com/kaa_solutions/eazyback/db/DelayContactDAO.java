@@ -73,11 +73,11 @@ public class DelayContactDAO {
         contentValues.put(DatabaseColumns.DelayContacts.COLUMN_PHONE, contact.getPhone());
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
-        ArrayList<Contact> contacts = getDelayCallbackNumbers();
-        if (contacts != null) {
+        ArrayList<Contact> delayContacts = getDelayCallbackNumbers();
+        if (delayContacts != null) {
             boolean exists = false;
-            for (Contact contact1 : contacts) {
-                if (contact1.getPhone().equals(pDelayCallbackNumber)) {
+            for (Contact delayContact : delayContacts) {
+                if (delayContact.getPhone().equals(pDelayCallbackNumber)) {
                     exists = true;
                     break;
                 }
