@@ -18,7 +18,7 @@ public class DbQueries {
             CREATE_TABLE + DatabaseColumns.DelayContacts.TABLE_NAME + " (" +
                     DatabaseColumns.DelayContacts._ID + INTEGER_TYPE + PRIMARY_KEY + COMA_SEP +
                     DatabaseColumns.DelayContacts.COLUMN_NAME + TEXT_TYPE + COMA_SEP +
-                    DatabaseColumns.DelayContacts.COLUMN_PHONE + TEXT_TYPE + COMA_SEP +
+                    DatabaseColumns.DelayContacts.COLUMN_PHONE + TEXT_TYPE +
                     ")";
     private static final String DELETE_TABLE = "DROP TABLE IF EXISTS ";
     public static final String DROP_DELAY_CONTACTS =
