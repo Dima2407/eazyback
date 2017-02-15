@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 final class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     private static final String DATABASE_NAME = "eazyback_db";
 
     DBHelper(Context context) {

@@ -114,18 +114,18 @@
                 android:text="@string/phone_settings" />
 
             <TextView
-                android:id="@+id/main_to_button_controls"
-                style="@style/MenuElementWithArrow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/is_activated_manual_mod" />
-
-            <TextView
                 android:id="@+id/main_to_devices_control"
                 style="@style/MenuElementWithArrow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/devices_settings" />
+
+            <TextView
+                android:id="@+id/main_to_button_controls"
+                style="@style/MenuElementWithArrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/is_activated_manual_mod" />
 
             <TextView
                 android:id="@+id/main_to_delay_callback_control"
