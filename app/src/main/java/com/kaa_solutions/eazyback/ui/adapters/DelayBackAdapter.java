@@ -1,7 +1,6 @@
 package com.kaa_solutions.eazyback.ui.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ public class DelayBackAdapter extends ArrayAdapter<Contact> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Contact contact = getItem(position);
-        Log.e(getClass().getSimpleName(), "getViewAdapter: " + contact.toString());
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_delay_back, parent, false);
         }
