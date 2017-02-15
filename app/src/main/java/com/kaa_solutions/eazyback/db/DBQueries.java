@@ -2,7 +2,7 @@ package com.kaa_solutions.eazyback.db;
 
 import com.kaa_solutions.eazyback.db.constants.DatabaseColumns;
 
-public class DbQueries {
+public class DBQueries {
     private static final String BOOLEAN_DEFAULT = " DEFAULT 0";
 
     private static final String INTEGER_TYPE = " INTEGER";
@@ -12,6 +12,7 @@ public class DbQueries {
     private static final String COMA_SEP = " , ";
     private static final String PRIMARY_KEY = " PRIMARY KEY";
     private static final String AUTOINCREMENT = " AUTOINCREMENT";
+
 
     private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS ";
     public static final String CREATE_DELAY_CONTACTS =
@@ -24,6 +25,6 @@ public class DbQueries {
     public static final String DROP_DELAY_CONTACTS =
             DELETE_TABLE + DatabaseColumns.DelayContacts.TABLE_NAME;
 
-    private DbQueries() {
+    private DBQueries() {
     }
 }

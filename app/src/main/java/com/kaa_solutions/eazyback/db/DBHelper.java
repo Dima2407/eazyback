@@ -15,12 +15,12 @@ final class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(final SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(DbQueries.CREATE_DELAY_CONTACTS);
+        sqLiteDatabase.execSQL(DBQueries.CREATE_DELAY_CONTACTS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        sqLiteDatabase.execSQL(DbQueries.DROP_DELAY_CONTACTS);
+        sqLiteDatabase.execSQL(DBQueries.DROP_DELAY_CONTACTS);
         onCreate(sqLiteDatabase);
     }
 }
