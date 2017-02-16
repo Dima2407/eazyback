@@ -5,7 +5,7 @@
     </style>
 
     <style name="EazyEditText" parent="AppTheme">
-        <item name="android:layout_marginRight">@dimen/secondary_margin</item>
+        <item name="android:layout_marginRight">@dimen/marginRight</item>
         <item name="android:layout_marginLeft">@dimen/secondary_margin</item>
         <item name="android:layout_marginTop">@dimen/secondary_margin</item>
     </style>
@@ -20,7 +20,7 @@
 
     <style name="Cell" parent="AppTheme">
         <item name="android:layout_marginLeft">@dimen/main_margin</item>
-        <item name="android:layout_marginRight">@dimen/main_margin</item>
+        <item name="android:layout_marginRight">@dimen/marginRight</item>
         <item name="android:layout_marginTop">@dimen/main_margin</item>
         <item name="android:background">@drawable/card_sell</item>
     </style>
@@ -36,7 +36,7 @@
     <style name="MenuElementWithArrow" parent="AppTheme">
         <item name="android:layout_marginTop">@dimen/secondary_margin</item>
         <item name="android:drawableRight">@drawable/arrow</item>
-        <item name="android:layout_marginLeft">@dimen/margin_main_screen</item>
+        <item name="android:layout_marginLeft">@dimen/main_screen_margin_left</item>
         <item name="android:paddingRight">@dimen/main_margin</item>
         <item name="android:textSize">@dimen/main_text_size</item>
     </style>
@@ -55,5 +55,6 @@
     <style name="MyActionBarTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@android:color/black</item>
     </style>
+
 
 </resources>
