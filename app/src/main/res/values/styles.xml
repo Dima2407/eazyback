@@ -10,6 +10,7 @@
         <item name="android:layout_marginTop">@dimen/secondary_margin</item>
     </style>
 
+
     <style name="EazyEditTextPhone" parent="EazyEditText">
         <item name="android:hint">@string/callback_number</item>
         <item name="android:inputType">phone</item>
@@ -21,6 +22,13 @@
     <style name="Cell" parent="AppTheme">
         <item name="android:layout_marginLeft">@dimen/main_margin</item>
         <item name="android:layout_marginRight">@dimen/main_screen_margin_right</item>
+        <item name="android:layout_marginTop">@dimen/main_margin</item>
+        <item name="android:background">@drawable/card_sell</item>
+    </style>
+
+
+    <style name="ButtonScreen" parent="AppTheme">
+        <item name="android:layout_marginLeft">@dimen/main_margin</item>
         <item name="android:layout_marginTop">@dimen/main_margin</item>
         <item name="android:background">@drawable/card_sell</item>
     </style>
