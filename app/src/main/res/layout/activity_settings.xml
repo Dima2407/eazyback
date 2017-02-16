@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/secondary_margin"
+                    android:layout_marginLeft="@dimen/margin_main_screen"
                     android:text="@string/is_activated"
                     android:textSize="@dimen/main_text_size" />
 
@@ -62,10 +62,11 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/device_activator"
+                    android:layout_alignBottom="@+id/device_activator"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/secondary_margin"
+                    android:layout_marginLeft="@dimen/margin_main_screen"
                     android:text="@string/system_service"
                     android:textSize="@dimen/main_text_size" />
 
@@ -84,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/secondary_margin"
+                    android:layout_marginLeft="@dimen/margin_main_screen"
                     android:text="@string/is_activated_manual_mod"
                     android:textSize="@dimen/main_text_size" />
 
@@ -150,18 +151,22 @@
             style="@style/Cell"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingRight="@dimen/main_margin">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/reject_delay"
+                    android:layout_alignBottom="@+id/reject_delay"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="@dimen/secondary_margin"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/margin_main_screen"
                     android:gravity="center"
                     android:text="@string/reject_time"
                     android:textSize="@dimen/main_text_size" />
@@ -171,6 +176,7 @@
                     style="@style/EazyEditText"
                     android:layout_width="@dimen/sec_edit_text"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
@@ -189,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerInParent="true"
-                    android:layout_marginLeft="@dimen/secondary_margin"
+                    android:layout_marginLeft="@dimen/margin_main_screen"
                     android:text="@string/callback_time"
                     android:textSize="@dimen/main_text_size" />
 
