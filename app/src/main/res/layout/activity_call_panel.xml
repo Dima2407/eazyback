@@ -12,98 +12,98 @@
         android:orientation="vertical">
 
         <LinearLayout
+            style="@style/ButtonScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            style="@style/Cell">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_marginTop="@dimen/secondary_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_margin"
                 android:layout_marginRight="@dimen/main_margin"
+                android:layout_marginTop="@dimen/secondary_margin"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="@dimen/main_text_size"
-                    android:text="@string/accept_call_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:text="@string/accept_call_button"
+                    android:textSize="@dimen/main_text_size" />
 
                 <CheckBox
                     android:id="@+id/accept_button_check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"/>
+                    android:layout_weight="7" />
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_margin"
                 android:layout_marginRight="@dimen/main_margin"
                 android:layout_marginTop="@dimen/secondary_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="@dimen/main_text_size"
-                    android:text="@string/reject_call_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:text="@string/reject_call_button"
+                    android:textSize="@dimen/main_text_size" />
 
                 <CheckBox
                     android:id="@+id/reject_button_check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"/>
+                    android:layout_weight="7" />
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/main_margin"
                 android:layout_marginRight="@dimen/main_margin"
                 android:layout_marginTop="@dimen/secondary_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="@dimen/main_text_size"
-                    android:text="@string/callback_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:text="@string/callback_button"
+                    android:textSize="@dimen/main_text_size" />
 
                 <CheckBox
                     android:id="@+id/callback_button_check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"/>
+                    android:layout_weight="7" />
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/secondary_margin"
                 android:layout_marginLeft="@dimen/main_margin"
                 android:layout_marginRight="@dimen/main_margin"
                 android:layout_marginTop="@dimen/secondary_margin"
-                android:layout_marginBottom="@dimen/secondary_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="@dimen/main_text_size"
-                    android:text="@string/callback_delay_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:text="@string/callback_delay_button"
+                    android:textSize="@dimen/main_text_size" />
 
                 <CheckBox
                     android:id="@+id/delay_callback_button_check"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="4"/>
+                    android:layout_weight="7" />
 
             </LinearLayout>
 
@@ -117,17 +117,17 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="@dimen/secondary_margin"
+                style="@style/StockAnnotation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/StockAnnotation"
+                android:layout_marginTop="@dimen/secondary_margin"
                 android:text="@string/buttons_intercept_annotation"/>
 
             <RadioGroup
                 android:id="@+id/button_mode_group"
-                android:layout_margin="@dimen/secondary_margin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/secondary_margin">
 
                 <RadioButton
                     android:id="@+id/mod_only_list"
@@ -151,8 +151,8 @@
             android:orientation="vertical">
 
             <Button
-                style="@style/CallPanelButton"
                 android:id="@+id/float_window_settings"
+                style="@style/CallPanelButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/buttons_float_window"/>
