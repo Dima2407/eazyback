@@ -39,25 +39,33 @@ public class DelayContactDAO {
         ArrayList<Contact> contacts = null;
         SQLiteDatabase database = dbHelper.getReadableDatabase();
 
-        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, null);
+        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, (DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL + " DESC"));
         if (cursor.moveToNext()) {
             contacts = new ArrayList<Contact>();
             int idIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
             int nameIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
             int phoneIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
+            int timeLastDelayedCallIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL);
             do {
                 int id = cursor.getInt(idIndexColumn);
                 String name = cursor.getString(nameIndexColumn);
                 String phone = cursor.getString(phoneIndexColumn);
+                String time = cursor.getString(timeLastDelayedCallIndex);
 
                 Contact contact = new Contact();
                 contact.setId(id);
                 contact.setName(name);
                 contact.setPhone(phone);
+                contact.setTimeLastDelayedCall(time);
                 contacts.add(contact);
             } while (cursor.moveToNext());
             cursor.close();
+
+            for (Contact contact : contacts) {
+                Log.d(getClass().getSimpleName(), contact.toString());
+            }
         }
+
         return contacts;
     }
 
@@ -67,6 +75,7 @@ public class DelayContactDAO {
         Contact contact = new Contact();
         contact.setName(s);
         contact.setPhone(pDelayCallbackNumber);
+
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseColumns.DelayContacts.COLUMN_NAME, contact.getName());
