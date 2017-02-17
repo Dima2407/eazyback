@@ -21,7 +21,7 @@ public class PhonebookAdapter extends ArrayAdapter<Contact> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Contact contact = getItem(position);
-        Log.e(getClass().getSimpleName(), "getViewAdapter: " + contact.toString());
+        Log.d(getClass().getSimpleName(), "getViewAdapter: " + contact.toString());
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_phonebook, parent, false);
         }
