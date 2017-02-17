@@ -9,6 +9,7 @@ import com.kaa_solutions.eazyback.db.DelayContactDAO;
 import com.kaa_solutions.eazyback.models.Contact;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,10 +17,16 @@ import java.util.ArrayList;
 
 @RunWith(AndroidJUnit4.class)
 public class DatabaseTests {
+    Context context;
+
+    @Before
+    public void launch() {
+        context = InstrumentationRegistry.getTargetContext();
+    }
 
     @Test
     public void createDatabase() {
-        Context context = InstrumentationRegistry.getTargetContext();
+
         DelayContactDAO delayContactDAO = new DelayContactDAO(context);
 
         delayContactDAO.deleteDelayContactAll();
@@ -76,6 +83,23 @@ public class DatabaseTests {
         Contact foundContact = delayContactDAO.findContactByPhoneOrName("+380631441234");
         Assert.assertNotNull(foundContact);
         Assert.assertEquals(foundContact.getPhone(), "+380631441234");
+
+    }
+
+    @Test
+    public void testMethodGetAllDelayContacts() throws InterruptedException {
+        DelayContactDAO delayContactDAO = new DelayContactDAO(context);
+
+        delayContactDAO.addDelayCallbackNumber("+380631441231");
+        Thread.sleep(1000);
+        delayContactDAO.addDelayCallbackNumber("+380631441232");
+        Thread.sleep(1000);
+        delayContactDAO.addDelayCallbackNumber("+380631441233");
+
+        ArrayList<Contact> contacts = delayContactDAO.getDelayCallbackNumbers();
+        for (Contact contact : contacts) {
+            Log.d(getClass().getSimpleName(), "testMethodGetAllDelayContacts: " + contact);
+        }
 
     }
 }
