@@ -6,7 +6,7 @@ public class Contact {
     private int id;
     private String name;
     private String phone;
-
+    private String timeLastDelayedCall;
 
     public Contact() {
     }
@@ -35,9 +35,22 @@ public class Contact {
         this.id = id;
     }
 
+    public String getTimeLastDelayedCall() {
+        return timeLastDelayedCall;
+    }
+
+    public void setTimeLastDelayedCall(String timeLastDelayedCall) {
+        this.timeLastDelayedCall = timeLastDelayedCall;
+    }
+
     @Override
     public String toString() {
-        return "Contact: id: " + id + ", name: " + name + ", phone: " + phone;
+        return "Contact{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", timeLastDelayedCall=" + timeLastDelayedCall +
+                '}';
     }
 
 
