@@ -20,10 +20,10 @@ public class DBQueries {
     private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS ";
     public static final String CREATE_DELAY_CONTACTS =
             CREATE_TABLE + DatabaseColumns.DelayContacts.TABLE_NAME + " (" +
-                    DatabaseColumns.DelayContacts._ID + INTEGER_TYPE + PRIMARY_KEY + COMA_SEP +
+                    DatabaseColumns.DelayContacts._ID + INTEGER_TYPE + PRIMARY_KEY + AUTOINCREMENT + COMA_SEP +
                     DatabaseColumns.DelayContacts.COLUMN_NAME + TEXT_TYPE + COMA_SEP +
                     DatabaseColumns.DelayContacts.COLUMN_PHONE + TEXT_TYPE + COMA_SEP +
-                    DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
+                    DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL +
                     ")";
     private static final String DELETE_TABLE = "DROP TABLE IF EXISTS ";
     public static final String DROP_DELAY_CONTACTS =
