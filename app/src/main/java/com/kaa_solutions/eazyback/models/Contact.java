@@ -49,9 +49,7 @@ public class Contact {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
-                ", timeLastDelayedCall= " + timeLastDelayedCall +
+                ", timeLastDelayedCall='" + timeLastDelayedCall + '\'' +
                 '}';
     }
-
-
 }
