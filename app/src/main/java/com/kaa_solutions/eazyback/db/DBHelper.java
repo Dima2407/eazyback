@@ -3,10 +3,11 @@ package com.kaa_solutions.eazyback.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 final class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 38;
     private static final String DATABASE_NAME = "eazyback_db";
 
     DBHelper(Context context) {
@@ -22,5 +23,6 @@ final class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL(DBQueries.DROP_DELAY_CONTACTS);
         onCreate(sqLiteDatabase);
+        Log.e(getClass().getSimpleName(), "Database was update");
     }
 }

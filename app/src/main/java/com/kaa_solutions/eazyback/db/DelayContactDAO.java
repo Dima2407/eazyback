@@ -12,19 +12,24 @@ import android.util.Log;
 import com.kaa_solutions.eazyback.db.constants.DatabaseColumns;
 import com.kaa_solutions.eazyback.models.Contact;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
-import static com.kaa_solutions.eazyback.db.constants.DatabaseColumns.DelayContacts.COLUMN_PHONE;
 import static com.kaa_solutions.eazyback.db.constants.DatabaseColumns.DelayContacts.TABLE_NAME;
 
 
 public class DelayContactDAO {
+    private final String TAG = getClass().getSimpleName();
     private Context context;
     private DBHelper dbHelper;
+    private SQLiteDatabase dbWriter;
 
     public DelayContactDAO(Context context) {
         this.dbHelper = getDbHelper(context);
         this.context = context;
+        this.dbWriter = dbHelper.getWritableDatabase();
     }
 
     private DBHelper getDbHelper(Context context) {
@@ -39,167 +44,133 @@ public class DelayContactDAO {
         ArrayList<Contact> contacts = null;
         SQLiteDatabase database = dbHelper.getReadableDatabase();
 
-        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, null);
+        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, (DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL + " DESC"));
         if (cursor.moveToNext()) {
             contacts = new ArrayList<Contact>();
             int idIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
             int nameIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
             int phoneIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
+            int timeLastDelayedCallIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL);
             do {
                 int id = cursor.getInt(idIndexColumn);
                 String name = cursor.getString(nameIndexColumn);
                 String phone = cursor.getString(phoneIndexColumn);
+                String time = cursor.getString(timeLastDelayedCallIndex);
 
                 Contact contact = new Contact();
                 contact.setId(id);
                 contact.setName(name);
                 contact.setPhone(phone);
+                contact.setTimeLastDelayedCall(time);
                 contacts.add(contact);
             } while (cursor.moveToNext());
             cursor.close();
+
+            Log.d(TAG, "Delay contacts: " + contacts.toString());
+            Log.d(TAG, "size:" + contacts.size());
         }
+
         return contacts;
     }
 
     public void addDelayCallbackNumber(String pDelayCallbackNumber) {
-        String s = getContactName(pDelayCallbackNumber);
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        String contactName = getContactNameFromBook(pDelayCallbackNumber);
 
         Contact contact = new Contact();
-        contact.setName(s);
         contact.setPhone(pDelayCallbackNumber);
+        contact.setName(contactName);
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(DatabaseColumns.DelayContacts.COLUMN_NAME, contact.getName());
-        contentValues.put(DatabaseColumns.DelayContacts.COLUMN_PHONE, contact.getPhone());
-        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        if (!isExists(contact)) {
+            contact.setTimeLastDelayedCall(getDateTime());
 
-        ArrayList<Contact> delayContacts = getDelayCallbackNumbers();
-        if (delayContacts != null) {
-            boolean exists = false;
-            for (Contact delayContact : delayContacts) {
-                if (delayContact.getPhone().equals(pDelayCallbackNumber)) {
-                    exists = true;
-                    break;
-                }
-            }
-
-            if (!exists) {
-                database.insert(TABLE_NAME, null, contentValues);
-            } else {
-                Log.d(getClass().getSimpleName(), "The number is exists in the table \"delayContacts\"");
-            }
-        } else {
+            contentValues.put(DatabaseColumns.DelayContacts.COLUMN_NAME, contact.getName());
+            contentValues.put(DatabaseColumns.DelayContacts.COLUMN_PHONE, contact.getPhone());
+            contentValues.put(DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL, contact.getTimeLastDelayedCall());
             database.insert(TABLE_NAME, null, contentValues);
-        }
+        } else {
+            contact = findContactByPhoneOrName(contact);
+            contact.setTimeLastDelayedCall(getDateTime());
+            contentValues.put(DatabaseColumns.DelayContacts._ID, contact.getId());
+            contentValues.put(DatabaseColumns.DelayContacts.COLUMN_NAME, contact.getName());
+            contentValues.put(DatabaseColumns.DelayContacts.COLUMN_PHONE, contact.getPhone());
+            contentValues.put(DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL, contact.getTimeLastDelayedCall());
+            String[] args = {String.valueOf(contact.getId())};
+            database.update(TABLE_NAME, contentValues, DatabaseColumns.DelayContacts._ID + " = ?", args);
 
-        Log.d(getClass().getSimpleName(), "Delay incoming call: " + contact.toString());
+        }
+    }
+
+    private String getDateTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
     }
 
     public void deleteDelayContact(Contact contact) {
+
+        try {
+            dbWriter.delete(TABLE_NAME, DatabaseColumns.DelayContacts._ID + " = ?", new String[]{String.valueOf(contact.getId())});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Contact findContactByPhoneOrName(Contact contact) {
         Contact foundContact = null;
-        foundContact = findByNameOrPhone(contact);
-
-
-        SQLiteDatabase database = dbHelper.getWritableDatabase();
-        database.delete(TABLE_NAME, "_id = " + foundContact.getId(), null);
-        database.close();
-    }
-
-    public Contact findByNameOrPhone(Contact incomingContact) {
-        Contact contact = null;
-
-        String clausePhone = COLUMN_PHONE + " = ?";
-        String[] argPhone = {incomingContact.getPhone()};
 
         SQLiteDatabase database = dbHelper.getReadableDatabase();
-        Cursor cursor = database.query(TABLE_NAME, null, clausePhone, argPhone,
-                null, null, null);
-        if (cursor.moveToNext()) {
+
+        String query = "select * from " + TABLE_NAME + " where name=? OR phone = ?";
+
+
+        String args = null;
+
+        if (contact.getName() != null) {
+            args = contact.getName();
+        } else if (contact.getPhone() != null) {
+            args = contact.getPhone();
+        }
+
+        Cursor cursor = database.rawQuery(query, new String[]{args});
+        if (cursor.moveToFirst()) {
             int idIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
             int nameIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
             int phoneIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
+            int timeIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL);
 
             int id = cursor.getInt(idIndex);
             String name = cursor.getString(nameIndex);
             String phone = cursor.getString(phoneIndex);
-            contact = new Contact();
-            contact.setId(id);
-            contact.setName(name);
-            contact.setPhone(phone);
-        }
-        if (contact == null) {
-            String clauseName = DatabaseColumns.DelayContacts.COLUMN_NAME + " = ?";
-            String[] argName = {incomingContact.getName()};
-
-            cursor = database.query(TABLE_NAME, null, clauseName, argName,
-                    null, null, null);
-            if (cursor.moveToNext()) {
-                int idIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
-                int nameIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
-                int phoneIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
-
-                int id = cursor.getInt(idIndex);
-                String name = cursor.getString(nameIndex);
-                String phone = cursor.getString(phoneIndex);
-                contact = new Contact();
-                contact.setId(id);
-                contact.setName(name);
-                contact.setPhone(phone);
-            }
+            String time = cursor.getString(timeIndex);
+            foundContact = new Contact();
+            foundContact.setId(id);
+            foundContact.setName(name);
+            foundContact.setPhone(phone);
+            foundContact.setTimeLastDelayedCall(time);
         }
         cursor.close();
-        database.close();
-
-        return contact;
+        return foundContact;
     }
 
-    public Contact findContactByPhoneOrName(String nameOrPhone) {
-        Contact contact = null;
-        SQLiteDatabase database = dbHelper.getReadableDatabase();
-
-        String clause = DatabaseColumns.DelayContacts.COLUMN_PHONE + " = ? OR " + DatabaseColumns.DelayContacts.COLUMN_NAME + " = ?";
-        String[] selectionArgs = {nameOrPhone};
-
-        Cursor cursor = database.query(TABLE_NAME, null, clause, selectionArgs,
-                null, null, null);
-        if (cursor.moveToNext()) {
-            int idIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
-            int nameIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
-            int phoneIndex = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
-
-            int id = cursor.getInt(idIndex);
-            String name = cursor.getString(nameIndex);
-            String phone = cursor.getString(phoneIndex);
-            contact = new Contact();
-            contact.setId(id);
-            contact.setName(name);
-            contact.setPhone(phone);
+    public boolean isExists(Contact contact) {
+        boolean isExists = false;
+        final Contact contactByPhoneOrName = findContactByPhoneOrName(contact);
+        if (contactByPhoneOrName != null) {
+            isExists = true;
         }
-        cursor.close();
-        database.close();
 
-        return contact;
+        return isExists;
     }
 
     public void deleteDelayContactAll() {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         database.delete(TABLE_NAME, null, null);
-        database.close();
     }
 
-    public Contact readByPhone(String phone) {
-        //TODO: to fill
-        Contact contact = null;
-        return contact;
-    }
-
-    public Contact readByName(String item) {
-        //TODO: to fill
-        Contact contact = null;
-        return contact;
-    }
-
-    private String getContactName(String phoneNumber) {
+    private String getContactNameFromBook(String phoneNumber) {
         ContentResolver cr = context.getContentResolver();
         Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumber));
         Cursor cursor = cr.query(uri, new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME}, null, null, null);
@@ -214,7 +185,6 @@ public class DelayContactDAO {
         if (cursor != null && !cursor.isClosed()) {
             cursor.close();
         }
-
         return contactName;
     }
 
