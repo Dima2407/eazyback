@@ -96,32 +96,6 @@ public class DatabaseTests {
         }
     }
 
-    @Test
-    public void deleteDelayContact() {
-        DelayContactDAO delayContactDAO = new DelayContactDAO(context);
-        ArrayList<Contact> delayCallbackNumbers;
-
-        delayContactDAO.deleteDelayContactAll();
-        delayCallbackNumbers = delayContactDAO.getDelayCallbackNumbers();
-        Assert.assertNull(delayCallbackNumbers);
-
-        Contact contact = new Contact();
-        contact.setPhone("+380631441234");
-        delayContactDAO.addDelayCallbackNumber(contact.getPhone());
-
-        delayCallbackNumbers = delayContactDAO.getDelayCallbackNumbers();
-        Assert.assertTrue(delayCallbackNumbers.size() == 1);
-        Log.e(TAG, "Contacts: " + delayCallbackNumbers.toString());
-
-        Contact searchContact = new Contact();
-        searchContact.setPhone("+380631441234");
-        Contact contact2 = delayContactDAO.findContactByPhoneOrName(searchContact);
-        Log.e(TAG, "contact: " + contact2);
-        delayContactDAO.deleteDelayContact(contact2);
-
-        delayCallbackNumbers = delayContactDAO.getDelayCallbackNumbers();
-        Assert.assertNull(delayCallbackNumbers);
-    }
 
     @Test
     public void testFindByPhoneOrName() {
@@ -154,9 +128,24 @@ public class DatabaseTests {
         Assert.assertNotNull(foundContact);
         Log.d(TAG, "Found contact: " + foundContact);
 
-        boolean b = delayContactDAO.deleteDelayContact(contact);
-        Assert.assertTrue(b);
+        delayContactDAO.deleteDelayContact(contact);
     }
 
+
+    @Test
+    public void testDeleteAllContacts() {
+        DelayContactDAO delayContactDAO = new DelayContactDAO(context);
+        Contact contact = new Contact();
+        contact.setPhone("+380637777777");
+        delayContactDAO.addDelayCallbackNumber(contact.getPhone());
+        ArrayList<Contact> delayCallbackNumbers = delayContactDAO.getDelayCallbackNumbers();
+        Assert.assertTrue(delayCallbackNumbers.size() > 0);
+
+        delayContactDAO.deleteDelayContactAll();
+        delayCallbackNumbers = delayContactDAO.getDelayCallbackNumbers();
+        Assert.assertNull(delayCallbackNumbers);
+
+
+    }
 
 }
