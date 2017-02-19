@@ -105,12 +105,16 @@ public final class MainSettingsActivity extends GenericActivity {
         String rejectTime = mRejectDelay.getText().toString();
         String callbackTime = mCallBackDelay.getText().toString();
 
-        if (Validator.validate(rejectTime) && Validator.validate(callbackTime)) {
+        if (Validator.validate(rejectTime)) {
             getSharedHelper().setRejectDelay(rejectTime);
-            getSharedHelper().setCallbackDelay(callbackTime);
-            finish();
+            if (Validator.validate(callbackTime)) {
+                getSharedHelper().setCallbackDelay(callbackTime);
+                finish();
+            } else {
+                Toast.makeText(this, R.string.call_back_delay, Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(this, R.string.invalid_data, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.time_reject_delay, Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -62,5 +62,8 @@
     <string name="add_contact">Добавить номер из телефонной книги</string>
     <string name="added_contact">Номер добавлен</string>
     <string name="not_added_contact">Можно добавить не больше 5 номеров!</string>
+    <string name="time_reject_delay">Заполните поле \"Пауза перед сбросом\"</string>
+    <string name="call_back_delay">Заполните поле \"Пауза перед перезв.\"</string>
+    <string name="ga_trackingId">UA-43041397-4</string>
 
 </resources>
