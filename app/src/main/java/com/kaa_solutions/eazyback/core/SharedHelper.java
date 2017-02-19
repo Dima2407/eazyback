@@ -86,12 +86,12 @@ public final class SharedHelper {
         return delay;
     }
 
-    public long getRejectDelayInMiliSec() {
+    public long getRejectDelayInMilSec() {
         return mSharedPreferences.getLong(REJECT_DELAY, -1);
 
     }
 
-    public long getCallbackDelayInMiliSec() {
+    public long getCallbackDelayInMilSec() {
         return mSharedPreferences.getLong(CALL_BACK_DELAY, -1);
     }
 
@@ -202,7 +202,7 @@ public final class SharedHelper {
         return delay;
     }
 
-    public long getButtonsDelayInMiliSec() {
+    public long getButtonsDelayInMilSec() {
         return mSharedPreferences.getLong(DELAY_BUTTONS_WINDOW, 0);
     }
 

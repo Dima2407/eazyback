@@ -21,6 +21,7 @@ import java.util.Set;
 
 public final class Core {
 
+    private final String TAG = getClass().getSimpleName();
     private final Context mContext;
     private final SharedHelper mSharedHelper;
     private final DelayContactDAO mContactDAO;
@@ -65,7 +66,7 @@ public final class Core {
                 }
             }
 
-            long delay = mSharedHelper.getButtonsDelayInMiliSec();
+            long delay = mSharedHelper.getButtonsDelayInMilSec();
             if (delay > 0) {
                 launchButtonTask(delay);
                 return;
@@ -89,9 +90,9 @@ public final class Core {
             return;
         }
 
-        long rejectDelay = mSharedHelper.getRejectDelayInMiliSec();
+        long rejectDelay = mSharedHelper.getRejectDelayInMilSec();
 
-        if (rejectDelay > 0) {
+        if (rejectDelay >= 0) {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -104,8 +105,10 @@ public final class Core {
 
     private void makeCallback(final String pNumber) {
         EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Make callback");
-        long callbackDelay = mSharedHelper.getCallbackDelayInMiliSec();
-
+        long callbackDelay = mSharedHelper.getCallbackDelayInMilSec();
+        if (callbackDelay == 0) {
+            callbackDelay = 1000;
+        }
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
