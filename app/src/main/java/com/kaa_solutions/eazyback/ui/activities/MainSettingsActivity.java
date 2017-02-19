@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -111,10 +112,14 @@ public final class MainSettingsActivity extends GenericActivity {
                 getSharedHelper().setCallbackDelay(callbackTime);
                 finish();
             } else {
-                Toast.makeText(this, R.string.call_back_delay, Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(this, R.string.call_back_delay, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
         } else {
-            Toast.makeText(this, R.string.time_reject_delay, Toast.LENGTH_SHORT).show();
+            final Toast toast = Toast.makeText(this, R.string.time_reject_delay, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
         }
     }
 
