@@ -145,7 +145,10 @@ public final class MainSettingsActivity extends GenericActivity {
             switch (buttonView.getId()) {
                 case R.id.callback_activator:
                     getSharedHelper().setCallbackActivate(isChecked);
-                    //getCore().makeParse("111");
+                    if (isChecked) {
+                        getSharedHelper().setActivateManualMode(false);
+                        mManualActivatedSwitch.setChecked(false);
+                    }
                     break;
 
                 case R.id.device_activator:
@@ -155,6 +158,10 @@ public final class MainSettingsActivity extends GenericActivity {
 
                 case R.id.manual_activator:
                     getSharedHelper().setActivateManualMode(isChecked);
+                    if (isChecked) {
+                        getSharedHelper().setCallbackActivate(false);
+                        mCallbackActivatedSwitch.setChecked(false);
+                    }
                     break;
             }
 
