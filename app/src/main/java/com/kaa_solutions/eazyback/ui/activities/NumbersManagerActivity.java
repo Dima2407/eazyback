@@ -2,8 +2,8 @@ package com.kaa_solutions.eazyback.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,7 +16,6 @@ public final class NumbersManagerActivity extends GenericActivity {
 
     private List<EditText> mTelephoneCells;
     private Button openAddressBook;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,36 +48,16 @@ public final class NumbersManagerActivity extends GenericActivity {
         });
 
         initBackButton();
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        setStatTag(getClass().getSimpleName());
-        hideKeyboard(mTelephoneCells.get(0));
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         ViewUtils.savePhoneCells(mTelephoneCells, getSharedHelper());
-        hideKeyboard(mTelephoneCells.get(0));
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            case R.id.action_save:
-                startActivity(new Intent(getBaseContext(), MainSettingsActivity.class));
-                break;
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onBackPressed() {
