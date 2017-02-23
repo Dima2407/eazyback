@@ -74,7 +74,6 @@ public final class Core {
 
             if (mCallPanel == null) {
                 mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
-                EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Show call panel");
             }
             return;
         }
