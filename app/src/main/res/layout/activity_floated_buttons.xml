@@ -14,19 +14,13 @@
     <RelativeLayout
         android:id="@+id/layout_accept"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-
-        >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/accept_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/accept_call"
-            />
-
+            android:src="@drawable/accept_call"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -38,7 +32,6 @@
             android:id="@+id/reject_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
             android:src="@drawable/reject_call"/>
     </RelativeLayout>
 
@@ -51,9 +44,7 @@
             android:id="@+id/delay_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
-            android:src="@drawable/delay_callback"
-            />
+            android:src="@drawable/delay_callback"/>
 
     </RelativeLayout>
 
@@ -61,13 +52,12 @@
         android:id="@+id/layout_callback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/callback_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="210dp"
-        android:src="@drawable/callback"
-        />
+
+        <ImageView
+            android:id="@+id/callback_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/callback"/>
     </RelativeLayout>
 
 </RelativeLayout>

@@ -3,7 +3,6 @@ package com.kaa_solutions.eazyback.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -31,7 +30,7 @@ public final class CallPanel extends LinearLayout {
     }
 
     private void initView(SharedHelper pSharedHelper) {
-        View view = mLayoutInflater.inflate(R.layout.activity_floated_buttons, this);
+        mLayoutInflater.inflate(R.layout.activity_floated_buttons, this);
 
         SharedHelper helper = new SharedHelper(getContext());
 
@@ -54,10 +53,14 @@ public final class CallPanel extends LinearLayout {
             rejectBtn.setVisibility(GONE);
         }
 
+
+        ImageView callbackBtn = (ImageView) findViewById(R.id.callback_image);
+        callbackBtn.setPadding(helper.getCallbackButtonMarginLeft(), helper.getCallbackButtonMarginTop(), 0, 0);
+
         if (pSharedHelper.getActivateCallbackButton()) {
-            view.findViewById(R.id.callback_image).setOnClickListener(mOnClickListener);
+            callbackBtn.setOnClickListener(mOnClickListener);
         } else {
-            view.findViewById(R.id.callback_image).setVisibility(GONE);
+            callbackBtn.setVisibility(GONE);
         }
 
 

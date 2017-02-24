@@ -54,7 +54,7 @@ public final class FloatWindowSettings extends GenericActivity {
         RelativeLayout callbackLayout = (RelativeLayout) findViewById(R.id.layout_callback);
         layoutParams = (RelativeLayout.LayoutParams) callbackLayout.getLayoutParams();
         layoutParams.leftMargin = getSharedHelper().getCallbackButtonMarginLeft();
-        layoutParams.topMargin = getSharedHelper().getCallbackButtonMarginLeft();
+        layoutParams.topMargin = getSharedHelper().getCallbackButtonMarginTop();
         layoutParams.rightMargin = RIGHT_MARGIN;
         layoutParams.bottomMargin = BOTTOM_MARGIN;
         callbackLayout.setLayoutParams(layoutParams);
@@ -105,13 +105,16 @@ public final class FloatWindowSettings extends GenericActivity {
                         case R.id.layout_delay:
                             Log.e(TAG, "move : delay_image");
                             getSharedHelper().setDelayButtonMarginLeft(layoutParams.leftMargin);
-                            getSharedHelper().setDelayButtonMarginLeft(layoutParams.topMargin);
+                            getSharedHelper().setDelayButtonMarginTop(layoutParams.topMargin);
                             break;
 
                         case R.id.layout_callback:
                             Log.e(TAG, "move : callback_image");
-                            getSharedHelper().setCallbackButtonMarginTop(layoutParams.leftMargin);
-                            getSharedHelper().setCallbackButtonMarginLeft(layoutParams.topMargin);
+                            getSharedHelper().setCallbackButtonMarginLeft(layoutParams.leftMargin);
+                            getSharedHelper().setCallbackButtonMarginTop(layoutParams.topMargin);
+                            break;
+
+                        default:
                             break;
                     }
             }
