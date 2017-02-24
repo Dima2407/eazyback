@@ -131,7 +131,6 @@ public final class Core {
     }
 
     private void launchButtonTask(long pDelaySec) {
-        EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Launch delay show call panel");
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -148,19 +147,17 @@ public final class Core {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.accept_button:
+                case R.id.accept_image:
                     Intent i = new Intent(Intent.ACTION_MEDIA_BUTTON);
                     i.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK));
                     mContext.sendOrderedBroadcast(i, null);
-                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Accept button pressed in a Call panel");
                     break;
 
-                case R.id.reject_button:
+                case R.id.reject_image:
                     Reflector.disconnectCall();
-                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Reject button pressed in a Call panel");
                     break;
 
-                case R.id.callback_button:
+                case R.id.callback_image:
                     Reflector.disconnectCall();
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -168,13 +165,11 @@ public final class Core {
                             ComponentLauncher.launchCallIntent(mContext, mPhoneHolder);
                         }
                     }, 1000);
-                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Callback button pressed in a Call panel");
                     break;
 
-                case R.id.delay_callback_button:
+                case R.id.delay_image:
                     Reflector.disconnectCall();
                     mContactDAO.addDelayCallbackNumber(mPhoneHolder);
-                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Delay callback button pressed in a Call panel");
                     break;
             }
 

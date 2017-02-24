@@ -57,6 +57,10 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/layout_callback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/callback_image"
         android:layout_width="wrap_content"
@@ -64,5 +68,6 @@
         android:layout_marginTop="210dp"
         android:src="@drawable/callback"
         />
+    </RelativeLayout>
 
 </RelativeLayout>

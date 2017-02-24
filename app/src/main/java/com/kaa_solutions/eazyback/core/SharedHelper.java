@@ -38,6 +38,10 @@ public final class SharedHelper {
     private static final String ACCEPT_BUTTON_MARGIN_TOP = "accept_button_margin_top";
     private static final String DELAY_BUTTON_MARGIN_LEFT = "delay_button_margin_left";
     private static final String DELAY_BUTTON_MARGIN_TOP = "delay_button_margin_top";
+    private static final String REJECT_BUTTON_MARGIN_LEFT = "reject_button_margin_left";
+    private static final String REJECT_BUTTON_MARGIN_TOP = "reject_button_margin_top";
+    private static final String CALLBACK_BUTTON_MARGIN_TOP = "callback_button_margin_top";
+    private static final String CALLBACK_BUTTON_MARGIN_LEFT = "callback_button_margin_left";
     private final SharedPreferences mSharedPreferences;
 
     public SharedHelper(Context pContext) {
@@ -289,4 +293,38 @@ public final class SharedHelper {
         mSharedPreferences.edit().putInt(DELAY_BUTTON_MARGIN_TOP, value);
         return;
     }
+
+
+    public int getRejectButtonMarginLeft() {
+        return mSharedPreferences.getInt(REJECT_BUTTON_MARGIN_LEFT, 0);
+    }
+
+    public void setRejectButtonMarginLeft(int value) {
+        mSharedPreferences.edit().putInt(REJECT_BUTTON_MARGIN_LEFT, value).commit();
+    }
+
+    public int getRejectButtonMarginTop() {
+        return mSharedPreferences.getInt(REJECT_BUTTON_MARGIN_TOP, 0);
+    }
+
+    public void setRejectButtonMarginTop(int value) {
+        mSharedPreferences.edit().putInt(REJECT_BUTTON_MARGIN_TOP, value).commit();
+    }
+
+    public int getCallbackButtonMarginTop() {
+        return mSharedPreferences.getInt(CALLBACK_BUTTON_MARGIN_TOP, 0);
+    }
+
+    public void setCallbackButtonMarginTop(int value) {
+        mSharedPreferences.edit().putInt(CALLBACK_BUTTON_MARGIN_TOP, value).commit();
+    }
+
+    public int getCallbackButtonMarginLeft() {
+        return mSharedPreferences.getInt(CALLBACK_BUTTON_MARGIN_LEFT, 0);
+    }
+
+    public void setCallbackButtonMarginLeft(int value) {
+        mSharedPreferences.edit().putInt(CALLBACK_BUTTON_MARGIN_LEFT, value).commit();
+    }
+
 }

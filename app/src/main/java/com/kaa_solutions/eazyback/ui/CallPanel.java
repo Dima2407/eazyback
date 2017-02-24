@@ -44,10 +44,14 @@ public final class CallPanel extends LinearLayout {
             acceptBtn.setVisibility(GONE);
         }
 
+
+        ImageView rejectBtn = (ImageView) findViewById(R.id.reject_image);
+        rejectBtn.setPadding(helper.getRejectButtonMarginLeft(), helper.getRejectButtonMarginTop(), 0, 0);
+
         if (pSharedHelper.getActivateRejectButton()) {
-            view.findViewById(R.id.reject_image).setOnClickListener(mOnClickListener);
+            rejectBtn.setOnClickListener(mOnClickListener);
         } else {
-            view.findViewById(R.id.reject_image).setVisibility(GONE);
+            rejectBtn.setVisibility(GONE);
         }
 
         if (pSharedHelper.getActivateCallbackButton()) {
