@@ -20,7 +20,8 @@
             android:id="@+id/accept_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/accept_call"/>
+            android:layout_marginBottom="0dp"
+            android:src="@drawable/accept_call" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -32,19 +33,23 @@
             android:id="@+id/reject_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/reject_call"/>
+            android:layout_marginTop="80dp"
+            android:src="@drawable/reject_call" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/layout_delay"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+
+        >
 
         <ImageView
             android:id="@+id/delay_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/delay_callback"/>
+            android:layout_marginTop="160dp"
+            android:src="@drawable/delay_callback" />
 
     </RelativeLayout>
 
@@ -57,7 +62,8 @@
             android:id="@+id/callback_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/callback"/>
+            android:layout_marginTop="240dp"
+            android:src="@drawable/callback" />
     </RelativeLayout>
 
 </RelativeLayout>
