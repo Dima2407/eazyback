@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.core.EzApplication;
@@ -35,8 +34,9 @@ public final class CallPanel extends LinearLayout {
 
         SharedHelper helper = new SharedHelper(getContext());
 
-        RelativeLayout acceptBtn = (RelativeLayout) findViewById(R.id.layout_accept);
+        ImageView acceptBtn = (ImageView) findViewById(R.id.accept_image);
         acceptBtn.setPadding(helper.getAcceptButtonMarginLeft(), helper.getAcceptButtonMarginTop(), 0, 0);
+
 
         if (pSharedHelper.getActivateAcceptButton()) {
             acceptBtn.setOnClickListener(mOnClickListener);
@@ -44,8 +44,7 @@ public final class CallPanel extends LinearLayout {
             acceptBtn.setVisibility(GONE);
         }
 
-
-        RelativeLayout rejectBtn = (RelativeLayout) findViewById(R.id.layout_reject);
+        ImageView rejectBtn = (ImageView) findViewById(R.id.reject_image);
         rejectBtn.setPadding(helper.getRejectButtonMarginLeft(), helper.getRejectButtonMarginTop(), 0, 0);
 
         if (pSharedHelper.getActivateRejectButton()) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_floated_buttons"
@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.kaa_solutions.eazyback.ui.activities.FloatWindowSettings">
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/layout_accept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -22,9 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
             android:src="@drawable/accept_call" />
-    </RelativeLayout>
+    </FrameLayout>
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/layout_reject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:src="@drawable/reject_call" />
-    </RelativeLayout>
+    </FrameLayout>
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/layout_delay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,9 +51,9 @@
             android:layout_marginTop="160dp"
             android:src="@drawable/delay_callback" />
 
-    </RelativeLayout>
+    </FrameLayout>
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/layout_callback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -64,6 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="240dp"
             android:src="@drawable/callback" />
-    </RelativeLayout>
+    </FrameLayout>
 
-</RelativeLayout>
+</FrameLayout>

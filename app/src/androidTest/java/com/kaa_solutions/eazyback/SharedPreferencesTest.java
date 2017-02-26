@@ -60,13 +60,6 @@ public class SharedPreferencesTest {
         final int acceptButtonMarginLeft1 = mSharedHelper.getAcceptButtonMarginLeft();
         Log.e(TAG, "acceptButtonMarginLeft1: " + acceptButtonMarginLeft1);
 
-        final int testSP = mSharedHelper.getTestSP();
-        Log.e(TAG, "getTestSP: " + testSP);
-
-        mSharedHelper.setTestSP(150);
-        final int testSP1 = mSharedHelper.getTestSP();
-        Assert.assertTrue(testSP1 == 150);
-        Log.e(TAG, "getTestSP1: " + testSP1);
     }
 
 }

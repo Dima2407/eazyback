@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 
 import com.kaa_solutions.eazyback.R;
 
@@ -21,11 +21,11 @@ public final class FloatWindowSettings extends GenericActivity {
         getActionBar().setTitle(R.string.title_activity_float_settings);
         setContentView(R.layout.activity_floated_buttons);
 
-        RelativeLayout.LayoutParams layoutParams;
+        FrameLayout.LayoutParams layoutParams;
         View.OnTouchListener onTouch = new OnTouch();
 
-        RelativeLayout acceptLayout = (RelativeLayout) findViewById(R.id.layout_accept);
-        layoutParams = (RelativeLayout.LayoutParams) acceptLayout.getLayoutParams();
+        FrameLayout acceptLayout = (FrameLayout) findViewById(R.id.layout_accept);
+        layoutParams = (FrameLayout.LayoutParams) acceptLayout.getLayoutParams();
         layoutParams.leftMargin = getSharedHelper().getAcceptButtonMarginLeft();
         layoutParams.topMargin = getSharedHelper().getAcceptButtonMarginTop();
         layoutParams.rightMargin = RIGHT_MARGIN;
@@ -33,8 +33,8 @@ public final class FloatWindowSettings extends GenericActivity {
         acceptLayout.setLayoutParams(layoutParams);
         acceptLayout.setOnTouchListener(onTouch);
 
-        RelativeLayout rejectLayout = (RelativeLayout) findViewById(R.id.layout_reject);
-        layoutParams = (RelativeLayout.LayoutParams) rejectLayout.getLayoutParams();
+        FrameLayout rejectLayout = (FrameLayout) findViewById(R.id.layout_reject);
+        layoutParams = (FrameLayout.LayoutParams) rejectLayout.getLayoutParams();
         layoutParams.leftMargin = getSharedHelper().getRejectButtonMarginLeft();
         layoutParams.topMargin = getSharedHelper().getRejectButtonMarginTop();
         layoutParams.rightMargin = RIGHT_MARGIN;
@@ -42,8 +42,8 @@ public final class FloatWindowSettings extends GenericActivity {
         rejectLayout.setLayoutParams(layoutParams);
         rejectLayout.setOnTouchListener(onTouch);
 
-        RelativeLayout delayLayout = (RelativeLayout) findViewById(R.id.layout_delay);
-        layoutParams = (RelativeLayout.LayoutParams) delayLayout.getLayoutParams();
+        FrameLayout delayLayout = (FrameLayout) findViewById(R.id.layout_delay);
+        layoutParams = (FrameLayout.LayoutParams) delayLayout.getLayoutParams();
         layoutParams.leftMargin = getSharedHelper().getDelayButtonMarginLeft();
         layoutParams.topMargin = getSharedHelper().getDelayButtonMarginTop();
         layoutParams.rightMargin = RIGHT_MARGIN;
@@ -51,8 +51,8 @@ public final class FloatWindowSettings extends GenericActivity {
         delayLayout.setLayoutParams(layoutParams);
         delayLayout.setOnTouchListener(onTouch);
 
-        RelativeLayout callbackLayout = (RelativeLayout) findViewById(R.id.layout_callback);
-        layoutParams = (RelativeLayout.LayoutParams) callbackLayout.getLayoutParams();
+        FrameLayout callbackLayout = (FrameLayout) findViewById(R.id.layout_callback);
+        layoutParams = (FrameLayout.LayoutParams) callbackLayout.getLayoutParams();
         layoutParams.leftMargin = getSharedHelper().getCallbackButtonMarginLeft();
         layoutParams.topMargin = getSharedHelper().getCallbackButtonMarginTop();
         layoutParams.rightMargin = RIGHT_MARGIN;
@@ -76,13 +76,13 @@ public final class FloatWindowSettings extends GenericActivity {
             switch (event.getAction()) {
 
                 case MotionEvent.ACTION_DOWN:
-                    RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+                    FrameLayout.LayoutParams lParams = (FrameLayout.LayoutParams) view.getLayoutParams();
                     xDelta = X - lParams.leftMargin;
                     yDelta = Y - lParams.topMargin;
                     break;
 
                 case MotionEvent.ACTION_MOVE:
-                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+                    FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) view.getLayoutParams();
                     layoutParams.leftMargin = X - xDelta;
                     layoutParams.topMargin = Y - yDelta;
                     layoutParams.rightMargin = RIGHT_MARGIN;
