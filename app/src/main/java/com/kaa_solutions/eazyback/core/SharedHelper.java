@@ -62,6 +62,11 @@ public final class SharedHelper {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
+
+    public boolean clearData() {
+        return mSharedPreferences.edit().clear().commit();
+    }
+
     public int getAcceptButtonMarginTop() {
         return mSharedPreferences.getInt(ACCEPT_BUTTON_MARGIN_TOP, dpToPx(ACCEPT_BUTTON_MARGIN_TOP_DEFAULT));
     }

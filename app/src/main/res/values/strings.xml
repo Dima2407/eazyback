@@ -64,5 +64,14 @@
     <string name="time_reject_delay">Fill the field "Discharge"</string>
     <string name="call_back_delay">Fill the field "Re-call"</string>
     <string name="full_reset">Full Reset</string>
+    <string name="dialog_fire_missiles">dialog_fire_missiles</string>
+    <string name="fire">fire</string>
+    <string name="cancel">cancel</string>
+    <string name="dialog_message">dialog_message</string>
+    <string name="dialog_title">dialog_title</string>
+    <string name="no">no</string>
+    <string name="maybe">maybe</string>
+    <string name="message_text">message text</string>
+    <string name="yes">yes</string>
 
 </resources>

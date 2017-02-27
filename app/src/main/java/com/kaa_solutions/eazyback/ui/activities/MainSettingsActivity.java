@@ -67,10 +67,19 @@ public final class MainSettingsActivity extends GenericActivity {
         fullReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CleanerData().clearApplicationData(getApplicationContext());
+                fullReset();
             }
         });
 
+    }
+
+    public void fullReset() {
+        new CleanerData().clearApplicationData(getApplicationContext());
+        getSharedHelper().clearData();
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getApplicationContext().getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 
     @Override
@@ -223,4 +232,5 @@ public final class MainSettingsActivity extends GenericActivity {
             setCheckedState();
         }
     }
+
 }

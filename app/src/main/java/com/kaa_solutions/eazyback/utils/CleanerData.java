@@ -7,7 +7,6 @@ import java.io.File;
 
 public class CleanerData {
 
-
     public static boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {
             String[] children = dir.list();
@@ -18,6 +17,7 @@ public class CleanerData {
                 }
             }
         }
+
         return dir.delete();
     }
 
