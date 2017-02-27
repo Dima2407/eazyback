@@ -5,8 +5,12 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.kaa_solutions.eazyback.R;
+import com.kaa_solutions.eazyback.core.SharedHelper;
+
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public final class FloatWindowSettings extends GenericActivity {
 
@@ -20,45 +24,33 @@ public final class FloatWindowSettings extends GenericActivity {
         super.onCreate(savedInstanceState);
         getActionBar().setTitle(R.string.title_activity_float_settings);
         setContentView(R.layout.activity_floated_buttons);
+        SharedHelper helper = new SharedHelper(this);
 
-        FrameLayout.LayoutParams layoutParams;
         View.OnTouchListener onTouch = new OnTouch();
 
-        FrameLayout acceptLayout = (FrameLayout) findViewById(R.id.layout_accept);
-        layoutParams = (FrameLayout.LayoutParams) acceptLayout.getLayoutParams();
-        layoutParams.leftMargin = getSharedHelper().getAcceptButtonMarginLeft();
-        layoutParams.topMargin = getSharedHelper().getAcceptButtonMarginTop();
-        layoutParams.rightMargin = RIGHT_MARGIN;
-        layoutParams.bottomMargin = BOTTOM_MARGIN;
-        acceptLayout.setLayoutParams(layoutParams);
-        acceptLayout.setOnTouchListener(onTouch);
+        ImageView acceptBtn = (ImageView) findViewById(R.id.accept_image);
+        FrameLayout.LayoutParams paramsAcceptBtn = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+        paramsAcceptBtn.setMargins(helper.getAcceptButtonMarginLeft(), helper.getAcceptButtonMarginTop(), 0, 0);
+        acceptBtn.setLayoutParams(paramsAcceptBtn);
+        acceptBtn.setOnTouchListener(onTouch);
 
-        FrameLayout rejectLayout = (FrameLayout) findViewById(R.id.layout_reject);
-        layoutParams = (FrameLayout.LayoutParams) rejectLayout.getLayoutParams();
-        layoutParams.leftMargin = getSharedHelper().getRejectButtonMarginLeft();
-        layoutParams.topMargin = getSharedHelper().getRejectButtonMarginTop();
-        layoutParams.rightMargin = RIGHT_MARGIN;
-        layoutParams.bottomMargin = BOTTOM_MARGIN;
-        rejectLayout.setLayoutParams(layoutParams);
-        rejectLayout.setOnTouchListener(onTouch);
+        ImageView rejectBtn = (ImageView) findViewById(R.id.reject_image);
+        FrameLayout.LayoutParams paramsRejectBtn = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+        paramsRejectBtn.setMargins(helper.getRejectButtonMarginLeft(), helper.getRejectButtonMarginTop(), 0, 0);
+        rejectBtn.setLayoutParams(paramsRejectBtn);
+        rejectBtn.setOnTouchListener(onTouch);
 
-        FrameLayout delayLayout = (FrameLayout) findViewById(R.id.layout_delay);
-        layoutParams = (FrameLayout.LayoutParams) delayLayout.getLayoutParams();
-        layoutParams.leftMargin = getSharedHelper().getDelayButtonMarginLeft();
-        layoutParams.topMargin = getSharedHelper().getDelayButtonMarginTop();
-        layoutParams.rightMargin = RIGHT_MARGIN;
-        layoutParams.bottomMargin = BOTTOM_MARGIN;
-        delayLayout.setLayoutParams(layoutParams);
-        delayLayout.setOnTouchListener(onTouch);
+        ImageView delayBtn = (ImageView) findViewById(R.id.delay_image);
+        FrameLayout.LayoutParams paramsDelayBtn = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+        paramsDelayBtn.setMargins(helper.getDelayButtonMarginLeft(), helper.getDelayButtonMarginTop(), 0, 0);
+        delayBtn.setLayoutParams(paramsDelayBtn);
+        delayBtn.setOnTouchListener(onTouch);
 
-        FrameLayout callbackLayout = (FrameLayout) findViewById(R.id.layout_callback);
-        layoutParams = (FrameLayout.LayoutParams) callbackLayout.getLayoutParams();
-        layoutParams.leftMargin = getSharedHelper().getCallbackButtonMarginLeft();
-        layoutParams.topMargin = getSharedHelper().getCallbackButtonMarginTop();
-        layoutParams.rightMargin = RIGHT_MARGIN;
-        layoutParams.bottomMargin = BOTTOM_MARGIN;
-        callbackLayout.setLayoutParams(layoutParams);
-        callbackLayout.setOnTouchListener(onTouch);
+        ImageView callbackBtn = (ImageView) findViewById(R.id.callback_image);
+        FrameLayout.LayoutParams paramsCallbackBtn = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+        paramsCallbackBtn.setMargins(helper.getCallbackButtonMarginLeft(), helper.getCallbackButtonMarginTop(), 0, 0);
+        callbackBtn.setLayoutParams(paramsCallbackBtn);
+        callbackBtn.setOnTouchListener(onTouch);
 
         initBackButton();
     }
@@ -90,31 +82,32 @@ public final class FloatWindowSettings extends GenericActivity {
                     view.setLayoutParams(layoutParams);
 
                     switch (view.getId()) {
-                        case R.id.layout_accept:
+                        case R.id.accept_image:
                             Log.e(TAG, "move : accept_image");
                             getSharedHelper().setAcceptButtonMarginLeft(layoutParams.leftMargin);
                             getSharedHelper().setAcceptButtonMarginTop(layoutParams.topMargin);
                             break;
 
-                        case R.id.layout_reject:
+                        case R.id.reject_image:
                             Log.e(TAG, "move : reject_image");
                             getSharedHelper().setRejectButtonMarginLeft(layoutParams.leftMargin);
                             getSharedHelper().setRejectButtonMarginTop(layoutParams.topMargin);
                             break;
 
-                        case R.id.layout_delay:
+                        case R.id.delay_image:
                             Log.e(TAG, "move : delay_image");
                             getSharedHelper().setDelayButtonMarginLeft(layoutParams.leftMargin);
                             getSharedHelper().setDelayButtonMarginTop(layoutParams.topMargin);
                             break;
 
-                        case R.id.layout_callback:
+                        case R.id.callback_image:
                             Log.e(TAG, "move : callback_image");
                             getSharedHelper().setCallbackButtonMarginLeft(layoutParams.leftMargin);
                             getSharedHelper().setCallbackButtonMarginTop(layoutParams.topMargin);
                             break;
 
                         default:
+                            Log.e(TAG, "onTouch: Another ID");
                             break;
                     }
             }

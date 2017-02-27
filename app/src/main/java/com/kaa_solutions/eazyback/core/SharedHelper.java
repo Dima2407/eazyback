@@ -44,9 +44,9 @@ public final class SharedHelper {
     private static final String CALLBACK_BUTTON_MARGIN_TOP = "callback_button_margin_top";
     private static final String CALLBACK_BUTTON_MARGIN_LEFT = "callback_button_margin_left";
     private static final int ACCEPT_BUTTON_MARGIN_TOP_DEFAULT = 0;
-    private static final int REJECT_BUTTON_MARGIN_TOP_DEFAULT = 0;
-    private static final int DELAY_BUTTON_MARGIN_TOP_DEFAULT = 0;
-    private static final int CALLBACK_BUTTON_MARGIN_TOP_DEFAULT = 0;
+    private static final int REJECT_BUTTON_MARGIN_TOP_DEFAULT = 80;
+    private static final int DELAY_BUTTON_MARGIN_TOP_DEFAULT = 160;
+    private static final int CALLBACK_BUTTON_MARGIN_TOP_DEFAULT = 240;
 
     private final SharedPreferences mSharedPreferences;
 

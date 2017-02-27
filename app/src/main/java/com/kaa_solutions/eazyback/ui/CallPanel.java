@@ -3,14 +3,14 @@ package com.kaa_solutions.eazyback.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.core.EzApplication;
 import com.kaa_solutions.eazyback.core.SharedHelper;
 
-public final class CallPanel extends LinearLayout {
+public final class CallPanel extends FrameLayout {
 
     private final OnClickListener mOnClickListener;
     private final LayoutInflater mLayoutInflater;
@@ -35,8 +35,12 @@ public final class CallPanel extends LinearLayout {
         SharedHelper helper = new SharedHelper(getContext());
 
         ImageView acceptBtn = (ImageView) findViewById(R.id.accept_image);
-        acceptBtn.setPadding(helper.getAcceptButtonMarginLeft(), helper.getAcceptButtonMarginTop(), 0, 0);
-
+        LayoutParams paramsAcceptBtn = new LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT
+        );
+        paramsAcceptBtn.setMargins(helper.getAcceptButtonMarginLeft(), helper.getAcceptButtonMarginTop(), 0, 0);
+        acceptBtn.setLayoutParams(paramsAcceptBtn);
 
         if (pSharedHelper.getActivateAcceptButton()) {
             acceptBtn.setOnClickListener(mOnClickListener);
@@ -44,8 +48,14 @@ public final class CallPanel extends LinearLayout {
             acceptBtn.setVisibility(GONE);
         }
 
+
         ImageView rejectBtn = (ImageView) findViewById(R.id.reject_image);
-        rejectBtn.setPadding(helper.getRejectButtonMarginLeft(), helper.getRejectButtonMarginTop(), 0, 0);
+        LayoutParams paramsRejectBtn = new LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT
+        );
+        paramsRejectBtn.setMargins(helper.getRejectButtonMarginLeft(), helper.getRejectButtonMarginTop(), 0, 0);
+        rejectBtn.setLayoutParams(paramsRejectBtn);
 
         if (pSharedHelper.getActivateRejectButton()) {
             rejectBtn.setOnClickListener(mOnClickListener);
@@ -55,7 +65,12 @@ public final class CallPanel extends LinearLayout {
 
 
         ImageView callbackBtn = (ImageView) findViewById(R.id.callback_image);
-        callbackBtn.setPadding(helper.getCallbackButtonMarginLeft(), helper.getCallbackButtonMarginTop(), 0, 0);
+        LayoutParams paramsCallbackBtn = new LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT
+        );
+        paramsCallbackBtn.setMargins(helper.getCallbackButtonMarginLeft(), helper.getCallbackButtonMarginTop(), 0, 0);
+        callbackBtn.setLayoutParams(paramsCallbackBtn);
 
         if (pSharedHelper.getActivateCallbackButton()) {
             callbackBtn.setOnClickListener(mOnClickListener);
@@ -63,8 +78,14 @@ public final class CallPanel extends LinearLayout {
             callbackBtn.setVisibility(GONE);
         }
 
+
         ImageView delayBtn = (ImageView) findViewById(R.id.delay_image);
-        delayBtn.setPadding(helper.getDelayButtonMarginLeft(), helper.getDelayButtonMarginTop(), 0, 0);
+        LayoutParams paramsDelayBtn = new LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT
+        );
+        paramsDelayBtn.setMargins(helper.getDelayButtonMarginLeft(), helper.getDelayButtonMarginTop(), 0, 0);
+        delayBtn.setLayoutParams(paramsDelayBtn);
 
         if (pSharedHelper.getActivateDelayCallbackButton()) {
             delayBtn.setOnClickListener(mOnClickListener);

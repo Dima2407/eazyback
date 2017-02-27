@@ -11,59 +11,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.kaa_solutions.eazyback.ui.activities.FloatWindowSettings">
 
-    <FrameLayout
-        android:id="@+id/layout_accept"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/accept_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:src="@drawable/accept_call" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/layout_reject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/reject_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:src="@drawable/reject_call" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/layout_delay"
+    <ImageView
+        android:id="@+id/accept_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/accept_call"/>
 
-        >
 
-        <ImageView
-            android:id="@+id/delay_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
-            android:src="@drawable/delay_callback" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/layout_callback"
+    <ImageView
+        android:id="@+id/reject_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/reject_call"/>
 
-        <ImageView
-            android:id="@+id/callback_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="240dp"
-            android:src="@drawable/callback" />
-    </FrameLayout>
+    <ImageView
+        android:id="@+id/delay_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/delay_callback"/>
+
+
+    <ImageView
+        android:id="@+id/callback_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:src="@drawable/callback"/>
 
 </FrameLayout>
