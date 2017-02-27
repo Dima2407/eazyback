@@ -24,10 +24,14 @@ public final class FloatWindowSettings extends GenericActivity {
         super.onCreate(savedInstanceState);
         getActionBar().setTitle(R.string.title_activity_float_settings);
         setContentView(R.layout.activity_floated_buttons);
-        SharedHelper helper = new SharedHelper(this);
+        setButtonsMargin();
 
+        initBackButton();
+    }
+
+    private void setButtonsMargin() {
+        SharedHelper helper = getSharedHelper();
         View.OnTouchListener onTouch = new OnTouch();
-
         ImageView acceptBtn = (ImageView) findViewById(R.id.accept_image);
         FrameLayout.LayoutParams paramsAcceptBtn = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         paramsAcceptBtn.setMargins(helper.getAcceptButtonMarginLeft(), helper.getAcceptButtonMarginTop(), 0, 0);
@@ -51,8 +55,6 @@ public final class FloatWindowSettings extends GenericActivity {
         paramsCallbackBtn.setMargins(helper.getCallbackButtonMarginLeft(), helper.getCallbackButtonMarginTop(), 0, 0);
         callbackBtn.setLayoutParams(paramsCallbackBtn);
         callbackBtn.setOnTouchListener(onTouch);
-
-        initBackButton();
     }
 
     private class OnTouch implements View.OnTouchListener {
