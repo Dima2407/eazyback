@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/stock_background">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/stock_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/main_screen_margin_left"
                     android:text="@string/is_activated"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"/>
 
                 <Switch
                     android:id="@+id/callback_activator"
@@ -39,7 +39,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="end"
-                    android:paddingRight="@dimen/main_screen_margin_right" />
+                    android:paddingRight="@dimen/main_screen_margin_right"/>
 
             </RelativeLayout>
 
@@ -56,7 +56,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="end"
-                    android:paddingRight="@dimen/main_screen_margin_right" />
+                    android:paddingRight="@dimen/main_screen_margin_right"/>
 
                 <TextView
                     android:id="@+id/textView"
@@ -68,7 +68,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginLeft="@dimen/main_screen_margin_left"
                     android:text="@string/system_service"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"/>
 
             </RelativeLayout>
 
@@ -87,7 +87,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/main_screen_margin_left"
                     android:text="@string/is_activated_manual_mod"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"/>
 
 
                 <Switch
@@ -97,7 +97,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="end"
-                    android:paddingRight="@dimen/main_screen_margin_right" />
+                    android:paddingRight="@dimen/main_screen_margin_right"/>
 
             </RelativeLayout>
 
@@ -114,28 +114,28 @@
                 style="@style/MenuElementWithArrow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/phone_settings" />
+                android:text="@string/phone_settings"/>
 
             <TextView
                 android:id="@+id/main_to_devices_control"
                 style="@style/MenuElementWithArrow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/devices_settings" />
+                android:text="@string/devices_settings"/>
 
             <TextView
                 android:id="@+id/main_to_button_controls"
                 style="@style/MenuElementWithArrow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/is_activated_manual_mod" />
+                android:text="@string/is_activated_manual_mod"/>
 
             <TextView
                 android:id="@+id/main_to_delay_callback_control"
                 style="@style/MenuElementWithArrow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/delay_callback_settings" />
+                android:text="@string/delay_callback_settings"/>
 
             <TextView
                 android:id="@+id/main_to_extras_control"
@@ -143,7 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/secondary_margin"
-                android:text="@string/extra_settings" />
+                android:text="@string/extra_settings"/>
 
         </LinearLayout>
 
@@ -168,7 +168,7 @@
                     android:layout_marginLeft="@dimen/main_screen_margin_left"
                     android:gravity="center"
                     android:text="@string/reject_time"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"/>
 
                 <EditText
                     android:id="@+id/reject_delay"
@@ -180,7 +180,7 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:inputType="number"
-                    android:maxLength="3" />
+                    android:maxLength="3"/>
 
             </RelativeLayout>
 
@@ -196,7 +196,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="@dimen/main_screen_margin_left"
                     android:text="@string/callback_time"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"/>
 
                 <EditText
                     android:id="@+id/call_back_delay"
@@ -208,9 +208,20 @@
                     android:layout_marginBottom="@dimen/secondary_margin"
                     android:gravity="center"
                     android:inputType="number"
-                    android:maxLength="3" />
+                    android:maxLength="3"/>
 
             </RelativeLayout>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/full_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="@string/full_reset"
+            />
     </LinearLayout>
+
+
 </ScrollView>

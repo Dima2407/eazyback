@@ -9,12 +9,14 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import com.kaa_solutions.eazyback.R;
+import com.kaa_solutions.eazyback.utils.CleanerData;
 import com.kaa_solutions.eazyback.utils.ComponentLauncher;
 import com.kaa_solutions.eazyback.utils.Validator;
 
@@ -25,6 +27,7 @@ public final class MainSettingsActivity extends GenericActivity {
     private EditText mRejectDelay, mCallBackDelay;
     private Switch mCallbackActivatedSwitch, mManualActivatedSwitch, mDevicesActivatedSwitch;
     private BroadcastReceiver mBroadcastReceiver;
+    private Button fullReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,14 @@ public final class MainSettingsActivity extends GenericActivity {
         findViewById(R.id.main_to_devices_control).setOnClickListener(clickListener);
         findViewById(R.id.main_to_delay_callback_control).setOnClickListener(clickListener);
         findViewById(R.id.main_to_extras_control).setOnClickListener(clickListener);
+
+        fullReset = (Button) findViewById(R.id.full_reset);
+        fullReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new CleanerData().clearApplicationData(getApplicationContext());
+            }
+        });
 
     }
 

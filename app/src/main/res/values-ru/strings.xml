@@ -65,5 +65,6 @@
     <string name="time_reject_delay">Заполните поле \"Пауза перед сбросом\"</string>
     <string name="call_back_delay">Заполните поле \"Пауза перед перезв.\"</string>
     <string name="ga_trackingId">UA-43041397-4</string>
+    <string name="full_reset">Полный сброс настроек</string>
 
 </resources>
