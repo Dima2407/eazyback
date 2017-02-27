@@ -2,6 +2,7 @@ package com.kaa_solutions.eazyback.core;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.text.TextUtils;
 
 import java.util.HashSet;
@@ -34,10 +35,47 @@ public final class SharedHelper {
     private static final String FLOAT_WINDOW_X = "float_window_x";
     private static final String FLOAT_WINDOW_Y = "float_window_y";
     private static final String AUTO_HIDE_CALL_PANEL = "auto_hide_call_panel";
+    private static final String ACCEPT_BUTTON_MARGIN_LEFT = "accept_button_margin_left";
+    private static final String ACCEPT_BUTTON_MARGIN_TOP = "accept_button_margin_top";
+    private static final String REJECT_BUTTON_MARGIN_LEFT = "reject_button_margin_left";
+    private static final String REJECT_BUTTON_MARGIN_TOP = "reject_button_margin_top";
+    private static final String DELAY_BUTTON_MARGIN_LEFT = "delay_btn_margin_left";
+    private static final String DELAY_BUTTON_MARGIN_TOP = "delay_btn_margin_top";
+    private static final String CALLBACK_BUTTON_MARGIN_TOP = "callback_button_margin_top";
+    private static final String CALLBACK_BUTTON_MARGIN_LEFT = "callback_button_margin_left";
+    private static final int ACCEPT_BUTTON_MARGIN_TOP_DEFAULT = 0;
+    private static final int REJECT_BUTTON_MARGIN_TOP_DEFAULT = 80;
+    private static final int DELAY_BUTTON_MARGIN_TOP_DEFAULT = 160;
+    private static final int CALLBACK_BUTTON_MARGIN_TOP_DEFAULT = 240;
+
     private final SharedPreferences mSharedPreferences;
 
     public SharedHelper(Context pContext) {
         mSharedPreferences = pContext.getSharedPreferences(NAME, Context.MODE_PRIVATE);
+    }
+
+    private static int pxToDp(int px) {
+        return (int) (px / Resources.getSystem().getDisplayMetrics().density);
+    }
+
+    private static int dpToPx(int dp) {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
+    }
+
+    public int getAcceptButtonMarginTop() {
+        return mSharedPreferences.getInt(ACCEPT_BUTTON_MARGIN_TOP, dpToPx(ACCEPT_BUTTON_MARGIN_TOP_DEFAULT));
+    }
+
+    public void setAcceptButtonMarginTop(int value) {
+        mSharedPreferences.edit().putInt(ACCEPT_BUTTON_MARGIN_TOP, value).commit();
+    }
+
+    public int getAcceptButtonMarginLeft() {
+        return mSharedPreferences.getInt(ACCEPT_BUTTON_MARGIN_LEFT, 0);
+    }
+
+    public void setAcceptButtonMarginLeft(int value) {
+        mSharedPreferences.edit().putInt(ACCEPT_BUTTON_MARGIN_LEFT, value).commit();
     }
 
     public void setCallbackActivate(boolean pIsActivate) {
@@ -252,4 +290,55 @@ public final class SharedHelper {
     public void setAutoHideCallPanel(boolean pHideCallPanel) {
         mSharedPreferences.edit().putBoolean(AUTO_HIDE_CALL_PANEL, pHideCallPanel).commit();
     }
+
+    public int getRejectButtonMarginLeft() {
+        return mSharedPreferences.getInt(REJECT_BUTTON_MARGIN_LEFT, 0);
+    }
+
+    public void setRejectButtonMarginLeft(int value) {
+        mSharedPreferences.edit().putInt(REJECT_BUTTON_MARGIN_LEFT, value).commit();
+    }
+
+    public int getRejectButtonMarginTop() {
+        return mSharedPreferences.getInt(REJECT_BUTTON_MARGIN_TOP, dpToPx(REJECT_BUTTON_MARGIN_TOP_DEFAULT));
+    }
+
+    public void setRejectButtonMarginTop(int value) {
+        mSharedPreferences.edit().putInt(REJECT_BUTTON_MARGIN_TOP, value).commit();
+    }
+
+    public int getCallbackButtonMarginTop() {
+        return mSharedPreferences.getInt(CALLBACK_BUTTON_MARGIN_TOP, dpToPx(CALLBACK_BUTTON_MARGIN_TOP_DEFAULT));
+    }
+
+    public void setCallbackButtonMarginTop(int value) {
+        mSharedPreferences.edit().putInt(CALLBACK_BUTTON_MARGIN_TOP, value).commit();
+    }
+
+    public int getCallbackButtonMarginLeft() {
+        return mSharedPreferences.getInt(CALLBACK_BUTTON_MARGIN_LEFT, 0);
+    }
+
+    public void setCallbackButtonMarginLeft(int value) {
+        mSharedPreferences.edit().putInt(CALLBACK_BUTTON_MARGIN_LEFT, value).commit();
+    }
+
+
+    public int getDelayButtonMarginLeft() {
+        return mSharedPreferences.getInt(DELAY_BUTTON_MARGIN_LEFT, 0);
+    }
+
+    public void setDelayButtonMarginLeft(int value) {
+        mSharedPreferences.edit().putInt(DELAY_BUTTON_MARGIN_LEFT, value).commit();
+    }
+
+
+    public int getDelayButtonMarginTop() {
+        return mSharedPreferences.getInt(DELAY_BUTTON_MARGIN_TOP, dpToPx(DELAY_BUTTON_MARGIN_TOP_DEFAULT));
+    }
+
+    public void setDelayButtonMarginTop(int value) {
+        mSharedPreferences.edit().putInt(DELAY_BUTTON_MARGIN_TOP, value).commit();
+    }
+
 }

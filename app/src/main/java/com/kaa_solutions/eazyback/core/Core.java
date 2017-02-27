@@ -8,8 +8,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.db.DelayContactDAO;
 import com.kaa_solutions.eazyback.ui.CallPanel;
@@ -72,9 +70,9 @@ public final class Core {
                 return;
             }
 
+
             if (mCallPanel == null) {
                 mCallPanel = ViewUtils.showInterceptWindow(mContext, new Clicker());
-                EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Show call panel");
             }
             return;
         }
@@ -104,7 +102,6 @@ public final class Core {
     }
 
     private void makeCallback(final String pNumber) {
-        EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Make callback");
         long callbackDelay = mSharedHelper.getCallbackDelayInMilSec();
         if (callbackDelay == 0) {
             callbackDelay = 1000;
@@ -132,7 +129,6 @@ public final class Core {
     }
 
     private void launchButtonTask(long pDelaySec) {
-        EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Launch delay show call panel");
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -149,19 +145,19 @@ public final class Core {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.accept_button:
+                case R.id.accept_image:
                     Intent i = new Intent(Intent.ACTION_MEDIA_BUTTON);
                     i.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_HEADSETHOOK));
                     mContext.sendOrderedBroadcast(i, null);
-                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Accept button pressed in a Call panel");
+                    Log.e(TAG, "onClick: accept_image");
                     break;
 
-                case R.id.reject_button:
+                case R.id.reject_image:
                     Reflector.disconnectCall();
-                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Reject button pressed in a Call panel");
+                    Log.e(TAG, "onClick: reject_image");
                     break;
 
-                case R.id.callback_button:
+                case R.id.callback_image:
                     Reflector.disconnectCall();
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -169,14 +165,16 @@ public final class Core {
                             ComponentLauncher.launchCallIntent(mContext, mPhoneHolder);
                         }
                     }, 1000);
-                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Callback button pressed in a Call panel");
+                    Log.e(TAG, "onClick: callback_image");
                     break;
 
-                case R.id.delay_callback_button:
+                case R.id.delay_image:
                     Reflector.disconnectCall();
                     mContactDAO.addDelayCallbackNumber(mPhoneHolder);
-                    EasyTracker.getInstance(mContext).set(Fields.EVENT_ACTION, "Delay callback button pressed in a Call panel");
+                    Log.e(TAG, "onClick: delay_image");
                     break;
+                default:
+                    Log.e(TAG, "onClick: another ID");
             }
 
             ViewUtils.hideInterceptWindow(mContext, mCallPanel);

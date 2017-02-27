@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.core.EzApplication;
 import com.kaa_solutions.eazyback.core.SharedHelper;
@@ -104,8 +102,6 @@ public final class ViewUtils {
     }
 
     public static CallPanel showInterceptWindow(Context pContext, View.OnClickListener pOnClickListener) {
-
-        EasyTracker.getInstance(pContext).set(Fields.EVENT_ACTION, "Show call panel");
 
         SharedHelper sharedHelper = ((EzApplication) pContext.getApplicationContext()).getSharedHelper();
 
