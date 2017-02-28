@@ -66,5 +66,10 @@
     <string name="call_back_delay">Заполните поле \"Пауза перед перезв.\"</string>
     <string name="ga_trackingId">UA-43041397-4</string>
     <string name="full_reset">Полный сброс настроек</string>
-
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="erase">УДАЛИТЬ</string>
+    <string name="dialog_title">Вы уверены?</string>
+    <string name="dialog_message">Все данные и настройки будут удалены</string>
+    <string name="cancel">ОТМЕНИТЬ</string>
 </resources>
