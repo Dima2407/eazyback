@@ -63,5 +63,12 @@
     <string name="not_added_contact">You can add only 5 phone numbers!</string>
     <string name="time_reject_delay">Fill the field "Discharge"</string>
     <string name="call_back_delay">Fill the field "Re-call"</string>
+    <string name="full_reset">Full Reset</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="erase">ERASE</string>
+    <string name="dialog_title">Are you sure?</string>
+    <string name="dialog_message">You\'ll lose all data and preferences</string>
+    <string name="no">No</string>
 
 </resources>

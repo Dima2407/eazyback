@@ -188,4 +188,10 @@ public class DelayContactDAO {
         return contactName;
     }
 
+    public void dropAndCreateTable() {
+        dbWriter.execSQL(DBQueries.DROP_DELAY_CONTACTS);
+        dbWriter.execSQL(DBQueries.CREATE_DELAY_CONTACTS);
+    }
+
+
 }

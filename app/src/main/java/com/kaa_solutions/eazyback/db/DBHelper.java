@@ -25,4 +25,9 @@ final class DBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
         Log.e(getClass().getSimpleName(), "Database was update");
     }
+
+    public void dropAndCreateTable() {
+
+    }
+
 }
