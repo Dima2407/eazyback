@@ -15,6 +15,7 @@ import com.kaa_solutions.eazyback.models.Contact;
 import com.kaa_solutions.eazyback.ui.adapters.PhonebookAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static com.kaa_solutions.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
@@ -68,7 +69,7 @@ public class PhoneBookActivity extends GenericActivity {
     }
 
     ArrayList<Contact> getAddressBook() {
-        ArrayList<Contact> contacts = new ArrayList<Contact>();
+        final ArrayList<Contact> contacts = new ArrayList<Contact>();
         Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
         String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
                 ContactsContract.CommonDataKinds.Phone.NUMBER};
@@ -89,6 +90,7 @@ public class PhoneBookActivity extends GenericActivity {
 
             } while (people.moveToNext());
         }
+        Collections.sort(contacts);
         return contacts;
     }
 
