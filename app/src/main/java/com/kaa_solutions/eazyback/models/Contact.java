@@ -1,7 +1,7 @@
 package com.kaa_solutions.eazyback.models;
 
 
-public class Contact {
+public class Contact implements Comparable<Contact> {
 
     private int id;
     private String name;
@@ -43,6 +43,7 @@ public class Contact {
         this.timeLastDelayedCall = timeLastDelayedCall;
     }
 
+
     @Override
     public String toString() {
         return "Contact{" +
@@ -51,5 +52,10 @@ public class Contact {
                 ", phone='" + phone + '\'' +
                 ", timeLastDelayedCall='" + timeLastDelayedCall + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Contact another) {
+        return name.compareTo(another.name);
     }
 }
