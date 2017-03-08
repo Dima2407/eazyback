@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.kaa_solutions.eazyback"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 21
         versionCode 19
         versionName "2.5"
