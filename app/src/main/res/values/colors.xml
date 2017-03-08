@@ -6,5 +6,7 @@
     <color name="pressed_button">#1abc9c</color>
     <color name="pressed_un_pressed">#3ac5aa</color>
     <color name="stock_background">#cde2ef</color>
+    <color name="action_bar_text">#ffffff</color>
+    <color name="action_bar_background">#1a1b24</color>
 
 </resources>

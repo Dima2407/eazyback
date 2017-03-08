@@ -130,6 +130,7 @@ public abstract class GenericActivity extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setIcon(R.drawable.back);
     }
 
     protected void hideKeyboard(View pView) {

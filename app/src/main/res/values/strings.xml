@@ -70,5 +70,6 @@
     <string name="dialog_title">Are you sure?</string>
     <string name="dialog_message">You\'ll lose all data and preferences</string>
     <string name="no">No</string>
+    <string name="search_title">Search</string>
 
 </resources>

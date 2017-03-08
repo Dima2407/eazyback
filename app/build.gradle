@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.kaa_solutions.eazyback"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 21
         versionCode 19
         versionName "2.5"
@@ -21,9 +21,9 @@ android {
 
 dependencies {
     compile files('libs/libGoogleAnalyticsServices.jar')
-    androidTestCompile 'junit:junit:4.12'
+    compile 'org.jetbrains:annotations-java5:15.0'
     testCompile 'junit:junit:4.12'
+    androidTestCompile 'junit:junit:4.12'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
-    compile 'org.jetbrains:annotations-java5:15.0'
 }

@@ -1,26 +1,15 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import com.kaa_solutions.eazyback.R;
-import com.kaa_solutions.eazyback.db.DelayContactDAO;
-import com.kaa_solutions.eazyback.utils.ComponentLauncher;
-import com.kaa_solutions.eazyback.utils.Validator;
 
 public final class MainSettingsActivity extends GenericActivity {
 
@@ -31,12 +20,21 @@ public final class MainSettingsActivity extends GenericActivity {
     private BroadcastReceiver mBroadcastReceiver;
     private Button fullReset;
 
+    private ImageView autoCallBack, buttons, devices, delayedCalls, numbers, extra;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_main);
 
-        mRejectDelay = (EditText) findViewById(R.id.reject_delay);
+        defineButtons();
+
+        setOnClickListener();
+
+
+
+       /* mRejectDelay = (EditText) findViewById(R.id.reject_delay);
         if (getSharedHelper().getRejectDelayInSec() != -1) {
             mRejectDelay.setText(String.valueOf(getSharedHelper().getRejectDelayInSec()));
         }
@@ -72,8 +70,61 @@ public final class MainSettingsActivity extends GenericActivity {
                 fullReset();
             }
         });
-
+*/
     }
+
+
+    private void defineButtons() {
+        autoCallBack = (ImageView) findViewById(R.id.auto_call_back_image);
+        buttons = (ImageView) findViewById(R.id.buttons_image);
+        devices = (ImageView) findViewById(R.id.devices_image);
+        delayedCalls = (ImageView) findViewById(R.id.delayed_calls_image);
+        numbers = (ImageView) findViewById(R.id.numbers_image);
+        extra = (ImageView) findViewById(R.id.extra_image);
+    }
+
+    private void setOnClickListener() {
+        View.OnClickListener clickListener = new Clicker();
+        autoCallBack.setOnClickListener(clickListener);
+        buttons.setOnClickListener(clickListener);
+        devices.setOnClickListener(clickListener);
+        delayedCalls.setOnClickListener(clickListener);
+        numbers.setOnClickListener(clickListener);
+        extra.setOnClickListener(clickListener);
+    }
+
+    private class Clicker implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.auto_call_back_image:
+                    startActivity(new Intent(getBaseContext(), AutoCallBackActivity.class));
+                    break;
+                case R.id.buttons_image:
+                    startActivity(new Intent(getBaseContext(), ButtonsActivity.class));
+                    break;
+                case R.id.devices_image:
+                    //TODO: old deviceActivity
+                    startActivity(new Intent(getBaseContext(), DeviceManagerActivity.class));
+                    break;
+                case R.id.delayed_calls_image:
+                    //TODO: old delayActivity
+                    startActivity(new Intent(getBaseContext(), DelayCallbackNumbersActivity.class));
+                    break;
+                case R.id.numbers_image:
+                    //TODO: old numbersActivity
+                    startActivity(new Intent(getBaseContext(), NumbersManagerActivity.class));
+                    break;
+                case R.id.extra_image:
+                    //TODO: old ExtraActivity
+                    startActivity(new Intent(getBaseContext(), ExtraSettingsActivity.class));
+                    break;
+
+            }
+        }
+    }
+/*
 
     public void fullReset() {
 
@@ -247,6 +298,7 @@ public final class MainSettingsActivity extends GenericActivity {
             setCheckedState();
         }
     }
+*/
 
 
 }
