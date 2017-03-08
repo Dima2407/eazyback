@@ -50,7 +50,7 @@
     </style>
 
     <style name="Widget.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">#1a1b24</item>
+        <item name="android:background">@color/action_bar_background</item>
         <!--<item name="android:background">@drawable/action_bar_gradient</item>-->
         <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
     </style>
@@ -62,7 +62,7 @@
     </style>
 
     <style name="MyActionBarTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColor">@color/action_bar_text</item>
     </style>
 
     <style name="main_screen_text_under_button">
