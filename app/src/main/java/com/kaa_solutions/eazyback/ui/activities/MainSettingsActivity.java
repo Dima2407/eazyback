@@ -1,26 +1,13 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import com.kaa_solutions.eazyback.R;
-import com.kaa_solutions.eazyback.db.DelayContactDAO;
-import com.kaa_solutions.eazyback.utils.ComponentLauncher;
-import com.kaa_solutions.eazyback.utils.Validator;
 
 public final class MainSettingsActivity extends GenericActivity {
 
@@ -31,12 +18,18 @@ public final class MainSettingsActivity extends GenericActivity {
     private BroadcastReceiver mBroadcastReceiver;
     private Button fullReset;
 
+    private ImageView autocallBack, buttons, devices, delayedCalls, numbers, extra;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_main);
 
-        mRejectDelay = (EditText) findViewById(R.id.reject_delay);
+
+
+       /* mRejectDelay = (EditText) findViewById(R.id.reject_delay);
         if (getSharedHelper().getRejectDelayInSec() != -1) {
             mRejectDelay.setText(String.valueOf(getSharedHelper().getRejectDelayInSec()));
         }
@@ -72,8 +65,9 @@ public final class MainSettingsActivity extends GenericActivity {
                 fullReset();
             }
         });
-
+*/
     }
+/*
 
     public void fullReset() {
 
@@ -247,6 +241,7 @@ public final class MainSettingsActivity extends GenericActivity {
             setCheckedState();
         }
     }
+*/
 
 
 }
