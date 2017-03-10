@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:src="@drawable/accept_call" />
+        android:src="@drawable/answer"/>
 
 
     <ImageView
@@ -23,14 +23,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:src="@drawable/reject_call" />
+        android:src="@drawable/cancel"/>
 
     <ImageView
         android:id="@+id/delay_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
-        android:src="@drawable/delay_callback" />
+        android:src="@drawable/delayed"/>
 
 
     <ImageView

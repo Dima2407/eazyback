@@ -3,6 +3,7 @@ package com.kaa_solutions.eazyback.ui.activities;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -93,6 +94,11 @@ public final class MainSettingsActivity extends GenericActivity {
         extra.setOnClickListener(clickListener);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
     private class Clicker implements View.OnClickListener {
 
         @Override
@@ -124,7 +130,8 @@ public final class MainSettingsActivity extends GenericActivity {
             }
         }
     }
-/*
+
+    /*
 
     public void fullReset() {
 
