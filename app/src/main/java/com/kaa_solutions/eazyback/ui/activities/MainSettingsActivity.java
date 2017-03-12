@@ -35,16 +35,7 @@ public final class MainSettingsActivity extends GenericActivity {
 
 
 
-       /* mRejectDelay = (EditText) findViewById(R.id.reject_delay);
-        if (getSharedHelper().getRejectDelayInSec() != -1) {
-            mRejectDelay.setText(String.valueOf(getSharedHelper().getRejectDelayInSec()));
-        }
-
-        mCallBackDelay = (EditText) findViewById(R.id.call_back_delay);
-
-        if (getSharedHelper().getCallbackDelayInSec() != -1) {
-            mCallBackDelay.setText(String.valueOf(getSharedHelper().getCallbackDelayInSec()));
-        }
+       /*
 
         CompoundButton.OnCheckedChangeListener checkListener = new Checker();
 
@@ -245,13 +236,6 @@ public final class MainSettingsActivity extends GenericActivity {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             switch (buttonView.getId()) {
-                case R.id.callback_activator:
-                    getSharedHelper().setCallbackActivate(isChecked);
-                    if (isChecked) {
-                        getSharedHelper().setActivateManualMode(false);
-                        mManualActivatedSwitch.setChecked(false);
-                    }
-                    break;
 
                 case R.id.device_activator:
                     getSharedHelper().setDeviceActive(isChecked);

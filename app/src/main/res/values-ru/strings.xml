@@ -72,4 +72,5 @@
     <string name="dialog_title">Вы уверены?</string>
     <string name="dialog_message">Все данные и настройки будут удалены</string>
     <string name="cancel">ОТМЕНИТЬ</string>
+    <string name="pauses">Паузы</string>
 </resources>
