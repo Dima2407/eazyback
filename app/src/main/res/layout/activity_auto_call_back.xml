@@ -1,7 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#ffffff">
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/layout_auto_call_back_switcher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="21.3dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:alpha="0.87"
+            android:fontFamily="sans-serif"
+            android:text="@string/is_activated"
+
+            android:textSize="16sp" />
+
+        <Switch
+            android:id="@+id/callback_activator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:thumb="@drawable/check"
+            android:track="@drawable/frame" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/auto_call_back_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/layout_auto_call_back_switcher"
+        android:layout_marginTop="21dp">
+
+        <RelativeLayout
+            android:id="@+id/auto_call_back_block_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#f2f3f4"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/pauses"
+                android:textColor="#99000000"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lay_time_reject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/auto_call_back_block_pause"
+            android:layout_marginTop="27.3dp">
+
+            <TextView
+                android:id="@+id/text_reject_time"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:text="@string/reject_time"
+                android:textSize="16dp"
+
+                />
+
+            <EditText
+                android:id="@+id/reject_delay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15.7dp"
+                android:width="50dp"
+                android:maxLength="2" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/auto_call_back_block_pause"
+            android:layout_marginTop="78.3dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:text="@string/callback_time"
+
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/call_back_delay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15.7dp"
+                android:width="50dp"
+                android:maxLength="2" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

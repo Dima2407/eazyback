@@ -71,5 +71,7 @@
     <string name="dialog_message">You\'ll lose all data and preferences</string>
     <string name="no">No</string>
     <string name="search_title">Search</string>
+    <string name="pauses">Pauses</string>
+    <string name="message_disableManualMode">The manual mode has been switched off</string>
 
 </resources>

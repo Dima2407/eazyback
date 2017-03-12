@@ -3,6 +3,7 @@ package com.kaa_solutions.eazyback.ui.activities;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,16 +35,7 @@ public final class MainSettingsActivity extends GenericActivity {
 
 
 
-       /* mRejectDelay = (EditText) findViewById(R.id.reject_delay);
-        if (getSharedHelper().getRejectDelayInSec() != -1) {
-            mRejectDelay.setText(String.valueOf(getSharedHelper().getRejectDelayInSec()));
-        }
-
-        mCallBackDelay = (EditText) findViewById(R.id.call_back_delay);
-
-        if (getSharedHelper().getCallbackDelayInSec() != -1) {
-            mCallBackDelay.setText(String.valueOf(getSharedHelper().getCallbackDelayInSec()));
-        }
+       /*
 
         CompoundButton.OnCheckedChangeListener checkListener = new Checker();
 
@@ -93,6 +85,11 @@ public final class MainSettingsActivity extends GenericActivity {
         extra.setOnClickListener(clickListener);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
     private class Clicker implements View.OnClickListener {
 
         @Override
@@ -124,7 +121,8 @@ public final class MainSettingsActivity extends GenericActivity {
             }
         }
     }
-/*
+
+    /*
 
     public void fullReset() {
 
@@ -153,7 +151,7 @@ public final class MainSettingsActivity extends GenericActivity {
         super.onStart();
         setStatTag(getClass().getSimpleName());
 
-        setCheckedState();
+
         deviceCaseSwitcher();
     }
 
@@ -176,18 +174,23 @@ public final class MainSettingsActivity extends GenericActivity {
 
         return super.onOptionsItemSelected(item);
     }
+*/
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     protected void onStop() {
         super.onStop();
-        hideKeyboard(mRejectDelay);
 
         if (mBroadcastReceiver != null) {
             unregisterReceiver(mBroadcastReceiver);
             mBroadcastReceiver = null;
         }
     }
-
+/*
     private void makeSaveProcedure() {
         String rejectTime = mRejectDelay.getText().toString();
         String callbackTime = mCallBackDelay.getText().toString();
@@ -210,8 +213,7 @@ public final class MainSettingsActivity extends GenericActivity {
     }
 
     private void setCheckedState() {
-        mCallbackActivatedSwitch.setChecked(getSharedHelper().getIsCallbacksActivate());
-        mManualActivatedSwitch.setChecked(getSharedHelper().getIsActivateManualMode());
+              mManualActivatedSwitch.setChecked(getSharedHelper().getIsActivateManualMode());
         mDevicesActivatedSwitch.setChecked(getSharedHelper().getIsActivatedDeviceControl());
     }
 
@@ -228,23 +230,12 @@ public final class MainSettingsActivity extends GenericActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        this.finish();
-    }
 
     private final class Checker implements CompoundButton.OnCheckedChangeListener {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             switch (buttonView.getId()) {
-                case R.id.callback_activator:
-                    getSharedHelper().setCallbackActivate(isChecked);
-                    if (isChecked) {
-                        getSharedHelper().setActivateManualMode(false);
-                        mManualActivatedSwitch.setChecked(false);
-                    }
-                    break;
 
                 case R.id.device_activator:
                     getSharedHelper().setDeviceActive(isChecked);
