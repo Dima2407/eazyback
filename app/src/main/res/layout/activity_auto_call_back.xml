@@ -26,12 +26,12 @@
             android:textSize="16sp" />
 
         <Switch
-            android:width="45dp"
-            android:height="17dp"
             android:id="@+id/callback_activator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:thumb="@drawable/check"
+            android:track="@drawable/frame" />
 
 
     </RelativeLayout>

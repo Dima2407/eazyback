@@ -94,6 +94,7 @@ public final class AutoCallBackActivity extends GenericActivity {
         mCallbackActivatedSwitch = (Switch) findViewById(R.id.callback_activator);
         if (getSharedHelper().getIsCallbacksActivate()) {
             mCallbackActivatedSwitch.setChecked(true);
+            setFieldValues();
         } else {
             RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.auto_call_back_settings);
             relativeLayout.setVisibility(View.INVISIBLE);

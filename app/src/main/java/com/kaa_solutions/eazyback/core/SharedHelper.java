@@ -130,12 +130,12 @@ public final class SharedHelper {
     }
 
     public long getRejectDelayInMilSec() {
-        return mSharedPreferences.getLong(REJECT_DELAY, -1);
+        return mSharedPreferences.getLong(REJECT_DELAY, 3000);
 
     }
 
     public long getCallbackDelayInMilSec() {
-        return mSharedPreferences.getLong(CALL_BACK_DELAY, -1);
+        return mSharedPreferences.getLong(CALL_BACK_DELAY, 3000);
     }
 
     public void setRejectDelay(String pRejectDelay) {
