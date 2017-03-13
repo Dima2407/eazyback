@@ -41,8 +41,6 @@
             android:name=".ui.activities.ExtraSettingsActivity"
             android:windowSoftInputMode="stateHidden" />
 
-
-
         <service
             android:name=".core.DeviceService"
             android:enabled="true"
@@ -52,7 +50,6 @@
             android:name=".ui.activities.PhoneBookActivity"
             android:label="@string/title_activity_phone_book"
             android:noHistory="true" />
-
 
         <receiver
             android:name=".core.listeners.CallListener"
@@ -65,6 +62,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".ui.activities.ManualModeActivity"></activity>
     </application>
 
 </manifest>

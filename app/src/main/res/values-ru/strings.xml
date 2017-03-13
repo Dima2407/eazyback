@@ -19,7 +19,7 @@
     <string name="accept_call_button">Кнопка приёма</string>
     <string name="reject_call_button">Кнопка сброса</string>
     <string name="callback_button">Кнопка перезвона</string>
-    <string name="callback_delay_button">Кн. отлож. перезв.</string>
+    <string name="callback_delay_button">Кнопка отложенного звонка</string>
     <string name="close_button">Кнопка закрытия</string>
 
     <string name="phone_settings">Номера</string>
