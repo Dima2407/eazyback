@@ -73,4 +73,6 @@
     <string name="dialog_message">Все данные и настройки будут удалены</string>
     <string name="cancel">ОТМЕНИТЬ</string>
     <string name="pauses">Паузы</string>
+    <string name="buttons_position">Расположение кнопок</string>
+    <string name="button_s_settings">Настройка кнопок</string>
 </resources>

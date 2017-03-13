@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,15 +7,14 @@
 
     <RelativeLayout
         android:id="@+id/layout_manual_mode"
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="58.3dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="21.3dp">
+        android:layout_alignParentTop="true">
 
         <TextView
+            style="@style/buttons_screen_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -23,7 +22,6 @@
 
         <Switch
             android:id="@+id/manual_activator"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -41,21 +39,27 @@
         <RelativeLayout
             android:id="@+id/buttons_settings"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="41dp">
 
             <TextView
+                style="@style/buttons_screen_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/button_s_settings" />
+                android:layout_centerVertical="true"
+                android:text="@string/button_s_settings"
+                android:textColor="#99000000" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/part_accept_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/buttons_settings">
+            android:layout_below="@id/buttons_settings"
+            android:layout_marginTop="28dp">
 
             <TextView
+                style="@style/buttons_screen_style"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -65,7 +69,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:button="@drawable/checkbox" />
 
         </RelativeLayout>
 
@@ -73,11 +78,12 @@
             android:id="@+id/part_reject_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/part_accept_button">
+            android:layout_below="@id/part_accept_button"
+            android:layout_marginTop="34.7dp">
 
             <TextView
+                style="@style/buttons_screen_style"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="@string/reject_call_button" />
@@ -86,7 +92,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:button="@drawable/checkbox" />
 
         </RelativeLayout>
 
@@ -94,9 +101,12 @@
             android:id="@+id/part_callback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/part_reject_button">
+            android:layout_below="@id/part_reject_button"
+            android:layout_marginTop="35dp">
 
             <TextView
+                style="@style/buttons_screen_style"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -106,7 +116,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:button="@drawable/checkbox" />
 
         </RelativeLayout>
 
@@ -114,9 +125,11 @@
             android:id="@+id/part_delay_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/part_callback">
+            android:layout_below="@id/part_callback"
+            android:layout_marginTop="35dp">
 
             <TextView
+                style="@style/buttons_screen_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -126,12 +139,95 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:button="@drawable/checkbox" />
 
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/part_delay_button"
+            android:layout_marginTop="24dp"
+            android:background="#dddddd" />
 
+        <RelativeLayout
+            android:id="@+id/part_position_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:layout_marginTop="21.3dp">
+
+            <TextView
+                style="@style/buttons_screen_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:text="@string/buttons_position"
+                android:textColor="#99000000" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/part_modes_displaying_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/part_position_buttons">
+
+            <TextView
+                style="@style/buttons_screen_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/buttons_intercept_annotation" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/part_options_chosen_numbers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/part_modes_displaying_buttons">
+
+            <TextView
+                style="@style/buttons_screen_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buttons_intercept_mode_list" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:button="@drawable/radio_button" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/part_options_all_numbers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/part_options_chosen_numbers">
+
+            <TextView
+                style="@style/buttons_screen_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buttons_intercept_mode_all" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:button="@drawable/radio_button" />
+        </RelativeLayout>
     </RelativeLayout>
-
-
 </RelativeLayout>
