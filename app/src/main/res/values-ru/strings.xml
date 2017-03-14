@@ -73,4 +73,5 @@
     <string name="pauses">Паузы</string>
     <string name="buttons_position">Расположение кнопок</string>
     <string name="button_s_settings">Настройка кнопок</string>
+    <string name="tocuhAndMove">Зажмите и перетащите кнопку в нужную позицию</string>
 </resources>

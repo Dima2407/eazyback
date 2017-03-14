@@ -75,6 +75,7 @@
     <string name="message_disableManualMode">The manual mode has been switched off</string>
     <string name="button_s_settings">Button\'s settings</string>
     <string name="buttons_position">Button\'s position</string>
+    <string name="message_disableCallBackMode">The callback mode is switched off</string>
 
 
 </resources>

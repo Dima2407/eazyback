@@ -69,8 +69,8 @@
                     android:text="@string/accept_call_button"/>
 
                 <CheckBox
+                    android:id="@+id/accept_button_check"
                     style="@style/buttons_screen_style"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -94,8 +94,8 @@
                     android:text="@string/reject_call_button"/>
 
                 <CheckBox
+                    android:id="@+id/reject_button_check"
                     style="@style/buttons_screen_style"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -120,6 +120,7 @@
                     android:text="@string/callback_button"/>
 
                 <CheckBox
+                    android:id="@+id/callback_button_check"
                     style="@style/buttons_screen_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -144,6 +145,7 @@
                     android:text="@string/callback_delay_button"/>
 
                 <CheckBox
+                    android:id="@+id/delay_callback_button_check"
                     style="@style/buttons_screen_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -162,7 +164,7 @@
                 android:background="#dddddd"/>
 
             <RelativeLayout
-                android:id="@+id/part_position_buttons"
+                android:id="@+id/layout_options_choose_position"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -195,7 +197,7 @@
                 android:id="@+id/part_modes_displaying_buttons"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_below="@id/part_position_buttons"
+                android:layout_below="@id/layout_options_choose_position"
                 android:layout_marginTop="24.3dp"
                 android:background="#f2f3f4">
 
@@ -235,12 +237,13 @@
                     android:text="@string/buttons_intercept_mode_all"/>
 
                 <RadioGroup
+                    android:id="@+id/button_mode_group"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="right">
 
                     <RadioButton
-                        android:id="@+id/radio_only_chosen_numbers"
+                        android:id="@+id/mod_only_list"
                         style="@style/buttons_screen_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -249,12 +252,12 @@
 
 
                     <RadioButton
-                        android:id="@+id/radio_all_numbers"
+                        android:id="@+id/mod_total_intercept"
                         style="@style/buttons_screen_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_below="@id/radio_only_chosen_numbers"
+                        android:layout_below="@id/mod_only_list"
                         android:layout_marginTop="35.7dp"
                         android:button="@drawable/radio_button"/>
                 </RadioGroup>
