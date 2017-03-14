@@ -90,36 +90,9 @@ public final class MainSettingsActivity extends GenericActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private class Clicker implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.auto_call_back_image:
-                    startActivity(new Intent(getBaseContext(), AutoCallBackActivity.class));
-                    break;
-                case R.id.buttons_image:
-                    startActivity(new Intent(getBaseContext(), ButtonsActivity.class));
-                    break;
-                case R.id.devices_image:
-                    //TODO: old deviceActivity
-                    startActivity(new Intent(getBaseContext(), DeviceManagerActivity.class));
-                    break;
-                case R.id.delayed_calls_image:
-                    //TODO: old delayActivity
-                    startActivity(new Intent(getBaseContext(), DelayCallbackNumbersActivity.class));
-                    break;
-                case R.id.numbers_image:
-                    //TODO: old numbersActivity
-                    startActivity(new Intent(getBaseContext(), NumbersManagerActivity.class));
-                    break;
-                case R.id.extra_image:
-                    //TODO: old ExtraActivity
-                    startActivity(new Intent(getBaseContext(), ExtraSettingsActivity.class));
-                    break;
-
-            }
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     /*
@@ -177,17 +150,44 @@ public final class MainSettingsActivity extends GenericActivity {
 */
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
     protected void onStop() {
         super.onStop();
 
         if (mBroadcastReceiver != null) {
             unregisterReceiver(mBroadcastReceiver);
             mBroadcastReceiver = null;
+        }
+    }
+
+    private class Clicker implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.auto_call_back_image:
+                    startActivity(new Intent(getBaseContext(), AutoCallBackActivity.class));
+                    break;
+                case R.id.buttons_image:
+                    startActivity(new Intent(getBaseContext(), ManualModeActivity.class));
+                    break;
+                case R.id.devices_image:
+                    //TODO: old deviceActivity
+                    startActivity(new Intent(getBaseContext(), DeviceManagerActivity.class));
+                    break;
+                case R.id.delayed_calls_image:
+                    //TODO: old delayActivity
+                    startActivity(new Intent(getBaseContext(), DelayCallbackNumbersActivity.class));
+                    break;
+                case R.id.numbers_image:
+                    //TODO: old numbersActivity
+                    startActivity(new Intent(getBaseContext(), NumbersManagerActivity.class));
+                    break;
+                case R.id.extra_image:
+                    //TODO: old ExtraActivity
+                    startActivity(new Intent(getBaseContext(), ExtraSettingsActivity.class));
+                    break;
+
+            }
         }
     }
 /*

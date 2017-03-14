@@ -19,7 +19,7 @@
     <string name="accept_call_button">Кнопка приёма</string>
     <string name="reject_call_button">Кнопка сброса</string>
     <string name="callback_button">Кнопка перезвона</string>
-    <string name="callback_delay_button">Кн. отлож. перезв.</string>
+    <string name="callback_delay_button">Кнопка отложенного звонка</string>
     <string name="close_button">Кнопка закрытия</string>
 
     <string name="phone_settings">Номера</string>
@@ -44,8 +44,6 @@
     <string name="buttons_intercept_annotation">Режим показа кнопок</string>
     <string name="buttons_intercept_mode_list">Для номеров из списка</string>
     <string name="buttons_intercept_mode_all">Для всех входящих звонков</string>
-
-    <string name="buttons_float_window">Расположение кнопок</string>
 
     <string name="call_panel_auto_hide">Автоскрытие кнопок</string>
 
@@ -73,4 +71,6 @@
     <string name="dialog_message">Все данные и настройки будут удалены</string>
     <string name="cancel">ОТМЕНИТЬ</string>
     <string name="pauses">Паузы</string>
+    <string name="buttons_position">Расположение кнопок</string>
+    <string name="button_s_settings">Настройка кнопок</string>
 </resources>
