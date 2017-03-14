@@ -74,5 +74,7 @@
     <string name="pauses">Pauses</string>
     <string name="message_disableManualMode">The manual mode has been switched off</string>
     <string name="button_s_settings">Button\'s settings</string>
+    <string name="buttons_position">Button\'s position</string>
+
 
 </resources>
