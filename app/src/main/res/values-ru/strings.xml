@@ -74,4 +74,6 @@
     <string name="buttons_position">Расположение кнопок</string>
     <string name="button_s_settings">Настройка кнопок</string>
     <string name="tocuhAndMove">Зажмите и перетащите кнопку в нужную позицию</string>
+    <string name="message_disableCallBackMode">Режим \"Автопеперезвон\" был отключен</string>
+    <string name="message_disableManualMode">Режим \"Кнопки\" был отключен</string>
 </resources>
