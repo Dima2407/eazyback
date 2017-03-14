@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.core.SharedHelper;
@@ -16,6 +17,8 @@ public final class FloatWindowSettings extends GenericActivity {
 
     public static final int RIGHT_MARGIN = -250;
     public static final int BOTTOM_MARGIN = -250;
+    ImageView acceptBtn, rejectBtn, delayBtn, callbackBtn;
+    private TextView textView;
     private int xDelta;
     private int yDelta;
 
@@ -24,33 +27,64 @@ public final class FloatWindowSettings extends GenericActivity {
         super.onCreate(savedInstanceState);
         getActionBar().setTitle(R.string.title_activity_float_settings);
         setContentView(R.layout.activity_floated_buttons);
+        defineImages();
         setButtonsMargin();
-
+        textView = (TextView) findViewById(R.id.text_instruct);
+        checkVisibilityButtons();
         initBackButton();
+    }
+
+    private void defineImages() {
+        acceptBtn = (ImageView) findViewById(R.id.accept_image);
+        rejectBtn = (ImageView) findViewById(R.id.reject_image);
+        delayBtn = (ImageView) findViewById(R.id.delay_image);
+        callbackBtn = (ImageView) findViewById(R.id.callback_image);
+    }
+
+    private void checkVisibilityButtons() {
+        if (getSharedHelper().getActivateAcceptButton()) {
+            acceptBtn.setVisibility(View.VISIBLE);
+        } else {
+            acceptBtn.setVisibility(View.GONE);
+        }
+
+        if (getSharedHelper().getActivateRejectButton()) {
+            rejectBtn.setVisibility(View.VISIBLE);
+        } else {
+            rejectBtn.setVisibility(View.GONE);
+        }
+
+        if (getSharedHelper().getActivateDelayCallbackButton()) {
+            delayBtn.setVisibility(View.VISIBLE);
+        } else {
+            delayBtn.setVisibility(View.GONE);
+        }
+
+        if (getSharedHelper().getActivateCallbackButton()) {
+            callbackBtn.setVisibility(View.VISIBLE);
+        } else {
+            callbackBtn.setVisibility(View.GONE);
+        }
     }
 
     private void setButtonsMargin() {
         SharedHelper helper = getSharedHelper();
         View.OnTouchListener onTouch = new OnTouch();
-        ImageView acceptBtn = (ImageView) findViewById(R.id.accept_image);
         FrameLayout.LayoutParams paramsAcceptBtn = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         paramsAcceptBtn.setMargins(helper.getAcceptButtonMarginLeft(), helper.getAcceptButtonMarginTop(), 0, 0);
         acceptBtn.setLayoutParams(paramsAcceptBtn);
         acceptBtn.setOnTouchListener(onTouch);
 
-        ImageView rejectBtn = (ImageView) findViewById(R.id.reject_image);
         FrameLayout.LayoutParams paramsRejectBtn = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         paramsRejectBtn.setMargins(helper.getRejectButtonMarginLeft(), helper.getRejectButtonMarginTop(), 0, 0);
         rejectBtn.setLayoutParams(paramsRejectBtn);
         rejectBtn.setOnTouchListener(onTouch);
 
-        ImageView delayBtn = (ImageView) findViewById(R.id.delay_image);
         FrameLayout.LayoutParams paramsDelayBtn = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         paramsDelayBtn.setMargins(helper.getDelayButtonMarginLeft(), helper.getDelayButtonMarginTop(), 0, 0);
         delayBtn.setLayoutParams(paramsDelayBtn);
         delayBtn.setOnTouchListener(onTouch);
 
-        ImageView callbackBtn = (ImageView) findViewById(R.id.callback_image);
         FrameLayout.LayoutParams paramsCallbackBtn = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         paramsCallbackBtn.setMargins(helper.getCallbackButtonMarginLeft(), helper.getCallbackButtonMarginTop(), 0, 0);
         callbackBtn.setLayoutParams(paramsCallbackBtn);
@@ -63,6 +97,9 @@ public final class FloatWindowSettings extends GenericActivity {
 
         @Override
         public boolean onTouch(View view, MotionEvent event) {
+            if (textView.getVisibility() == View.VISIBLE) {
+                textView.setVisibility(View.INVISIBLE);
+            }
             Log.e(getClass().getSimpleName(), "view Id: " + view.getId());
             final int X = (int) event.getRawX();
             final int Y = (int) event.getRawY();
