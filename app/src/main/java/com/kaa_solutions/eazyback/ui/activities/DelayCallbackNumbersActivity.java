@@ -1,9 +1,9 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.kaa_solutions.eazyback.R;
@@ -17,34 +17,24 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
     private final String TAG = this.getClass().getSimpleName();
     private ListView mListView;
     private DelayBackAdapter adapter;
+    private Button btnClearList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate: ");
         getActionBar().setTitle(R.string.title_activity_delay_back);
         setContentView(R.layout.activity_delay_back);
         mListView = (ListView) findViewById(R.id.list_delay_callback);
-        ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
-        if (arrayOfUsers != null) {
-            adapter = new DelayBackAdapter(this, arrayOfUsers);
-            mListView.setAdapter(adapter);
-        } else {
-            mListView.setAdapter(null);
-        }
-
         mListView.setEmptyView(findViewById(R.id.empty_delay_callback));
+        btnClearList = (Button) findViewById(R.id.clearList);
 
+        setAdapter();
         initBackButton();
+        defineClearButton();
+        setOnItemClickListener();
+    }
 
-        findViewById(R.id.clearList).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getContactDAO().deleteDelayContactAll();
-                mListView.setAdapter(null);
-            }
-        });
-
+    private void setOnItemClickListener() {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                              @Override
@@ -66,10 +56,28 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         );
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        setStatTag(getClass().getSimpleName());
+    private void setAdapter() {
+        ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
+        if (arrayOfUsers != null) {
+            adapter = new DelayBackAdapter(this, arrayOfUsers);
+            mListView.setAdapter(adapter);
+            btnClearList.setEnabled(true);
+        } else {
+            mListView.setAdapter(null);
+            btnClearList.setEnabled(false);
+        }
+
+    }
+
+    private void defineClearButton() {
+        btnClearList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getContactDAO().deleteDelayContactAll();
+                mListView.setAdapter(null);
+                btnClearList.setEnabled(false);
+            }
+        });
     }
 
     @Override
