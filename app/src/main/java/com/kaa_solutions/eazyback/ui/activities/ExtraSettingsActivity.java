@@ -26,12 +26,6 @@ public final class ExtraSettingsActivity extends GenericActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        setStatTag(getClass().getSimpleName());
-    }
-
-    @Override
     protected void onPause() {
         super.onPause();
         getSharedHelper().setButtonDelay(mEditText.getText().toString());
