@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/adapter_delay_back_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:alpha="0.87"
+        android:fontFamily="sans-serif"
+        android:text="Oleg Ponomarenko"
+        android:textSize="16sp"
+
+        />
 
     <TextView
         android:id="@+id/adapter_delay_back_phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/secondary_margin"
-        android:textSize="@dimen/main_text_size" />
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="6dp"
+        android:alpha="0.54"
+        android:fontFamily="sans-serif"
+        android:text="+380630000001"
+        android:textSize="14sp"/>
 
 </LinearLayout>

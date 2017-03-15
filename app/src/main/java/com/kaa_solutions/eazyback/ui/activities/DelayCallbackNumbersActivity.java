@@ -1,9 +1,9 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.kaa_solutions.eazyback.R;
@@ -17,34 +17,51 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
     private final String TAG = this.getClass().getSimpleName();
     private ListView mListView;
     private DelayBackAdapter adapter;
+    private Button btnClearList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate: ");
         getActionBar().setTitle(R.string.title_activity_delay_back);
         setContentView(R.layout.activity_delay_back);
         mListView = (ListView) findViewById(R.id.list_delay_callback);
+        btnClearList = (Button) findViewById(R.id.clearList);
+
         ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
+
+  /*      //TODO: just for test
+        arrayOfUsers = new ArrayList<Contact>();
+        for (int i = 0; i < 20; i++) {
+            Contact contact = new Contact();
+            contact.setName("Name " + i);
+            contact.setPhone("+3806300000" + i);
+            arrayOfUsers.add(contact);
+        }
+        //end point*/
+
+
         if (arrayOfUsers != null) {
             adapter = new DelayBackAdapter(this, arrayOfUsers);
             mListView.setAdapter(adapter);
+            btnClearList.setEnabled(true);
         } else {
             mListView.setAdapter(null);
+            btnClearList.setEnabled(false);
         }
-
         mListView.setEmptyView(findViewById(R.id.empty_delay_callback));
-
-        initBackButton();
-
-        findViewById(R.id.clearList).setOnClickListener(new View.OnClickListener() {
+        btnClearList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getContactDAO().deleteDelayContactAll();
                 mListView.setAdapter(null);
+                btnClearList.setEnabled(false);
             }
         });
+        initBackButton();
+        setOnItemClickListener();
+    }
 
+    private void setOnItemClickListener() {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                              @Override
@@ -59,6 +76,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
                                                      mListView.setAdapter(adapter);
                                                  } else {
                                                      mListView.setAdapter(null);
+                                                     btnClearList.setEnabled(false);
                                                  }
                                                  ComponentLauncher.launchCallIntent(getApplicationContext(), contact.getPhone());
                                              }
@@ -66,11 +84,6 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         );
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        setStatTag(getClass().getSimpleName());
-    }
 
     @Override
     protected void onResume() {

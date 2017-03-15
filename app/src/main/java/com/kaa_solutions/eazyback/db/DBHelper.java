@@ -7,7 +7,7 @@ import android.util.Log;
 
 final class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 39;
+    private static final int DATABASE_VERSION = 40;
     private static final String DATABASE_NAME = "eazyback_db";
 
     DBHelper(Context context) {
@@ -24,10 +24,6 @@ final class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(DBQueries.DROP_DELAY_CONTACTS);
         onCreate(sqLiteDatabase);
         Log.e(getClass().getSimpleName(), "Database was update");
-    }
-
-    public void dropAndCreateTable() {
-
     }
 
 }
