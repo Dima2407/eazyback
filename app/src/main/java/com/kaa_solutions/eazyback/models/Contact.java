@@ -7,8 +7,17 @@ public class Contact implements Comparable<Contact> {
     private String name;
     private String phone;
     private String timeLastDelayedCall;
+    private String additionalNumber;
 
     public Contact() {
+    }
+
+    public String getAdditionalNumber() {
+        return additionalNumber;
+    }
+
+    public void setAdditionalNumber(String additionalNumber) {
+        this.additionalNumber = additionalNumber;
     }
 
     public String getName() {
@@ -43,7 +52,6 @@ public class Contact implements Comparable<Contact> {
         this.timeLastDelayedCall = timeLastDelayedCall;
     }
 
-
     @Override
     public String toString() {
         return "Contact{" +
@@ -51,6 +59,7 @@ public class Contact implements Comparable<Contact> {
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", timeLastDelayedCall='" + timeLastDelayedCall + '\'' +
+                ", additionalNumber='" + additionalNumber + '\'' +
                 '}';
     }
 

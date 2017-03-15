@@ -25,12 +25,39 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         getActionBar().setTitle(R.string.title_activity_delay_back);
         setContentView(R.layout.activity_delay_back);
         mListView = (ListView) findViewById(R.id.list_delay_callback);
-        mListView.setEmptyView(findViewById(R.id.empty_delay_callback));
         btnClearList = (Button) findViewById(R.id.clearList);
 
-        setAdapter();
+        ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
+
+        //TODO: just for test
+        arrayOfUsers = new ArrayList<Contact>();
+        for (int i = 0; i < 20; i++) {
+            Contact contact = new Contact();
+            contact.setName("Name " + i);
+            contact.setPhone("+3806300000" + i);
+            arrayOfUsers.add(contact);
+        }
+        //end point
+
+
+        if (arrayOfUsers != null) {
+            adapter = new DelayBackAdapter(this, arrayOfUsers);
+            mListView.setAdapter(adapter);
+            btnClearList.setEnabled(true);
+        } else {
+            mListView.setAdapter(null);
+            btnClearList.setEnabled(false);
+        }
+        mListView.setEmptyView(findViewById(R.id.empty_delay_callback));
+        btnClearList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getContactDAO().deleteDelayContactAll();
+                mListView.setAdapter(null);
+                btnClearList.setEnabled(false);
+            }
+        });
         initBackButton();
-        defineClearButton();
         setOnItemClickListener();
     }
 
@@ -56,31 +83,8 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         );
     }
 
-    private void setAdapter() {
-        ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
-        if (arrayOfUsers != null) {
-            adapter = new DelayBackAdapter(this, arrayOfUsers);
-            mListView.setAdapter(adapter);
-            btnClearList.setEnabled(true);
-        } else {
-            mListView.setAdapter(null);
-            btnClearList.setEnabled(false);
-        }
 
-    }
-
-    private void defineClearButton() {
-        btnClearList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getContactDAO().deleteDelayContactAll();
-                mListView.setAdapter(null);
-                btnClearList.setEnabled(false);
-            }
-        });
-    }
-
-    @Override
+   /* @Override
     protected void onResume() {
         super.onResume();
         ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
@@ -91,5 +95,5 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         } else {
             mListView.setAdapter(null);
         }
-    }
+    }*/
 }
