@@ -29,7 +29,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
 
         ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
 
-        //TODO: just for test
+  /*      //TODO: just for test
         arrayOfUsers = new ArrayList<Contact>();
         for (int i = 0; i < 20; i++) {
             Contact contact = new Contact();
@@ -37,7 +37,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
             contact.setPhone("+3806300000" + i);
             arrayOfUsers.add(contact);
         }
-        //end point
+        //end point*/
 
 
         if (arrayOfUsers != null) {
@@ -76,6 +76,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
                                                      mListView.setAdapter(adapter);
                                                  } else {
                                                      mListView.setAdapter(null);
+                                                     btnClearList.setEnabled(false);
                                                  }
                                                  ComponentLauncher.launchCallIntent(getApplicationContext(), contact.getPhone());
                                              }
@@ -84,7 +85,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
     }
 
 
-   /* @Override
+    @Override
     protected void onResume() {
         super.onResume();
         ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
@@ -95,5 +96,5 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         } else {
             mListView.setAdapter(null);
         }
-    }*/
+    }
 }
