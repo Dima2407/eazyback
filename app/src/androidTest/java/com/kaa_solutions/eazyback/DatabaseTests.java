@@ -82,7 +82,7 @@ public class DatabaseTests {
             Log.d(TAG, "delayCallbackNumber: " + delayCallbackNumber);
         }
         Log.d(TAG, "before updating...");
-        Contact contactUpdate = delayContactDAO.findContactByPhoneOrName(contact);
+        Contact contactUpdate = delayContactDAO.findContactByPhoneOrNameInDelayedList(contact);
         Log.d(TAG, "contactUpdate: " + contactUpdate);
         Assert.assertNotNull(contactUpdate);
         for (Contact delayCallbackNumber : delayCallbackNumbers) {
@@ -108,7 +108,7 @@ public class DatabaseTests {
 
         delayContactDAO.addDelayCallbackNumber(contact.getPhone());
 
-        Contact foundContact = delayContactDAO.findContactByPhoneOrName(contact);
+        Contact foundContact = delayContactDAO.findContactByPhoneOrNameInDelayedList(contact);
         Assert.assertNotNull(foundContact);
         Log.d(TAG, "Found contact: " + foundContact);
     }
@@ -124,7 +124,7 @@ public class DatabaseTests {
 
         delayContactDAO.addDelayCallbackNumber(contact.getPhone());
 
-        Contact foundContact = delayContactDAO.findContactByPhoneOrName(contact);
+        Contact foundContact = delayContactDAO.findContactByPhoneOrNameInDelayedList(contact);
         Assert.assertNotNull(foundContact);
         Log.d(TAG, "Found contact: " + foundContact);
 
