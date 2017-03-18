@@ -78,6 +78,6 @@
     <string name="message_disableManualMode">Режим \"Кнопки\" был отключен</string>
     <string name="buttons_float_window">Настройка расположения кнопок</string>
     <string name="title_activity_button_control">Режим \"Кнопки\"</string>
-    <string name="title_activity_callback_control">Режим \"Автопрезевон\"</string>
+    <string name="title_activity_callback_control">Режим \"Автоперезевон\"</string>
     <string name="title_activity_number">Номера</string>
 </resources>
