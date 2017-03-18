@@ -14,9 +14,9 @@ public final class ExtraSettingsActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setTitle(R.string.title_activity_extras);
         setContentView(R.layout.activity_extras);
         initBackButton();
+        getSupportActionBar().setTitle(R.string.title_activity_extras);
 
         mEditText = (EditText) findViewById(R.id.button_delay);
         mEditText.setText(String.valueOf(getSharedHelper().getButtonsDelayInSec()));

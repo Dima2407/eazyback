@@ -77,8 +77,9 @@
     <string name="buttons_position">Button\'s position</string>
     <string name="message_disableCallBackMode">The callback mode has been switched off</string>
     <string name="tocuhAndMove">Touch and move the buttons</string>
-    <string name="title_activity_number">NumberActivity</string>
+    <string name="title_activity_number">Numbers</string>
     <string name="title_activity_callback_control">Callback control</string>
+    <string name="title_activity_button_control">Button control</string>
 
 
 </resources>

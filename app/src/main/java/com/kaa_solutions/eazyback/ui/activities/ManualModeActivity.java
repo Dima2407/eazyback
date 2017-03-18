@@ -28,6 +28,7 @@ public class ManualModeActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual_mode);
         initBackButton();
+        getSupportActionBar().setTitle(R.string.title_activity_button_control);
         setIsManualModeActive();
         setOnCheckedChanged();
 

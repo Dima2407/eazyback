@@ -25,7 +25,7 @@ public final class FloatWindowSettings extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setTitle(R.string.title_activity_float_settings);
+        getSupportActionBar().setTitle(R.string.title_activity_float_settings);
         setContentView(R.layout.activity_floated_buttons);
         defineImages();
         setButtonsMargin();
