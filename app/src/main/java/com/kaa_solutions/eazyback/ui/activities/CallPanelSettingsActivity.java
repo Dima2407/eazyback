@@ -50,7 +50,6 @@ public final class CallPanelSettingsActivity extends GenericActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        setStatTag(getClass().getSimpleName());
         if (getSharedHelper().getManualInterceptMode()) {
             mRadioGroup.check(R.id.mod_only_list);
         } else {

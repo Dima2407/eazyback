@@ -1,14 +1,13 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.kaa_solutions.eazyback.R;
-import com.kaa_solutions.eazyback.utils.ViewUtils;
 
 import java.util.List;
 
@@ -20,25 +19,20 @@ public final class NumbersManagerActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setTitle(R.string.title_activity_numbers);
-        switch (getSharedHelper().getDonate()) {
-            case -1:
-                setContentView(R.layout.activity_numbers);
-                mTelephoneCells = ViewUtils.initPhoneSells(this, getSharedHelper().getTargetNumbers());
-                break;
+        initBackButton();
+        getSupportActionBar().setTitle(R.string.title_activity_numbers);
+        setContentView(R.layout.activity_number);
 
-            case 1:
-                setContentView(R.layout.activity_numbers_extended);
-                mTelephoneCells = ViewUtils.initPhoneSellsExtended(this, getSharedHelper().getTargetNumbers());
-                break;
 
-            case 2:
-                setContentView(R.layout.activity_numbers_ultra);
-                mTelephoneCells = ViewUtils.initPhoneSellsUltra(this, getSharedHelper().getTargetNumbers());
-                break;
-        }
-
-        openAddressBook = (Button) findViewById(R.id.open_address_Book);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+      /*  openAddressBook = (Button) findViewById(R.id.open_address_Book);
         openAddressBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,22 +40,16 @@ public final class NumbersManagerActivity extends GenericActivity {
                 startActivity(Intent);
             }
         });
+*/
 
-        initBackButton();
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        ViewUtils.savePhoneCells(mTelephoneCells, getSharedHelper());
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(getBaseContext(), MainSettingsActivity.class));
+//        ViewUtils.savePhoneCells(mTelephoneCells, getSharedHelper());
     }
 
 
