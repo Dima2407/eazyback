@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_colorNormal="#f98100"
-            fab:fab_icon="@drawable/book_icn"
+            fab:fab_icon="@drawable/new_number__icn"
             fab:fab_title="@string/add_new_number" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_colorNormal="#f98100"
-            fab:fab_icon="@drawable/new_number__icn"
+            fab:fab_icon="@drawable/book_icn"
             fab:fab_title="@string/add_number_from_book" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>

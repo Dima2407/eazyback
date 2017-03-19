@@ -12,11 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
+        android:paddingTop="16dp"
         android:text="Name"
-
-        android:textSize="@dimen/main_text_size"
-        android:textStyle="bold" />
+        android:textColor="#de000000"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/adapter_phonebook_contact_phone"
@@ -24,7 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
+        android:paddingBottom="16dp"
         android:text="+380631441234"
-        android:textSize="@dimen/main_text_size" />
+        android:textColor="#8a000000"
+        android:textSize="14sp" />
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -21,7 +22,9 @@ import static com.kaa_solutions.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
 public class PhoneBookActivity extends GenericActivity {
 
+    private ArrayList<Contact> arrayOfUsers;
     private ListView myList;
+    private PhonebookAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +33,21 @@ public class PhoneBookActivity extends GenericActivity {
         setContentView(R.layout.activity_phone_book);
 
         myList = (ListView) findViewById(R.id.listView);
+        initListView();
 
-        getAddressBook();
+        SearchView searchView = (SearchView) findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-        ArrayList<Contact> arrayOfUsers = getAddressBook();
-        PhonebookAdapter adapter;
-        if (arrayOfUsers != null) {
-            adapter = new PhonebookAdapter(this, arrayOfUsers);
-            myList.setAdapter(adapter);
-        } else {
-            myList.setAdapter(null);
-        }
-
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return true;
+            }
+        });
 
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -68,7 +74,19 @@ public class PhoneBookActivity extends GenericActivity {
         initBackButton();
     }
 
-    ArrayList<Contact> getAddressBook() {
+    private void initListView() {
+        arrayOfUsers = getAddressBook();
+        if (arrayOfUsers != null) {
+            adapter = new PhonebookAdapter(this, arrayOfUsers);
+            myList.setAdapter(adapter);
+        } else {
+            myList.setAdapter(null);
+        }
+
+    }
+
+
+    private ArrayList<Contact> getAddressBook() {
         final ArrayList<Contact> contacts = new ArrayList<Contact>();
         Uri uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
         String[] projection = new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
