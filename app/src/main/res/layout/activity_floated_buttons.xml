@@ -21,7 +21,7 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:lines="2"
-        android:text="@string/tocuhAndMove"
+        android:text="@string/touchAndMove"
         android:textSize="16sp"
         />
 

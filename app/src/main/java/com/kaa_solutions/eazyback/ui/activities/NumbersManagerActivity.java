@@ -1,10 +1,7 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -14,15 +11,13 @@ import com.kaa_solutions.eazyback.ui.adapters.NumbersAdapter;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 public final class NumbersManagerActivity extends GenericActivity {
 
-    private List<EditText> mTelephoneCells;
-    private Button openAddressBook;
     private ListView listView;
     private ArrayList<Contact> arrayOfUsers;
+    private com.getbase.floatingactionbutton.FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +25,24 @@ public final class NumbersManagerActivity extends GenericActivity {
         initBackButton();
         getSupportActionBar().setTitle(R.string.title_activity_numbers);
         setContentView(R.layout.activity_number);
-        setFAB();
-
+        buildFam();
         inflateListView();
+    }
 
-
-
-      /*  openAddressBook = (Button) findViewById(R.id.open_address_Book);
-        openAddressBook.setOnClickListener(new View.OnClickListener() {
+    private void buildFam() {
+        findViewById(R.id.add_new_number).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent Intent = new Intent(NumbersManagerActivity.this, PhoneBookActivity.class);
-                startActivity(Intent);
+            public void onClick(View v) {
+                Toast.makeText(NumbersManagerActivity.this, "add_new_number", Toast.LENGTH_SHORT).show();
             }
         });
-*/
 
-
-//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        findViewById(R.id.add_number_from_book).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(NumbersManagerActivity.this, "add_number_from_book", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void inflateListView() {
@@ -80,14 +75,6 @@ public final class NumbersManagerActivity extends GenericActivity {
             listView.setAdapter(null);
         }
     }
-
-    private void setFAB() {
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(NumbersManagerActivity.this, "It doesn't work yet", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
+
+

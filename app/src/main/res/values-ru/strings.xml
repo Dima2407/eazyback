@@ -73,11 +73,13 @@
     <string name="pauses">Паузы</string>
     <string name="buttons_position">Расположение кнопок</string>
     <string name="button_s_settings">Настройка кнопок</string>
-    <string name="tocuhAndMove">Зажмите и перетащите кнопку в нужную позицию</string>
+    <string name="touchAndMove">Зажмите и перетащите кнопку в нужную позицию</string>
     <string name="message_disableCallBackMode">Режим \"Автопеперезвон\" был отключен</string>
     <string name="message_disableManualMode">Режим \"Кнопки\" был отключен</string>
     <string name="buttons_float_window">Настройка расположения кнопок</string>
     <string name="title_activity_button_control">Режим \"Кнопки\"</string>
     <string name="title_activity_callback_control">Режим \"Автоперезевон\"</string>
     <string name="title_activity_number">Номера</string>
+    <string name="add_new_number">Добавить новый номер</string>
+    <string name="add_number_from_book">Из телефоннной книги</string>
 </resources>
