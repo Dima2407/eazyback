@@ -22,23 +22,12 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setTitle(R.string.title_activity_delay_back);
+        getSupportActionBar().setTitle(R.string.title_activity_delay_back);
         setContentView(R.layout.activity_delay_back);
         mListView = (ListView) findViewById(R.id.list_delay_callback);
         btnClearList = (Button) findViewById(R.id.clearList);
 
         ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
-
-  /*      //TODO: just for test
-        arrayOfUsers = new ArrayList<Contact>();
-        for (int i = 0; i < 20; i++) {
-            Contact contact = new Contact();
-            contact.setName("Name " + i);
-            contact.setPhone("+3806300000" + i);
-            arrayOfUsers.add(contact);
-        }
-        //end point*/
-
 
         if (arrayOfUsers != null) {
             adapter = new DelayBackAdapter(this, arrayOfUsers);

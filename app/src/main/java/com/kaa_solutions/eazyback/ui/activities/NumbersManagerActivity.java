@@ -3,66 +3,78 @@ package com.kaa_solutions.eazyback.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ListView;
 
 import com.kaa_solutions.eazyback.R;
-import com.kaa_solutions.eazyback.utils.ViewUtils;
+import com.kaa_solutions.eazyback.models.Contact;
+import com.kaa_solutions.eazyback.ui.adapters.NumbersAdapter;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public final class NumbersManagerActivity extends GenericActivity {
 
-    private List<EditText> mTelephoneCells;
-    private Button openAddressBook;
+    private ListView listView;
+    private ArrayList<Contact> arrayOfUsers;
+    private com.getbase.floatingactionbutton.FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setTitle(R.string.title_activity_numbers);
-        switch (getSharedHelper().getDonate()) {
-            case -1:
-                setContentView(R.layout.activity_numbers);
-                mTelephoneCells = ViewUtils.initPhoneSells(this, getSharedHelper().getTargetNumbers());
-                break;
+        initBackButton();
+        getSupportActionBar().setTitle(R.string.title_activity_numbers);
+        setContentView(R.layout.activity_number);
+        buildFam();
+        inflateListView();
+    }
 
-            case 1:
-                setContentView(R.layout.activity_numbers_extended);
-                mTelephoneCells = ViewUtils.initPhoneSellsExtended(this, getSharedHelper().getTargetNumbers());
-                break;
-
-            case 2:
-                setContentView(R.layout.activity_numbers_ultra);
-                mTelephoneCells = ViewUtils.initPhoneSellsUltra(this, getSharedHelper().getTargetNumbers());
-                break;
-        }
-
-        openAddressBook = (Button) findViewById(R.id.open_address_Book);
-        openAddressBook.setOnClickListener(new View.OnClickListener() {
+    private void buildFam() {
+        findViewById(R.id.add_new_number).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent Intent = new Intent(NumbersManagerActivity.this, PhoneBookActivity.class);
-                startActivity(Intent);
+            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(), AddNewNumberACtivity.class));
             }
         });
 
-        initBackButton();
-
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        findViewById(R.id.add_number_from_book).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PhoneBookActivity.class));
+            }
+        });
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        ViewUtils.savePhoneCells(mTelephoneCells, getSharedHelper());
+    private void inflateListView() {
+        listView = (ListView) findViewById(R.id.numbers);
+        arrayOfUsers = new ArrayList<>();
+
+        String testPhone = "+380631441234";
+        Set<String> strings = new LinkedHashSet<>();
+        strings.add(testPhone);
+        getSharedHelper().setTargetPhoneSet(strings);
+
+        final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
+        for (String number : targetNumbers) {
+            Contact contact = new Contact();
+            contact.setPhone(number);
+            final String contactNameFromBook = getContactDAO().getContactNameFromBook(number);
+            if (contactNameFromBook != null) {
+                contact.setName(contactNameFromBook);
+            } else {
+                contact.setName("Unknown");
+            }
+            arrayOfUsers.add(contact);
+        }
+
+        NumbersAdapter adapter;
+        if (arrayOfUsers != null) {
+            adapter = new NumbersAdapter(this, arrayOfUsers);
+            listView.setAdapter(adapter);
+        } else {
+            listView.setAdapter(null);
+        }
     }
-
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(getBaseContext(), MainSettingsActivity.class));
-    }
-
-
 }
+
+

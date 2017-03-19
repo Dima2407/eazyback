@@ -76,7 +76,12 @@
     <string name="button_s_settings">Button\'s settings</string>
     <string name="buttons_position">Button\'s position</string>
     <string name="message_disableCallBackMode">The callback mode has been switched off</string>
-    <string name="tocuhAndMove">Touch and move the buttons</string>
+    <string name="touchAndMove">Touch and move the buttons</string>
+    <string name="title_activity_number">Numbers</string>
+    <string name="title_activity_callback_control">Callback control</string>
+    <string name="title_activity_button_control">Button control</string>
+    <string name="add_new_number">add a new number</string>
+    <string name="add_number_from_book">from Phonebook</string>
 
 
 </resources>

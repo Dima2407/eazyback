@@ -62,7 +62,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.activities.ManualModeActivity"></activity>
+        <activity android:name=".ui.activities.ManualModeActivity" />
     </application>
 
 </manifest>

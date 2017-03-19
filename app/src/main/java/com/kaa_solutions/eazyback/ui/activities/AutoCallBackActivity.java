@@ -24,6 +24,7 @@ public final class AutoCallBackActivity extends GenericActivity {
         setStatusAutoCallbackControl();
         setOnClickListener();
         initBackButton();
+        getSupportActionBar().setTitle(R.string.title_activity_callback_control);
 
     }
 

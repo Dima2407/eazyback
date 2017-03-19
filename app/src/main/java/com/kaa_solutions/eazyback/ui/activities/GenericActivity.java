@@ -1,16 +1,14 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,9 +16,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.android.vending.billing.IInAppBillingService;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.MapBuilder;
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.core.Core;
 import com.kaa_solutions.eazyback.core.EzApplication;
@@ -32,7 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public abstract class GenericActivity extends Activity {
+public abstract class GenericActivity extends AppCompatActivity {
 
     private IInAppBillingService serviceBilling;
 
@@ -99,13 +94,6 @@ public abstract class GenericActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        EasyTracker.getInstance(this).activityStop(this);
-    }
-
-    protected void setStatTag(String pScreenName) {
-        EasyTracker.getInstance(this).set(Fields.SCREEN_NAME, pScreenName);
-        EasyTracker.getInstance(this).send(MapBuilder.createAppView().build());
-        EasyTracker.getInstance(this).activityStart(this);
     }
 
     protected DelayContactDAO getContactDAO() {
@@ -127,10 +115,21 @@ public abstract class GenericActivity extends Activity {
     }
 
     protected void initBackButton() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setHomeButtonEnabled(true);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+
         actionBar.setIcon(R.drawable.back);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     protected void hideKeyboard(View pView) {
@@ -146,7 +145,7 @@ public abstract class GenericActivity extends Activity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
+    /*@Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -168,8 +167,7 @@ public abstract class GenericActivity extends Activity {
         }
 
         return super.onMenuItemSelected(featureId, item);
-    }
-
+    }*/
     @Override
     protected void onDestroy() {
         super.onDestroy();

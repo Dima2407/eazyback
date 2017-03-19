@@ -13,9 +13,8 @@ public final class DeviceManagerActivity extends GenericActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActionBar().setTitle(R.string.title_activity_devices);
+        getSupportActionBar().setTitle(R.string.title_activity_devices);
         setContentView(R.layout.activity_devices);
-
         initBackButton();
 
         CompoundButton.OnCheckedChangeListener listener = new Checker();
@@ -47,11 +46,6 @@ public final class DeviceManagerActivity extends GenericActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        setStatTag(getClass().getSimpleName());
-    }
 
     private final class Checker implements CompoundButton.OnCheckedChangeListener {
 
