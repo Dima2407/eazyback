@@ -1,9 +1,9 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.models.Contact;
@@ -33,14 +33,14 @@ public final class NumbersManagerActivity extends GenericActivity {
         findViewById(R.id.add_new_number).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(NumbersManagerActivity.this, "add_new_number", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(getApplicationContext(), AddNewNumberACtivity.class));
             }
         });
 
         findViewById(R.id.add_number_from_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(NumbersManagerActivity.this, "add_number_from_book", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), PhoneBookActivity.class));
             }
         });
     }

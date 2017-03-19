@@ -14,10 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="22.7dp"
         fab:fab_addButtonColorNormal="#1bb6c4"
-        fab:fab_labelStyle="@style/menu_labels_style"
-
-        >
+        fab:fab_labelStyle="@style/menu_labels_style">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_new_number"
