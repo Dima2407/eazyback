@@ -54,21 +54,12 @@ public final class NumbersManagerActivity extends GenericActivity {
         listView = (ListView) findViewById(R.id.numbers);
         arrayOfUsers = new ArrayList<>();
 
-/*
-        for (int i = 1; i < AMOUNT_PHONES_NUMBER+1; i++) {
-            Contact contact = new Contact();
-            contact.setName("Name " + i);
-            contact.setPhone("+38063000000" + i);
-            arrayOfUsers.add(contact);
-        }
-*/
         String testPhone = "+380631441234";
         Set<String> strings = new LinkedHashSet<>();
         strings.add(testPhone);
         getSharedHelper().setTargetPhoneSet(strings);
 
         final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
-        Toast.makeText(getApplicationContext(), "targetNumbers.size(): " + targetNumbers.toString(), Toast.LENGTH_LONG);
         for (String number : targetNumbers) {
             Contact contact = new Contact();
             contact.setPhone(number);

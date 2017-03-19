@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.NumbersManagerActivity">
 
-
     <ListView
         android:id="@+id/numbers"
         android:layout_width="match_parent"
@@ -13,11 +12,9 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="56.7dp"
-        android:layout_height="56.7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:src="@drawable/add_icn" />
-
-
+        android:src="@drawable/add" />
 </android.support.design.widget.CoordinatorLayout>
