@@ -82,4 +82,6 @@
     <string name="title_activity_number">Номера</string>
     <string name="add_new_number">Добавить новый номер</string>
     <string name="add_number_from_book">Из телефоннной книги</string>
+    <string name="listOfNumbersIsFull">Вы можете добавить только 5 номеров</string>
+    <string name="unknown">Неизвестный</string>
 </resources>

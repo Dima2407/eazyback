@@ -82,6 +82,8 @@
     <string name="title_activity_button_control">Button control</string>
     <string name="add_new_number">add a new number</string>
     <string name="add_number_from_book">from Phonebook</string>
+    <string name="listOfNumbersIsFull">You can add onlu 5 numbers</string>
+    <string name="unknown">Unknown</string>
 
 
 </resources>

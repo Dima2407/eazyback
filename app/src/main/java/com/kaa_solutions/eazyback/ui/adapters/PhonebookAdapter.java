@@ -1,7 +1,6 @@
 package com.kaa_solutions.eazyback.ui.adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +14,37 @@ import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.models.Contact;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PhonebookAdapter extends ArrayAdapter<Contact> implements Filterable {
+
+    private List<Contact> originalData = null;
+    private List<Contact> filteredData = null;
+    private ItemFilter mFilter = new ItemFilter();
+
     public PhonebookAdapter(Context context, ArrayList<Contact> contacts) {
         super(context, 0, contacts);
+        originalData = contacts;
+        filteredData = contacts;
     }
+
+
+    public int getCount() {
+        return filteredData.size();
+    }
+
+    public Contact getItem(int position) {
+        return filteredData.get(position);
+    }
+
+    public long getItemId(int position) {
+        return position;
+    }
+
+    public Filter getFilter() {
+        return mFilter;
+    }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -35,36 +60,38 @@ public class PhonebookAdapter extends ArrayAdapter<Contact> implements Filterabl
         return convertView;
     }
 
-
-    @NonNull
-    @Override
-    public Filter getFilter() {
-        // return a filter that filters data based on a constraint
-
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                return null;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-
-            }
-        };
-    }
-
-
-    private class ContactsFilter extends Filter {
-
+    private class ItemFilter extends Filter {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            return null;
+
+            String filterString = constraint.toString().toLowerCase();
+
+            FilterResults results = new FilterResults();
+
+            final List<Contact> list = originalData;
+
+            int count = list.size();
+            final ArrayList<Contact> nlist = new ArrayList<>(count);
+
+            for (Contact contact : originalData) {
+                if (contact.getName().toLowerCase().contains(filterString)) {
+                    nlist.add(contact);
+                }
+            }
+
+            results.values = nlist;
+            results.count = nlist.size();
+
+            return results;
         }
 
+        @SuppressWarnings("unchecked")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-
+            filteredData = (ArrayList<Contact>) results.values;
+            notifyDataSetChanged();
         }
+
     }
+
 }
