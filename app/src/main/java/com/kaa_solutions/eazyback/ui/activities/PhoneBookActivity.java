@@ -17,6 +17,7 @@ import com.kaa_solutions.eazyback.ui.adapters.PhonebookAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Set;
 
 import static com.kaa_solutions.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
@@ -32,23 +33,16 @@ public class PhoneBookActivity extends GenericActivity {
         getSupportActionBar().setTitle(R.string.title_activity_phone_book);
         setContentView(R.layout.activity_phone_book);
 
-        myList = (ListView) findViewById(R.id.listView);
         initListView();
 
-        SearchView searchView = (SearchView) findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
+        initSearchView();
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return true;
-            }
-        });
+        setListenerForListView();
 
+        initBackButton();
+    }
+
+    private void setListenerForListView() {
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -56,7 +50,9 @@ public class PhoneBookActivity extends GenericActivity {
                 if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
                     Contact contact = (Contact) parent.getAdapter().getItem(position);
 
-                    getSharedHelper().getTargetNumbers().add(contact.getPhone());
+                    final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
+                    targetNumbers.add(contact.getPhone());
+                    getSharedHelper().setTargetPhoneSet(targetNumbers);
 
                     Toast.makeText(getApplicationContext(), R.string.added_contact,
                             Toast.LENGTH_SHORT).show();
@@ -70,11 +66,26 @@ public class PhoneBookActivity extends GenericActivity {
 
             }
         });
+    }
 
-        initBackButton();
+    private void initSearchView() {
+        SearchView searchView = (SearchView) findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return true;
+            }
+        });
     }
 
     private void initListView() {
+        myList = (ListView) findViewById(R.id.listView);
         arrayOfUsers = getAddressBook();
         if (arrayOfUsers != null) {
             adapter = new PhonebookAdapter(this, arrayOfUsers);
@@ -82,7 +93,6 @@ public class PhoneBookActivity extends GenericActivity {
         } else {
             myList.setAdapter(null);
         }
-
     }
 
 
@@ -110,10 +120,5 @@ public class PhoneBookActivity extends GenericActivity {
         }
         Collections.sort(contacts);
         return contacts;
-    }
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(this, NumbersManagerActivity.class));
     }
 }
