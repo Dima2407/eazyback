@@ -90,6 +90,8 @@
     <string name="change_additional_number">Change number for callback</string>
     <string name="additional_number">Callback number</string>
     <string name="name">Name</string>
+    <string name="number">Number</string>
+    <string name="save">Save</string>
 
 
 </resources>

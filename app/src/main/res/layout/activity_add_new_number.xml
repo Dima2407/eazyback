@@ -8,59 +8,77 @@
 
 
     <TextView
+        style="@style/add_new_contact_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:paddingLeft="2dp"
         android:text="@string/name" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        style="@style/add_new_contact_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHighlight="#fafafa" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <EditText
-
+        android:id="@+id/add_new_contact_number"
+        style="@style/add_new_contact_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number" />
+        android:layout_marginTop="25dp"
+        android:paddingLeft="2dp"
+        android:text="@string/number" />
+
+    <EditText
+        android:id="@+id/editText"
+        style="@style/add_new_contact_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#dddddd" />
+        android:layout_marginTop="40dp"
+        android:background="#f2f3f4" />
 
     <RelativeLayout
+        style="@style/add_new_contact_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21.3dp">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="2dp"
             android:text="@string/change_additional_number" />
 
         <Switch
-            android:id="@+id/additional_number_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:gravity="center_vertical" />
+            android:layout_alignParentRight="true" />
 
     </RelativeLayout>
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="41dp"
-        android:background="#dddddd"
+        android:layout_marginTop="22dp"
+        android:background="#f2f3f4"
         android:gravity="center_vertical"
+        android:paddingLeft="18dp"
         android:text="@string/additional_number"
 
         />
 
     <EditText
+        style="@style/add_new_contact_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:drawableRight="@drawable/book_icn_1" />
 </LinearLayout>

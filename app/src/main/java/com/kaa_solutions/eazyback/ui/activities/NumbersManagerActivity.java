@@ -23,7 +23,6 @@ public final class NumbersManagerActivity extends GenericActivity {
 
     private ListView listView;
     private ArrayList<Contact> arrayOfUsers;
-    private com.getbase.floatingactionbutton.FloatingActionButton fab;
     private NumbersAdapter adapter;
 
     @Override
@@ -87,7 +86,7 @@ public final class NumbersManagerActivity extends GenericActivity {
             public void onClick(View v) {
 
                 if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
-//                startActivity(new Intent(getApplicationContext(), AddNewNumberActivity.class));
+                    startActivity(new Intent(getApplicationContext(), AddNewNumber.class));
                 } else {
                     Toast.makeText(NumbersManagerActivity.this, R.string.listOfNumbersIsFull, Toast.LENGTH_SHORT).show();
                 }
