@@ -1,8 +1,12 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,7 +33,39 @@ public final class NumbersManagerActivity extends GenericActivity {
         setContentView(R.layout.activity_number);
         buildFam();
         inflateListView();
+        setListOnLongPressListener();
 
+    }
+
+    private void setListOnLongPressListener() {
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(NumbersManagerActivity.this);
+                builderSingle.setIcon(R.drawable.ic_launcher);
+
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(NumbersManagerActivity.this, android.R.layout.select_dialog_item);
+                arrayAdapter.add("Edit");
+                arrayAdapter.add("Delete");
+
+                builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String strName = arrayAdapter.getItem(which);
+                        Toast.makeText(NumbersManagerActivity.this, arrayAdapter.getItem(which), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builderSingle.show();
+                return true;
+            }
+        });
     }
 
     private void buildFam() {
