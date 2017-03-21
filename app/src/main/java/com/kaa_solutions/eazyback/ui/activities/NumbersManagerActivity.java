@@ -4,14 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.models.Contact;
 import com.kaa_solutions.eazyback.ui.adapters.NumbersAdapter;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.Set;
+
+import static com.kaa_solutions.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
 public final class NumbersManagerActivity extends GenericActivity {
 
@@ -27,20 +29,30 @@ public final class NumbersManagerActivity extends GenericActivity {
         setContentView(R.layout.activity_number);
         buildFam();
         inflateListView();
+
     }
 
     private void buildFam() {
         findViewById(R.id.add_new_number).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(), AddNewNumberACtivity.class));
+
+                if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
+//                startActivity(new Intent(getApplicationContext(), AddNewNumberActivity.class));
+                } else {
+                    Toast.makeText(NumbersManagerActivity.this, R.string.listOfNumbersIsFull, Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         findViewById(R.id.add_number_from_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), PhoneBookActivity.class));
+                if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
+                    startActivity(new Intent(getApplicationContext(), PhoneBookActivity.class));
+                } else {
+                    Toast.makeText(NumbersManagerActivity.this, R.string.listOfNumbersIsFull, Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -48,11 +60,6 @@ public final class NumbersManagerActivity extends GenericActivity {
     private void inflateListView() {
         listView = (ListView) findViewById(R.id.numbers);
         arrayOfUsers = new ArrayList<>();
-
-        String testPhone = "+380631441234";
-        Set<String> strings = new LinkedHashSet<>();
-        strings.add(testPhone);
-        getSharedHelper().setTargetPhoneSet(strings);
 
         final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
         for (String number : targetNumbers) {
@@ -62,7 +69,7 @@ public final class NumbersManagerActivity extends GenericActivity {
             if (contactNameFromBook != null) {
                 contact.setName(contactNameFromBook);
             } else {
-                contact.setName("Unknown");
+                contact.setName(String.valueOf(R.string.unknown));
             }
             arrayOfUsers.add(contact);
         }
