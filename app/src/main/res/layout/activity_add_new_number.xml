@@ -6,6 +6,7 @@
     android:orientation="vertical"
     tools:context="com.kaa_solutions.eazyback.ui.activities.AddNewNumber">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,8 +21,10 @@
         android:layout_height="wrap_content" />
 
     <EditText
+
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="number" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -39,11 +42,11 @@
             android:text="@string/change_additional_number" />
 
         <Switch
+            android:id="@+id/additional_number_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:gravity="right" />
-
+            android:gravity="center_vertical" />
 
     </RelativeLayout>
 
