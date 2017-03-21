@@ -87,6 +87,9 @@
     <string name="search_contacts">Search contacts</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="change_additional_number">Change number for callback</string>
+    <string name="additional_number">Callback number</string>
+    <string name="name">Name</string>
 
 
 </resources>

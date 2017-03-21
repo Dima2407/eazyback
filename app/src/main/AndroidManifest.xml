@@ -63,6 +63,7 @@
         </receiver>
 
         <activity android:name=".ui.activities.ManualModeActivity" />
+        <activity android:name=".ui.activities.AddNewNumber"></activity>
     </application>
 
 </manifest>
