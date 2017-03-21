@@ -24,6 +24,7 @@ public final class NumbersManagerActivity extends GenericActivity {
     private ListView listView;
     private ArrayList<Contact> arrayOfUsers;
     private com.getbase.floatingactionbutton.FloatingActionButton fab;
+    private NumbersAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public final class NumbersManagerActivity extends GenericActivity {
     private void setListOnLongPressListener() {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(final AdapterView<?> parent, final View view, final int position, long id) {
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(NumbersManagerActivity.this);
                 builderSingle.setIcon(R.drawable.ic_launcher);
 
@@ -58,8 +59,16 @@ public final class NumbersManagerActivity extends GenericActivity {
                 builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String strName = arrayAdapter.getItem(which);
-                        Toast.makeText(NumbersManagerActivity.this, arrayAdapter.getItem(which), Toast.LENGTH_SHORT).show();
+                        Contact contact = (Contact) parent.getItemAtPosition(position);
+                        final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
+                        for (String targetNumber : targetNumbers) {
+                            if (targetNumber.equals(contact.getPhone())) {
+                                targetNumbers.remove(targetNumber);
+                                break;
+                            }
+                        }
+                        Toast.makeText(NumbersManagerActivity.this, "Number has benn deleted", Toast.LENGTH_SHORT).show();
+                        inflateListView();
                     }
                 });
                 builderSingle.show();
@@ -110,7 +119,6 @@ public final class NumbersManagerActivity extends GenericActivity {
             arrayOfUsers.add(contact);
         }
 
-        NumbersAdapter adapter;
         if (arrayOfUsers != null) {
             adapter = new NumbersAdapter(this, arrayOfUsers);
             listView.setAdapter(adapter);
