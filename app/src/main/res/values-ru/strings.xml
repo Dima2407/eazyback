@@ -85,4 +85,6 @@
     <string name="listOfNumbersIsFull">Вы можете добавить только 5 номеров</string>
     <string name="unknown">Неизвестный</string>
     <string name="search_contacts">Поиск контактов</string>
+    <string name="delete">Удалить</string>
+    <string name="edit">Редактировать</string>
 </resources>

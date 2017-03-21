@@ -1,5 +1,6 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,6 +32,7 @@ public final class AutoCallBackActivity extends GenericActivity {
     private void setFieldValues() {
         mRejectDelay = (EditText) findViewById(R.id.reject_delay);
         mRejectDelay.setText(String.valueOf(getSharedHelper().getRejectDelayInSec()));
+        mRejectDelay.setRawInputType(Configuration.KEYBOARD_12KEY);
         mRejectDelay.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -38,7 +40,7 @@ public final class AutoCallBackActivity extends GenericActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length()>0) {
+                if (s.length() > 0) {
                     getSharedHelper().setRejectDelay(s.toString());
                 }
 
@@ -50,6 +52,7 @@ public final class AutoCallBackActivity extends GenericActivity {
         });
 
         mCallBackDelay = (EditText) findViewById(R.id.call_back_delay);
+        mCallBackDelay.setRawInputType(Configuration.KEYBOARD_12KEY);
         mCallBackDelay.setText(String.valueOf(getSharedHelper().getCallbackDelayInSec()));
         mCallBackDelay.addTextChangedListener(new TextWatcher() {
             @Override
@@ -58,7 +61,7 @@ public final class AutoCallBackActivity extends GenericActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length()>0) {
+                if (s.length() > 0) {
                     getSharedHelper().setCallbackDelay(s.toString());
                 }
 

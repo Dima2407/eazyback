@@ -85,6 +85,8 @@
     <string name="listOfNumbersIsFull">You can add only 5 numbers</string>
     <string name="unknown">Unknown</string>
     <string name="search_contacts">Search contacts</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 
 
 </resources>
