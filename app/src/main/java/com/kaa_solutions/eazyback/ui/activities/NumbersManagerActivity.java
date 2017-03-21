@@ -29,6 +29,7 @@ public final class NumbersManagerActivity extends GenericActivity {
         setContentView(R.layout.activity_number);
         buildFam();
         inflateListView();
+
     }
 
     private void buildFam() {

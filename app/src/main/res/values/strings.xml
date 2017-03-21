@@ -80,10 +80,11 @@
     <string name="title_activity_number">Numbers</string>
     <string name="title_activity_callback_control">Callback control</string>
     <string name="title_activity_button_control">Button control</string>
-    <string name="add_new_number">add a new number</string>
-    <string name="add_number_from_book">from Phonebook</string>
-    <string name="listOfNumbersIsFull">You can add onlu 5 numbers</string>
+    <string name="add_new_number">Add a New Number</string>
+    <string name="add_number_from_book">From Phonebook</string>
+    <string name="listOfNumbersIsFull">You can add only 5 numbers</string>
     <string name="unknown">Unknown</string>
+    <string name="search_contacts">Search contacts</string>
 
 
 </resources>
