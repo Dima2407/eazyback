@@ -59,16 +59,20 @@ public final class NumbersManagerActivity extends GenericActivity {
                 builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Contact contact = (Contact) parent.getItemAtPosition(position);
-                        final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
-                        for (String targetNumber : targetNumbers) {
-                            if (targetNumber.equals(contact.getPhone())) {
-                                targetNumbers.remove(targetNumber);
-                                break;
+                        if (which == 0) {
+                            Toast.makeText(NumbersManagerActivity.this, "Edit function doesn't work yet", Toast.LENGTH_SHORT).show();
+                        } else if (which == 1) {
+                            Contact contact = (Contact) parent.getItemAtPosition(position);
+                            final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
+                            for (String targetNumber : targetNumbers) {
+                                if (targetNumber.equals(contact.getPhone())) {
+                                    targetNumbers.remove(targetNumber);
+                                    break;
+                                }
                             }
+                            Toast.makeText(NumbersManagerActivity.this, "Number has benn deleted", Toast.LENGTH_SHORT).show();
+                            inflateListView();
                         }
-                        Toast.makeText(NumbersManagerActivity.this, "Number has benn deleted", Toast.LENGTH_SHORT).show();
-                        inflateListView();
                     }
                 });
                 builderSingle.show();
@@ -114,7 +118,7 @@ public final class NumbersManagerActivity extends GenericActivity {
             if (contactNameFromBook != null) {
                 contact.setName(contactNameFromBook);
             } else {
-                contact.setName(String.valueOf(R.string.unknown));
+                contact.setName("Unknown");
             }
             arrayOfUsers.add(contact);
         }
