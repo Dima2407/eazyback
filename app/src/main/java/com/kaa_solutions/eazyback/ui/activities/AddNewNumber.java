@@ -1,13 +1,11 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.widget.Button;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 
 import com.kaa_solutions.eazyback.R;
 
@@ -18,21 +16,37 @@ public class AddNewNumber extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_number);
 
-        Button bt = new Button(this);
-        bt.setText("A Button");
-        bt.setTextColor(Color.RED);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT);
-        params.gravity = Gravity.RIGHT;
-        bt.setLayoutParams(params);
 
+        Switch statusAdditionNumber = (Switch) findViewById(R.id.status_additional_number);
+        statusAdditionNumber.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    LinearLayout additionalNumberLayout = (LinearLayout) findViewById(R.id.additional_number_layout);
+                    additionalNumberLayout.setVisibility(View.VISIBLE);
+                } else {
+                    LinearLayout additionalNumberLayout = (LinearLayout) findViewById(R.id.additional_number_layout);
+                    additionalNumberLayout.setVisibility(View.GONE);
+                }
+            }
+        });
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.yourentry, menu);
-        return true;
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_favorite:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 }
