@@ -85,7 +85,7 @@ public final class NumbersManagerActivity extends GenericActivity {
             @Override
             public void onClick(View v) {
 
-                if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
+                if (getPhonesDAO().readAllContacts().size() < AMOUNT_PHONES_NUMBER) {
                     startActivity(new Intent(getApplicationContext(), AddNewNumber.class));
                 } else {
                     Toast.makeText(NumbersManagerActivity.this, R.string.listOfNumbersIsFull, Toast.LENGTH_SHORT).show();
@@ -96,7 +96,7 @@ public final class NumbersManagerActivity extends GenericActivity {
         findViewById(R.id.add_number_from_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
+                if (getPhonesDAO().readAllContacts().size() < AMOUNT_PHONES_NUMBER) {
                     startActivity(new Intent(getApplicationContext(), PhoneBookActivity.class));
                 } else {
                     Toast.makeText(NumbersManagerActivity.this, R.string.listOfNumbersIsFull, Toast.LENGTH_SHORT).show();
@@ -107,20 +107,7 @@ public final class NumbersManagerActivity extends GenericActivity {
 
     private void inflateListView() {
         listView = (ListView) findViewById(R.id.numbers);
-        arrayOfUsers = new ArrayList<>();
-
-        final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
-        for (String number : targetNumbers) {
-            Contact contact = new Contact();
-            contact.setPhone(number);
-            final String contactNameFromBook = getDelayedContactDAO().getContactNameFromBook(number);
-            if (contactNameFromBook != null) {
-                contact.setName(contactNameFromBook);
-            } else {
-                contact.setName("Unknown");
-            }
-            arrayOfUsers.add(contact);
-        }
+        arrayOfUsers = getPhonesDAO().readAllContacts();
 
         if (arrayOfUsers != null) {
             adapter = new NumbersAdapter(this, arrayOfUsers);
