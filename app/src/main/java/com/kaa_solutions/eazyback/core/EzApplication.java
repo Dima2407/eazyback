@@ -18,7 +18,7 @@ public final class EzApplication extends Application {
         mSharedHelper = new SharedHelper(this);
         delayedContactDAO = new DelayContactDAO(getApplicationContext());
         phonesDAO = new PhonesDAO(getApplicationContext());
-        mCore = new Core(this, mSharedHelper, delayedContactDAO);
+        mCore = new Core(this, mSharedHelper, delayedContactDAO, phonesDAO);
 
     }
 
