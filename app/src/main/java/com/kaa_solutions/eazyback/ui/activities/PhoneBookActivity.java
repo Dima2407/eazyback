@@ -46,7 +46,10 @@ public class PhoneBookActivity extends GenericActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-                if (getPhonesDAO().readAllContacts().size() < AMOUNT_PHONES_NUMBER) {
+
+                final ArrayList<Contact> contacts = getPhonesDAO().readAllContacts();
+
+                if (contacts == null || contacts.size() < AMOUNT_PHONES_NUMBER) {
                     Contact contact = (Contact) parent.getAdapter().getItem(position);
                     getPhonesDAO().createContact(contact);
                     Toast.makeText(getApplicationContext(), R.string.added_contact,
