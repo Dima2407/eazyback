@@ -6,7 +6,7 @@
     <string name="reject_time">Discharge, sec</string>
     <string name="callback_time">Re-call, seс</string>
     <string name="action_settings">Save</string>
-    <string name="is_activated">Callbacks control</string>
+    <string name="is_activated">Callback control</string>
     <string name="is_activated_manual_mod">Buttons control</string>
     <string name="invalid_data">Invalid data</string>
 
@@ -93,6 +93,7 @@
     <string name="number">Number</string>
     <string name="save">Save</string>
     <string name="title_add_new_number">Add a New Number</string>
+    <string name="number_has_been_deleted">The number has been deleted</string>
 
 
 </resources>

@@ -87,4 +87,12 @@
     <string name="search_contacts">Поиск контактов</string>
     <string name="delete">Удалить</string>
     <string name="edit">Редактировать</string>
+    <string name="additional_number">Номер для перезвона</string>
+    <string name="change_additional_number">Изменить номер для перезвона</string>
+    <string name="name">Имя</string>
+    <string name="number">Номер</string>
+    <string name="save">Сохранить</string>
+    <string name="search_title">Поиск</string>
+    <string name="title_add_new_number">Добавить новый номер</string>
+    <string name="number_has_been_deleted">Номер был удален</string>
 </resources>

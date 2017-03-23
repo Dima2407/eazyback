@@ -62,7 +62,7 @@ public final class NumbersManagerActivity extends GenericActivity {
                         } else if (which == 1) {
                             Contact contact = (Contact) parent.getItemAtPosition(position);
                             getPhonesDAO().deleteContact(contact);
-                            Toast.makeText(NumbersManagerActivity.this, "Number has benn deleted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(NumbersManagerActivity.this, R.string.number_has_been_deleted, Toast.LENGTH_SHORT).show();
                             inflateListView();
                         }
                     }
