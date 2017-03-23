@@ -122,11 +122,14 @@ public final class Core {
         ArrayList<Contact> contacts = mPhonesDAO.readAllContacts();
         boolean result = false;
 
-        for (Contact contact : contacts) {
-            if (pIncomePhone.equals(contact.getPhone())) {
-                result = true;
-                break;
+        if (contacts != null) {
+            for (Contact contact : contacts) {
+                if (pIncomePhone.equals(contact.getPhone())) {
+                    result = true;
+                    break;
+                }
             }
+
         }
 
         return result;
