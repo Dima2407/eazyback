@@ -50,7 +50,7 @@ public class PhonesDAO {
         ArrayList<Contact> contacts = null;
         SQLiteDatabase database = dbHelper.getReadableDatabase();
 
-        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, (DatabaseColumns.Phones.COLUMN_NAME.))
+        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, (DatabaseColumns.Phones.COLUMN_NAME + " ASC"));
 
 
         return contacts;
