@@ -15,7 +15,6 @@ import com.kaa_solutions.eazyback.models.Contact;
 import com.kaa_solutions.eazyback.ui.adapters.NumbersAdapter;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import static com.kaa_solutions.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
@@ -62,13 +61,7 @@ public final class NumbersManagerActivity extends GenericActivity {
                             Toast.makeText(NumbersManagerActivity.this, "Edit function doesn't work yet", Toast.LENGTH_SHORT).show();
                         } else if (which == 1) {
                             Contact contact = (Contact) parent.getItemAtPosition(position);
-                            final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
-                            for (String targetNumber : targetNumbers) {
-                                if (targetNumber.equals(contact.getPhone())) {
-                                    targetNumbers.remove(targetNumber);
-                                    break;
-                                }
-                            }
+                            getPhonesDAO().deleteContact(contact);
                             Toast.makeText(NumbersManagerActivity.this, "Number has benn deleted", Toast.LENGTH_SHORT).show();
                             inflateListView();
                         }
