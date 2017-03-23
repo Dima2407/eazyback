@@ -1,11 +1,13 @@
 package com.kaa_solutions.eazyback.ui.activities;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.kaa_solutions.eazyback.R;
 
@@ -31,22 +33,22 @@ public class AddNewNumber extends GenericActivity {
             }
         });
 
+        initBackButton();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, 0, 0, "History").setTitle("Save")
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_favorite:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
-                return true;
+        Toast.makeText(this, "Click", Toast.LENGTH_SHORT).show();
 
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
 
-        }
+        return super.onOptionsItemSelected(item);
     }
-
 }

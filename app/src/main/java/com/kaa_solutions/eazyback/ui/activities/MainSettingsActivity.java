@@ -3,8 +3,6 @@ package com.kaa_solutions.eazyback.ui.activities;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,12 +65,6 @@ public final class MainSettingsActivity extends GenericActivity {
 */
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.settings, menu);
-        return true;
-    }
 
     private void defineButtons() {
         autoCallBack = (ImageView) findViewById(R.id.auto_call_back_image);
@@ -91,12 +83,6 @@ public final class MainSettingsActivity extends GenericActivity {
         delayedCalls.setOnClickListener(clickListener);
         numbers.setOnClickListener(clickListener);
         extra.setOnClickListener(clickListener);
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 
     /*

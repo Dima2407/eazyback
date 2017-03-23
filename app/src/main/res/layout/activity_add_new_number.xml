@@ -12,15 +12,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:alpha="0.54"
         android:paddingLeft="2dp"
-        android:text="@string/name"/>
+        android:text="@string/name"
+        android:textColor="#000000"
+        android:textSize="14sp"/>
 
     <EditText
+        android:id="@+id/add_new_contact_name_editText"
         style="@style/add_new_contact_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:alpha="0.87"
         android:background="@drawable/edit_text_design"
-        android:textColorHighlight="#fafafa"/>
+        android:textColorHighlight="#fafafa"
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/add_new_contact_number"
@@ -28,16 +35,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:alpha="0.54"
         android:paddingLeft="2dp"
-        android:text="@string/number"/>
+        android:text="@string/number"
+        android:textColor="#000000"
+        android:textSize="14sp"/>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/add_new_contact_number_editText"
         style="@style/add_new_contact_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:alpha="0.87"
         android:background="@drawable/edit_text_design"
-        android:inputType="phone"/>
+        android:inputType="phone"
+        android:textSize="16sp"/>
 
     <ImageView
         android:layout_width="match_parent"
@@ -62,7 +75,8 @@
             android:id="@+id/status_additional_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:clickable="false"/>
 
     </RelativeLayout>
 

@@ -46,7 +46,7 @@ public class DelayContactDAO {
 
         Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, (DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL + " DESC"));
         if (cursor.moveToNext()) {
-            contacts = new ArrayList<Contact>();
+            contacts = new ArrayList<>();
             int idIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
             int nameIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
             int phoneIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
