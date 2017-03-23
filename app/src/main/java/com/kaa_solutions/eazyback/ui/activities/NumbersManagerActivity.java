@@ -15,7 +15,6 @@ import com.kaa_solutions.eazyback.models.Contact;
 import com.kaa_solutions.eazyback.ui.adapters.NumbersAdapter;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import static com.kaa_solutions.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
@@ -23,7 +22,6 @@ public final class NumbersManagerActivity extends GenericActivity {
 
     private ListView listView;
     private ArrayList<Contact> arrayOfUsers;
-    private com.getbase.floatingactionbutton.FloatingActionButton fab;
     private NumbersAdapter adapter;
 
     @Override
@@ -63,14 +61,8 @@ public final class NumbersManagerActivity extends GenericActivity {
                             Toast.makeText(NumbersManagerActivity.this, "Edit function doesn't work yet", Toast.LENGTH_SHORT).show();
                         } else if (which == 1) {
                             Contact contact = (Contact) parent.getItemAtPosition(position);
-                            final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
-                            for (String targetNumber : targetNumbers) {
-                                if (targetNumber.equals(contact.getPhone())) {
-                                    targetNumbers.remove(targetNumber);
-                                    break;
-                                }
-                            }
-                            Toast.makeText(NumbersManagerActivity.this, "Number has benn deleted", Toast.LENGTH_SHORT).show();
+                            getPhonesDAO().deleteContact(contact);
+                            Toast.makeText(NumbersManagerActivity.this, R.string.number_has_been_deleted, Toast.LENGTH_SHORT).show();
                             inflateListView();
                         }
                     }
@@ -82,12 +74,14 @@ public final class NumbersManagerActivity extends GenericActivity {
     }
 
     private void buildFam() {
+
         findViewById(R.id.add_new_number).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final ArrayList<Contact> contacts = getPhonesDAO().readAllContacts();
 
-                if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
-//                startActivity(new Intent(getApplicationContext(), AddNewNumberActivity.class));
+                if (contacts == null || contacts.size() < AMOUNT_PHONES_NUMBER) {
+                    startActivity(new Intent(getApplicationContext(), AddNewNumber.class));
                 } else {
                     Toast.makeText(NumbersManagerActivity.this, R.string.listOfNumbersIsFull, Toast.LENGTH_SHORT).show();
                 }
@@ -97,7 +91,9 @@ public final class NumbersManagerActivity extends GenericActivity {
         findViewById(R.id.add_number_from_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
+                final ArrayList<Contact> contacts = getPhonesDAO().readAllContacts();
+
+                if (contacts == null || contacts.size() < AMOUNT_PHONES_NUMBER) {
                     startActivity(new Intent(getApplicationContext(), PhoneBookActivity.class));
                 } else {
                     Toast.makeText(NumbersManagerActivity.this, R.string.listOfNumbersIsFull, Toast.LENGTH_SHORT).show();
@@ -108,20 +104,7 @@ public final class NumbersManagerActivity extends GenericActivity {
 
     private void inflateListView() {
         listView = (ListView) findViewById(R.id.numbers);
-        arrayOfUsers = new ArrayList<>();
-
-        final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
-        for (String number : targetNumbers) {
-            Contact contact = new Contact();
-            contact.setPhone(number);
-            final String contactNameFromBook = getContactDAO().getContactNameFromBook(number);
-            if (contactNameFromBook != null) {
-                contact.setName(contactNameFromBook);
-            } else {
-                contact.setName("Unknown");
-            }
-            arrayOfUsers.add(contact);
-        }
+        arrayOfUsers = getPhonesDAO().readAllContacts();
 
         if (arrayOfUsers != null) {
             adapter = new NumbersAdapter(this, arrayOfUsers);

@@ -19,7 +19,6 @@ import java.util.Locale;
 
 import static com.kaa_solutions.eazyback.db.constants.DatabaseColumns.DelayContacts.TABLE_NAME;
 
-
 public class DelayContactDAO {
     private final String TAG = getClass().getSimpleName();
     private Context context;
@@ -46,7 +45,7 @@ public class DelayContactDAO {
 
         Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, (DatabaseColumns.DelayContacts.COLUMN_TIME_LAST_DELAYED_CALL + " DESC"));
         if (cursor.moveToNext()) {
-            contacts = new ArrayList<Contact>();
+            contacts = new ArrayList<>();
             int idIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts._ID);
             int nameIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_NAME);
             int phoneIndexColumn = cursor.getColumnIndex(DatabaseColumns.DelayContacts.COLUMN_PHONE);
@@ -73,7 +72,7 @@ public class DelayContactDAO {
         return contacts;
     }
 
-    public void addDelayCallbackNumber(String pDelayCallbackNumber) {
+    public void createDelayCallbackNumber(String pDelayCallbackNumber) {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         String contactName = getContactNameFromBook(pDelayCallbackNumber);
 

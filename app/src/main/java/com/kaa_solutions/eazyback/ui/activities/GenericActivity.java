@@ -21,6 +21,7 @@ import com.kaa_solutions.eazyback.core.Core;
 import com.kaa_solutions.eazyback.core.EzApplication;
 import com.kaa_solutions.eazyback.core.SharedHelper;
 import com.kaa_solutions.eazyback.db.DelayContactDAO;
+import com.kaa_solutions.eazyback.db.PhonesDAO;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +34,8 @@ public abstract class GenericActivity extends AppCompatActivity {
 
     private EzApplication mEzApplication;
     private SharedHelper mSharedHelper;
-    private DelayContactDAO contactDAO;
+    private DelayContactDAO delayedContactDAO;
+    private PhonesDAO phonesDAO;
     private PendingIntent mPendingIntent;
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -96,11 +98,18 @@ public abstract class GenericActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    protected DelayContactDAO getContactDAO() {
-        if (contactDAO == null) {
-            contactDAO = mEzApplication.getContactDAO();
+    protected DelayContactDAO getDelayedContactDAO() {
+        if (delayedContactDAO == null) {
+            delayedContactDAO = mEzApplication.getDelayedContactDAO();
         }
-        return contactDAO;
+        return delayedContactDAO;
+    }
+
+    protected PhonesDAO getPhonesDAO() {
+        if (phonesDAO == null) {
+            phonesDAO = mEzApplication.getPhonesDAO();
+        }
+        return phonesDAO;
     }
 
     protected SharedHelper getSharedHelper() {

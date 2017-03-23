@@ -10,12 +10,14 @@ import android.view.View;
 
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.db.DelayContactDAO;
+import com.kaa_solutions.eazyback.db.PhonesDAO;
+import com.kaa_solutions.eazyback.models.Contact;
 import com.kaa_solutions.eazyback.ui.CallPanel;
 import com.kaa_solutions.eazyback.utils.ComponentLauncher;
 import com.kaa_solutions.eazyback.utils.Reflector;
 import com.kaa_solutions.eazyback.utils.ViewUtils;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 public final class Core {
 
@@ -23,13 +25,15 @@ public final class Core {
     private final Context mContext;
     private final SharedHelper mSharedHelper;
     private final DelayContactDAO mContactDAO;
+    private final PhonesDAO mPhonesDAO;
     private CallPanel mCallPanel;
     private String mPhoneHolder;
 
-    public Core(Context pContext, SharedHelper pSharedHelper, DelayContactDAO contactDAO) {
+    public Core(Context pContext, SharedHelper pSharedHelper, DelayContactDAO contactDAO, PhonesDAO PhonesDAO) {
         mContext = pContext;
         mSharedHelper = pSharedHelper;
         mContactDAO = contactDAO;
+        mPhonesDAO = PhonesDAO;
     }
 
     public void hideCallPanelWindow() {
@@ -115,14 +119,17 @@ public final class Core {
     }
 
     private boolean searchTargetPhone(String pIncomePhone) {
-        Set<String> targetPhones = mSharedHelper.getTargetNumbers();
+        ArrayList<Contact> contacts = mPhonesDAO.readAllContacts();
         boolean result = false;
 
-        for (String phone : targetPhones) {
-            if (pIncomePhone.equals(phone)) {
-                result = true;
-                break;
+        if (contacts != null) {
+            for (Contact contact : contacts) {
+                if (pIncomePhone.equals(contact.getPhone())) {
+                    result = true;
+                    break;
+                }
             }
+
         }
 
         return result;
@@ -170,7 +177,7 @@ public final class Core {
 
                 case R.id.delay_image:
                     Reflector.disconnectCall();
-                    mContactDAO.addDelayCallbackNumber(mPhoneHolder);
+                    mContactDAO.createDelayCallbackNumber(mPhoneHolder);
                     Log.e(TAG, "onClick: delay_image");
                     break;
                 default:

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.kaa_solutions.eazyback.ui.activities.AddNewNumber">
+
+
+    <TextView
+        style="@style/add_new_contact_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:alpha="0.54"
+        android:paddingLeft="2dp"
+        android:text="@string/name"
+        android:textColor="#000000"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/add_new_contact_name_editText"
+        style="@style/add_new_contact_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:alpha="0.87"
+        android:background="@drawable/edit_text_design"
+        android:textColorHighlight="#fafafa"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/add_new_contact_number"
+        style="@style/add_new_contact_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:alpha="0.54"
+        android:paddingLeft="2dp"
+        android:text="@string/number"
+        android:textColor="#000000"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/add_new_contact_phone_editText"
+        style="@style/add_new_contact_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:alpha="0.87"
+        android:background="@drawable/edit_text_design"
+        android:inputType="phone"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="40dp"
+        android:background="#f2f3f4"/>
+
+    <RelativeLayout
+        style="@style/add_new_contact_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21.3dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="2dp"
+            android:text="@string/change_additional_number"/>
+
+        <Switch
+            android:id="@+id/status_additional_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="false"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/additional_number_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_marginTop="22dp"
+            android:background="#f2f3f4"
+            android:gravity="center_vertical"
+            android:paddingLeft="18dp"
+            android:text="@string/additional_number"
+
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/edit_text_design"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/book_icn_1"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

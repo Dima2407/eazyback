@@ -89,6 +89,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="15.7dp"
                 android:width="50dp"
+                android:inputType="number"
                 android:maxLength="2" />
 
 
@@ -117,6 +118,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="15.7dp"
                 android:width="50dp"
+                android:inputType="number"
                 android:maxLength="2" />
 
         </RelativeLayout>

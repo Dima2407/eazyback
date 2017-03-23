@@ -17,7 +17,6 @@ import com.kaa_solutions.eazyback.ui.adapters.PhonebookAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Set;
 
 import static com.kaa_solutions.eazyback.core.SharedHelper.AMOUNT_PHONES_NUMBER;
 
@@ -47,13 +46,12 @@ public class PhoneBookActivity extends GenericActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
-                if (getSharedHelper().getTargetNumbers().size() < AMOUNT_PHONES_NUMBER) {
+
+                final ArrayList<Contact> contacts = getPhonesDAO().readAllContacts();
+
+                if (contacts == null || contacts.size() < AMOUNT_PHONES_NUMBER) {
                     Contact contact = (Contact) parent.getAdapter().getItem(position);
-
-                    final Set<String> targetNumbers = getSharedHelper().getTargetNumbers();
-                    targetNumbers.add(contact.getPhone());
-                    getSharedHelper().setTargetPhoneSet(targetNumbers);
-
+                    getPhonesDAO().createContact(contact);
                     Toast.makeText(getApplicationContext(), R.string.added_contact,
                             Toast.LENGTH_SHORT).show();
                 } else {

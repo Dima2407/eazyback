@@ -3,19 +3,23 @@ package com.kaa_solutions.eazyback.core;
 import android.app.Application;
 
 import com.kaa_solutions.eazyback.db.DelayContactDAO;
+import com.kaa_solutions.eazyback.db.PhonesDAO;
 
 public final class EzApplication extends Application {
     public static String TAG;
     private SharedHelper mSharedHelper;
-    private DelayContactDAO contactDAO;
+    private DelayContactDAO delayedContactDAO;
+    private PhonesDAO phonesDAO;
     private Core mCore;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mSharedHelper = new SharedHelper(this);
-        contactDAO = new DelayContactDAO(getApplicationContext());
-        mCore = new Core(this, mSharedHelper, contactDAO);
+        delayedContactDAO = new DelayContactDAO(getApplicationContext());
+        phonesDAO = new PhonesDAO(getApplicationContext());
+        mCore = new Core(this, mSharedHelper, delayedContactDAO, phonesDAO);
+
     }
 
     public SharedHelper getSharedHelper() {
@@ -26,7 +30,11 @@ public final class EzApplication extends Application {
         return mCore;
     }
 
-    public DelayContactDAO getContactDAO() {
-        return contactDAO;
+    public DelayContactDAO getDelayedContactDAO() {
+        return delayedContactDAO;
+    }
+
+    public PhonesDAO getPhonesDAO() {
+        return phonesDAO;
     }
 }

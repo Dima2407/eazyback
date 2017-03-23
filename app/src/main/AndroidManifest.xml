@@ -14,7 +14,7 @@
     <application
         android:name=".core.EzApplication"
         android:allowBackup="true"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/app_icn_01"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
@@ -47,7 +47,6 @@
 
         <activity
             android:name=".ui.activities.PhoneBookActivity"
-            android:label="@string/title_activity_phone_book"
             android:noHistory="true" />
 
         <receiver
@@ -63,6 +62,12 @@
         </receiver>
 
         <activity android:name=".ui.activities.ManualModeActivity" />
+        <activity
+            android:name=".ui.activities.AddNewNumber"
+            android:noHistory="true">
+
+
+        </activity>
     </application>
 
 </manifest>
