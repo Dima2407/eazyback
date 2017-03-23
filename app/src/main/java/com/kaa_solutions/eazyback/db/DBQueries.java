@@ -9,6 +9,8 @@ public class DBQueries {
     private static final String DATETIME = " DATETIME";
     private static final String COMA_SEP = " , ";
     private static final String PRIMARY_KEY = " PRIMARY KEY";
+    private static final String UNIQUE = " UNIQUE";
+
 
     private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS ";
     public static final String CREATE_DELAY_CONTACTS =
@@ -22,7 +24,7 @@ public class DBQueries {
             CREATE_TABLE + DatabaseColumns.Phones.TABLE_NAME + " (" +
                     DatabaseColumns.Phones._ID + INTEGER_TYPE + PRIMARY_KEY + COMA_SEP +
                     DatabaseColumns.Phones.COLUMN_NAME + TEXT_TYPE + COMA_SEP +
-                    DatabaseColumns.Phones.COLUMN_PHONE + TEXT_TYPE + COMA_SEP +
+                    DatabaseColumns.Phones.COLUMN_PHONE + TEXT_TYPE + UNIQUE + COMA_SEP +
                     DatabaseColumns.Phones.ADDITIONAL_NUMBER + TEXT_TYPE +
                     ")";
     private static final String DELETE_TABLE = "DROP TABLE IF EXISTS ";
