@@ -170,7 +170,7 @@ public final class Core {
 
                 case R.id.delay_image:
                     Reflector.disconnectCall();
-                    mContactDAO.addDelayCallbackNumber(mPhoneHolder);
+                    mContactDAO.createDelayCallbackNumber(mPhoneHolder);
                     Log.e(TAG, "onClick: delay_image");
                     break;
                 default:

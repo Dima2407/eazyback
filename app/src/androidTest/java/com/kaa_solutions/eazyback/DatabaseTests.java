@@ -37,15 +37,15 @@ public class DatabaseTests {
 
         Contact contact = new Contact();
         contact.setPhone("+380631441234");
-        delayContactDAO.addDelayCallbackNumber(contact.getPhone());
+        delayContactDAO.createDelayCallbackNumber(contact.getPhone());
 
         Contact contact2 = new Contact();
         contact.setPhone("+380961441234");
-        delayContactDAO.addDelayCallbackNumber(contact2.getPhone());
+        delayContactDAO.createDelayCallbackNumber(contact2.getPhone());
 
         Contact contact3 = new Contact();
         contact.setPhone("+380961441234");
-        delayContactDAO.addDelayCallbackNumber(contact3.getPhone());
+        delayContactDAO.createDelayCallbackNumber(contact3.getPhone());
 
         ArrayList<Contact> delayCallbackNumbers = delayContactDAO.getDelayCallbackNumbers();
         for (Contact delayCallbackNumber : delayCallbackNumbers) {
@@ -75,7 +75,7 @@ public class DatabaseTests {
 
         Contact contact = new Contact();
         contact.setPhone("+380631441234");
-        delayContactDAO.addDelayCallbackNumber(contact.getPhone());
+        delayContactDAO.createDelayCallbackNumber(contact.getPhone());
 
         delayCallbackNumbers = delayContactDAO.getDelayCallbackNumbers();
         for (Contact delayCallbackNumber : delayCallbackNumbers) {
@@ -89,7 +89,7 @@ public class DatabaseTests {
             Log.d(TAG, "delayCallbackNumber: " + delayCallbackNumber);
         }
         Thread.sleep(2000);
-        delayContactDAO.addDelayCallbackNumber(contactUpdate.getPhone());
+        delayContactDAO.createDelayCallbackNumber(contactUpdate.getPhone());
         for (Contact delayCallbackNumber : delayCallbackNumbers) {
             Log.d(TAG, "after updating...");
             Log.d(TAG, "delayCallbackNumber: " + delayCallbackNumber);
@@ -106,7 +106,7 @@ public class DatabaseTests {
         Contact contact = new Contact();
         contact.setPhone("+380631441234");
 
-        delayContactDAO.addDelayCallbackNumber(contact.getPhone());
+        delayContactDAO.createDelayCallbackNumber(contact.getPhone());
 
         Contact foundContact = delayContactDAO.findContactByPhoneOrNameInDelayedList(contact);
         Assert.assertNotNull(foundContact);
@@ -122,7 +122,7 @@ public class DatabaseTests {
         Contact contact = new Contact();
         contact.setPhone("+380631441234");
 
-        delayContactDAO.addDelayCallbackNumber(contact.getPhone());
+        delayContactDAO.createDelayCallbackNumber(contact.getPhone());
 
         Contact foundContact = delayContactDAO.findContactByPhoneOrNameInDelayedList(contact);
         Assert.assertNotNull(foundContact);
@@ -137,7 +137,7 @@ public class DatabaseTests {
         DelayContactDAO delayContactDAO = new DelayContactDAO(context);
         Contact contact = new Contact();
         contact.setPhone("+380637777777");
-        delayContactDAO.addDelayCallbackNumber(contact.getPhone());
+        delayContactDAO.createDelayCallbackNumber(contact.getPhone());
         ArrayList<Contact> delayCallbackNumbers = delayContactDAO.getDelayCallbackNumbers();
         Assert.assertTrue(delayCallbackNumbers.size() > 0);
 
