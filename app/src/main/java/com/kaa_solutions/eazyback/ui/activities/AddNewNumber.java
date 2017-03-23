@@ -23,6 +23,7 @@ public class AddNewNumber extends GenericActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_number);
+        setTitle(R.string.title_add_new_number);
         initEditText();
 
         Switch statusAdditionNumber = (Switch) findViewById(R.id.status_additional_number);
@@ -57,7 +58,10 @@ public class AddNewNumber extends GenericActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        initSaveButton();
+        switch (item.getItemId()) {
+            case 0:
+                initSaveButton();
+        }
         return super.onOptionsItemSelected(item);
     }
 

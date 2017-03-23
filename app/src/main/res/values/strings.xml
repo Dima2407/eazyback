@@ -92,6 +92,7 @@
     <string name="name">Name</string>
     <string name="number">Number</string>
     <string name="save">Save</string>
+    <string name="title_add_new_number">Add a New Number</string>
 
 
 </resources>
