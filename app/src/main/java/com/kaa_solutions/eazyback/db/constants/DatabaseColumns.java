@@ -15,4 +15,11 @@ public class DatabaseColumns {
         public static final String COLUMN_TIME_LAST_DELAYED_CALL = "time_last_delayed_call";
     }
 
+    public static class Phones implements BaseColumns {
+        public static final String TABLE_NAME = "phones";
+        public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_PHONE = "phone";
+        public static final String ADDITIONAL_NUMBER = "additional_number";
+    }
+
 }
