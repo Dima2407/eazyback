@@ -11,13 +11,14 @@ import android.widget.TextView;
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.core.SharedHelper;
 
+import static android.view.View.GONE;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public final class FloatWindowSettings extends GenericActivity {
 
     public static final int RIGHT_MARGIN = -250;
     public static final int BOTTOM_MARGIN = -250;
-    ImageView acceptBtn, rejectBtn, delayBtn, callbackBtn;
+    private ImageView acceptBtn, rejectBtn, delayBtn, callbackBtn;
     private TextView textView;
     private int xDelta;
     private int yDelta;
@@ -30,6 +31,7 @@ public final class FloatWindowSettings extends GenericActivity {
         defineImages();
         setButtonsMargin();
         textView = (TextView) findViewById(R.id.text_instruct);
+        textView.setVisibility(View.VISIBLE);
         checkVisibilityButtons();
         initBackButton();
     }
@@ -45,25 +47,25 @@ public final class FloatWindowSettings extends GenericActivity {
         if (getSharedHelper().getActivateAcceptButton()) {
             acceptBtn.setVisibility(View.VISIBLE);
         } else {
-            acceptBtn.setVisibility(View.GONE);
+            acceptBtn.setVisibility(GONE);
         }
 
         if (getSharedHelper().getActivateRejectButton()) {
             rejectBtn.setVisibility(View.VISIBLE);
         } else {
-            rejectBtn.setVisibility(View.GONE);
+            rejectBtn.setVisibility(GONE);
         }
 
         if (getSharedHelper().getActivateDelayCallbackButton()) {
             delayBtn.setVisibility(View.VISIBLE);
         } else {
-            delayBtn.setVisibility(View.GONE);
+            delayBtn.setVisibility(GONE);
         }
 
         if (getSharedHelper().getActivateCallbackButton()) {
             callbackBtn.setVisibility(View.VISIBLE);
         } else {
-            callbackBtn.setVisibility(View.GONE);
+            callbackBtn.setVisibility(GONE);
         }
     }
 
@@ -152,5 +154,11 @@ public final class FloatWindowSettings extends GenericActivity {
             }
             return true;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        textView.setVisibility(GONE);
+        super.onPause();
     }
 }
