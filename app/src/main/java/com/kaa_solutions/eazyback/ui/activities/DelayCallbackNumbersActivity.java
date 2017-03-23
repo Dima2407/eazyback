@@ -27,7 +27,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         mListView = (ListView) findViewById(R.id.list_delay_callback);
         btnClearList = (Button) findViewById(R.id.clearList);
 
-        ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
+        ArrayList<Contact> arrayOfUsers = getDelayedContactDAO().getDelayCallbackNumbers();
 
         if (arrayOfUsers != null) {
             adapter = new DelayBackAdapter(this, arrayOfUsers);
@@ -41,7 +41,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
         btnClearList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getContactDAO().deleteDelayContactAll();
+                getDelayedContactDAO().deleteDelayContactAll();
                 mListView.setAdapter(null);
                 btnClearList.setEnabled(false);
             }
@@ -56,9 +56,9 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
                                              @Override
                                              public void onItemClick(AdapterView<?> parent, View itemClicked, int position, long id) {
                                                  Contact contact = (Contact) parent.getAdapter().getItem(position);
-                                                 getContactDAO().deleteDelayContact(contact);
+                                                 getDelayedContactDAO().deleteDelayContact(contact);
 
-                                                 ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
+                                                 ArrayList<Contact> arrayOfUsers = getDelayedContactDAO().getDelayCallbackNumbers();
 
                                                  if (arrayOfUsers != null) {
                                                      adapter.notifyDataSetChanged();
@@ -77,7 +77,7 @@ public final class DelayCallbackNumbersActivity extends GenericActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ArrayList<Contact> arrayOfUsers = getContactDAO().getDelayCallbackNumbers();
+        ArrayList<Contact> arrayOfUsers = getDelayedContactDAO().getDelayCallbackNumbers();
         DelayBackAdapter adapter;
         if (arrayOfUsers != null) {
             adapter = new DelayBackAdapter(DelayCallbackNumbersActivity.this, arrayOfUsers);

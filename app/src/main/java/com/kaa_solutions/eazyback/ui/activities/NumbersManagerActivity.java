@@ -113,7 +113,7 @@ public final class NumbersManagerActivity extends GenericActivity {
         for (String number : targetNumbers) {
             Contact contact = new Contact();
             contact.setPhone(number);
-            final String contactNameFromBook = getContactDAO().getContactNameFromBook(number);
+            final String contactNameFromBook = getDelayedContactDAO().getContactNameFromBook(number);
             if (contactNameFromBook != null) {
                 contact.setName(contactNameFromBook);
             } else {

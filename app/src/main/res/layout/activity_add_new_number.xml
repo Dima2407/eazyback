@@ -42,7 +42,7 @@
         android:textSize="14sp"/>
 
     <EditText
-        android:id="@+id/add_new_contact_number_editText"
+        android:id="@+id/add_new_contact_phone_editText"
         style="@style/add_new_contact_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
