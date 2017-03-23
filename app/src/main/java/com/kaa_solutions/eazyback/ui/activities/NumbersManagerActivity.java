@@ -74,11 +74,13 @@ public final class NumbersManagerActivity extends GenericActivity {
     }
 
     private void buildFam() {
+
         findViewById(R.id.add_new_number).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final ArrayList<Contact> contacts = getPhonesDAO().readAllContacts();
 
-                if (getPhonesDAO().readAllContacts().size() < AMOUNT_PHONES_NUMBER) {
+                if (contacts == null || contacts.size() < AMOUNT_PHONES_NUMBER) {
                     startActivity(new Intent(getApplicationContext(), AddNewNumber.class));
                 } else {
                     Toast.makeText(NumbersManagerActivity.this, R.string.listOfNumbersIsFull, Toast.LENGTH_SHORT).show();
@@ -89,7 +91,9 @@ public final class NumbersManagerActivity extends GenericActivity {
         findViewById(R.id.add_number_from_book).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getPhonesDAO().readAllContacts().size() < AMOUNT_PHONES_NUMBER) {
+                final ArrayList<Contact> contacts = getPhonesDAO().readAllContacts();
+
+                if (contacts == null || contacts.size() < AMOUNT_PHONES_NUMBER) {
                     startActivity(new Intent(getApplicationContext(), PhoneBookActivity.class));
                 } else {
                     Toast.makeText(NumbersManagerActivity.this, R.string.listOfNumbersIsFull, Toast.LENGTH_SHORT).show();
