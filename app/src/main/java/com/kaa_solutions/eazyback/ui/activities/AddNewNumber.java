@@ -72,11 +72,6 @@ public class AddNewNumber extends GenericActivity {
 
     private void createNewContact() {
 
-        if (name == null || name.length() == 0) {
-            name.setError(getString(R.string.error_name_empty_field));
-            return;
-        }
-
         if (!patternName.matcher(name.getText()).matches()) {
             name.setError(getString(R.string.error_incorrect_name));
             return;
