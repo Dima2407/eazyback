@@ -22,7 +22,7 @@ public class AddNewNumber extends GenericActivity {
 
     private EditText name, phone, additionalNumber;
     private Contact contact;
-    private Pattern pattern;
+    private Pattern patternName = Pattern.compile("\\w+");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +77,7 @@ public class AddNewNumber extends GenericActivity {
             return;
         }
 
-        pattern = Pattern.compile("\\w+");
-        if (!pattern.matcher(name.getText()).matches()) {
+        if (!patternName.matcher(name.getText()).matches()) {
             name.setError(getString(R.string.error_incorrect_name));
             return;
         }
