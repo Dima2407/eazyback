@@ -3,6 +3,7 @@ package com.kaa_solutions.eazyback.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,9 @@ import android.widget.Switch;
 
 import com.kaa_solutions.eazyback.R;
 import com.kaa_solutions.eazyback.models.Contact;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddNewNumber extends GenericActivity {
 
@@ -67,17 +71,25 @@ public class AddNewNumber extends GenericActivity {
 
     private void initSaveButton() {
         if (name != null && name.length() > 0) {
-            if (phone != null && phone.length() > 0) {
-                Contact contact = new Contact();
-                contact.setName(String.valueOf(name.getText()));
-                contact.setPhone(String.valueOf(phone.getText()));
-                getPhonesDAO().createContact(contact);
-                startActivity(new Intent(this, NumbersManagerActivity.class));
-                Log.e(getClass().getSimpleName(), "onOptionsItemSelected: " + getPhonesDAO().readAllContacts().toString());
+            Pattern pattern = Pattern.compile("\\w+");
+            if (pattern.matcher(name.getText()).matches()) {
+                if (phone != null && phone.length() > 0) {
+                    if (Patterns.PHONE.matcher(phone.getText()).matches()) {
+                        Contact contact = new Contact();
+                        contact.setName(String.valueOf(name.getText()));
+                        contact.setPhone(String.valueOf(phone.getText()));
+                        getPhonesDAO().createContact(contact);
+                        startActivity(new Intent(this, NumbersManagerActivity.class));
+                        Log.e(getClass().getSimpleName(), "onOptionsItemSelected: " + getPhonesDAO().readAllContacts().toString());
+                    } else {
+                        phone.setError("Incorrect phone number");
+                    }
 
-            } else {
-                phone.setError("The field can't be empty");
-            }
+                } else {
+                    phone.setError("The field can't be empty");
+                }
+            } else
+                name.setError("Incorrect name");
         } else {
             name.setError("The field can't be empty");
         }
