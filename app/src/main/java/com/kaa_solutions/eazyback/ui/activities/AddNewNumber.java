@@ -22,6 +22,7 @@ public class AddNewNumber extends GenericActivity {
 
     private EditText name, phone, additionalNumber;
     private Contact contact;
+    private Pattern pattern;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,34 +65,34 @@ public class AddNewNumber extends GenericActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 0:
-                initSaveButton();
+                createNewContact();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void initSaveButton() {
-        if (name != null && name.length() > 0) {
-            Pattern pattern = Pattern.compile("\\w+");
-            if (pattern.matcher(name.getText()).matches()) {
-                if (phone != null && phone.length() > 0) {
-                    if (Patterns.PHONE.matcher(phone.getText()).matches()) {
-                        Contact contact = new Contact();
-                        contact.setName(String.valueOf(name.getText()));
-                        contact.setPhone(String.valueOf(phone.getText()));
-                        getPhonesDAO().createContact(contact);
-                        startActivity(new Intent(this, NumbersManagerActivity.class));
-                        Log.e(getClass().getSimpleName(), "onOptionsItemSelected: " + getPhonesDAO().readAllContacts().toString());
-                    } else {
-                        phone.setError("Incorrect phone number");
-                    }
+    private void createNewContact() {
 
-                } else {
-                    phone.setError("The field can't be empty");
-                }
-            } else
-                name.setError("Incorrect name");
-        } else {
-            name.setError("The field can't be empty");
+        if (name == null || name.length() == 0) {
+            name.setError(getString(R.string.error_name_empty_field));
+            return;
         }
+
+        pattern = Pattern.compile("\\w+");
+        if (!pattern.matcher(name.getText()).matches()) {
+            name.setError(getString(R.string.error_incorrect_name));
+            return;
+        }
+
+        if (!Patterns.PHONE.matcher(phone.getText()).matches()) {
+            phone.setError(getString(R.string.error_incorrect_phone_number));
+            return;
+        }
+
+        Contact contact = new Contact();
+        contact.setName(String.valueOf(name.getText()));
+        contact.setPhone(String.valueOf(phone.getText()));
+        getPhonesDAO().createContact(contact);
+        startActivity(new Intent(this, NumbersManagerActivity.class));
+        Log.e(getClass().getSimpleName(), "onOptionsItemSelected: " + getPhonesDAO().readAllContacts().toString());
     }
 }

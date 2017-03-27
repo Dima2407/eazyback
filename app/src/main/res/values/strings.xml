@@ -94,6 +94,9 @@
     <string name="save">Save</string>
     <string name="title_add_new_number">Add a New Number</string>
     <string name="number_has_been_deleted">The number has been deleted</string>
+    <string name="error_name_empty_field">The field can not be empty</string>
+    <string name="error_incorrect_name">Incorrect name</string>
+    <string name="error_incorrect_phone_number">Incorrect phone number</string>
 
 
 </resources>
