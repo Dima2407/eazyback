@@ -22,7 +22,7 @@ public class AddNewNumber extends GenericActivity {
 
     private EditText name, phone, additionalNumber;
     private Contact contact;
-    private Pattern patternName = Pattern.compile("\\w+");
+    private Pattern patternName = Pattern.compile("\\w[\\w+ ]+");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
